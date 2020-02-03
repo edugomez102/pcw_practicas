@@ -89,7 +89,9 @@ form input[type=text]{
 	transition-duration: 0.3s;
 }
 form input[type=text]:hover{
-	background: #6DCED6;
 	border-radius: 7px;
 	border-color: #C0B3B3;
+}
+form input[type=text]:focus{
+	background: #FEFFCF;
 }
