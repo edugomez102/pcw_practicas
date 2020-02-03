@@ -17,3 +17,27 @@ div{
 div:hover{
 	box-shadow: 0px 0px 10px black;
 }
+
+/* nav{ */
+/* 	font-family: sans-serif; */
+/* 	background: red; */
+/* 	width: 100%; */
+/* 	position: absolute; */
+/* 	top: 0px; */
+/* 	left: 0px; */
+/* 	text-align: left; */
+/* } */
+/* nav ul{ */
+/* 	list-style: none; */
+/* 	/* padding: 0px; */ */
+/* } */
+/* nav li{ */
+/* 	display: inline-block; */
+/* 	margin: 8px; */
+/* } */
+
+header img{
+	width: 90px;
+	height: 90px;
+	/* border: 1px solid red; */
+}
