@@ -3,31 +3,55 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="main.css">
+		<!-- TODO (03/02/2020): Preguntar al profesor si se puede usar normalizer -->
+		<link rel="stylesheet" href="normalize.css">
+		<!-- TODO (03/02/2020): Google fonts -->
+		<!-- TODO (03/02/2020): uso de icon fonts? -->
 		<title>Index</title>
 	</head>
 	<body>
 		<header>
+			<!-- TODO (03/02/2020): Crar un logo -->
 			<img src="" alt="Imagen Header">
-			<h1>Segunda Mano</h1>
-			<h2>Subtitulo de la web</h2>
+			<h1>Segunda Mano Título guapo</h1>
+			<h2>Subtitulo de la web pues nada que nuestra web trata sobre esto y sobre lo otro</h2>
 		</header>
 		<nav>
 			<ul>
-				<li><a href="">Inicio</a></li>
-				<li><a href="">Buscar</a></li>
-				<li><a href="">Nuevo articulo</a></li>
-				<li><a href="">Logout</a></li>
-				<li><a href="">Login</a></li>
-				<li><a href="">Registro</a></li>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="buscar.html">Buscar</a></li>
+				<li><a href="nuevo.html">Nuevo articulo</a></li>
+				<li><a href="index.html">Logout</a></li>
+				<li><a href="login.html">Login</a></li>
+				<li><a href="registro.html">Registro</a></li>
 			</ul>
 		</nav>
-		
+		<div id="contenido">
+			Contenido de cada parte
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		 <!-- TODO (03/02/2020):eliminar al decidir diseño final y colocar en registro.html-->
+			<div class="formtest">
+				<form action="index_submit" method="get" accept-charset="utf-8">
+					Test Formulario 
+					<br>
+					<input type="text" name="Nombre" value="Introduce tu nombre">
+				</form>
+				<br>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
 		<footer>
 			<ul>
 				<li><a href="acerca.html" target="_blank">Contacto</a></li>
 				<li>Copyright</li>
 				<li>Año de creación</li>
-				<li><a href="#">Botón con flecha al principio de la página</a></li>
+				<li><a href="#">Botón con flecha para ir al principio de la página</a></li>
 			</ul>
 		</footer>
 	</body>
