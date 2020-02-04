@@ -208,34 +208,20 @@ nav{
 	}
 	nav ul li{
 		display: inline-block;
-		margin: 8px;
-		padding: 5px;
+		margin: 10px 8px;
 		position: relative;
-		border-radius: 4px;
+		/* background: tomato; */
+	}
+	nav ul li a{
+		padding-bottom: 5px;
+		transition-duration: 0.1s;
+	}
+	nav ul li a:hover{
+		border-bottom: 5px solid black;
 	}
 	/* ejemplo de como seleccionar con css elemento lista por numero */
 	nav ul li:nth-child(3) a{
 		color: yellow;
-		/* background-color: gray; */
-	}
-	nav ul li:before{
-		content: '';
-		position: absolute;
-		border: 4px solid grey;
-		top: -16px;
-		bottom: -16px;
-		left: -16px;
-		right: -16px;
-		opacity: 0;
-		transition-duration: 0.2s;
-		border-radius: 4px;
-	}
-	nav ul li:hover:before{
-		top: -8px;
-		bottom: -8px;
-		left: -8px;
-		right: -8px;
-		opacity: 1;
 	}
 	nav ul li a{
 		text-decoration: none;
@@ -244,7 +230,6 @@ nav{
 		font-size: larger;
 	}
 }
-
 form input[type=text]{
 	/* background: blue; */
 	border: 2px solid black;
