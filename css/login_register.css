@@ -1,0 +1,22 @@
+/*Default: 320px a 480px*/
+
+
+
+/*Menu iconos: 321px a 640px*/
+@media screen and (min-width: 481px) and (max-width: 640px){
+	div{
+		background: red;
+		width: 100vw;
+		height: 100vh;
+	}
+}
+
+
+/*Menu completo: 641px a infinito*/
+@media screen and (min-width: 641px){
+	div{
+		background: green;
+		width: 100vw;
+		height: 100vh;
+	}
+}
