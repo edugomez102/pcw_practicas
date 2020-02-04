@@ -169,6 +169,14 @@ nav{
 		position: absolute;
 	}
 	
+	.logo{
+		height: 120px;
+		width: 110px;
+		position: relative;
+		top: 0px;
+		left: 0px;
+		background: blue;
+	}
 	/*Body del login si esta en pc*/
 	div.login-box{
 	padding: 0;
