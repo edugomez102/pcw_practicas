@@ -1,3 +1,6 @@
+html{
+	scroll-behavior: smooth;
+}
 head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
@@ -11,11 +14,16 @@ div#contenido{
 	font-size: large;
 	text-align: center;
 	font-weight: bold;
-	padding: 30px;
-	height: 180px;
-	width: 90%;
-	background-color: blue;
+	padding: 20px 0px;
+	/* height: 600px; */
+	width: 100%;
+	background-color: khaki;
 	color: #fff;
+}
+#contenido p{
+	/* padding-top: 300px; */
+	line-height: 600px;
+	background-color: yellowgreen;
 }
 
 
@@ -104,6 +112,8 @@ nav{
 	text-align: left;
 	user-select: none;
 }
+/* TODO Edu(04/02/2020): Contenido parte comun */
+
 /* movil -> FORMATO VERTICAL */
 @media screen and (max-width: 480px){
 	body{
@@ -158,14 +168,13 @@ nav{
 		font-size: 22px;
 		text-decoration: none;
 		color: black;
-		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 	}
 	/*Body del login si esta en movil*/
 }
 /* pc -> FORMATO HORIZONTAL */
 @media screen and (min-width: 481px){
 	body{
-		background: grey;
+		background: silver;
 	}
 	/* esto es un poco la guarra */
 	nav input{
@@ -177,6 +186,7 @@ nav{
 		display: inline-block;
 	}
 	.logo{
+		display: block;
 		height: 120px;
 		width: 110px;
 		background: blue;
@@ -200,21 +210,23 @@ nav{
 	}
 	nav{
 		font-family: sans-serif;
-		background: red;
+		background: chocolate;
 		width: 100%;
-		position: relative;
-		top: 0px;
-		left: 0px;
+		/* TODO Edu(04/02/2020): Juntar nav con contenido de otra manera */
+		top: 20px;
+		/* left: 0px; */
 		text-align: left;
+
 	}
 	nav ul{
 		list-style: none;
+		text-align: center;
 	}
 	nav ul li{
 		display: inline-block;
 		/* margin: 5px 8px; */
 		margin-top: 8px;
-		margin-left: 10px;
+		margin-left: 35px;
 		position: relative;
 		/* background: tomato; */
 	}
@@ -236,26 +248,35 @@ nav{
 	nav ul li:hover:after { 
 		transform: scaleX(1);
 	}
-	/* ejemplo de como seleccionar con css elemento lista por numero */
-	/* nav ul li:nth-child(3) a{ */
-	/* 	color: yellow; */
-	/* } */
 	footer{
-		font-family: 'Quicksand', sans-serif;
+		/* font-family: 'Quicksand', sans-serif; */
+		font-family: 'Fira Sans', sans-serif;
 		background: indigo;
+		color: white;
 		width: 100%;
 		height: 280px;
-		font-size: 20pt;
+		font-size: 15pt;
+	}
+	footer a{
+		color: magenta;
+		text-decoration: none;
+	}
+	footer div:nth-child(1) a{
+		width: 100%;
+		text-align: center;
+		background: purple;
+		line-height:40px ;
+		display: block;
+	}
+	footer div:nth-child(1) a:hover{
+		background: darkviolet;
+		transition-duration: 0.3s;
 	}
 	footer ul{
 		list-style: none;
 	}
 	footer ul li{
 		/* display: inline-block; */
-	}
-	footer ul li:nth-child(4){
-		background:orange;
-		text-align: right;
 	}
 }
 form input[type=password],
