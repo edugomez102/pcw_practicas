@@ -5,16 +5,21 @@
 		<link rel="stylesheet" href="css/main.css">
 		<!-- TODO (03/02/2020): Preguntar al profesor si se puede usar normalizer -->
 		<link rel="stylesheet" href="css/normalize.css">
-		<!-- TODO (03/02/2020): Google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Quicksand&display=swap" rel="stylesheet">
 		<!-- TODO (03/02/2020): uso de icon fonts? -->
 		<title>Index</title>
 	</head>
 	<body>
 		<header>
 			<!-- TODO (03/02/2020): Crar un logo -->
-			<img src="" alt="Imagen Header">
-			<h1>Segunda Mano Título guapo</h1>
-			<h2>Subtitulo de la web pues nada que nuestra web trata sobre esto y sobre lo otro</h2>
+			<!-- <img src="" alt="Imagen Header"> -->
+			<div class="logo">
+				img
+			</div>
+			<hgroup>
+				<h1>Segunda Mano Título guapo</h1>
+				<h2>Subtitulo de la web pues nada que nuestra web trata sobre esto y sobre lo otro</h2>
+			</hgroup>
 		</header>
 		<nav>
 			<input type="checkbox">
@@ -30,53 +35,27 @@
 				<li><a href="registro.html">Registro</a></li>
 			</ul>
 		</nav>
+		<!-- TODO (04/02/2020): Preguntar si aquí usar un div o section o que -->
 		<div id="contenido">
-			Contenido de cada parte
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-		 <!-- TODO (03/02/2020):eliminar al decidir diseño final y colocar en registro.html-->
-			<div class="formtest">
-				<form action="index_submit" method="get" accept-charset="utf-8">
-					Test Formulario 
-					<br>
-					<input type="text" name="Nombre" value="Introduce tu nombre">
-				</form>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-			</div>
+			<p>
+			Contenido del Index
+			</p>
 		</div>
 		<footer>
+			<div>
+				<a href="#">Volver arriba</a>
+			</div>
 			<ul>
+				<li><a href="index.html">Link a la propia web</a></li>
 				<li><a href="acerca.html" target="_blank">Contacto</a></li>
 				<li>Copyright</li>
 				<li>Año de creación</li>
-				<li><a href="#">Botón con flecha para ir al principio de la página</a></li>
 			</ul>
+			<!-- TODO (04/02/2020): añadir algo más aquí tal vez -->
+			<address>
+				Creado por David & Eduardo <br>
+				Universidad de Alicante, San Vicente del Raspeig
+			</address>
 		</footer>
 	</body>
 </html>

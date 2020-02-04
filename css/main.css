@@ -1,11 +1,14 @@
 /*Codigo color del logo -> c42627*/
 
+html{
+	scroll-behavior: smooth;
+}
 head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
 body{
-  padding: 0;
-  font-family: sans-serif;
+	padding: 0;
+	font-family: sans-serif;
 }
 a:hover{
 	color: white;
@@ -16,11 +19,16 @@ div#contenido{
 	font-size: large;
 	text-align: center;
 	font-weight: bold;
-	padding: 30px;
-	height: 180px;
-	width: 90%;
-	background-color: blue;
+	padding: 20px 0px;
+	/* height: 600px; */
+	width: 100%;
+	background-color: khaki;
 	color: #fff;
+}
+#contenido p{
+	/* padding-top: 300px; */
+	line-height: 600px;
+	background-color: yellowgreen;
 }
 
 
@@ -30,7 +38,6 @@ body.formUser {
 	background: url(../img/fondoHotel.jpeg);
 	background-size: cover;
 	height: 100vh; /*100% del alto del dispositivo*/
-}
 
 /*Div que va a almacenar todo en login.html*/
 div.formUser-box{
@@ -103,6 +110,10 @@ body.formUser a{
 body.formUser a:hover{
 	color:white;
 }
+hgroup{
+	font-family: 'Fira Sans', sans-serif;
+	font-size:x-large;
+}
 nav ul{
 	list-style: none;
 }
@@ -116,6 +127,9 @@ nav{
 	text-align: left;
 	user-select: none;
 }
+/* TODO Edu(04/02/2020): Contenido parte comun */
+/* TODO Edu(04/02/2020): Footer parte  comun */
+
 /* movil -> FORMATO VERTICAL */
 @media screen and (max-width: 480px){
 	body{
@@ -177,14 +191,13 @@ nav{
 		font-size: 22px;
 		text-decoration: none;
 		color: black;
-		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 	}
 	/*Body del login si esta en movil*/
 }
 /* pc -> FORMATO HORIZONTAL */
 @media screen and (min-width: 481px){
 	body{
-		background: grey;
+		background: silver;
 	}
 	/* esto es un poco la guarra */
 	nav input{
@@ -192,6 +205,15 @@ nav{
 		position: absolute;
 	}
 	
+	header{
+		display: inline-block;
+	}
+	.logo{
+		display: block;
+		height: 120px;
+		width: 110px;
+		background: blue;
+	}
 	/*Body del login si esta en pc*/
 	div.formUser-box{
 	padding: 0;
@@ -218,55 +240,75 @@ nav{
 	}
 	nav{
 		font-family: sans-serif;
-		background: red;
+		background: chocolate;
 		width: 100%;
-		position: relative;
-		top: 0px;
-		left: 0px;
+		/* TODO Edu(04/02/2020): Juntar nav con contenido de otra manera */
+		top: 20px;
+		/* left: 0px; */
 		text-align: left;
 	}
 	nav ul{
 		list-style: none;
+		text-align: center;
 	}
 	nav ul li{
 		display: inline-block;
-		margin: 8px;
-		padding: 5px;
+		/* margin: 5px 8px; */
+		margin-top: 8px;
+		margin-left: 35px;
 		position: relative;
-		border-radius: 4px;
-	}
-	/* ejemplo de como seleccionar con css elemento lista por numero */
-	nav ul li:nth-child(3) a{
-		color: yellow;
-		/* background-color: gray; */
-	}
-	nav ul li:before{
-		content: '';
-		position: absolute;
-		border: 4px solid grey;
-		top: -16px;
-		bottom: -16px;
-		left: -16px;
-		right: -16px;
-		opacity: 0;
-		transition-duration: 0.2s;
-		border-radius: 4px;
-	}
-	nav ul li:hover:before{
-		top: -8px;
-		bottom: -8px;
-		left: -8px;
-		right: -8px;
-		opacity: 1;
+		/* background: tomato; */
 	}
 	nav ul li a{
 		text-decoration: none;
 		color: black;
-		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 		font-size: larger;
+		transition-duration: 0.1s;
+	}
+	nav ul li:after {
+		display:block;
+		padding-bottom: 6px;
+		content: '';
+		border-bottom: solid 5px black;
+		transform: scaleX(0);
+		transition: transform 0.25s ease-in-out;
+	}
+	nav ul li:hover:after { 
+		transform: scaleX(1);
+	}
+	/* TODO Edu(04/02/2020): footer para movil y mirar como hacer para que esté siempre abajo del todo  */
+	footer{
+		/* font-family: 'Quicksand', sans-serif; */
+		font-family: 'Fira Sans', sans-serif;
+		background: indigo;
+		color: white;
+		width: 100%;
+		height: 280px;
+		font-size: 15pt;
+	}
+	footer a{
+		color: magenta;
+		text-decoration: none;
+	}
+	footer div:nth-child(1) a{
+		width: 100%;
+		text-align: center;
+		background: purple;
+		line-height:40px ;
+		display: block;
+	}
+	footer div:nth-child(1) a:hover{
+		background: darkviolet;
+		transition-duration: 0.3s;
+	}
+	footer ul{
+		list-style: none;
+	}
+	footer ul li{
+		/* display: inline-block; */
 	}
 }
-
+form input[type=password],
 form input[type=text]{
 	/* background: blue; */
 	border: 2px solid black;
@@ -274,10 +316,12 @@ form input[type=text]{
 	padding: 5px;
 	transition-duration: 0.3s;
 }
+form input[type=password]:hover,
 form input[type=text]:hover{
 	border-radius: 7px;
 	border-color: #C0B3B3;
 }
+form input[type=password]:focus,
 form input[type=text]:focus{
 	background: #FEFFCF;
 }
@@ -289,4 +333,3 @@ form input[type="submit"]{
 	color:white;
 	border-radius: 20px;
 }
-
