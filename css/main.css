@@ -38,6 +38,7 @@ body.formUser {
 	background: url(../img/fondoHotel.jpeg);
 	background-size: cover;
 	height: 100vh; /*100% del alto del dispositivo*/
+}
 
 /*Div que va a almacenar todo en login.html*/
 div.formUser-box{
