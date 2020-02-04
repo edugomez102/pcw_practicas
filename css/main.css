@@ -34,7 +34,7 @@ body.formUser {
 
 /*Div que va a almacenar todo en login.html*/
 div.formUser-box{
-	background: #000;
+	background: black;
 	color: #fff;
 	top: 60%;
 	border: solid; 
@@ -80,6 +80,7 @@ body.formUser label{
 
 body.formUser h1{
 	margin: 0;
+	font-size: 2em;
 	padding: 0 0 20px;
 	text-align: center;
 }
@@ -126,6 +127,13 @@ nav{
 		top: 40px;
 		position: relative;
 	}
+
+	body.formUser img{
+		width: 25vw;
+		height: 20vh;
+
+	}
+
 	nav {
 		position: fixed;
 		padding: 15px 20px 10px 10px;
