@@ -113,6 +113,7 @@ nav{
 	user-select: none;
 }
 /* TODO Edu(04/02/2020): Contenido parte comun */
+/* TODO Edu(04/02/2020): Footer parte  comun */
 
 /* movil -> FORMATO VERTICAL */
 @media screen and (max-width: 480px){
@@ -233,7 +234,6 @@ nav{
 	nav ul li a{
 		text-decoration: none;
 		color: black;
-		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 		font-size: larger;
 		transition-duration: 0.1s;
 	}
@@ -248,6 +248,7 @@ nav{
 	nav ul li:hover:after { 
 		transform: scaleX(1);
 	}
+	/* TODO Edu(04/02/2020): footer para movil y mirar como hacer para que esté siempre abajo del todo  */
 	footer{
 		/* font-family: 'Quicksand', sans-serif; */
 		font-family: 'Fira Sans', sans-serif;
