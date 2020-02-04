@@ -87,12 +87,75 @@ body.loginBody a{
 body.loginBody a:hover{
 	color:white;
 }
-
-
+<<<<<<< HEAD
+nav ul{
+	list-style: none;
+}
+nav{
+	font-family: sans-serif;
+	background: red;
+	width: 100%;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	text-align: left;
+	user-select: none;
+}
 /* movil -> FORMATO VERTICAL */
 @media screen and (max-width: 480px){
 	body{
 		background: brown;
+	}
+	header{
+		top: 40px;
+		position: relative;
+	}
+	nav {
+		position: fixed;
+		padding: 15px 20px 10px 10px;
+		background: #746060;
+	}
+	nav input {
+		display: block;
+		width: 40px;
+		height: 32px;
+		position: absolute;
+		top: 10px;
+		left: 7px;
+		opacity: 0;
+		z-index: 1;
+	}
+	nav div {
+		display: block;
+		width: 33px;
+		height: 4px;
+		margin-bottom: 5px;
+		position: relative;
+		background: #cdcdcd;
+	}
+	nav ul {
+		position: absolute;
+		top: 35px;
+		left: 0px;
+		width: 300px;
+		height: 800px;
+		background: #ededed;
+		list-style-type: none;
+		transform: translate(-100%, 0);
+		transition: transform 0.4s;
+		/* transition-timing-function: ease-in-out; */
+	}
+	nav ul li {
+		padding: 10px 0;
+	}
+	nav input:checked ~ ul {
+		transform: none;
+	}
+	nav ul li a{
+		font-size: 22px;
+		text-decoration: none;
+		color: black;
+		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 	}
 	/*Body del login si esta en movil*/
 }
@@ -101,6 +164,10 @@ body.loginBody a:hover{
 	body{
 		background: grey;
 	}
+	/* esto es un poco la guarra */
+	nav input{
+		visibility: hidden;
+		position: absolute;
 	
 	/*Body del login si esta en pc*/
 	div.login-box{
