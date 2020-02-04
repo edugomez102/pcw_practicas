@@ -2,8 +2,8 @@ head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
 body{
-  padding: 0;
-  font-family: sans-serif;
+	padding: 0;
+	font-family: sans-serif;
 }
 
 div#contenido{
@@ -87,6 +87,10 @@ body.loginBody a{
 body.loginBody a:hover{
 	color:white;
 }
+hgroup{
+	font-family: 'Fira Sans', sans-serif;
+	font-size:x-large;
+}
 nav ul{
 	list-style: none;
 }
@@ -168,27 +172,27 @@ nav{
 		visibility: hidden;
 		position: absolute;
 	}
-	
+
+	header{
+		display: inline-block;
+	}
 	.logo{
 		height: 120px;
 		width: 110px;
-		position: relative;
-		top: 0px;
-		left: 0px;
 		background: blue;
 	}
 	/*Body del login si esta en pc*/
 	div.login-box{
-	padding: 0;
-	margin: 0;
-	width: 400px;
-	height: 480px;
+		padding: 0;
+		margin: 0;
+		width: 400px;
+		height: 480px;
 	}
 
 	body.loginBody h1{
-	margin: 0;
-	padding: 60px 0 20px;
-	text-align: center;
+		margin: 0;
+		padding: 60px 0 20px;
+		text-align: center;
 	}
 
 	body.loginBody input[type="submit"]{
@@ -236,6 +240,23 @@ nav{
 	/* nav ul li:nth-child(3) a{ */
 	/* 	color: yellow; */
 	/* } */
+	footer{
+		font-family: 'Quicksand', sans-serif;
+		background: indigo;
+		width: 100%;
+		height: 280px;
+		font-size: 20pt;
+	}
+	footer ul{
+		list-style: none;
+	}
+	footer ul li{
+		/* display: inline-block; */
+	}
+	footer ul li:nth-child(4){
+		background:orange;
+		text-align: right;
+	}
 }
 form input[type=text]{
 	/* background: blue; */
