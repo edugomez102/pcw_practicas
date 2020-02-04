@@ -1,9 +1,14 @@
+/*Codigo color del logo -> c42627*/
+
 head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
 body{
   padding: 0;
   font-family: sans-serif;
+}
+a:hover{
+	color: white;
 }
 
 div#contenido{
@@ -19,23 +24,34 @@ div#contenido{
 }
 
 
-/*Body de login.html*/
-body.loginBody{
+body.formUser {
 	padding: 0;
 	margin: 0;
-	/*background: url(../img/patron.png) no-repeat center top;*/
+	background: url(../img/fondoHotel.jpeg);
 	background-size: cover;
 	height: 100vh; /*100% del alto del dispositivo*/
-
 }
 
 /*Div que va a almacenar todo en login.html*/
-div.login-box{
+div.formUser-box{
+	background: black;
+	color: #fff;
+	top: 60%;
+	border: solid; 
+	border-color: #c42627;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding:70px 30px;
+}
+
+div.formUser-registro{
 	background: #000;
 	color: #fff;
-	top: 50%;
+	top: 60%;
 	border: solid; 
-	border-color: blue;
+	border-color: #c42627;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%,-50%);
@@ -44,18 +60,17 @@ div.login-box{
 }
 
 /*Imagen (logo) de login.html*/
-body.loginBody img{
+body.formUser img{
 	position: absolute;
 	border-radius: 50%;
-	width:100px;
-	height: 100px;
-	top:-50px;
-	left:calc(50% - 50px);
+	width:120px;
+	height: 120px;
+	top:-60px;
+	left:calc(50% - 60px);
 }
 
 
-
-body.loginBody label{
+body.formUser label{
 	margin: 0;
 	padding: 0;
 	color: white;
@@ -63,28 +78,29 @@ body.loginBody label{
 	display: block;
 }
 
-body.loginBody h1{
+body.formUser h1{
 	margin: 0;
+	font-size: 2em;
 	padding: 0 0 20px;
 	text-align: center;
 }
 
-body.loginBody form{
+body.formUser form{
 	text-align: center;
 }
 
 /*Mirar esta movida*/
-body.loginBody input{
+body.formUser input{
 	width:80%;
 	margin-bottom: 20px;
 }
 
 /*Elance para registrarse*/
-body.loginBody a{
+body.formUser a{
 	text-decoration: none;
 	color:darkgrey;
 }
-body.loginBody a:hover{
+body.formUser a:hover{
 	color:white;
 }
 nav ul{
@@ -109,6 +125,13 @@ nav{
 		top: 40px;
 		position: relative;
 	}
+
+	body.formUser img{
+		width: 25vw;
+		height: 20vh;
+
+	}
+
 	nav {
 		position: fixed;
 		padding: 15px 20px 10px 10px;
@@ -170,20 +193,27 @@ nav{
 	}
 	
 	/*Body del login si esta en pc*/
-	div.login-box{
+	div.formUser-box{
 	padding: 0;
 	margin: 0;
 	width: 400px;
 	height: 480px;
 	}
 
-	body.loginBody h1{
+	div.formUser-registro{
+		padding: 0;
+		margin: 0;
+		width: 400px;
+		height: 600px;
+	}
+
+	body.formUser h1{
 	margin: 0;
 	padding: 60px 0 20px;
 	text-align: center;
 	}
 
-	body.loginBody input[type="submit"]{
+	body.formUser input[type="submit"]{
 		padding: 15px;
 	}
 	nav{
@@ -255,7 +285,8 @@ form input[type=text]:focus{
 form input[type="submit"]{
 	border: none;
 	outline: none;
-	background: red;
+	background: #c42627;
 	color:white;
 	border-radius: 20px;
 }
+

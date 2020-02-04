@@ -6,19 +6,20 @@
 	<title>Registro</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body class="registerBody">
-	<div class="register-box">
+<body class="formUser">
+	<div class="formUser-registro" class="formUser-box">
 		<!-- TODO 04 February 2020 (Tuesday) Poner logo_pagina -->
-		<img src="img/logo1.jpg" alt="Logo Pagina">
+		<img src="img/logoSecondHand.png" alt="Logo Pagina">
 		<h1>Register!</h1>
 		<form>
+			<!-- TODO 04 February 2020 (Tuesday) Poner lo de las contraseñas y espacios en blancos y toda la pesca joder -->
 			<!-- Login(usuario) -->
 			<label for="login">Login</label>
-			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required="required">
+			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
 
 			<!-- Contraseña -->
 			<label for="password1">Password</label>
-			<input type="password" placeholder="Enter password" required="required" minlength="6" maxlength="20">
+			<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20">
 			
 			<!-- Confirmar contraseña -->
 			<label for="password2">Repeat Password</label>
@@ -32,10 +33,11 @@
 			<label for="email">Email</label>
 			<input type="email" placeholder="email" required="required">
 
-
 			<!-- Foto del usuario -->
 			<label for="Photo">Photo</label>
 			<input type="image" placeholder="Profile photo">
+
+			<input type="submit" name="Register">
 
 		</form>
 	</div>
