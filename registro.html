@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
+	<title>Registro</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body class="registerBody">
+	<div class="register-box">
+		<!-- TODO 04 February 2020 (Tuesday) Poner logo_pagina -->
+		<img src="img/logo1.jpg" alt="Logo Pagina">
+		<h1>Register!</h1>
+		<form>
+			<!-- Login(usuario) -->
+			<label for="login">Login</label>
+			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required="required">
+
+			<!-- Contraseña -->
+			<label for="password1">Password</label>
+			<input type="password" placeholder="Enter password" required="required" minlength="6" maxlength="20">
+			
+			<!-- Confirmar contraseña -->
+			<label for="password2">Repeat Password</label>
+			<input type="password" placeholder="Confirm password">
+
+			<!-- Nombre completo -->
+			<label for="full_name">Your name</label>
+			<input type="text" placeholder="Full name" required="required">
+
+			<!-- Email usuario -->
+			<label for="email">Email</label>
+			<input type="email" placeholder="email" required="required">
+
+
+			<!-- Foto del usuario -->
+			<label for="Photo">Photo</label>
+			<input type="image" placeholder="Profile photo">
+
+		</form>
+	</div>
+</body>
+</html>

@@ -1,6 +1,11 @@
 head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
+body{
+  padding: 0;
+  font-family: sans-serif;
+}
+
 div#contenido{
 	font-family: sans-serif;
 	font-size: large;
@@ -91,11 +96,6 @@ body.loginBody a:hover{
 	}
 	/*Body del login si esta en movil*/
 }
-
-
-
-
-
 /* pc -> FORMATO HORIZONTAL */
 @media screen and (min-width: 481px){
 	body{
@@ -119,16 +119,6 @@ body.loginBody a:hover{
 	body.loginBody input[type="submit"]{
 		padding: 15px;
 	}
-
-	
-
-
-
-
-
-
-
-
 	nav{
 		font-family: sans-serif;
 		background: red;
