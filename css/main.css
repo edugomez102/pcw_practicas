@@ -208,27 +208,34 @@ nav{
 	}
 	nav ul li{
 		display: inline-block;
-		margin: 10px 8px;
+		/* margin: 5px 8px; */
+		margin-top: 8px;
+		margin-left: 10px;
 		position: relative;
 		/* background: tomato; */
-	}
-	nav ul li a{
-		padding-bottom: 5px;
-		transition-duration: 0.1s;
-	}
-	nav ul li a:hover{
-		border-bottom: 5px solid black;
-	}
-	/* ejemplo de como seleccionar con css elemento lista por numero */
-	nav ul li:nth-child(3) a{
-		color: yellow;
 	}
 	nav ul li a{
 		text-decoration: none;
 		color: black;
 		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 		font-size: larger;
+		transition-duration: 0.1s;
 	}
+	nav ul li:after {
+		display:block;
+		padding-bottom: 6px;
+		content: '';
+		border-bottom: solid 5px black;
+		transform: scaleX(0);
+		transition: transform 0.25s ease-in-out;
+	}
+	nav ul li:hover:after { 
+		transform: scaleX(1);
+	}
+	/* ejemplo de como seleccionar con css elemento lista por numero */
+	/* nav ul li:nth-child(3) a{ */
+	/* 	color: yellow; */
+	/* } */
 }
 form input[type=text]{
 	/* background: blue; */
