@@ -1,3 +1,5 @@
+/*Codigo color del logo -> c42627*/
+
 head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
@@ -25,6 +27,7 @@ div#contenido{
 body.formUser {
 	padding: 0;
 	margin: 0;
+	background: url(../img/fondoHotel.jpeg);
 	background-size: cover;
 	height: 100vh; /*100% del alto del dispositivo*/
 }
@@ -35,7 +38,7 @@ div.formUser-box{
 	color: #fff;
 	top: 60%;
 	border: solid; 
-	border-color: blue;
+	border-color: #c42627;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%,-50%);
@@ -48,7 +51,7 @@ div.formUser-registro{
 	color: #fff;
 	top: 60%;
 	border: solid; 
-	border-color: blue;
+	border-color: #c42627;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%,-50%);
@@ -60,10 +63,10 @@ div.formUser-registro{
 body.formUser img{
 	position: absolute;
 	border-radius: 50%;
-	width:100px;
-	height: 100px;
-	top:-50px;
-	left:calc(50% - 50px);
+	width:120px;
+	height: 120px;
+	top:-60px;
+	left:calc(50% - 60px);
 }
 
 
@@ -275,7 +278,7 @@ form input[type=text]:focus{
 form input[type="submit"]{
 	border: none;
 	outline: none;
-	background: red;
+	background: #c42627;
 	color:white;
 	border-radius: 20px;
 }
