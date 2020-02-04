@@ -12,12 +12,77 @@ div#contenido{
 	background-color: blue;
 	color: #fff;
 }
+
+
+/*Body de login.html*/
 body.loginBody{
 	padding: 0;
 	margin: 0;
-	/*estilos para tablets*/
-	/*estilos para smartphones*/
+	/*background: url(../img/patron.png) no-repeat center top;*/
+	background-size: cover;
+	height: 100vh; /*100% del alto del dispositivo*/
+
 }
+
+/*Div que va a almacenar todo en login.html*/
+div.login-box{
+	background: #000;
+	color: #fff;
+	top: 50%;
+	border: solid; 
+	border-color: blue;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding:70px 30px;
+}
+
+/*Imagen (logo) de login.html*/
+body.loginBody img{
+	position: absolute;
+	border-radius: 50%;
+	width:100px;
+	height: 100px;
+	top:-50px;
+	left:calc(50% - 50px);
+}
+
+
+
+body.loginBody label{
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-weight: bold;
+	display: block;
+}
+
+body.loginBody h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+}
+
+body.loginBody form{
+	text-align: center;
+}
+
+/*Mirar esta movida*/
+body.loginBody input{
+	width:80%;
+	margin-bottom: 20px;
+}
+
+/*Elance para registrarse*/
+body.loginBody a{
+	text-decoration: none;
+	color:darkgrey;
+}
+body.loginBody a:hover{
+	color:white;
+}
+<<<<<<< HEAD
 nav ul{
 	list-style: none;
 }
@@ -87,9 +152,15 @@ nav{
 		color: black;
 		/* TODO(03/02/2020): comprobar que tal va con google fonts */
 	}
+	/*Body del login si esta en movil*/
 }
+
+
+
+
+
 /* pc -> FORMATO HORIZONTAL */
-@media screen and (min-width: 480px){
+@media screen and (min-width: 481px){
 	body{
 		background: grey;
 	}
@@ -97,6 +168,45 @@ nav{
 	nav input{
 		visibility: hidden;
 		position: absolute;
+	
+	/*Body del login si esta en pc*/
+	div.login-box{
+	padding: 0;
+	margin: 0;
+	width: 400px;
+	height: 480px;
+	}
+
+	body.loginBody h1{
+	margin: 0;
+	padding: 60px 0 20px;
+	text-align: center;
+	}
+
+	body.loginBody input[type="submit"]{
+		padding: 15px;
+	}
+
+	
+
+
+
+
+
+
+
+
+	nav{
+		font-family: sans-serif;
+		background: red;
+		width: 100%;
+		position: relative;
+		top: 0px;
+		left: 0px;
+		text-align: left;
+	}
+	nav ul{
+		list-style: none;
 	}
 	nav ul li{
 		display: inline-block;
@@ -150,4 +260,12 @@ form input[type=text]:hover{
 }
 form input[type=text]:focus{
 	background: #FEFFCF;
+}
+
+form input[type="submit"]{
+	border: none;
+	outline: none;
+	background: red;
+	color:white;
+	border-radius: 20px;
 }
