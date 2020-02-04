@@ -15,11 +15,11 @@
 			<!-- TODO 04 February 2020 (Tuesday) Poner lo de las contraseñas y espacios en blancos y toda la pesca joder -->
 			<!-- Login(usuario) -->
 			<label for="login">Login</label>
-			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z0-9]+">
+			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
 
 			<!-- Contraseña -->
 			<label for="password1">Password</label>
-			<input type="password" placeholder="Enter password" required="required" minlength="6" maxlength="20">
+			<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20">
 			
 			<!-- Confirmar contraseña -->
 			<label for="password2">Repeat Password</label>
