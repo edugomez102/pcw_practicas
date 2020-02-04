@@ -33,7 +33,7 @@ body.loginBody{
 div.login-box{
 	background: #000;
 	color: #fff;
-	top: 50%;
+	top: 60%;
 	border: solid; 
 	border-color: blue;
 	left: 50%;
@@ -258,4 +258,8 @@ form input[type="submit"]{
 	background: red;
 	color:white;
 	border-radius: 20px;
+}
+
+a:hover{
+	color: white;
 }
