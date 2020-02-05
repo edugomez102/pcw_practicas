@@ -5,11 +5,12 @@
 	<meta charset="UTF-8">
 	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
 	<title>Registro</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/login_register.css">
 	<link rel="stylesheet" type="text/css" href="css/normalizer.css">
+	<link rel="stylesheet" type="text/css" href="css/fontello.css">
 </head>
 <body class="formUser">
-	<div class="formUser-registro" class="formUser-box">
+	<div class="formUser-box">
 		<img src="img/logoSecondHand.png" alt="Logo Pagina">
 		<h1>Register!</h1>
 		<form>
@@ -34,11 +35,12 @@
 			<input type="email" placeholder="email" required="required">
 
 			<!-- Foto del usuario -->
-			<label for="Photo">Photo</label>
-			<input type="image" placeholder="Profile photo">
-
-			<input type="submit" name="Register">
-
+			<label for="File" class="icon-picture">Photo</label>
+			<div>
+				<p>Buscar Foto</p>
+				<input type="file" name="File" value="File" id="File" accept="image/*" />
+			</div>
+			<input type="submit" value="Register" >
 		</form>
 	</div>
 </body>
