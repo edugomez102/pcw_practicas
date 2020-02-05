@@ -13,7 +13,9 @@ body{
 /* TODO Edu(04/02/2020): Contenido */
 /* TODO Edu(04/02/2020): Footer */
 
-/*Default: 320px a 480px*/
+/* ┌────────────────────────┐ */
+/* │ Default: 320px a 480px │ */
+/* └────────────────────────┘ */
 /* amborgesa */
 nav{
 	/* nav amborgesa escondido */
@@ -83,16 +85,22 @@ nav ul li a{
 }
 
 /* TODO Edu(05/02/2020): footer movill */
+/* TODO Edu(05/02/2020): tarea a ralizar */
 /* footer{ } */
 
-/*Menu iconos: 321px a 640px*/
+
+/* ┌────────────────────────────┐ */
+/* │ Menu iconos: 321px a 640px │ */
+/* └────────────────────────────┘ */
 @media screen and (min-width: 481px) and (max-width: 640px){
 	body{
 		background-color: gold;
 	}
 }
 
-/*Menu completo: 641px a infinito*/
+/* ┌─────────────────────────────────┐ */
+/* │ Menu completo: 641px a infinito │ */
+/* └─────────────────────────────────┘ */
 @media screen and (min-width: 641px){
 	body{
 		background: silver;
