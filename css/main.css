@@ -10,201 +10,118 @@ body{
 	padding: 0;
 	font-family: sans-serif;
 }
-a:hover{
-	color: white;
-}
-
-/*Esquema mediaquery*/
+/* TODO Edu(04/02/2020): Contenido parte comun */
+/* TODO Edu(04/02/2020): Footer parte  comun */
 
 /*Default: 320px a 480px*/
-
+/* amborgesa */
+nav{
+	/* nav amborgesa escondido */
+	font-family: sans-serif;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	text-align: left;
+	user-select: none;
+}
+nav {
+	/* fijar arriba de la pantalla  */
+	position: fixed;
+	padding: 15px 20px 10px 10px;
+	background: #746060;
+}
+nav input {
+	/* esconder el checkbox */
+	display: block;
+	width: 40px;
+	height: 32px;
+	position: absolute;
+	top: 10px;
+	left: 7px;
+	opacity: 0;
+	z-index: 1;
+}
+nav div {
+	/* hacer icono de 3 barras */
+	display: block;
+	width: 33px;
+	height: 4px;
+	margin-bottom: 5px;
+	position: relative;
+	background: #cdcdcd;
+}
+nav ul {
+	/* lista escondida  */
+	position: absolute;
+	top: 35px;
+	left: 0px;
+	width: 300px;
+	height: 800px;
+	background: #ededed;
+	list-style-type: none;
+	transform: translate(-100%, 0);
+	transition: transform 0.4s;
+	/* transition-timing-function: ease-in-out; */
+}
+nav ul li {
+	padding: 10px 0;
+}
+nav input:checked ~ ul {
+	transform: none;
+}
+nav ul li a{
+	font-size: 22px;
+	text-decoration: none;
+	color: black;
+}
 /*Menu iconos: 321px a 640px*/
-/*@media screen and (min-width: 481px) and (max-width: 640px){
+@media screen and (min-width: 481px) and (max-width: 640px){
 	div{
 		background: red;
 		width: 100vw;
 		height: 100vh;
 	}
 }
-*/
 
 /*Menu completo: 641px a infinito*/
-/*@media screen and (min-width: 641px){
-	div{
-		background: green;
-		width: 100vw;
-		height: 100vh;
-	}
-}*/
-
-
-
-div#contenido{
-	font-family: sans-serif;
-	font-size: large;
-	text-align: center;
-	font-weight: bold;
-	padding: 20px 0px;
-	/* height: 600px; */
-	width: 100%;
-	background-color: khaki;
-	color: #fff;
-}
-#contenido p{
-	/* padding-top: 300px; */
-	line-height: 600px;
-	background-color: yellowgreen;
-}
-
-
-body.formUser {
-	padding: 0;
-	margin: 0;
-	background: url(../img/fondoHotel.jpeg);
-	background-size: cover;
-	height: 100vh; /*100% del alto del dispositivo*/
-}
-
-/*Div que va a almacenar todo en login.html*/
-div.formUser-box{
-	background: black;
-	color: #fff;
-	top: 60%;
-	border: solid; 
-	border-color: #c42627;
-	left: 50%;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	box-sizing: border-box;
-	padding:70px 30px;
-}
-
-div.formUser-registro{
-	background: #000;
-	color: #fff;
-	top: 60%;
-	border: solid; 
-	border-color: #c42627;
-	left: 50%;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	box-sizing: border-box;
-	padding:70px 30px;
-}
-
-/*Imagen (logo) de login.html*/
-body.formUser img{
-	position: absolute;
-	border-radius: 50%;
-	width:120px;
-	height: 120px;
-	top:-60px;
-	left:calc(50% - 60px);
-}
-
-
-body.formUser label{
-	margin: 0;
-	padding: 0;
-	color: white;
-	font-weight: bold;
-	display: block;
-}
-
-body.formUser h1{
-	margin: 0;
-	font-size: 2em;
-	padding: 0 0 20px;
-	text-align: center;
-}
-
-body.formUser form{
-	text-align: center;
-}
-
-/*Mirar esta movida*/
-body.formUser input{
-	width:80%;
-	margin-bottom: 20px;
-}
-
-/*Elance para registrarse*/
-body.formUser a{
-	text-decoration: none;
-	color:darkgrey;
-}
-body.formUser a:hover{
-	color:white;
-}
-hgroup{
-	font-family: 'Fira Sans', sans-serif;
-	font-size:x-large;
-}
-nav ul{
-	list-style: none;
-}
-nav{
-	font-family: sans-serif;
-	background: red;
-	width: 100%;
-	position: relative;
-	top: 0px;
-	left: 0px;
-	text-align: left;
-	user-select: none;
-}
-/* TODO Edu(04/02/2020): Contenido parte comun */
-/* TODO Edu(04/02/2020): Footer parte  comun */
-
-/* movil -> FORMATO VERTICAL */
-@media screen and (max-width: 480px){
+@media screen and (min-width: 641px){
 	body{
-		background: brown;
+		background: silver;
 	}
+	a:hover{
+		color: white;
+	}
+	/* esto es un poco la guarra */
 	header{
-		top: 40px;
+		display: inline-block;
+	}
+	/* amborgesa */
+	nav{
+		/* nav amborgesa escondido */
+		font-family: sans-serif;
 		position: relative;
-	}
-
-	body.formUser img{
-		width: 25vw;
-		height: 20vh;
-
-	}
-
-	nav {
-		position: fixed;
-		padding: 15px 20px 10px 10px;
-		background: #746060;
-	}
-	nav input {
-		display: block;
-		width: 40px;
-		height: 32px;
-		position: absolute;
-		top: 10px;
-		left: 7px;
-		opacity: 0;
-		z-index: 1;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		text-align: left;
+		user-select: none;
+		padding: 0px;
 	}
 	nav div {
-		display: block;
-		width: 33px;
-		height: 4px;
-		margin-bottom: 5px;
-		position: relative;
-		background: #cdcdcd;
+		/* hacer icono de 3 barras */
+		visibility: hidden;
 	}
 	nav ul {
-		position: absolute;
-		top: 35px;
+		/* lista escondida  */
+		position: relative;
+		top: -45px;
 		left: 0px;
-		width: 300px;
-		height: 800px;
+		width: 100%;
+		height: 0px;
 		background: #ededed;
 		list-style-type: none;
-		transform: translate(-100%, 0);
-		transition: transform 0.4s;
+		transform: translate(0,0);
 		/* transition-timing-function: ease-in-out; */
 	}
 	nav ul li {
@@ -218,90 +135,65 @@ nav{
 		text-decoration: none;
 		color: black;
 	}
-	/*Body del login si esta en movil*/
-}
-/* pc -> FORMATO HORIZONTAL */
-@media screen and (min-width: 481px){
-	body{
-		background: silver;
+	/* ------------ */
+	nav ul{
+		list-style: none;
 	}
-	/* esto es un poco la guarra */
 	nav input{
+		/* esconder checkbox para pantalla extendida */
 		visibility: hidden;
 		position: absolute;
 	}
-	
-	header{
-		display: inline-block;
-	}
-	.logo{
-		display: block;
-		height: 120px;
-		width: 110px;
-		background: blue;
-	}
-	/*Body del login si esta en pc*/
-	div.formUser-box{
-	padding: 0;
-	margin: 0;
-	width: 400px;
-	height: 480px;
-	}
-
-	div.formUser-registro{
-		padding: 0;
-		margin: 0;
-		width: 400px;
-		height: 600px;
-	}
-
-	body.formUser h1{
-	margin: 0;
-	padding: 60px 0 20px;
-	text-align: center;
-	}
-
-	body.formUser input[type="submit"]{
-		padding: 15px;
-	}
-	nav{
-		font-family: sans-serif;
-		background: chocolate;
-		width: 100%;
-		/* TODO Edu(04/02/2020): Juntar nav con contenido de otra manera */
-		top: 20px;
-		/* left: 0px; */
-		text-align: left;
-	}
-	nav ul{
-		list-style: none;
-		text-align: center;
-	}
-	nav ul li{
-		display: inline-block;
-		/* margin: 5px 8px; */
-		margin-top: 8px;
-		margin-left: 35px;
-		position: relative;
-		/* background: tomato; */
-	}
-	nav ul li a{
-		text-decoration: none;
-		color: black;
-		font-size: larger;
-		transition-duration: 0.1s;
-	}
 	nav ul li:after {
+		/* animar barra nav */
 		display:block;
-		padding-bottom: 6px;
+		/* padding-bottom: 6px; */
 		content: '';
 		border-bottom: solid 5px black;
 		transform: scaleX(0);
 		transition: transform 0.25s ease-in-out;
 	}
 	nav ul li:hover:after { 
+		/* animar barra nav */
 		transform: scaleX(1);
 	}
+	nav ul{
+		list-style: none;
+		text-align: center;
+	}
+	nav{
+		font-family: sans-serif;
+		background: chocolate;
+		width: 100%;
+		/* TODO Edu(04/02/2020): Juntar nav con contenido de otra manera */
+		top: 0px;
+		/* left: 0px; */
+		text-align: left;
+	}
+	nav ul li{
+		display: inline-block;
+		/* margin-top: 8px; */
+		margin-left: 35px;
+		position: relative;
+		background: tomato;
+	}
+	div#contenido{
+		font-family: sans-serif;
+		font-size: large;
+		text-align: center;
+		font-weight: bold;
+		padding: 20px 0px;
+		/* height: 600px; */
+		width: 100%;
+		background-color: khaki;
+		color: #fff;
+	}
+	#contenido p{
+		/* padding-top: 300px; */
+		/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
+		line-height: 600px;
+		background-color: yellowgreen;
+}
 	/* TODO Edu(04/02/2020): footer para movil y mirar como hacer para que esté siempre abajo del todo  */
 	footer{
 		/* font-family: 'Quicksand', sans-serif; */
@@ -333,6 +225,18 @@ nav{
 	footer ul li{
 		/* display: inline-block; */
 	}
+}
+
+/* movil -> FORMATO VERTICAL */
+@media screen and (max-width: 480px){
+	body{
+		background: brown;
+	}
+	header{
+		top: 40px;
+		position: relative;
+	}
+
 }
 
 form input[type=password],
