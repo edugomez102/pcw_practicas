@@ -209,6 +209,7 @@ nav ul li a{
 		/* display: inline-block; */
 	}
 }
+form input[type=email],
 form input[type=password],
 form input[type=text]{
 	/* background: blue; */
@@ -217,11 +218,13 @@ form input[type=text]{
 	padding: 5px;
 	transition-duration: 0.3s;
 }
+form input[type=email]:hover,
 form input[type=password]:hover,
 form input[type=text]:hover{
 	border-radius: 7px;
 	border-color: #C0B3B3;
 }
+form input[type=email]:focus,
 form input[type=password]:focus,
 form input[type=text]:focus{
 	background: #FEFFCF;
