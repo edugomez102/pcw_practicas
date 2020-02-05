@@ -177,7 +177,7 @@ nav ul li a{
 		line-height: 600px;
 		background-color: yellowgreen;
 	}
-	/* TODO Edu(04/02/2020): footer para movil y mirar como hacer para que esté siempre abajo del todo  */
+	/* TODO Edu(04/02/2020): mirar como hacer para que esté siempre abajo del todo  */
 	footer{
 		/* font-family: 'Quicksand', sans-serif; */
 		font-family: 'Fira Sans', sans-serif;
@@ -209,19 +209,6 @@ nav ul li a{
 		/* display: inline-block; */
 	}
 }
-
-/* movil -> FORMATO VERTICAL */
-@media screen and (max-width: 480px){
-	body{
-		background: brown;
-	}
-	header{
-		top: 40px;
-		position: relative;
-	}
-
-}
-
 form input[type=password],
 form input[type=text]{
 	/* background: blue; */
