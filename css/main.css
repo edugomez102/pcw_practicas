@@ -10,8 +10,8 @@ body{
 	padding: 0;
 	font-family: sans-serif;
 }
-/* TODO Edu(04/02/2020): Contenido parte comun */
-/* TODO Edu(04/02/2020): Footer parte  comun */
+/* TODO Edu(04/02/2020): Contenido */
+/* TODO Edu(04/02/2020): Footer */
 
 /*Default: 320px a 480px*/
 /* amborgesa */
@@ -75,12 +75,20 @@ nav ul li a{
 	text-decoration: none;
 	color: black;
 }
+#contenido p{
+	/* padding-top: 300px; */
+	/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
+	line-height: 600px;
+	background-color: yellowgreen;
+}
+
+/* TODO Edu(05/02/2020): footer movill */
+/* footer{ } */
+
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	div{
-		background: red;
-		width: 100vw;
-		height: 100vh;
+	body{
+		background-color: gold;
 	}
 }
 
@@ -168,7 +176,7 @@ nav ul li a{
 		/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
 		line-height: 600px;
 		background-color: yellowgreen;
-}
+	}
 	/* TODO Edu(04/02/2020): footer para movil y mirar como hacer para que esté siempre abajo del todo  */
 	footer{
 		/* font-family: 'Quicksand', sans-serif; */
