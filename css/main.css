@@ -1,25 +1,25 @@
 /*Codigo color del logo -> c42627*/
-
 html{
 	scroll-behavior: smooth;
-	height: 100%;
-}
-head{
-	/* TODO(03/02/2020): implementar diseño general */
+	/* height: 100%; */
 }
 *{
 	box-sizing: border-box;
 }
-body{
-	padding: 0;
-	font-family: sans-serif;
-	/* display: grid; */
-}
-
 /* ┌────────────────────────┐ */
 /* │ Default: 320px a 480px │ */
 /* └────────────────────────┘ */
-/* amborgesa */
+body{
+	background-color: pink;
+	padding: 0;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+/* ┌───────────┐ */
+/* │ amborgesa │ */
+/* └───────────┘ */
 nav{
 	/* nav amborgesa escondido */
 	font-family: sans-serif;
@@ -83,7 +83,7 @@ nav ul li a{
 /* TODO Edu(06/02/2020): contenido ajustable */
 main{
 	background-color: tomato;
-	min-height: 60vh;
+	vertical-align: middle;
 }
 
 footer{
@@ -132,13 +132,10 @@ footer ul{
 	body{
 		background: silver;
 	}
-	a:hover{
-		color: white;
-	}
 	/* esto es un poco la guarra */
-	header{
-		display: inline-block;
-	}
+	/* header{ */
+	/* 	display: inline-block; */
+	/* } */
 	nav{
 		font-family: sans-serif;
 		background: chocolate;
@@ -194,23 +191,6 @@ footer ul{
 	nav ul li:hover:after { 
 		/* animar barra nav */
 		transform: scaleX(1);
-	}
-	div#contenido{
-		font-family: sans-serif;
-		font-size: large;
-		text-align: center;
-		font-weight: bold;
-		padding: 20px 0px;
-		/* height: 600px; */
-		width: 100%;
-		background-color: khaki;
-		color: #fff;
-	}
-	#contenido p{
-		/* padding-top: 300px; */
-		/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
-		line-height: 600px;
-		background-color: yellowgreen;
 	}
 	/* TODO Edu(04/02/2020): mirar como hacer para que esté siempre abajo del todo  */
 }
