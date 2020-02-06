@@ -2,16 +2,40 @@
 
 html{
 	scroll-behavior: smooth;
+	height: 100%;
 }
 head{
 	/* TODO(03/02/2020): implementar diseño general */
 }
+*{
+	box-sizing: border-box;
+}
 body{
 	padding: 0;
 	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
 }
 /* TODO Edu(04/02/2020): Contenido */
-/* TODO Edu(04/02/2020): Footer */
+main{
+	background-color: tomato;
+	min-height: 60vh;
+}
+#contenido{
+	/* TODO Edu(06/02/2020): Preguntar como ajustar al contenido con toda la web */
+}
+#contenido p{
+	/* padding-top: 300px; */
+	/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
+	line-height: 600px;
+	background-color: yellowgreen;
+}
+footer{
+	/* display: inline-flex; */
+	/* TODO Edu(06/02/2020): Preguntar como fijar abajo */
+	/* position: absolute; */
+	/* bottom: 0px; */
+}
 
 /* ┌────────────────────────┐ */
 /* │ Default: 320px a 480px │ */
@@ -77,17 +101,7 @@ nav ul li a{
 	text-decoration: none;
 	color: black;
 }
-#contenido p{
-	/* padding-top: 300px; */
-	/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
-	line-height: 600px;
-	background-color: yellowgreen;
-}
-
 /* TODO Edu(05/02/2020): footer movill */
-/* TODO Edu(05/02/2020): tarea a ralizar */
-/* footer{ } */
-
 
 /* ┌────────────────────────────┐ */
 /* │ Menu iconos: 321px a 640px │ */
