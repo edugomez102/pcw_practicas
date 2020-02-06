@@ -38,6 +38,17 @@ nav {
 	padding: 15px 20px 10px 10px;
 	background: #746060;
 }
+/* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
+h1{
+	/* TODO Edu(06/02/2020): Arreglar esto no tira del todo bien */
+	position: fixed;
+	top: -10px;
+	left: 25%;
+	z-index: 1;
+}
+h2{
+	position: relative;
+}
 nav input {
 	/* esconder el checkbox */
 	display: block;
@@ -61,7 +72,7 @@ nav div {
 nav ul {
 	/* lista escondida  */
 	position: absolute;
-	top: 35px;
+	top: 36px;
 	left: 0px;
 	width: 300px;
 	height: 800px;
@@ -72,7 +83,10 @@ nav ul {
 	/* transition-timing-function: ease-in-out; */
 }
 nav ul li {
-	padding: 10px 0;
+	padding: 20px 0;
+}
+nav ul li:nth-child(1){
+	margin-top: 10px;
 }
 nav input:checked ~ ul {
 	transform: none;
@@ -95,7 +109,6 @@ main{
 footer{
 	/* 	TODO Edu(06/02/2020): fijar abajo */
 	/* font-family: 'Quicksand', sans-serif; */
-	/* grid-area: footer; */
 	font-family: 'Fira Sans', sans-serif;
 	background: indigo;
 	color: white;
@@ -136,6 +149,11 @@ footer ul{
 @media screen and (min-width: 641px){
 	body{
 		background: silver;
+	}
+	/* reset del h1 */
+	h1{
+		position: static;
+		/* font-size: 40px; */
 	}
 	/* esto es un poco la guarra */
 	/* header{ */
