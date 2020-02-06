@@ -28,6 +28,7 @@
 	margin-top: -15%;
 }
 
+
 .formUser-box h1{
 	vertical-align: middle;
 	margin: auto;	
@@ -51,13 +52,21 @@
 	margin-bottom: 2%;
 }
 
-.formUser-box div{
-	background: #c42627;
+
+.formUser-box form div{
+	/*background-color:blue;*/
 	height: 4vh;
-	position: relative;
+	width: 100%;
 	margin-bottom: 5%;
-	border-radius: 10px;
 	display: flex;
+	flex-direction: row;
+}
+
+.formUser-box form div:last-child{
+	background-color: #c42627;
+	border-radius: 10px;
+	width: 50%;
+	height: 50%;
 }
 
 .formUser-box div p{
@@ -66,6 +75,16 @@
 	color:white;
 }
 	
+.formUser-box form div:first-child{
+	width: 50%
+	height:50%;
+}
+
+
+.formUser-box form div:first-child img{
+	width: 6vw;
+}
+
 #File{
 	background: blue;
 	position: absolute;

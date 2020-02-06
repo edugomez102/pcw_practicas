@@ -16,31 +16,41 @@
 		<h1>Register!</h1>
 		<form>
 			<!-- Login(usuario) -->
-			<label for="login">Login</label>
+			<label>Login</label>
 			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
 
 			<!-- Contraseña -->
-			<label for="password1">Password</label>
+			<label>Password</label>
 			<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20">
 			
 			<!-- Confirmar contraseña -->
-			<label for="password2">Repeat Password</label>
+			<label>Repeat Password</label>
 			<input type="password" placeholder="Confirm password">
 
 			<!-- Nombre completo -->
-			<label for="full_name">Your name</label>
+			<label>Your name</label>
 			<input type="text" placeholder="Full name" required="required">
 
 			<!-- Email usuario -->
-			<label for="email">Email</label>
+			<label>Email</label>
 			<input type="email" placeholder="email" required="required">
 
 			<!-- Foto del usuario -->
-			<label for="File" class="icon-picture">Photo</label>
+			<label>Photo</label>
+			<br>
+			<!-- <div>
+				<img src="img/fotoUsuario.png" alt="FotoNueva Usuario">
+			</div> -->
 			<div>
-				<p>Buscar Foto</p>
-				<input type="file" name="File" value="File" id="File" accept="image/*" />
+				<div>
+					<img src="img/fotoUsuario.png" alt="FotoNueva Usuario">
+				</div>
+				<div>
+					<p>Buscar Foto</p>
+					<input type="file" name="File" id="File" accept="image/*" />
+				</div>
 			</div>
+			<br>
 			<input type="submit" value="Register" >
 		</form>
 	</div>
