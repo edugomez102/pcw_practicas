@@ -13,28 +13,7 @@ head{
 body{
 	padding: 0;
 	font-family: sans-serif;
-	display: flex;
-	flex-direction: column;
-}
-/* TODO Edu(04/02/2020): Contenido */
-main{
-	background-color: tomato;
-	min-height: 60vh;
-}
-#contenido{
-	/* TODO Edu(06/02/2020): Preguntar como ajustar al contenido con toda la web */
-}
-#contenido p{
-	/* padding-top: 300px; */
-	/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
-	line-height: 600px;
-	background-color: yellowgreen;
-}
-footer{
-	/* display: inline-flex; */
-	/* TODO Edu(06/02/2020): Preguntar como fijar abajo */
-	/* position: absolute; */
-	/* bottom: 0px; */
+	/* display: grid; */
 }
 
 /* ┌────────────────────────┐ */
@@ -101,7 +80,41 @@ nav ul li a{
 	text-decoration: none;
 	color: black;
 }
-/* TODO Edu(05/02/2020): footer movill */
+/* TODO Edu(06/02/2020): contenido ajustable */
+main{
+	background-color: tomato;
+	min-height: 60vh;
+}
+
+footer{
+	/* 	TODO Edu(06/02/2020): fijar abajo */
+	/* font-family: 'Quicksand', sans-serif; */
+	grid-area: footer;
+	font-family: 'Fira Sans', sans-serif;
+	background: indigo;
+	color: white;
+	width: 100%;
+	height: 280px;
+	font-size: 15pt;
+}
+footer a{
+	color: magenta;
+	text-decoration: none;
+}
+footer div:nth-child(1) a{
+	width: 100%;
+	text-align: center;
+	background: purple;
+	line-height:40px ;
+	display: block;
+}
+footer div:nth-child(1) a:hover{
+	background: darkviolet;
+	transition-duration: 0.3s;
+}
+footer ul{
+	list-style: none;
+}
 
 /* ┌────────────────────────────┐ */
 /* │ Menu iconos: 321px a 640px │ */
@@ -200,36 +213,6 @@ nav ul li a{
 		background-color: yellowgreen;
 	}
 	/* TODO Edu(04/02/2020): mirar como hacer para que esté siempre abajo del todo  */
-	footer{
-		/* font-family: 'Quicksand', sans-serif; */
-		font-family: 'Fira Sans', sans-serif;
-		background: indigo;
-		color: white;
-		width: 100%;
-		height: 280px;
-		font-size: 15pt;
-	}
-	footer a{
-		color: magenta;
-		text-decoration: none;
-	}
-	footer div:nth-child(1) a{
-		width: 100%;
-		text-align: center;
-		background: purple;
-		line-height:40px ;
-		display: block;
-	}
-	footer div:nth-child(1) a:hover{
-		background: darkviolet;
-		transition-duration: 0.3s;
-	}
-	footer ul{
-		list-style: none;
-	}
-	footer ul li{
-		/* display: inline-block; */
-	}
 }
 form input[type=email],
 form input[type=password],
