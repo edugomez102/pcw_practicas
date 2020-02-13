@@ -111,15 +111,41 @@ nav ul li a{
 main{
 	background-color: yellowgreen;
 	flex: 1;
-	/* align-self: center; */
 	justify-content: center;
-	/* margin-top:auto; */
-	/* margin-bottom: auto; */
-	/* display: flex; */
-	/* height: fit-content; */
 }
-main p{
-	justify-content: center;
+main>h3{
+	text-decoration: underline;
+}
+
+article{
+	background-color: palegreen;
+	margin: 10px;
+}
+article>a>img{
+	/* TODO Edu(13/02/2020): que sea siempre cuadrado? */
+	width: 70%;
+	height: 70%;
+	display: block;
+	margin: 0 auto;
+	transition-duration: 0.3s;
+}
+
+article>a>img:hover{
+	transform: scale(1.1);
+}
+
+article>ul{
+	/* display: inline-block; */
+	list-style-type: none;
+}
+article>ul>li{
+	display: inline-block;
+	background-color: lightblue;
+}
+article>p{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 footer{
@@ -159,6 +185,9 @@ footer ul{
 	header{
 		margin: 0;
 	}
+	article{
+		background-color: lime;
+	}
 }
 
 /* ┌─────────────────────────────────┐ */
@@ -167,6 +196,9 @@ footer ul{
 @media screen and (min-width: 641px){
 	body{
 		background: silver;
+	}
+	article{
+		background-color: oliveDrab;
 	}
 	header{
 		margin: 0;
