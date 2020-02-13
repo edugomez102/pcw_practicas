@@ -39,6 +39,10 @@ nav {
 	background: #746060;
 }
 /* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
+header{
+	background-color: violet;
+	margin: 42px 10px 0 10px;
+}
 h1{
 	/* TODO Edu(06/02/2020): Arreglar esto no tira del todo bien */
 	position: fixed;
@@ -47,7 +51,9 @@ h1{
 	z-index: 1;
 }
 h2{
-	position: relative;
+	/* position: relative; */
+	/* margin: 0 10px; */
+	background-color: purple;
 }
 nav input {
 	/* esconder el checkbox */
@@ -71,6 +77,7 @@ nav div {
 }
 nav ul {
 	/* lista escondida  */
+	padding: 0;
 	position: absolute;
 	top: 36px;
 	left: 0px;
@@ -83,7 +90,11 @@ nav ul {
 	/* transition-timing-function: ease-in-out; */
 }
 nav ul li {
-	padding: 20px 0;
+	padding: 20px 50px;
+	transition-duration: 0.2s;
+}
+nav ul li:hover{
+	background-color: gainsboro;
 }
 nav ul li:nth-child(1){
 	margin-top: 10px;
@@ -145,6 +156,9 @@ footer ul{
 	body{
 		background-color: gold;
 	}
+	header{
+		margin: 0;
+	}
 }
 
 /* ┌─────────────────────────────────┐ */
@@ -154,15 +168,14 @@ footer ul{
 	body{
 		background: silver;
 	}
+	header{
+		margin: 0;
+	}
 	/* reset del h1 */
 	h1{
 		position: static;
 		/* font-size: 40px; */
 	}
-	/* esto es un poco la guarra */
-	/* header{ */
-	/* 	display: inline-block; */
-	/* } */
 	/* TODO Edu(06/02/2020): No sé si esto tiene algo que ver con el flex */
 	/* TODO Edu(07/02/2020): poner iconos */
 	nav{
