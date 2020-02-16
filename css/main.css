@@ -37,20 +37,25 @@ nav {
 	position: fixed;
 	padding: 15px 20px 10px 10px;
 	background: #746060;
+	z-index: 1;
 }
 /* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
 header{
 	background-color: violet;
 	margin: 42px 10px 0 10px;
 }
-h1{
+hgroup h1{
 	/* TODO Edu(06/02/2020): Arreglar esto no tira del todo bien */
 	position: fixed;
 	top: -10px;
 	left: 25%;
-	z-index: 1;
+	z-index: 2;
 }
-h2{
+hgroup>div>img{
+	width: 40px;
+	height: 40px;
+}
+hgroup h2{
 	/* position: relative; */
 	/* margin: 0 10px; */
 	background-color: purple;
@@ -219,12 +224,53 @@ footer ul{
 /* └──────────────────────┘ */
 @media screen and (min-width: 481px){
 	header{
+		position: relative;
 		margin: 0;
+		/* height: 500px; */
+	}
+	header:before{
+		content: "";
+		position: absolute;
+		top:0;
+		left:0;
+		width: 100%;
+		height: 100%;
+		background-image: url("../img/junk-shop-1561897_1920.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		/* -moz-filter: blur(50px); */
+		/* TODO Edu(16/02/2020): arreglar el blur raro */
+		filter: blur(1.2px);
+		/* transform: scale(1.1); */
 	}
 	/* reset del h1 */
-	h1{
+	hgroup{
+		height: 300px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	hgroup>div{
+		display: flex;
+		justify-content: center;
+	}
+	hgroup>div>img{
+		/* float: left; */
+		width: 110px;
+		height: 110px;
+	}
+	hgroup>div>h1{
 		position: static;
-		/* font-size: 40px; */
+		margin-left: 20px;
+		color: white;
+		font-size: 45px;
+		background-color: red;
+	}
+	hgroup>h2{
+		text-decoration: underline;
 	}
 	nav{
 		/* TODO Edu(07/02/2020): Pregunta si se puede usar */
