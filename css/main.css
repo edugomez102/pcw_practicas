@@ -119,6 +119,14 @@ main>h3{
 	text-align: center;
 	margin: 5px;
 }
+main>form{
+	margin: 5px 10%;
+	/* text-align: center; */
+	/* padding-right: 10%; */
+}
+main>form>input{
+	/* width: 0%; */
+}
 section{
 	display: flex;
 	flex-wrap: wrap;
@@ -145,6 +153,8 @@ article>a>img{
 }
 article>a>img:hover{
 	transform: scale(1.08);
+	/* TODO Edu(16/02/2020): que te pasa firefox tio */
+	border-radius: 10px;
 }
 article>ul{
 	/* list-style-type: none; */
@@ -205,37 +215,10 @@ footer div:nth-child(1) a:hover{
 footer ul{
 	list-style: none;
 }
-
-/* ┌────────────────────────────┐ */
-/* │ Menu iconos: 321px a 640px │ */
-/* └────────────────────────────┘ */
-@media screen and (min-width: 481px) and (max-width: 640px){
-	body{
-		background-color: gold;
-	}
-	header{
-		margin: 0;
-	}
-	nav li a span:nth-child(2){
-		font-size: 0;
-	}
-	article{
-		background-color: lime;
-		flex-basis: 45%;
-	}
-}
-
-/* ┌─────────────────────────────────┐ */
-/* │ Menu completo: 641px a infinito │ */
-/* └─────────────────────────────────┘ */
-@media screen and (min-width: 641px){
-	body{
-		background: silver;
-	}
-	article{
-		background-color: oliveDrab;
-		flex-basis: 20%;
-	}
+/* ┌──────────────────────┐ */
+/* │ barra nav horizontal │ */
+/* └──────────────────────┘ */
+@media screen and (min-width: 481px){
 	header{
 		margin: 0;
 	}
@@ -244,8 +227,6 @@ footer ul{
 		position: static;
 		/* font-size: 40px; */
 	}
-	/* TODO Edu(06/02/2020): No sé si esto tiene algo que ver con el flex */
-	/* TODO Edu(07/02/2020): poner iconos */
 	nav{
 		/* TODO Edu(07/02/2020): Pregunta si se puede usar */
 		all:unset;
@@ -271,14 +252,17 @@ footer ul{
 		display: inline-block;
 		list-style-type: none;
 		/* padding: 0px; */
-		margin-left: 35px;
+		margin-left: 2%;
 		/* position: relative; */
 		/* background: peru; */
+	}
+	nav ul li:hover{
+		background-color: chocolate;
 	}
 	nav ul li a{
 		text-decoration: none;
 		color: black;
-		font-size: 20px;
+		font-size: 0.95em;
 	}
 	nav input{
 		/* esconder checkbox para pantalla extendida */
@@ -297,6 +281,41 @@ footer ul{
 	nav ul li:hover:after { 
 		/* animar barra nav */
 		transform: scaleX(1);
+	}
+}
+
+/* ┌────────────────────────────┐ */
+/* │ Menu iconos: 321px a 640px │ */
+/* └────────────────────────────┘ */
+@media screen and (min-width: 481px) and (max-width: 640px){
+	body{
+		background-color: gold;
+	}
+	header{
+		margin: 0;
+	}
+	nav li a span:nth-child(2){
+		font-size: 0;
+	}
+	nav li a span:nth-child(1){
+		font-size: 1.3em;
+	}
+	article{
+		background-color: lime;
+		flex-basis: 45%;
+	}
+}
+
+/* ┌─────────────────────────────────┐ */
+/* │ Menu completo: 641px a infinito │ */
+/* └─────────────────────────────────┘ */
+@media screen and (min-width: 641px){
+	body{
+		background: silver;
+	}
+	article{
+		background-color: oliveDrab;
+		flex-basis: 20%;
 	}
 }
 form input[type=email],
