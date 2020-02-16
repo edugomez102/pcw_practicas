@@ -115,6 +115,9 @@ main{
 }
 main>h3{
 	text-decoration: underline;
+	font-size: 30px;
+	text-align: center;
+	margin: 5px;
 }
 section{
 	display: flex;
@@ -129,8 +132,8 @@ article{
 	min-width: 0;
 	/* flex-basis: 100%; */
 }
-article>a{
-	background-color: cyan;
+article>h4{
+	text-align: center;
 }
 article>a>img{
 	/* TODO Edu(13/02/2020): que sea siempre cuadrado? */
@@ -140,25 +143,42 @@ article>a>img{
 	margin: 0 auto;
 	transition-duration: 0.3s;
 }
-
 article>a>img:hover{
-	transform: scale(1.1);
+	transform: scale(1.08);
 }
-
 article>ul{
-	/* display: inline-block; */
-	list-style-type: none;
+	/* list-style-type: none; */
+	/* background-color: cyan; */
+	text-align: center;
+	padding: 0;
 }
 article>ul>li{
 	display: inline-block;
-	background-color: lightblue;
+	/* background-color: lightblue; */
+}
+article>ul>li:nth-child(1){
+	text-align: left;
+	width: 48%;
+}
+article>ul>li:nth-child(2){
+	text-align: left;
+	width: 12%;
+}
+article>ul>li:nth-child(3){
+	text-align: right;
+	width: 12%;
+}
+article>h5{
+	text-align: center;
+	font-size: 20pt;
+	margin: 15px 0 0 0;
 }
 article>p{
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+	margin: 5px 10px;
 }
-
 footer{
 	/* font-family: 'Quicksand', sans-serif; */
 	font-family: 'Fira Sans', sans-serif;
@@ -195,6 +215,9 @@ footer ul{
 	}
 	header{
 		margin: 0;
+	}
+	nav li a span:nth-child(2){
+		font-size: 0;
 	}
 	article{
 		background-color: lime;
