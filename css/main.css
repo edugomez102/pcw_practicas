@@ -107,7 +107,6 @@ nav ul li a{
 	text-decoration: none;
 	color: black;
 }
-/* TODO Edu(06/02/2020): contenido ajustable */
 main{
 	background-color: yellowgreen;
 	flex: 1;
