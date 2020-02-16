@@ -120,13 +120,14 @@ section{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	padding: 5px;
 }
 article{
 	background-color: palegreen;
-	margin: 10px;
+	margin: 5px;
 	/* para que funcione el text ellipsis */
 	min-width: 0;
-	/* flex-basis: 40%; */
+	/* flex-basis: 100%; */
 }
 article>a{
 	background-color: cyan;
