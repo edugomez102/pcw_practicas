@@ -1,21 +1,15 @@
-@/*Default: 320px a 480px*/
+/*Default: 320px a 480px*/
 
-
-
-
-.formUser{
+body{
 	background: url(../img/fondoHotel.jpeg);
 	background-size: cover;
 	height: 100vh;
 	display: flex;
 }
 
-
-
-/*
 .formUser-box{
-	background: black;
-	color: white;
+	background-color: black;
+	color:white;
 	border:solid;
 	border-color: #c42627;
 	vertical-align: middle;
@@ -24,90 +18,32 @@
 	flex-direction: column;
 }
 
-
 .formUser-box img{
-	width: 10%;
+	width: 20%;
 	vertical-align: middle;
 	margin-left: auto;
 	margin-right: auto;
-	border-radius: 50%;
-	margin-top: -15%;
+	margin-top: -10%;
 }
 
-
-
 .formUser-box h1{
-	vertical-align: middle;
-	margin: auto;	
+	text-align: center;
 }
 
 .formUser-box form{
 	text-align: center;
 	vertical-align: middle;
-	margin: auto;
-}
-
-
-
-.formUser input{
-	width: 80%;
-}
-
-.formUser-box  label{
-	color: white;
-	font-weight: bold;
-	display: block;
-	margin-top: 5%;
-	margin-bottom: 2%;
-}
-
-
-.formUser-box form div{
-	background-color:blue;
-	height: 4vh;
-	width: 100%;
-	margin-bottom: 5%;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: center;
 }
 
-
-.formUser-box form div:last-child{
-	background-color: #c42627;
-	border-radius: 10px;
+.formUser-box input{
 	width: 50%;
-	height: 50%;
-}
-
-.formUser-box div p{
-	margin: auto;
-	text-align: center;
-	color:white;
-}
-	
-.formUser-box form div:first-child{
-	width: 50%
-	height:50%;
+	margin-top: 1%;
 }
 
 
-	.formUser-box form div:first-child img{
-	width: 6vw;
-}
-
-#File{
-	background: blue;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-}
-
-*/
 
 
 
