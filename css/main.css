@@ -163,7 +163,7 @@ main{
 	flex: 1;
 	justify-content: center;
 }
-main>h3{
+section>h3{
 	text-decoration: underline;
 	font-size: 30px;
 	text-align: center;
