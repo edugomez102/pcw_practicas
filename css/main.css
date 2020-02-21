@@ -286,8 +286,8 @@ footer>address{
 	nav div { all: unset; }
 	nav ul{
 		all:unset;
-		/* position: static; */
 		width: 100%;
+		height: 39px;
 		display: inline-block;
 		list-style-type: none;
 		text-align: center;
@@ -297,10 +297,10 @@ footer>address{
 		all: unset;
 		display: inline-block;
 		list-style-type: none;
-		/* padding: 0px; */
 		margin-left: 2%;
 		/* position: relative; */
-		/* background: peru; */
+		background: peru;
+		height: 0;
 	}
 	nav ul li:hover{
 		background-color: mediumorchid;
@@ -309,6 +309,8 @@ footer>address{
 		text-decoration: none;
 		color: black;
 		font-size: 0.95em;
+		/* background-color: blue; */
+		padding: 10px 0;
 	}
 	nav input{
 		/* esconder checkbox para pantalla extendida */
@@ -335,15 +337,15 @@ footer>address{
 	footer ul{
 		list-style: none;
 		text-align: center;
-		/* padding: 0 20px; */
+		padding: 0 20px;
 	}
 	footer>ul>li{
 		display: inline-block;
-		/* margin: 5px 5%; */
+		margin: 0 15px ;
 	}
 	footer>address{
 		text-align: center;
-		/* margin: 0 15px 10px; */
+		margin: 0 15px 10px;
 	}
 }
 
