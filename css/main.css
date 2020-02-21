@@ -163,12 +163,6 @@ main{
 	flex: 1;
 	justify-content: center;
 }
-section>h3{
-	text-decoration: underline;
-	font-size: 30px;
-	text-align: center;
-	margin: 5px;
-}
 main>form>div{
 	position: relative;
 	text-align: center;
@@ -179,6 +173,13 @@ section{
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 5px;
+}
+section>h3{
+	text-decoration: underline;
+	font-size: 30px;
+	text-align: center;
+	margin: 5px;
+	flex-basis: 100%;
 }
 article{
 	background-color: slateblue;
