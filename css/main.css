@@ -409,6 +409,7 @@ footer>address{
 		/* TODO Edu(21/02/2020): corregir break? */
 	}
 	main>form>div{
+		display: inline-block;
 		position: relative;
 		left: 9.5%;
 	}
