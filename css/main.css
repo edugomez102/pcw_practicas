@@ -36,7 +36,7 @@ nav {
 	/* fijar arriba de la pantalla  */
 	position: fixed;
 	padding: 15px 20px 10px 10px;
-	background: #746060;
+	/* background: #746060; */
 	z-index: 1;
 }
 /* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
@@ -46,10 +46,10 @@ header{
 }
 hgroup h1{
 	/* TODO Edu(06/02/2020): Arreglar esto no tira del todo bien */
-	position: fixed;
+	/* position: fixed; */
 	top: -10px;
 	left: 25%;
-	z-index: 2;
+	/* z-index: 2; */
 }
 hgroup>div>img{
 	width: 40px;
@@ -65,10 +65,10 @@ nav input {
 	width: 40px;
 	height: 32px;
 	position: absolute;
-	top: 10px;
-	left: 7px;
+	top: 8px;
+	left: 3px;
 	opacity: 0;
-	z-index: 1;
+	z-index: 2;
 }
 nav div {
 	/* hacer icono de 3 barras */
@@ -76,14 +76,18 @@ nav div {
 	width: 33px;
 	height: 4px;
 	margin-bottom: 5px;
+	border-radius: 3px;
 	position: relative;
-	background: #cdcdcd;
+	background: #FCF1F1;
+	z-index:1;
+	transition-duration: 0.4s;
 }
 nav ul {
 	/* lista escondida  */
 	padding: 0;
+	padding-top: 40px;
 	position: absolute;
-	top: 36px;
+	top: -20px;
 	left: 0px;
 	width: 300px;
 	height: 800px;
@@ -105,6 +109,9 @@ nav ul li:nth-child(1){
 }
 nav input:checked ~ ul {
 	transform: none;
+}
+nav input:checked ~ div{
+	background-color: black;
 }
 nav ul li a{
 	/* font-size: 20px; */
