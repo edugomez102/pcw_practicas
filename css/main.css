@@ -41,24 +41,62 @@ nav {
 }
 /* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
 header{
-	background-color: violet;
-	margin: 42px 10px 0 10px;
+	position: relative;
+	/* margin: 42px 10px 0 10px; */
 }
-hgroup h1{
-	/* TODO Edu(06/02/2020): Arreglar esto no tira del todo bien */
-	/* position: fixed; */
-	top: -10px;
-	left: 25%;
-	/* z-index: 2; */
+header:before{
+	content: "";
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../img/junk-shop-1561897_1920.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	/* -moz-filter: blur(50px); */
+	/* TODO Edu(16/02/2020): arreglar el blur raro */
+	filter: blur(1.5px);
+	/* transform: scale(1.1); */
+}
+hgroup{
+	height: 250px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+hgroup>div{
+	background-color: rgba(1,0,0,.5);
+	padding: 5px 6px;
+	border-radius: 10px;
 }
 hgroup>div>img{
-	width: 40px;
-	height: 40px;
+	float: left;
+	width: 100px;
+	height: 100px;
 }
-hgroup h2{
-	/* position: relative; */
-	/* background-color: purple; */
+hgroup>div>div{
+	/* un poco feo pero bueno */
+	/* background-color: blue; */
 }
+hgroup>div>div>h1{
+	position: static;
+	margin-top: 40px;
+	margin-left: 120px;
+	color: white;
+	font-size: 32px;
+}
+hgroup>div>div>h2{
+	color: #FFD8FD;
+	margin-left: 20px;
+	font-style: italic;
+	font-size: 15px;
+	margin-top: 40px;
+}
+
 nav input {
 	/* esconder el checkbox */
 	display: block;
@@ -230,68 +268,6 @@ footer ul{
 /* │ barra nav horizontal │ */
 /* └──────────────────────┘ */
 @media screen and (min-width: 481px){
-	header{
-		position: relative;
-		margin: 0;
-		/* height: 500px; */
-	}
-	header:before{
-		content: "";
-		position: absolute;
-		top:0;
-		left:0;
-		width: 100%;
-		height: 100%;
-		background-image: url("../img/junk-shop-1561897_1920.jpg");
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		/* -moz-filter: blur(50px); */
-		/* TODO Edu(16/02/2020): arreglar el blur raro */
-		filter: blur(1.5px);
-		/* transform: scale(1.1); */
-	}
-	/* reset del h1 */
-	hgroup{
-		height: 280px;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	hgroup>div{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: rgba(1,0,0,.5);
-		padding: 5px 25px;
-		border-radius: 15px;
-	}
-	hgroup>div>img{
-		/* float: left; */
-		width: 130px;
-		height: 130px;
-	}
-	hgroup>div>div{
-		display: flex;
-		flex-direction: column;
-	}
-	hgroup>div>div>h1{
-		position: static;
-		margin-left: 20px;
-		color: white;
-		font-size: 45px;
-		/* background-color: red; */
-	}
-	hgroup>div>div>h2{
-		color: #FFD8FD;
-		margin-left: 20px;
-		font-style: italic;
-		font-size: 25px;
-		/* background-color: red; */
-		margin-top: -20px;
-	}
 	nav{
 		/* TODO Edu(07/02/2020): Pregunta si se puede usar */
 		all:unset;
@@ -382,7 +358,41 @@ footer ul{
 	article{
 		flex-basis: 20%;
 	}
+	/* header escritorio */
+	header{
+		position: relative;
+		margin: 0;
+		/* height: 500px; */
+	}
+	hgroup{
+		height: 280px;
+	}
+	hgroup>div{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 5px 25px;
+		border-radius: 15px;
+	}
+	hgroup>div>img{
+		width: 130px;
+		height: 130px;
+	}
+	hgroup>div>div{
+		display: flex;
+		flex-direction: column;
+	}
+	hgroup>div>div>h1{
+		margin-left: 20px;
+		font-size: 45px;
+	}
+	hgroup>div>div>h2{
+		margin-left: 20px;
+		font-size: 25px;
+		margin-top: -20px;
 }
+}
+
 form input[type=email],
 form input[type=password],
 form input[type=text]{
