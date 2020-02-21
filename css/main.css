@@ -42,7 +42,6 @@ nav {
 /* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
 header{
 	position: relative;
-	/* margin: 42px 10px 0 10px; */
 }
 header:before{
 	content: "";
@@ -60,7 +59,7 @@ header:before{
 	filter: blur(1.5px);
 	/* transform: scale(1.1); */
 }
-hgroup{
+header>div{
 	height: 250px;
 	position: relative;
 	display: flex;
@@ -68,28 +67,28 @@ hgroup{
 	justify-content: center;
 	align-items: center;
 }
-hgroup>div{
+header>div>div{
 	background-color: rgba(1,0,0,.5);
 	padding: 5px 6px;
 	border-radius: 10px;
 }
-hgroup>div>img{
+header>div>div>img{
 	float: left;
 	width: 100px;
 	height: 100px;
 }
-hgroup>div>div{
+header>div>div>hgroup{
 	/* un poco feo pero bueno */
 	/* background-color: blue; */
 }
-hgroup>div>div>h1{
+header>div>div>hgroup>h1{
 	position: static;
 	margin-top: 40px;
 	margin-left: 120px;
 	color: white;
 	font-size: 32px;
 }
-hgroup>div>div>h2{
+header>div>div>hgroup>h2{
 	color: #FFD8FD;
 	margin-left: 20px;
 	font-style: italic;
@@ -364,34 +363,27 @@ footer ul{
 		flex-basis: 20%;
 	}
 	/* header escritorio */
-	header{
-		position: relative;
-		margin: 0;
-		/* height: 500px; */
-	}
-	hgroup{
-		height: 280px;
-	}
-	hgroup>div{
+	header>div>div{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding: 5px 25px;
 		border-radius: 15px;
+		margin: 5%;
 	}
-	hgroup>div>img{
+	header>div>div>img{
 		width: 130px;
 		height: 130px;
 	}
-	hgroup>div>div{
+	header>div>div>hgroup{
 		display: flex;
 		flex-direction: column;
 	}
-	hgroup>div>div>h1{
+	header>div>div>hgroup>h1{
 		margin-left: 20px;
 		font-size: 45px;
 	}
-	hgroup>div>div>h2{
+	header>div>div>hgroup>h2{
 		margin-left: 20px;
 		font-size: 25px;
 		margin-top: -20px;
