@@ -1,0 +1,48 @@
+main{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.contenedorRegister{
+	background-color:  black;
+	border: 5px solid indigo;
+	width: 50%;
+	height: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+
+}
+
+.contenedorRegister>img{
+	width: 20%;
+	margin-top: -1em;
+}
+
+.contenedorRegister>h1{
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.contenedorRegister>form>div{ 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.contenedorRegister>form>div>label{
+	color: white;
+	text-align: center;
+}
+
+.contenedorRegister>form>div>input{
+	width: 85%;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+

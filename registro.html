@@ -1,48 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8">
-	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
-	<title>Registro</title>
-	<link rel="stylesheet" type="text/css" href="css/login_register.css">
-	<link rel="stylesheet" type="text/css" href="css/normalizer.css">
-	<link rel="stylesheet" type="text/css" href="css/fontello.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-<body class="formUser">
-	<div class="formUser-box">
-		<img src="img/logoSecondHand.png" alt="Logo Pagina">
-		<h1>Register!</h1>
-		<form>
-			<!-- Login(usuario) -->
-			<label for="login">Login</label>
-			<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
-
-			<!-- Contraseña -->
-			<label for="password1">Password</label>
-			<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20">
-			
-			<!-- Confirmar contraseña -->
-			<label for="password2">Repeat Password</label>
-			<input type="password" placeholder="Confirm password">
-
-			<!-- Nombre completo -->
-			<label for="full_name">Your name</label>
-			<input type="text" placeholder="Full name" required="required">
-
-			<!-- Email usuario -->
-			<label for="email">Email</label>
-			<input type="email" placeholder="email" required="required">
-
-			<!-- Foto del usuario -->
-			<label for="File" class="icon-picture">Photo</label>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/fontello-embedded.css">
+		<link rel="stylesheet" href="css/normalizer.css">
+		<link rel="stylesheet" href="css/registro.css">
+		<title>Registro</title>
+	</head>
+	<body>
+		<header>
 			<div>
-				<p>Buscar Foto</p>
-				<input type="file" name="File" value="File" id="File" accept="image/*" />
+				<div>
+					<img src="img/logoSecondHand.png" alt="logo">
+					<hgroup>
+						<h1>Elegir título</h1>
+						<h2>Tienda de segunda mano para cualquier humano</h2>
+					</hgroup>
+				</div>
 			</div>
-			<input type="submit" value="Register" >
-		</form>
-	</div>
-</body>
+		</header>
+		<nav>
+			<input type="checkbox">
+			<div> </div>
+			<div> </div>
+			<div> </div>
+			<ul>
+				<li>
+					<a href="index.html">
+						<span class="icon-home"></span>
+						<span>Inicio</span>
+					</a>
+				</li>
+				<li>
+					<a href="buscar.html">
+						<span class="icon-search"></span>
+						<span>Buscar</span>
+					</a>
+				</li>
+				<li>
+					<a href="nuevo.html">
+						<span class="icon-doc-new"></span>
+						<span>Nuevo articulo</span>
+						</a>
+				</li>
+				<li>
+					<a href="index.html">
+						<span class="icon-user-times"></span>
+						<span>Logout</span>
+					</a>
+				</li>
+				<li>
+					<a href="login.html">
+						<span class="icon-login"></span>
+						<span>Login</span>
+					</a>
+				</li>
+				<li>
+					<a href="registro.html">
+						<span class="icon-user-plus"></span>
+						<span>Registro</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<main>
+			<div class="contenedorRegister">
+				<img src="img/logoSecondHand.png" alt="logo">
+				<h1>Register!</h1>
+				<form>
+					<div>
+					<!-- Login(usuario) -->
+					<label for="login">Login</label>
+					<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
+
+					<!-- Contraseña -->
+					<label for="password1">Password</label>
+					<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20">
+					
+					<!-- Confirmar contraseña -->
+					<label for="password2">Repeat Password</label>
+					<input type="password" placeholder="Confirm password">
+
+					<!-- Nombre completo -->
+					<label for="full_name">Your name</label>
+					<input type="text" placeholder="Full name" required="required">
+
+					<!-- Email usuario -->
+					<label for="email">Email</label>
+					<input type="email" placeholder="email" required="required">
+
+					<!-- Foto del usuario -->
+					<!-- <label for="File" class="icon-picture">Photo</label>
+					<div>
+						<p>Buscar Foto</p>
+						<input type="file" name="File" value="File" id="File" accept="image/*" />
+					</div> -->
+					<input type="submit" value="Register" >
+
+					</div>
+				</form>
+			</div>	
+		</main>
+		<!-- TODO (21/02/2020): Terminar los apartados -->
+		<footer>
+			<div>
+				<a href="#">Volver arriba</a>
+			</div>
+			<ul>
+				<li>PCW</li>
+				<li><a href="acerca.html" target="_blank">Contacto</a></li>
+				<li>Copyright &copy; 2020  </li>
+			</ul>
+			<address>
+				Creado por David & Eduardo <br>
+				Universidad de Alicante, San Vicente del Raspeig
+			</address>
+		</footer>
+	</body>
 </html>
+
+
+
+
+
