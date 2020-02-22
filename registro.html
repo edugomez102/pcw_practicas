@@ -67,10 +67,9 @@
 		</nav>
 		<main>
 			<div class="contenedorRegister">
-				<img src="img/logoSecondHand.png" alt="logo">
-				<h1>Register!</h1>
+				<h1>Register</h1>
+				<img src="img/logoSecondHand.png">
 				<form>
-					<div>
 					<!-- Login(usuario) -->
 					<label for="login">Login</label>
 					<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
@@ -92,14 +91,12 @@
 					<input type="email" placeholder="email" required="required">
 
 					<!-- Foto del usuario -->
-					<!-- <label for="File" class="icon-picture">Photo</label>
-					<div>
-						<p>Buscar Foto</p>
-						<input type="file" name="File" value="File" id="File" accept="image/*" />
-					</div> -->
 					<input type="submit" value="Register" >
-
+					<div>
+						<label for="foto">Buscar foto</label><input type="file" name="foto" id="foto">
+						<label for ="foto"><img src="img/account.svg" alt="userFoto" id="fotouser"></label>
 					</div>
+
 				</form>
 			</div>	
 		</main>

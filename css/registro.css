@@ -5,44 +5,92 @@ main{
 }
 
 .contenedorRegister{
-	background-color:  black;
+	background-color: black;
 	border: 5px solid indigo;
-	width: 50%;
-	height: 70%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: nowrap;
-
+	width: 90%;
+	height: 90%;
 }
 
-.contenedorRegister>img{
-	width: 20%;
-	margin-top: -1em;
-}
 
 .contenedorRegister>h1{
 	color: white;
 	text-align: center;
 	font-size: 1.5em;
+	margin-bottom: -1em;
 }
 
-.contenedorRegister>form>div{ 
+.contenedorRegister>form{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.contenedorRegister>img{
+	display: none;
+}
+
+.contenedorRegister>form>input[type="submit"]{
+	margin-top: 4%;
+	margin-bottom: 2%;
+}
+
+
+
+.contenedorRegister>form>input{
+	width: 50%;
+	margin-bottom: 0.3em;
+}
+
+.contenedorRegister>form>label{
+	color: white;
+	text-align: center;
+	margin-bottom: 0.3em;
+}
+
+.contenedorRegister>form>div{
+	width: 30%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-.contenedorRegister>form>div>label{
+.contenedorRegister>form>div>label:first-child{
 	color: white;
 	text-align: center;
+	margin-bottom: 10%;
 }
 
-.contenedorRegister>form>div>input{
-	width: 85%;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+#foto{
+	display: none;
+}
+#fotouser{
+	width: 29.9vw;
+	background-color:indigo;
+	border: 5px solid white;  
 }
 
+
+
+
+@media screen and (min-width: 481px) and (max-width: 640px){
+
+	
+}
+
+
+@media screen and (min-width: 641px){
+	.contenedorRegister{
+		width: 50%;
+		height: 90%;
+	}
+
+	#fotouser{
+		width: 100%;
+	}
+}
