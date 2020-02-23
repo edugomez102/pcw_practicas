@@ -1,22 +1,97 @@
 /*Default: 320px a 480px*/
 
+main>div{
+	/*background: grey;*/
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.contenedorAcerca{
+/*	background-color:red;*/
+	width: 100%;
+	height: 30%; 
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	
+}
+
+.contenedorAcerca>div{
+/*	background-color: green;*/
+	width: 40%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center; 
+}
+
+.contenedorAcerca>div>img{
+	width: 50%;
+}
+
+.contenedorAcerca>div>p{
+	font-size: 0.8em;
+	text-align: center;
+}
+
+main>div>img:last-child{
+	width: 20%;
+}
+
+
 
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	div{
-		background: red;
-		width: 100vw;
-		height: 100vh;
-	}
+	
 }
 
 
 /*Menu completo: 641px a infinito*/
 @media screen and (min-width: 641px){
-	div{
-		background: green;
-		width: 100vw;
-		height: 100vh;
+
+	.contenedorAcerca{
+	/*background-color:red;*/
+	width: 100%;
+	height: 30%; 
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.contenedorAcerca>div:first-child{
+	/*background-color: green;*/
+	height: 100%;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center; 
+}
+
+.contenedorAcerca>div:last-child{
+	/*background-color: yellow;*/
+	width: 30%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center; 
+}
+
+	.contenedorAcerca>div>img{
+	width: 30%;
+}
+	
+	main>div>img:last-child{
+	width: 7%;
 	}
 }
