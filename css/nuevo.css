@@ -1,22 +1,148 @@
 /*Default: 320px a 480px*/
 
+main{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+main>div{
+	width: 85%;
+	height: 75%;
+	background-color:black;
+	display: flex;
+	flex-direction: row;
+	border: 5px solid indigo; 
+}
+
+main>div>div:first-child{
+/*	background: green;*/
+	height: 100%;
+	width: 50%;
+}
+
+
+main>div>div:first-child>form{
+	width: 100%;
+	height: 85%;
+	display: flex;
+	background-color:blue; 
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+/*	overflow: scroll;*/
+	/*flex-wrap: wrap;*/
+}
+
+main>div>div:first-child>form>label{
+	text-align: center;
+	color:white;	
+}
+
+main>div>div:first-child>form>input{
+	width: 75%;	
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+main>div>div:first-child>h3{
+	color: white;
+	font-size: 0.9em;
+}
+
+main>div>div:last-child>div>h3{
+	color: white;
+	font-size: 0.9em;
+}
+
+
+
+main>div>div:last-child>div>label:last-child{
+	color: white;
+	text-align: center;
+	background: indigo; 
+	margin-top: 1em;
+	font-weight: bold;
+	border: 0.4em solid indigo;  
+}
+
+main>div>div:last-child>div>label:nth-child(2){
+	text-align: center; 
+}
+
+
+main>div>div:last-child>div>label:nth-child(3){
+	color: white;
+	text-align: center;
+	background: indigo; 
+	margin-top: 1em;
+	font-weight: bold;
+	border: 0.4em solid indigo;  
+}
+
+
+main>div>div:last-child>div>img{
+	width: 40%;
+}
+
+main>div>div:last-child{
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+
+main>div>div:last-child>div:first-child{
+	height:75%; 
+	width:100%;
+	background-color: purple;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items:center;
+}
+
+main>div>div:last-child>div:last-child{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 25%;
+}
+
+
+main>div>div:first-child>form>input[type="submit"]{
+	text-align: center;
+	width:70%;
+}
+
+#fotoobjeto{
+	width: 60%
+;	background: indigo;
+	border: 3px solid white;
+}
+
+#foto{
+	display: none;
+}
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	div{
-		background: red;
-		width: 100vw;
-		height: 100vh;
-	}
+	
 }
 
 
 /*Menu completo: 641px a infinito*/
 @media screen and (min-width: 641px){
-	div{
-		background: green;
-		width: 100vw;
-		height: 100vh;
+	main>div{
+		width: 40%;
+		height: 75%;
 	}
+
+
+	#fotoobjeto{
+	width: 40%;
+/*	height: 40%;*/
+}
 }

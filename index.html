@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<!-- ┌────────────────────────────────────────────────────────┐ -->
-		<!-- │ TODO (06/02/2020): Pasar Validator antes de la entrega │ -->
-		<!-- └────────────────────────────────────────────────────────┘ -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/fontello-embedded.css">
 		<link rel="stylesheet" href="css/normalizer.css">
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Quicksand&display=swap" rel="stylesheet">
-		<!-- TODO (03/02/2020): uso de icon fonts? -->
+		<!-- <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Quicksand&#38;display=swap" rel="stylesheet"> -->
 		<title>Index</title>
 	</head>
-		<header>
 	<body>
-			<img src="img/logoSecondHand.png" alt="Logo">
-			<hgroup>
-				<h1>Daily Deal</h1>
-				<h2>Subtitulo de la web pues nada que nuestra web trata sobre esto y sobre lo otro</h2>
-			</hgroup>
+		<header>
+			<div>
+				<div>
+					<img src="img/logoSecondHand.png" alt="logo">
+					<hgroup>
+						<h1>Elegir título</h1>
+						<h2>Tienda de segunda mano para cualquier humano</h2>
+					</hgroup>
+				</div>
+			</div>
 		</header>
 		<nav>
 			<input type="checkbox">
@@ -26,28 +27,331 @@
 			<div> </div>
 			<div> </div>
 			<ul>
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="buscar.html">Buscar</a></li>
-				<li><a href="nuevo.html">Nuevo articulo</a></li>
-				<li><a href="index.html">Logout</a></li>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="registro.html">Registro</a></li>
+				<li>
+					<a href="index.html">
+						<span class="icon-home"></span>
+						<span>Inicio</span>
+					</a>
+				</li>
+				<li>
+					<a href="buscar.html">
+						<span class="icon-search"></span>
+						<span>Buscar</span>
+					</a>
+				</li>
+				<li>
+					<a href="nuevo.html">
+						<span class="icon-doc-new"></span>
+						<span>Nuevo articulo</span>
+						</a>
+				</li>
+				<li>
+					<a href="index.html">
+						<span class="icon-user-times"></span>
+						<span>Logout</span>
+					</a>
+				</li>
+				<li>
+					<a href="login.html">
+						<span class="icon-login"></span>
+						<span>Login</span>
+					</a>
+				</li>
+				<li>
+					<a href="registro.html">
+						<span class="icon-user-plus"></span>
+						<span>Registro</span>
+					</a>
+				</li>
 			</ul>
 		</nav>
-		<div id="contenido">
-			<p>
-			Contenido del Index
-			</p>
-		</div>
+		<main>
+			<!-- TODO (13/02/2020): implementar busqueda y centrar-->
+			<form>
+				<div>
+					<input type="text" placeholder="Búsqueda rápida">
+					<input type="submit" value="Buscar">
+				</div>
+			</form>
+			<section>
+				<h3>Últimos artículos</h3>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+				<article>
+					<h4>Nombre articulo</h4>
+					<ul>
+						<li>
+							<span class="icon-picture"></span>
+							<span>1</span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-eye"></span>
+						</li>
+						<li>
+							<span>0</span>
+							<span class="icon-bookmark"></span>
+						</li>
+					</ul>
+					<a href="articulo.html" target="_blank">
+						<img src="img/tostadora.jpg" alt="foto_articulo">
+					</a>
+					<h5>10€</h5>
+					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
+				</article>
+			</section>
+		</main>
+		<!-- TODO (21/02/2020): Terminar los apartados -->
 		<footer>
 			<div>
 				<a href="#">Volver arriba</a>
 			</div>
 			<ul>
-				<li><a href="index.html">Link a la propia web</a></li>
+				<!-- <li><a href="index.html">Link a la propia web</a></li> -->
+				<!-- <li>Programación del Cliente Web</li> -->
+				<li>PCW</li>
 				<li><a href="acerca.html" target="_blank">Contacto</a></li>
-				<li>Copyright</li>
-				<li>Año de creación</li>
+				<li>Copyright &copy; 2020  </li>
 			</ul>
 			<address>
 				Creado por David & Eduardo <br>

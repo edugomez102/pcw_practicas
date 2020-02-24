@@ -1,38 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/normalizer.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/login_register.css">
-	<meta charset="utf-8">
-	<title>Login</title>
-</head>
-<body class="formUser">
-	<div class="formUser-box">
-		<img src="img/logoSecondHand.png" alt="Logo pagina" />
-		<h1>Login here!</h1>
-		<form>
-			<!-- USERNAME -->
-			<label>Username</label>
-			<input type="text" placeholder="Enter Username" autofocus="autofocus" required="required">
-			<br />
-			
-			<!-- PASSWORD -->
-			<label>Password</label>
-			<input type="password" placeholder="Enter Password" required="required">
-			<br />
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/fontello-embedded.css">
+		<link rel="stylesheet" href="css/normalizer.css">
+		<link rel="stylesheet" href="css/login.css">
+		<title>Login</title>
+	</head>
+	<body>
+		<header>
+			<div>
+				<div>
+					<img src="img/logoSecondHand.png" alt="logo">
+					<hgroup>
+						<h1>Elegir título</h1>
+						<h2>Tienda de segunda mano para cualquier humano</h2>
+					</hgroup>
+				</div>
+			</div>
+		</header>
+		<nav>
+			<input type="checkbox">
+			<div> </div>
+			<div> </div>
+			<div> </div>
+			<ul>
+				<li>
+					<a href="index.html">
+						<span class="icon-home"></span>
+						<span>Inicio</span>
+					</a>
+				</li>
+				<li>
+					<a href="buscar.html">
+						<span class="icon-search"></span>
+						<span>Buscar</span>
+					</a>
+				</li>
+				<li>
+					<a href="nuevo.html">
+						<span class="icon-doc-new"></span>
+						<span>Nuevo articulo</span>
+						</a>
+				</li>
+				<li>
+					<a href="index.html">
+						<span class="icon-user-times"></span>
+						<span>Logout</span>
+					</a>
+				</li>
+				<li>
+					<a href="login.html">
+						<span class="icon-login"></span>
+						<span>Login</span>
+					</a>
+				</li>
+				<li>
+					<a href="registro.html">
+						<span class="icon-user-plus"></span>
+						<span>Registro</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<main>
+			<div class="contenedorLogin">
+				<img src="img/logoSecondHand.png" alt="logo"/>
+				<h1>Login here</h1>
+				<form>
+					<div>
+					<label for="username">Username</label>
+					<input type="text" placeholder="Enter Username" autofocus="autofocus" required="required">
+					
+					<label for="password">Password</label>
+					<input type="password" placeholder="Enter Password" required="required">
 
-			<!-- Boton Login -->
-			<input type="submit" value="Log In">
-			<br />
-			<a href="registro.html">Registrate</a>
-			<br />
-			<br />
-
-
-		</form>
-	</div>
-</body>
+					<input type="submit" value="Log In">
+					<a href="registro.html">Registrate</a>
+					</div>
+				</form>
+			</div>
+		</main>
+		<!-- TODO (21/02/2020): Terminar los apartados -->
+		<footer>
+			<div>
+				<a href="#">Volver arriba</a>
+			</div>
+			<ul>
+				<li>PCW</li>
+				<li><a href="acerca.html" target="_blank">Contacto</a></li>
+				<li>Copyright &copy; 2020  </li>
+			</ul>
+			<address>
+				Creado por David & Eduardo <br>
+				Universidad de Alicante, San Vicente del Raspeig
+			</address>
+		</footer>
+	</body>
 </html>

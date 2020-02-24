@@ -1,21 +1,27 @@
 /*Codigo color del logo -> c42627*/
-
 html{
 	scroll-behavior: smooth;
+	margin: 0;
+	height: 100%;
 }
-head{
-	/* TODO(03/02/2020): implementar diseño general */
+*{
+	box-sizing: border-box;
 }
-body{
-	padding: 0;
-	font-family: sans-serif;
-}
-/* TODO Edu(04/02/2020): Contenido */
-
 /* ┌────────────────────────┐ */
 /* │ Default: 320px a 480px │ */
 /* └────────────────────────┘ */
-/* amborgesa */
+body{
+	background-color: pink;
+	padding: 0;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 100%;
+}
+/* ┌───────────┐ */
+/* │ amborgesa │ */
+/* └───────────┘ */
 nav{
 	/* nav amborgesa escondido */
 	font-family: sans-serif;
@@ -30,18 +36,76 @@ nav {
 	/* fijar arriba de la pantalla  */
 	position: fixed;
 	padding: 15px 20px 10px 10px;
-	background: #746060;
+	/* background: #746060; */
+	z-index: 1;
 }
+/* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
+header{
+	position: relative;
+}
+header:before{
+	content: "";
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../img/junk-shop-1561897_1920.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	/* -moz-filter: blur(50px); */
+	/* TODO Edu(16/02/2020): arreglar el blur raro */
+	filter: blur(1.5px);
+	/* transform: scale(1.1); */
+}
+header>div{
+	height: 250px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+header>div>div{
+	background-color: rgba(1,0,0,.5);
+	padding: 5px 6px;
+	border-radius: 10px;
+}
+header>div>div>img{
+	float: left;
+	width: 100px;
+	height: 100px;
+}
+header>div>div>hgroup{
+	/* un poco feo pero bueno */
+	/* background-color: blue; */
+}
+header>div>div>hgroup>h1{
+	position: static;
+	margin-top: 40px;
+	margin-left: 120px;
+	color: white;
+	font-size: 32px;
+}
+header>div>div>hgroup>h2{
+	color: #FFD8FD;
+	margin-left: 20px;
+	font-style: italic;
+	font-size: 15px;
+	margin-top: 40px;
+}
+
 nav input {
 	/* esconder el checkbox */
 	display: block;
 	width: 40px;
 	height: 32px;
 	position: absolute;
-	top: 10px;
-	left: 7px;
+	top: 8px;
+	left: 3px;
 	opacity: 0;
-	z-index: 1;
+	z-index: 2;
 }
 nav div {
 	/* hacer icono de 3 barras */
@@ -49,104 +113,205 @@ nav div {
 	width: 33px;
 	height: 4px;
 	margin-bottom: 5px;
+	border-radius: 3px;
 	position: relative;
-	background: #cdcdcd;
+	background: #FCF1F1;
+	z-index:1;
+	transition-duration: 0.4s;
 }
 nav ul {
 	/* lista escondida  */
+	padding: 0;
+	padding-top: 40px;
 	position: absolute;
-	top: 35px;
+	top: -20px;
 	left: 0px;
 	width: 300px;
 	height: 800px;
-	background: #ededed;
+	/* background: #ededed; */
+	background-color: rgba(248,241,241,0.95);
 	list-style-type: none;
 	transform: translate(-100%, 0);
 	transition: transform 0.4s;
 	/* transition-timing-function: ease-in-out; */
 }
 nav ul li {
-	padding: 10px 0;
+	padding: 20px 50px;
+	transition-duration: 0.2s;
+}
+nav ul li:hover{
+	background-color: gainsboro;
+}
+nav ul li:nth-child(1){
+	margin-top: 10px;
 }
 nav input:checked ~ ul {
 	transform: none;
+}
+nav input:checked ~ div{
+	background-color: black;
 }
 nav ul li a{
 	/* font-size: 20px; */
 	text-decoration: none;
 	color: black;
 }
-#contenido p{
-	/* padding-top: 300px; */
-	/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
-	line-height: 600px;
-	background-color: yellowgreen;
+main{
+	/* background-color: #D89CF6; */
+	background-color: mediumslateblue ;
+	flex: 1;
+	justify-content: center;
+	padding-bottom: 20px;
 }
-
-/* TODO Edu(05/02/2020): footer movill */
-/* footer{ } */
-
-
-/* ┌────────────────────────────┐ */
-/* │ Menu iconos: 321px a 640px │ */
-/* └────────────────────────────┘ */
-@media screen and (min-width: 481px) and (max-width: 640px){
-	body{
-		background-color: gold;
-	}
+main>form>div{
+	position: relative;
+	text-align: center;
+	margin-top: 15px;
 }
-
-/* ┌─────────────────────────────────┐ */
-/* │ Menu completo: 641px a infinito │ */
-/* └─────────────────────────────────┘ */
-@media screen and (min-width: 641px){
-	body{
-		background: silver;
-	}
-	a:hover{
-		color: white;
-	}
-	/* esto es un poco la guarra */
-	header{
-		display: inline-block;
-	}
+section{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 5px;
+}
+section>h3{
+	text-decoration: underline;
+	font-size: 30px;
+	text-align: center;
+	margin: 5px;
+	flex-basis: 100%;
+}
+article{
+	background-color: slateblue;
+	margin: 5px;
+	/* para que funcione el text ellipsis */
+	min-width: 0;
+	/* flex-basis: 100%; */
+}
+article>h4{
+	text-align: center;
+}
+article>a>img{
+	/* TODO Edu(13/02/2020): que sea siempre cuadrado? */
+	max-width: 70%;
+	max-height: 70%;
+	display: block;
+	margin: 0 auto;
+	transition-duration: 0.3s;
+}
+article>a>img:hover{
+	transform: scale(1.08);
+	/* TODO Edu(16/02/2020): que te pasa firefox tio */
+	border-radius: 10px;
+}
+article>ul{
+	/* list-style-type: none; */
+	/* background-color: cyan; */
+	text-align: center;
+	padding: 0;
+}
+article>ul>li{
+	display: inline-block;
+	/* background-color: lightblue; */
+}
+article>ul>li:nth-child(1){
+	text-align: left;
+	width: 48%;
+}
+article>ul>li:nth-child(2){
+	text-align: left;
+	width: 12%;
+}
+article>ul>li:nth-child(3){
+	text-align: right;
+	width: 12%;
+}
+article>h5{
+	text-align: center;
+	font-size: 20pt;
+	margin: 15px 0 0 0;
+}
+article>p{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin: 5px 10px;
+}
+footer{
+	/* font-family: 'Quicksand', sans-serif; */
+	font-family: 'Fira Sans', sans-serif;
+	background: indigo;
+	color: white;
+	width: 100%;
+	font-size: 1.1em;
+}
+footer a{
+	color: magenta;
+	text-decoration: none;
+}
+footer div:nth-child(1) a{
+	width: 100%;
+	text-align: center;
+	background: purple;
+	line-height:40px ;
+	display: block;
+}
+footer div:nth-child(1) a:hover{
+	background: darkviolet;
+	transition-duration: 0.3s;
+}
+footer ul{
+	list-style: none;
+	padding: 0 20px;
+}
+footer>address{
+	/* text-align: center; */
+	margin: 0 15px 10px;
+	font-size: 0.8em;
+}
+/* ┌──────────────────────┐ */
+/* │ barra nav horizontal │ */
+/* └──────────────────────┘ */
+@media screen and (min-width: 481px){
 	nav{
+		/* TODO Edu(07/02/2020): Pregunta si se puede usar */
+		all:unset;
+		/* position: static; */
 		font-family: sans-serif;
-		background: chocolate;
-		position: relative;
+		background: mediumorchid;
+		/* background-color: mediumpurple ; */
 		width: 100%;
-		height: 40px;
-		padding: 0px;
-		top: 0px;
-		left: 0px;
-		text-align: left;
+		/* top: 0px; */
+		/* left: 0px; */
 	}
-	nav div {
-		height: 0;
-		width: 0;
-	}
+	nav div { all: unset; }
 	nav ul{
-		position: relative;
-		left: 0px;
+		all:unset;
 		width: 100%;
-		height: 0px;
+		height: 39px;
+		display: inline-block;
 		list-style-type: none;
 		text-align: center;
-		top: 0px;
-		transform: translate(0, 0);
+		/* transform: translate(0, 0); */
 	}
 	nav ul li{
+		all: unset;
 		display: inline-block;
-		padding: 0px;
-		top: 6px;
-		margin-left: 35px;
-		position: relative;
-		/* background: tomato; */
+		list-style-type: none;
+		margin-left: 2%;
+		/* position: relative; */
+		background: peru;
+		height: 0;
+	}
+	nav ul li:hover{
+		background-color: mediumorchid;
 	}
 	nav ul li a{
 		text-decoration: none;
 		color: black;
-		font-size: 20px;
+		font-size: 0.95em;
+		/* background-color: blue; */
+		padding: 10px 0;
 	}
 	nav input{
 		/* esconder checkbox para pantalla extendida */
@@ -166,55 +331,93 @@ nav ul li a{
 		/* animar barra nav */
 		transform: scaleX(1);
 	}
-	div#contenido{
-		font-family: sans-serif;
-		font-size: large;
-		text-align: center;
-		font-weight: bold;
-		padding: 20px 0px;
-		/* height: 600px; */
-		width: 100%;
-		background-color: khaki;
-		color: #fff;
-	}
-	#contenido p{
-		/* padding-top: 300px; */
-		/* TODO Edu(05/02/2020): cambiar para que se aplique al contenido */
-		line-height: 600px;
-		background-color: yellowgreen;
-	}
-	/* TODO Edu(04/02/2020): mirar como hacer para que esté siempre abajo del todo  */
-	footer{
-		/* font-family: 'Quicksand', sans-serif; */
-		font-family: 'Fira Sans', sans-serif;
-		background: indigo;
-		color: white;
-		width: 100%;
-		height: 280px;
-		font-size: 15pt;
-	}
-	footer a{
-		color: magenta;
-		text-decoration: none;
-	}
-	footer div:nth-child(1) a{
-		width: 100%;
-		text-align: center;
-		background: purple;
-		line-height:40px ;
-		display: block;
-	}
-	footer div:nth-child(1) a:hover{
-		background: darkviolet;
-		transition-duration: 0.3s;
+	/* busqueda rapida  */
+	main>form>div{
+		text-align: left;
 	}
 	footer ul{
 		list-style: none;
+		text-align: center;
+		padding: 0 20px;
 	}
-	footer ul li{
-		/* display: inline-block; */
+	footer>ul>li{
+		display: inline-block;
+		margin: 0 15px ;
+	}
+	footer>address{
+		text-align: center;
+		margin: 0 15px 10px;
 	}
 }
+
+/* ┌────────────────────────────┐ */
+/* │ Menu iconos: 321px a 640px │ */
+/* └────────────────────────────┘ */
+@media screen and (min-width: 481px) and (max-width: 640px){
+	body{
+		background-color: gold;
+	}
+	header{
+		margin: 0;
+	}
+	main>form>div{
+		left: 5%;
+	}
+	nav li a span:nth-child(2){
+		font-size: 0;
+	}
+	nav li a span:nth-child(1){
+		font-size: 1.3em;
+	}
+	article{
+		flex-basis: 45%;
+	}
+}
+
+/* ┌─────────────────────────────────┐ */
+/* │ Menu completo: 641px a infinito │ */
+/* └─────────────────────────────────┘ */
+@media screen and (min-width: 641px){
+	body{
+		background: silver;
+	}
+	article{
+		flex-basis: 20%;
+	}
+	/* header escritorio */
+	header>div>div{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 5px 25px;
+		border-radius: 15px;
+		margin: 5%;
+	}
+	header>div>div>img{
+		width: 130px;
+		height: 130px;
+	}
+	header>div>div>hgroup{
+		display: flex;
+		flex-direction: column;
+	}
+	header>div>div>hgroup>h1{
+		margin-left: 20px;
+		font-size: 45px;
+	}
+	header>div>div>hgroup>h2{
+		margin-left: 20px;
+		font-size: 25px;
+		margin-top: -20px;
+		/* TODO Edu(21/02/2020): corregir break? */
+	}
+	main>form>div{
+		display: inline-block;
+		position: relative;
+		left: 9.5%;
+	}
+}
+
 form input[type=email],
 form input[type=password],
 form input[type=text]{
@@ -227,22 +430,24 @@ form input[type=text]{
 form input[type=email]:hover,
 form input[type=password]:hover,
 form input[type=text]:hover{
-	border-radius: 7px;
-	border-color: #C0B3B3;
+	/* border-radius: 7px; */
+	/* border-color: white; */
+	background: mistyrose;
 }
 form input[type=email]:focus,
 form input[type=password]:focus,
 form input[type=text]:focus{
-	background: #FEFFCF;
+	background: lightblue;
 }
 
 form input[type="submit"]{
 	border: none;
 	outline: none;
-	background: #c42627;
+	background: indigo;
 	color:white;
-	height: 3vh;
-	margin-top: 5%;
-	margin-bottom: 5%;
+	padding: 5px 15px;
+	font-size: 0.8em;
+	/* margin-top: 5%; */
+	/* margin-bottom: 5%; */
 	border-radius: 20px;
 }
