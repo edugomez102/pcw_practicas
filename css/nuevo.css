@@ -30,6 +30,7 @@ main>div>div:first-child>form{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-height: max-content;
 /*	overflow: scroll;*/
 	/*flex-wrap: wrap;*/
 }
@@ -100,6 +101,7 @@ main>div>div:last-child>div:first-child{
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items:center;
+	min-height: max-content;
 }
 
 main>div>div:last-child>div:last-child{
