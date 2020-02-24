@@ -1,7 +1,10 @@
 main{
+		display: -webkit-box;
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		-webkit-box-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		        align-items: center;
 	}
 
 	.contenedorLogin{
@@ -9,11 +12,19 @@ main{
 		border: 5px solid indigo;
 		width: 80%;
 		height: 95%;
+		display: -webkit-box;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		        flex-direction: column;
+		-webkit-box-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		        align-items: center;
 		flex-wrap: nowrap;
+		min-height: -webkit-max-content;
+		min-height: -moz-max-content;
+		min-height: max-content;
 
 	}
 
@@ -28,10 +39,15 @@ main{
 	}
 
 	.contenedorLogin>form>div{ 
+		display: -webkit-box; 
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		        flex-direction: column;
+		-webkit-box-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		        align-items: center;
 	}
 
 	.contenedorLogin>form>div>label{
