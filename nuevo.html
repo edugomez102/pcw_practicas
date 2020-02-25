@@ -69,8 +69,7 @@
 		<main>
 			<div>
 				<form>
-					<!-- <div> -->
-					<h3 align="center">Nuevo Articulo</h3>
+					<h3>Nuevo Articulo</h3>
 					<label>Articulo</label>
 					<input type="text" placeholder="Nombre articulo" maxlength="100" required="required">
 
@@ -80,7 +79,7 @@
 
 
 					<label>Precio</label>
-					<input type="number" placeholder="Precio"required="required" step="0.01" pattern="^[0-9]+">
+					<input type="number" placeholder="Precio" required="required" step="0.01" min="0">
 
 
 					<label>Categoria</label>
@@ -94,14 +93,13 @@
 						<option>Juguetes</option>
 						<option>Consolas y videojuegos</option>
 					</datalist>	
-					<!-- </div> -->
 				</form>
 				<div>
 					<div>
-						<h3 align="center">Fotos del artículo</h3>
+						<h3>Fotos del artículo</h3>
 						<label for ="foto"><img src="img/object.svg" alt="fotoOBjecto" id="fotoobjeto"></label>
 						<label for="foto">Añadir foto</label><input type="file" name="foto" id="foto">
-						<label for="eliminarfoto">Eliminar foto</label>
+						<label>Eliminar foto</label>
 					</div>
 					<div>
 						<img src="img/logoSecondHand.png" alt="logo">

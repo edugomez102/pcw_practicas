@@ -1,16 +1,22 @@
 /*Default: 320px a 480px*/
 
 main{
+	display: -webkit-box;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
 }
 
 main>div{
 	width: 85%;
 	background-color:black;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: row;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
 	border: 5px solid indigo;
 }
 
@@ -18,10 +24,17 @@ main>div{
 
 main>div>form{
 	width: 50%;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-align: center;
+	        align-items: center;
+	min-height: -webkit-max-content;
+	min-height: -moz-max-content;
 	min-height: max-content;
 
 }
@@ -51,17 +64,30 @@ main>div>form>input[type="submit"]{
 
 main>div>div{
 	width: 50%;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
 }
 
 main>div>div>div:first-child{
 	width: 100%;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+	-webkit-box-flex: 3;
+	        flex-grow: 3;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-align: center;
+	        align-items: center;
+	min-height: -webkit-max-content;
+	min-height: -moz-max-content;
 	min-height: max-content;
 }
 
@@ -96,10 +122,17 @@ main>div>div>div:first-child>h3{
 
 
 main>div>div>div:last-child{
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center; 
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-flex: 1;
+	        flex-grow: 1;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center; 
 }
 
 main>div>div>div:last-child>img{

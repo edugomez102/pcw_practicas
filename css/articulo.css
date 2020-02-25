@@ -1,20 +1,31 @@
 /*Default: 320px a 480px*/
 main{
+	display: -webkit-box;
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
 }
 
 main>div:first-child{
-	height:80%; 
+/*	height:80%; */
 	width:55%;
 	background-color: black; 
 	border: 2px solid indigo;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	margin-top: 1em;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
 }
 
 main>div>ul{
@@ -29,8 +40,8 @@ main>div>ul>li{
 }
 
 main>div>img{
-	max-width: 70%;
-	max-height: 70%;
+	max-width: 60%;
+	max-height: 60%;
 	display: block;
 	margin: 0 auto;
 	border: 2px solid indigo;
@@ -39,9 +50,14 @@ main>div>img{
 main>div>div{
 	width: 60%;
 /*	background: yellow;*/
+	display: -webkit-box;
 	display: flex;
-	flex-direction: row;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
 	justify-content: space-around;
+	min-width: -webkit-max-content;
+	min-width: -moz-max-content;
 	min-width: max-content;
 }
 
@@ -94,7 +110,7 @@ main>div>input[type="button"]{
 	border: 5px solid indigo;
 	color: white;
 	background-color:indigo;
-	font-size: 1em;
+	font-size: 0.8em;
 	margin-bottom: 1em;
 }
 
@@ -103,10 +119,37 @@ main>div>input[type="button"]:active{
 	border: 5px solid red;
 	color: white;
 	background-color:red;
-	font-size: 1em;
+	font-size: 0.8em;
 	margin-bottom: 1em;
 }
 
+#seguir-no{
+	display: none;
+}
+
+.follow1{
+	color: white;
+	border: 2px solid indigo;
+	background: indigo;
+	margin-bottom: 1em;
+}
+
+.follow2{
+	color: white;
+	border: 2px solid indigo;
+	background: indigo;
+	margin-bottom: 1em;
+	visibility: collapse;
+}
+
+#seguir-no:checked ~ .follow2{
+	visibility: visible;
+}
+
+
+#seguir-no:checked ~ .follow1{
+	visibility: collapse;
+}
 
 
 /*Menu iconos: 321px a 640px*/
@@ -121,14 +164,35 @@ main>div>input[type="button"]:active{
 	width: 38%;
 }
 
-
-main>div>div>input[type="button"]{
-	font-size: 1.5em;
-	/*padding: 5px 15px; */
+main>div:first-child{
+/*	height:80%; */
+	width:30%;
+	background-color: black; 
+	border: 2px solid indigo;
+	display: -webkit-box;
+	display: flex;
+	margin-top: 1em;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
 }
 
+
+
 main>div>div>label{
-	font-size: 1.2em;
+	font-size: 0.8em;
+}
+
+main>div>img{
+	max-width: 45%;
+	max-height: 45%;
+	display: block;
+	margin: 0 auto;
+	border: 2px solid indigo;
 }	
 
 }
