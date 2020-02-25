@@ -1,121 +1,146 @@
 /*Default: 320px a 480px*/
 
 main{
+	display: -webkit-box;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
 }
 
 main>div{
 	width: 85%;
-	height: 75%;
 	background-color:black;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: row;
-	border: 5px solid indigo; 
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
+	border: 5px solid indigo;
 }
 
-main>div>div:first-child{
-/*	background: green;*/
-	height: 100%;
+
+
+main>div>form{
 	width: 50%;
-}
-
-
-main>div>div:first-child>form{
-	width: 100%;
-	height: 85%;
+	display: -webkit-box;
 	display: flex;
-	background-color:blue; 
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-/*	overflow: scroll;*/
-	/*flex-wrap: wrap;*/
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-align: center;
+	        align-items: center;
+	min-height: -webkit-max-content;
+	min-height: -moz-max-content;
+	min-height: max-content;
+
 }
 
-main>div>div:first-child>form>label{
+
+main>div>form>label{
 	text-align: center;
 	color:white;	
 }
 
-main>div>div:first-child>form>input{
+main>div>form>input{
 	width: 75%;	
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	margin-top: 0.4em;
+	margin-bottom: 0.4em;
 }
 
-main>div>div:first-child>h3{
+main>div>form>h3{
 	color: white;
 	font-size: 0.9em;
 }
 
-main>div>div:last-child>div>h3{
-	color: white;
-	font-size: 0.9em;
+main>div>form>input[type="submit"]{
+	margin-bottom: 1em;
+	margin-top: 2em;
 }
 
 
+main>div>div{
+	width: 50%;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
+}
 
-main>div>div:last-child>div>label:last-child{
+main>div>div>div:first-child{
+	width: 100%;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-flex: 3;
+	        flex-grow: 3;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-align: center;
+	        align-items: center;
+	min-height: -webkit-max-content;
+	min-height: -moz-max-content;
+	min-height: max-content;
+}
+
+
+main>div>div>div:first-child>label:last-child{
 	color: white;
 	text-align: center;
 	background: indigo; 
-	margin-top: 1em;
+	margin-top: 0.8em;
 	font-weight: bold;
-	border: 0.4em solid indigo;  
+	border: 0.2em solid indigo;  
 }
 
-main>div>div:last-child>div>label:nth-child(2){
+main>div>div>div:first-child>label:nth-child(2){
 	text-align: center; 
 }
 
 
-main>div>div:last-child>div>label:nth-child(3){
+main>div>div>div:first-child>label:nth-child(3){
 	color: white;
 	text-align: center;
 	background: indigo; 
-	margin-top: 1em;
+	margin-top: 0.8em;
 	font-weight: bold;
-	border: 0.4em solid indigo;  
+	border: 0.2em solid indigo;  
+}
+
+main>div>div>div:first-child>h3{
+	color: white;
+	font-size: 0.9em;
 }
 
 
-main>div>div:last-child>div>img{
-	width: 40%;
-}
-
-main>div>div:last-child{
-	height: 100%;
-	width: 50%;
+main>div>div>div:last-child{
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-flex: 1;
+	        flex-grow: 1;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center; 
 }
 
-main>div>div:last-child>div:first-child{
-	height:75%; 
-	width:100%;
-	background-color: purple;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items:center;
+main>div>div>div:last-child>img{
+	margin-top: 0.5em;
+	max-width: 50%;
+	margin-bottom: 0.3em;
 }
 
-main>div>div:last-child>div:last-child{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 25%;
-}
-
-
-main>div>div:first-child>form>input[type="submit"]{
-	text-align: center;
-	width:70%;
-}
 
 #fotoobjeto{
 	width: 60%
@@ -129,7 +154,9 @@ main>div>div:first-child>form>input[type="submit"]{
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	
+	main>div>div>div:last-child>img{
+	max-width: 30%;
+	}
 }
 
 
@@ -137,12 +164,13 @@ main>div>div:first-child>form>input[type="submit"]{
 @media screen and (min-width: 641px){
 	main>div{
 		width: 40%;
-		height: 75%;
 	}
 
+	main>div>div>div:last-child>img{
+	max-width: 25%;
+	}
 
 	#fotoobjeto{
 	width: 40%;
-/*	height: 40%;*/
 }
 }

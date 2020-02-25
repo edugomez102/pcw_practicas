@@ -1,22 +1,198 @@
 /*Default: 320px a 480px*/
+main{
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
+}
 
+main>div:first-child{
+/*	height:80%; */
+	width:55%;
+	background-color: black; 
+	border: 2px solid indigo;
+	display: -webkit-box;
+	display: flex;
+	margin-top: 1em;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
+}
+
+main>div>ul{
+	text-align: center;
+	padding: 0;
+	background-color:indigo;
+	border: 10px solid indigo; 
+}
+
+main>div>ul>li{
+	display: inline-block;
+}
+
+main>div>img{
+	max-width: 60%;
+	max-height: 60%;
+	display: block;
+	margin: 0 auto;
+	border: 2px solid indigo;
+}
+
+main>div>div{
+	width: 60%;
+/*	background: yellow;*/
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
+	justify-content: space-around;
+	min-width: -webkit-max-content;
+	min-width: -moz-max-content;
+	min-width: max-content;
+}
+
+main>div>div>label{
+	color: white;
+	font-size: 0.7em;
+	text-align: center;
+	margin-top: 0.5em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+
+main>div>div>input[type="button"]{
+	border: none;
+	color: white;
+	background-color:indigo;
+	font-size: 1em;
+	/*padding: 5px 15px; */
+}
+
+
+
+main>div:last-child{
+	height: 80%;
+	background-color: red;
+	width: 35%;
+	border: 2px solid indigo;
+}
+
+main>div>h3{
+	color: white;
+}
+
+
+main>div>h4{
+	color: white;
+}
+
+main>div>label{
+	color: white;
+	font-weight: bold;
+}
+
+main>div>p{
+	color: white;
+}
+
+main>div>input[type="button"]{
+	border-radius: 10px;
+	border: 5px solid indigo;
+	color: white;
+	background-color:indigo;
+	font-size: 0.8em;
+	margin-bottom: 1em;
+}
+
+main>div>input[type="button"]:active{
+	border-radius: 10px;
+	border: 5px solid red;
+	color: white;
+	background-color:red;
+	font-size: 0.8em;
+	margin-bottom: 1em;
+}
+
+#seguir-no{
+	display: none;
+}
+
+.follow1{
+	color: white;
+	border: 2px solid indigo;
+	background: indigo;
+	margin-bottom: 1em;
+}
+
+.follow2{
+	color: white;
+	border: 2px solid indigo;
+	background: indigo;
+	margin-bottom: 1em;
+	visibility: collapse;
+}
+
+#seguir-no:checked ~ .follow2{
+	visibility: visible;
+}
+
+
+#seguir-no:checked ~ .follow1{
+	visibility: collapse;
+}
 
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	div{
-		background: red;
-		width: 100vw;
-		height: 100vh;
-	}
+	
 }
 
 
 /*Menu completo: 641px a infinito*/
 @media screen and (min-width: 641px){
-	div{
-		background: green;
-		width: 100vw;
-		height: 100vh;
-	}
+	main>div>div{
+	width: 38%;
+}
+
+main>div:first-child{
+/*	height:80%; */
+	width:30%;
+	background-color: black; 
+	border: 2px solid indigo;
+	display: -webkit-box;
+	display: flex;
+	margin-top: 1em;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
+}
+
+
+
+main>div>div>label{
+	font-size: 0.8em;
+}
+
+main>div>img{
+	max-width: 45%;
+	max-height: 45%;
+	display: block;
+	margin: 0 auto;
+	border: 2px solid indigo;
+}	
+
 }

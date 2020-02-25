@@ -68,9 +68,8 @@
 		</nav>
 		<main>
 			<div>
-				<div>
-					<h3 align="center">Nuevo Articulo!</h3>
-					<form>
+				<form>
+					<h3>Nuevo Articulo</h3>
 					<label>Articulo</label>
 					<input type="text" placeholder="Nombre articulo" maxlength="100" required="required">
 
@@ -79,31 +78,28 @@
 					<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2"></textarea>
 
 
-					<!-- TODO: Ver si el pattern esta bien no lo se muy bien yo creo que si-->
 					<label>Precio</label>
-					<input type="number" placeholder="Precio"required="required" step="0.01" pattern="^[0-9]+">
+					<input type="number" placeholder="Precio" required="required" step="0.01" min="0">
 
 
 					<label>Categoria</label>
 					<input type="text" placeholder="Categoria" maxlength="100" required="required" name="cateogoria_articulo" list="lista-categorias">
 
 					<input type="submit" value="Nuevo Articulo" >
-					
-					<!-- Por alguna razon esto no tira no se pq -->
+
 					<datalist id="lista-categorias">
 						<option>Electrodomesticos</option>
 						<option>Ropa</option>
 						<option>Juguetes</option>
 						<option>Consolas y videojuegos</option>
 					</datalist>	
-					</form>
-				</div>
+				</form>
 				<div>
 					<div>
 						<h3>Fotos del artículo</h3>
 						<label for ="foto"><img src="img/object.svg" alt="fotoOBjecto" id="fotoobjeto"></label>
 						<label for="foto">Añadir foto</label><input type="file" name="foto" id="foto">
-						<label for="eliminarfoto">Eliminar foto</label>
+						<label>Eliminar foto</label>
 					</div>
 					<div>
 						<img src="img/logoSecondHand.png" alt="logo">
