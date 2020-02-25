@@ -181,6 +181,19 @@ section>h3{
 	margin: 5px;
 	flex-basis: 100%;
 }
+main>section>ul{
+	flex-basis: 100%;
+	text-align: center;
+	background-color: red;
+}
+main>section>ul>li:nth-child(3){
+	background-color: green;
+}
+main>section>ul>li{
+	display: inline-block;
+	justify-content: center;
+	/* align-items: center; */
+}
 article{
 	background-color: slateblue;
 	margin: 5px;
