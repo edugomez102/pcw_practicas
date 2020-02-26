@@ -39,7 +39,6 @@ nav {
 	/* background: #746060; */
 	z-index: 1;
 }
-/* TODO Edu(06/02/2020): Pregunta se puede medidas con px para tamaño movil */
 header{
 	position: relative;
 }
@@ -163,93 +162,6 @@ main{
 	justify-content: center;
 	padding-bottom: 20px;
 }
-main>form>div{
-	position: relative;
-	text-align: center;
-	margin-top: 15px;
-}
-section{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding: 5px;
-}
-section>h3{
-	text-decoration: underline;
-	font-size: 30px;
-	text-align: center;
-	margin: 5px;
-	flex-basis: 100%;
-}
-main>section>ul{
-	flex-basis: 100%;
-	text-align: center;
-	background-color: red;
-}
-main>section>ul>li:nth-child(3){
-	background-color: green;
-}
-main>section>ul>li{
-	display: inline-block;
-	justify-content: center;
-	/* align-items: center; */
-}
-article{
-	background-color: slateblue;
-	margin: 5px;
-	/* para que funcione el text ellipsis */
-	min-width: 0;
-	/* flex-basis: 100%; */
-}
-article>h4{
-	text-align: center;
-}
-article>a>img{
-	/* TODO Edu(13/02/2020): que sea siempre cuadrado? */
-	max-width: 70%;
-	max-height: 70%;
-	display: block;
-	margin: 0 auto;
-	transition-duration: 0.3s;
-}
-article>a>img:hover{
-	transform: scale(1.08);
-	/* TODO Edu(16/02/2020): que te pasa firefox tio */
-	border-radius: 10px;
-}
-article>ul{
-	/* list-style-type: none; */
-	/* background-color: cyan; */
-	text-align: center;
-	padding: 0;
-}
-article>ul>li{
-	display: inline-block;
-	/* background-color: lightblue; */
-}
-article>ul>li:nth-child(1){
-	text-align: left;
-	width: 48%;
-}
-article>ul>li:nth-child(2){
-	text-align: left;
-	width: 12%;
-}
-article>ul>li:nth-child(3){
-	text-align: right;
-	width: 12%;
-}
-article>h5{
-	text-align: center;
-	font-size: 20pt;
-	margin: 15px 0 0 0;
-}
-article>p{
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	margin: 5px 10px;
-}
 footer{
 	/* font-family: 'Quicksand', sans-serif; */
 	font-family: 'Fira Sans', sans-serif;
@@ -345,9 +257,9 @@ footer>address{
 		transform: scaleX(1);
 	}
 	/* busqueda rapida  */
-	main>form>div{
-		text-align: left;
-	}
+	/* main>form>div{ */
+	/* 	text-align: left; */
+	/* } */
 	footer ul{
 		list-style: none;
 		text-align: center;
@@ -373,17 +285,11 @@ footer>address{
 	header{
 		margin: 0;
 	}
-	main>form>div{
-		left: 5%;
-	}
 	nav li a span:nth-child(2){
 		font-size: 0;
 	}
 	nav li a span:nth-child(1){
 		font-size: 1.3em;
-	}
-	article{
-		flex-basis: 45%;
 	}
 }
 
@@ -393,9 +299,6 @@ footer>address{
 @media screen and (min-width: 641px){
 	body{
 		background: silver;
-	}
-	article{
-		flex-basis: 20%;
 	}
 	/* header escritorio */
 	header>div>div{
@@ -423,11 +326,6 @@ footer>address{
 		font-size: 25px;
 		margin-top: -20px;
 		/* TODO Edu(21/02/2020): corregir break? */
-	}
-	main>form>div{
-		display: inline-block;
-		position: relative;
-		left: 9.5%;
 	}
 }
 
