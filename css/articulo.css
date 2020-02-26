@@ -4,18 +4,18 @@ main{
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
-	        flex-direction: row;
+	        /* flex-direction: row; */
 	-webkit-box-pack: center;
 	        justify-content: center;
 	-webkit-box-align: center;
 	        align-items: center;
 }
 
-main>div:first-child{
+main>section:first-child{
 /*	height:80%; */
 	width:55%;
-	background-color: black; 
-	border: 2px solid indigo;
+	background-color: slateblue; 
+	/* border: 2px solid indigo; */
 	display: -webkit-box;
 	display: flex;
 	margin-top: 1em;
@@ -28,18 +28,17 @@ main>div:first-child{
 	        align-items: center;
 }
 
-main>div>ul{
+main>section>ul{
 	text-align: center;
-	padding: 0;
 	background-color:indigo;
-	border: 10px solid indigo; 
+	padding: 10px;
 }
 
-main>div>ul>li{
+main>section>ul>li{
 	display: inline-block;
 }
 
-main>div>img{
+main>section>img{
 	max-width: 60%;
 	max-height: 60%;
 	display: block;
@@ -47,7 +46,7 @@ main>div>img{
 	border: 2px solid indigo;
 }
 
-main>div>div{
+main>section>div{
 	width: 60%;
 /*	background: yellow;*/
 	display: -webkit-box;
@@ -61,7 +60,7 @@ main>div>div{
 	min-width: max-content;
 }
 
-main>div>div>label{
+main>section>div>label{
 	color: white;
 	font-size: 0.7em;
 	text-align: center;
@@ -70,7 +69,7 @@ main>div>div>label{
 	margin-right: 0.2em;
 }
 
-main>div>div>input[type="button"]{
+main>section>div>input[type="button"]{
 	border: none;
 	color: white;
 	background-color:indigo;
@@ -80,32 +79,32 @@ main>div>div>input[type="button"]{
 
 
 
-main>div:last-child{
+main>section:last-child{
 	height: 80%;
 	background-color: red;
 	width: 35%;
 	border: 2px solid indigo;
 }
 
-main>div>h3{
+main>section>h3{
 	color: white;
 }
 
 
-main>div>h4{
+main>section>h4{
 	color: white;
 }
 
-main>div>label{
+main>section>label{
 	color: white;
 	font-weight: bold;
 }
 
-main>div>p{
+main>section>p{
 	color: white;
 }
 
-main>div>input[type="button"]{
+main>section>input[type="button"]{
 	border-radius: 10px;
 	border: 5px solid indigo;
 	color: white;
@@ -114,7 +113,7 @@ main>div>input[type="button"]{
 	margin-bottom: 1em;
 }
 
-main>div>input[type="button"]:active{
+main>section>input[type="button"]:active{
 	border-radius: 10px;
 	border: 5px solid red;
 	color: white;
@@ -160,39 +159,40 @@ main>div>input[type="button"]:active{
 
 /*Menu completo: 641px a infinito*/
 @media screen and (min-width: 641px){
-	main>div>div{
+	main>section>div{
 	width: 38%;
 }
 
-main>div:first-child{
+main>section:first-child{
 /*	height:80%; */
 	width:30%;
-	background-color: black; 
-	border: 2px solid indigo;
-	display: -webkit-box;
-	display: flex;
-	margin-top: 1em;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	        flex-direction: column;
-	-webkit-box-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	        align-items: center;
+	background-color: slateblue; 
+	flex-wrap: 100%;
+	/* /* border: 2px solid indigo; */ */
+	/* display: -webkit-box; */
+	/* display: flex; */
+	/* margin-top: 1em; */
+	/* -webkit-box-orient: vertical; */
+	/* -webkit-box-direction: normal; */
+	/*         flex-direction: column; */
+	/* -webkit-box-pack: center; */
+	/*         justify-content: center; */
+	/* -webkit-box-align: center; */
+	/*         align-items: center; */
 }
 
 
 
-main>div>div>label{
+main>section>div>label{
 	font-size: 0.8em;
 }
 
-main>div>img{
+main>section>img{
 	max-width: 45%;
 	max-height: 45%;
 	display: block;
 	margin: 0 auto;
-	border: 2px solid indigo;
+	/* border: 2px solid indigo; */
 }	
 
 }

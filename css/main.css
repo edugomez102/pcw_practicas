@@ -462,3 +462,12 @@ form input[type="submit"]{
 	font-size: 0.8em;
 	border-radius: 20px;
 }
+/* TODO Edu(26/02/2020): destacar los a */
+a{
+	text-decoration: none;
+	transition-duration: 0.2s;
+}
+a:hover{
+	background-color: blue;
+	text-decoration: underline;
+}
