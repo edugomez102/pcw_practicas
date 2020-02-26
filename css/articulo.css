@@ -2,16 +2,17 @@
 main{
 	display: -webkit-box;
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	        /* flex-direction: row; */
-	-webkit-box-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	        align-items: center;
+	flex-wrap: wrap;
+	/* -webkit-box-orient: horizontal; */
+	/* -webkit-box-direction: normal; */
+	/*         /* flex-direction: row; */ */
+	/* -webkit-box-pack: center; */
+	/*         justify-content: center; */
+	/* -webkit-box-align: center; */
+	/*         align-items: center; */
 }
 
-main>section:first-child{
+main>section:nth-child(1){
 /*	height:80%; */
 	width:55%;
 	background-color: slateblue; 
@@ -79,12 +80,6 @@ main>section>div>input[type="button"]{
 
 
 
-main>section:last-child{
-	height: 80%;
-	background-color: red;
-	width: 35%;
-	border: 2px solid indigo;
-}
 
 main>section>h3{
 	color: white;
@@ -150,6 +145,14 @@ main>section>input[type="button"]:active{
 	visibility: collapse;
 }
 
+main>section:last-child{
+	margin-top: 20px;
+	/* height: 80%; */
+	background-color: red;
+	width: 35%;
+	border: 2px solid indigo;
+	flex-basis: 100%;
+}
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
