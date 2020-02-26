@@ -4,6 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/buscar.css">
 		<link rel="stylesheet" href="css/fontello-embedded.css">
 		<link rel="stylesheet" href="css/normalizer.css">
 		<!-- <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Quicksand&#38;display=swap" rel="stylesheet"> -->
@@ -68,8 +69,36 @@
 		<main>
 			<!-- TODO (24/02/2020): preguntar formato -->
 			<!-- TODO (24/02/2020): acabar formulario -->
-			<form>
-			</form>
+			<section>
+				<h3>Búsqueda de artículo</h3>
+				<form>
+					<label>buscar por:</label>
+					<br>
+					<input type="radio" value="texto" name="buscar">
+					<label>Texto</label>
+					<br>
+					<input type="radio" value="vendedor" name="buscar">
+					<label>Vendedor</label>
+					<br>
+					<input type="radio" value="categoria" name="buscar">
+					<label>Categoría</label>
+					<br>
+					<input type="radio" id="pr" value="precio" name="buscar">
+					<label>Precio</label>
+					<br>
+					<input type="radio" value="seguidos" name="buscar">
+					<label>Artículos seguidos</label>
+					<br>
+					<input type="radio" value="venta" name="buscar">
+					<label>Artículos a la venta</label>
+					<br>
+					<br>
+					<input type="text">
+					<input type="number" placeholder="min" id="t1">
+					<input type="number" placeholder="max" id="t2">
+					<input type="submit" value="Buscar">
+				</form>
+			</section>
 			<section>
 				<h3>Resultado de la búsqueda</h3>
 				<article>

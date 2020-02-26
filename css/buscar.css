@@ -1,22 +1,35 @@
-/*Default: 320px a 480px*/
+/* main>section:nth-child(1) input[type="text"]{ */
+/* 	background-color: red; */
+/* } */
 
 
-
-/*Menu iconos: 321px a 640px*/
-@media screen and (min-width: 481px) and (max-width: 640px){
-	div{
-		background: red;
-		width: 100vw;
-		height: 100vh;
-	}
+#t1{
+	/* background-color: orange; */
+}
+#t2{
+	/* background-color: blue; */
+	/* visibility: hidden; */
+}
+input[type="text"]{
+	width: 180px;
 }
 
-
-/*Menu completo: 641px a infinito*/
-@media screen and (min-width: 641px){
-	div{
-		background: green;
-		width: 100vw;
-		height: 100vh;
-	}
+input[type="number"]{
+	display: none;
+	margin: 0;
 }
+#pr:checked {
+	/* margin: 10px; */
+}
+#pr:checked ~ input[type="text"]{
+	display: none;
+}
+#pr:checked ~ input[type="number"]{
+	display: initial;
+	width: 87.5px;
+}
+
+section>h3{
+	font-size: 20px;
+}
+
