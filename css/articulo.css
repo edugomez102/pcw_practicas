@@ -79,6 +79,10 @@ main>section>label{
 	color: white;
 	font-weight: bold;
 }
+main>section>a{
+	color: indigo;
+	text-decoration: none;
+}
 
 main>section>p{
 	color: white;

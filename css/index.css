@@ -19,10 +19,14 @@ section>h3{
 main>section>ul{
 	flex-basis: 100%;
 	text-align: center;
-	background-color: red;
+	background-color: slateblue;
+}
+main>section>ul>li:nth-child(1), li:nth-child(5){
+	/* background-color: red; */
+	/* text-decoration: underline; */
 }
 main>section>ul>li:nth-child(3){
-	background-color: green;
+	/* background-color: green; */
 }
 main>section>ul>li{
 	display: inline-block;
