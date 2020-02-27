@@ -40,9 +40,10 @@ main{
 	display: none;
 }
 
+.contenedorRegister>form>div>input[type="reset"],
 .contenedorRegister>form>div>input[type="submit"]{
 	margin-top: 10%;
-	margin-bottom: 5%;
+	margin-bottom: 3%;
 }
 
 .contenedorRegister>form>h1{
