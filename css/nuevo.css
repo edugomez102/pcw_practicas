@@ -20,7 +20,13 @@ main>div{
 	border: 5px solid indigo;
 }
 
-
+main>div>div>div>label{
+	transition-duration: 0.2s;
+	filter: contrast(100%);
+}
+main>div>div>div>label:hover{
+	filter: contrast(150%);
+}
 
 main>div>form{
 	width: 50%;
@@ -36,7 +42,6 @@ main>div>form{
 	min-height: -webkit-max-content;
 	min-height: -moz-max-content;
 	min-height: max-content;
-
 }
 
 

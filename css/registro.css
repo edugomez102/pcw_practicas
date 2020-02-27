@@ -50,7 +50,13 @@ main{
 	font-size: 1.5em;
 		
 }
-
+.contenedorRegister>form>div img{
+	transition-duration: 0.2s;
+	filter: contrast(100%);
+}
+.contenedorRegister>form>div img:hover{
+	filter: contrast(150%);
+}
 
 
 .contenedorRegister>form>input{
