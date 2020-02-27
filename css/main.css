@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik|Spartan:500&display=swap');
 /*Codigo color del logo -> c42627*/
 html{
 	scroll-behavior: smooth;
@@ -51,6 +52,7 @@ nav {
 }
 header{
 	position: relative;
+	font-family: 'Spartan', sans-serif;
 }
 header:before{
 	content: "";
@@ -173,8 +175,7 @@ main{
 	padding-bottom: 20px;
 }
 footer{
-	/* font-family: 'Quicksand', sans-serif; */
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Rubik', sans-serif ;
 	background: indigo;
 	color: white;
 	width: 100%;
@@ -290,7 +291,7 @@ footer>address{
 /* └────────────────────────────┘ */
 @media screen and (min-width: 481px) and (max-width: 640px){
 	body{
-		background-color: gold;
+		/* background-color: gold; */
 	}
 	header{
 		margin: 0;
