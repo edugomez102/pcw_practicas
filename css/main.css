@@ -362,6 +362,8 @@ form input[type=number]:focus{
 	background: lightblue;
 }
 
+
+form input[type="reset"],
 form input[type="submit"]{
 	border: none;
 	outline: none;
@@ -371,3 +373,4 @@ form input[type="submit"]{
 	font-size: 0.8em;
 	border-radius: 20px;
 }
+
