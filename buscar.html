@@ -71,30 +71,28 @@
 			<section>
 				<h3>Búsqueda de artículo</h3>
 				<form>
-					<label>buscar por:</label>
-					<br>
-					<input type="radio" value="texto" name="buscar">
 					<label>Texto</label>
-					<br>
-					<input type="radio" value="vendedor" name="buscar">
-					<label>Vendedor</label>
-					<br>
-					<input type="radio" value="categoria" name="buscar">
+					<div>
+						<input type="text" placeholder="Texto del artículo..." name="buscar">
+					</div>
+						<label>Vendedor</label>
+						<idv>
+							<input type="text" placeholder="Nombre del vendedor..." name="buscar">
+						</div>
 					<label>Categoría</label>
-					<br>
-					<input type="radio" id="pr" value="precio" name="buscar">
+					<select>
+						<option value="manzana">manzana</option>
+						<option value="manzana">manzana</option>
+						<option value="manzana">manzana</option>
+						<option value="manzana">manzana</option>
+					</select>
 					<label>Precio</label>
-					<br>
-					<input type="radio" value="seguidos" name="buscar">
+					<input type="number" placeholder="min" >
+					<input type="number" placeholder="max" >
 					<label>Artículos seguidos</label>
-					<br>
-					<input type="radio" value="venta" name="buscar">
+					<input type="checkbox" value="seguidos" name="buscar">
 					<label>Artículos a la venta</label>
-					<br>
-					<br>
-					<input type="text">
-					<input type="number" placeholder="min" id="t1">
-					<input type="number" placeholder="max" id="t2">
+					<input type="checkbox" value="venta" name="buscar">
 					<input type="submit" value="Buscar">
 				</form>
 			</section>

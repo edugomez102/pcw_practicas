@@ -1,28 +1,15 @@
-/* main>section:nth-child(1) input[type="text"]{ */
-/* 	background-color: red; */
-/* } */
-
-
-#t1{
-	/* background-color: orange; */
-}
-#t2{
-	/* background-color: blue; */
-	/* visibility: hidden; */
-}
 input[type="text"]{
 	width: 180px;
 }
 
 input[type="number"]{
-	display: none;
-	margin: 0;
+	/* width: 50%; */
 }
 #pr:checked {
 	/* margin: 10px; */
 }
 #pr:checked ~ input[type="text"]{
-	display: none;
+	/* display: none; */
 }
 #pr:checked ~ input[type="number"]{
 	display: initial;
@@ -33,3 +20,37 @@ section>h3{
 	font-size: 20px;
 }
 
+section>form{
+	background-color: red;
+	grid-gap: 5px;
+	display: grid;
+	grid-template-columns: max-content auto auto;
+	/* grid-auto-columns: 1fr; */
+}
+section>form>label{
+	background-color: green;
+	text-align: right;
+	grid-column: 1;
+}
+section>form>div,
+section>form>select
+/* section>form>input[type="text"]{ */
+{
+	background-color: cyan;
+	max-width: 100%;
+	grid-column-start: 2;
+	grid-column-end: span 3;
+}
+section>form>div[type=text]{
+	/* position: relative; */
+	width: 100%;
+	background-color: orange;
+}
+section>form>input[type="number"]{
+	background-color: blue;
+}
+section>form>input[type="submit"]{
+	grid-row: 7;
+	grid-column-start: 1;
+	grid-column-end: span 3;
+}
