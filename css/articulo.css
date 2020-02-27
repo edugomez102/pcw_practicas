@@ -3,30 +3,23 @@ main{
 	display: -webkit-box;
 	display: flex;
 	flex-wrap: wrap;
-	/* -webkit-box-orient: horizontal; */
-	/* -webkit-box-direction: normal; */
-	/*         /* flex-direction: row; */ */
-	/* -webkit-box-pack: center; */
-	/*         justify-content: center; */
-	/* -webkit-box-align: center; */
 	/*         align-items: center; */
 }
 
+main>section{
+	margin: 10px;
+	padding: 10px;
+}
 main>section:nth-child(1){
-/*	height:80%; */
-	width:55%;
+	/* width:55%; */
 	background-color: slateblue; 
 	/* border: 2px solid indigo; */
 	display: -webkit-box;
 	display: flex;
 	margin-top: 1em;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	        flex-direction: column;
-	-webkit-box-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	        align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 main>section>ul{
@@ -49,16 +42,11 @@ main>section>img{
 
 main>section>div{
 	width: 60%;
-/*	background: yellow;*/
+	/* background: yellow; */
 	display: -webkit-box;
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	        flex-direction: row;
+	flex-direction: row;
 	justify-content: space-around;
-	min-width: -webkit-max-content;
-	min-width: -moz-max-content;
-	min-width: max-content;
 }
 
 main>section>div>label{
@@ -77,9 +65,6 @@ main>section>div>input[type="button"]{
 	font-size: 1em;
 	/*padding: 5px 15px; */
 }
-
-
-
 
 main>section>h3{
 	color: white;
@@ -140,62 +125,73 @@ main>section>input[type="button"]:active{
 	visibility: visible;
 }
 
-
 #seguir-no:checked ~ .follow1{
 	visibility: collapse;
 }
 
-main>section:last-child{
-	margin-top: 20px;
-	/* height: 80%; */
-	background-color: red;
-	width: 35%;
-	border: 2px solid indigo;
-	flex-basis: 100%;
+main>section:nth-child(2){
+	background-color: slateblue;
+	/* border: 2px solid indigo; */
 }
+/* TODO Edu(27/02/2020): porque esta vaina va de dos en dos???? */
+main>section>article:nth-child(2){
+	/* background-color: lime; */
+}
+main>section>article p{
+	background-color: gainsboro;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px 0;
+}
+main>section>article>ul{
+	margin: 5px;
+	padding: 0;
+}
+main>section>article>ul>li{
+	display: inline-block;
+	font-size: 12px;
+	/* background-color: mediumorchid; */
+	text-decoration: underline;
+}
+main>section:last-child>article textarea{
+	position: relative;
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	
-}
 
+}
 
 /*Menu completo: 641px a infinito*/
 @media screen and (min-width: 641px){
 	main>section>div{
-	width: 38%;
-}
+		width: 38%;
+	}
 
-main>section:first-child{
-/*	height:80%; */
-	width:30%;
-	background-color: slateblue; 
-	flex-wrap: 100%;
-	/* /* border: 2px solid indigo; */ */
-	/* display: -webkit-box; */
-	/* display: flex; */
-	/* margin-top: 1em; */
-	/* -webkit-box-orient: vertical; */
-	/* -webkit-box-direction: normal; */
-	/*         flex-direction: column; */
-	/* -webkit-box-pack: center; */
-	/*         justify-content: center; */
-	/* -webkit-box-align: center; */
-	/*         align-items: center; */
-}
+	main>section:first-child{
+		/*	height:80%; */
+		/* width:30%; */
+		background-color: slateblue; 
+		/* flex-wrap: 100%; */
+	}
 
+	main>section>div>label{
+		font-size: 0.8em;
+	}
 
-
-main>section>div>label{
-	font-size: 0.8em;
-}
-
-main>section>img{
-	max-width: 45%;
-	max-height: 45%;
-	display: block;
-	margin: 0 auto;
-	/* border: 2px solid indigo; */
-}	
+	main>section>img{
+		max-width: 45%;
+		max-height: 45%;
+		display: block;
+		margin: 0 auto;
+		/* border: 2px solid indigo; */
+	}	
+	main>section:nth-child(2){
+		flex-basis: 80%;
+	}
 
 }
