@@ -52,6 +52,10 @@ section>form>input[type="number"]{
 	/* background-color: blue; */
 	width: 100%;
 }
+section>form>input[type="reset"]{
+	grid-row: 7;
+	grid-column-start: 1;
+}
 section>form>input[type="submit"]{
 	grid-row: 7;
 	grid-column-start: 2;
