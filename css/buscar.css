@@ -21,36 +21,45 @@ section>h3{
 }
 
 section>form{
-	background-color: red;
 	grid-gap: 5px;
 	display: grid;
-	grid-template-columns: max-content auto auto;
-	/* grid-auto-columns: 1fr; */
+	grid-template-columns: max-content 105px 105px;
+	align-items: center;
 }
 section>form>label{
-	background-color: green;
 	text-align: right;
 	grid-column: 1;
+	/* background-color: lime; */
 }
-section>form>div,
-section>form>select
-/* section>form>input[type="text"]{ */
-{
-	background-color: cyan;
-	max-width: 100%;
+section>form>label:nth-child(12),
+section>form>label:nth-child(10){
+	/* background-color: blue; */
+	grid-column-start: 1;
+	grid-column-end: span 2;
+	text-align: center;
+}
+section>form>input[type="checkbox"]{
+	background-color: red;
+}
+section>form>select,
+section>form>input[type="text"]{
+	/* background-color: cyan; */
 	grid-column-start: 2;
-	grid-column-end: span 3;
-}
-section>form>div[type=text]{
-	/* position: relative; */
-	width: 100%;
-	background-color: orange;
+	grid-column-end: span 2;
+	min-width: 100%;
 }
 section>form>input[type="number"]{
-	background-color: blue;
+	/* background-color: blue; */
+	width: 100%;
 }
 section>form>input[type="submit"]{
 	grid-row: 7;
-	grid-column-start: 1;
-	grid-column-end: span 3;
+	grid-column-start: 2;
+	grid-column-end: span 4;
+}
+
+@media screen and (min-width: 641px){
+	section>form{
+		grid-template-columns: max-content auto auto;
+	}
 }
