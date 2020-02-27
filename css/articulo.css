@@ -137,21 +137,38 @@ main>section:nth-child(2){
 	background-color: slateblue;
 	/* border: 2px solid indigo; */
 }
+main>section:nth-child(2)>article div{
+	/* background-color: red; */
+	background-color: #8C7EDE;
+	border-radius: 5px;
+}
+main>section:nth-child(2)>h4{
+	margin: 0;
+	font-size: 18px;
+	text-decoration: underline;
+	text-align: center;
+}
+main>section:nth-child(2)>article h5{
+	margin: 10px 0;
+	font-size: 14px;
+	text-decoration: underline;
+	/* text-align: center; */
+}
 /* TODO Edu(27/02/2020): porque esta vaina va de dos en dos???? */
 main>section>article:nth-child(2){
 	/* background-color: lime; */
 }
 main>section>article p{
-	background-color: gainsboro;
+	/* background-color: gainsboro; */
 	border-radius: 5px;
 	padding: 5px;
 	margin: 5px 0;
 }
-main>section>article>ul{
+main>section>article ul{
 	margin: 5px;
 	padding: 0;
 }
-main>section>article>ul>li{
+main>section>article ul>li{
 	display: inline-block;
 	font-size: 12px;
 	/* background-color: mediumorchid; */
@@ -164,6 +181,9 @@ main>section:last-child>article textarea{
 	border-radius: 10px;
 }
 
+main>section:nth-child(2)>article>article{
+	margin-left: 30px;
+}
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
