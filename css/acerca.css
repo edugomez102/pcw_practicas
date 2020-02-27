@@ -10,6 +10,11 @@ main>div{
 	align-items: center;
 }
 
+
+main>div p{
+	width: 70%;
+}
+
 .contenedorAcerca{
 /*	background-color:red;*/
 	width: 100%;
