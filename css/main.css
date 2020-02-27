@@ -19,6 +19,15 @@ body{
 	height: 100%;
 	min-height: 100%;
 }
+/* TODO Edu(26/02/2020): destacar los a */
+a{
+	/* text-decoration: none; */
+	transition-duration: 0.2s;
+}
+a:hover{
+	background-color: blue;
+	text-decoration: underline;
+}
 /* ┌───────────┐ */
 /* │ amborgesa │ */
 /* └───────────┘ */
@@ -340,14 +349,14 @@ form input[type=number]{
 }
 form input[type=email]:hover,
 form input[type=password]:hover,
-form input[type=text]:hover
+form input[type=text]:hover,
 form input[type=number]:hover{
 	background: mistyrose;
 }
 form input[type=email]:focus,
 form input[type=password]:focus,
-form input[type=text]:focus
-form input[type=number]{
+form input[type=text]:focus,
+form input[type=number]:focus{
 	background: lightblue;
 }
 
@@ -359,13 +368,4 @@ form input[type="submit"]{
 	padding: 5px 15px;
 	font-size: 0.8em;
 	border-radius: 20px;
-}
-/* TODO Edu(26/02/2020): destacar los a */
-a{
-	text-decoration: none;
-	transition-duration: 0.2s;
-}
-a:hover{
-	background-color: blue;
-	text-decoration: underline;
 }
