@@ -51,6 +51,12 @@ main{
 	font-size: 1.5em;
 		
 }
+#imgsearch{
+	margin-top: 10px;
+	background-color:indigo;
+	padding: 5px;
+	border-radius: 10px;
+}
 .contenedorRegister>form>div img{
 	transition-duration: 0.2s;
 	filter: contrast(100%);
