@@ -10,6 +10,10 @@ main>div{
 	align-items: center;
 }
 
+address{
+	font-size: .9em;
+	text-align: center;
+}
 
 main>div p{
 	width: 70%;
