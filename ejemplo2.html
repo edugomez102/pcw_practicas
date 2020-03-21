@@ -16,5 +16,35 @@
 			<button onclick="pedirInfoArticulo();">Pedir info articulo</button>
 		</footer>
 	</section>
+	<section>
+		<h2 onclick="pedirCategorias();">Categorias</h2>
+		<ul id="categorias"></ul>
+		<footer>
+			<button onclick="pedirCategorias();">Pedir Categorias</button>
+		</footer>
+	</section>
+	<section>
+		<h2>Hacer login:</h2>
+		<!-- Hay que pasarle  el formulario con el puntero this -->
+		<!-- Hay que asegurarse de que hacerLongin devuelva false para evitar el recargar la pagina -->
+		<form onsubmit="return hacerLogin(this);">
+			<div>
+				<!-- Los name de los inputs son  importantes para los FormData de js -->
+				<label>Login:</label>
+				<input type="text" name="login">
+				<label>Password:</label>
+				<input type="password" name="pwd">
+				<input type="reset" value="limpiar">
+				<input type="submit" value="Enviar">
+			</div>
+		</form>
+	</section>
+	<section>
+		<h2>Pedir info articulo con fetch:</h2>
+		<div id="#info-articulo-fetch"></div>
+		<footer>
+			<button onclick="pedirInfoArticuloFetch();">Pedir info articulo fetch</button>
+		</footer>
+	</section>
 </body>
 </html>
