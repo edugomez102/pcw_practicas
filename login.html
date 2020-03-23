@@ -5,9 +5,9 @@
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/fontello-embedded.css">
-		<link rel="stylesheet" href="css/normalizer.css">
 		<link rel="stylesheet" href="css/login.css">
 		<title>Login</title>
+		<script src="JavaScript/login.js"></script>
 	</head>
 	<body>
 		<header>
@@ -69,19 +69,30 @@
 			<div class="contenedorLogin">
 				<img src="img/logoSecondHand.png" alt="logo"/>
 				<h1>Login here</h1>
-				<form>
+				<form onsubmit="return hacerLogin(this);">
 					<div>
 					<label>Username</label>
-					<input type="text" placeholder="Enter Username" autofocus="autofocus" required="required">
+					<input type="text" placeholder="Enter Username" autofocus="autofocus" required="required" name="login">
 					
 					<label>Password</label>
-					<input type="password" placeholder="Enter Password" required="required">
+					<input type="password" placeholder="Enter Password" required="required" name="pwd">
 
 					<input type="submit" value="Log In">
 					<input type="reset" value="Reset">
 					<a href="registro.html">Registrate</a>
 					</div>
 				</form>
+			</div>
+			<div class="modal">
+				<div class="contenido-modal">
+					<div>
+						<p>Login usuario</p>
+					</div>
+					<div>
+						<p id="mensajeLogin">Usuario y contraseña correctos</p>
+						<button id="AceptarLogin">Aceptar</button>
+					</div>
+				</div>
 			</div>
 		</main>
 		<footer>
