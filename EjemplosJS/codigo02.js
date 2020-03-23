@@ -5,7 +5,7 @@ function pedirInfoArticulo(){
 	// Primera manera de hacer peticiones: AJAX
 
 	let xhr =  new XMLHttpRequest(),
-		url = 'api/articulos/1',
+		url = '../api/articulos/1',
 		auth = 'usuario2:a0c696e672fc38b8899753ee0b077e10f5daa522ef5834af7d36859bf26159d4087eb98ca40ff664518dc9ac9b9edb7910b8e9e5f6d15bb1fee42f0aa3d73d6f';
 
 	//abrir conexion
@@ -38,7 +38,7 @@ function pedirInfoArticulo(){
 //Segunda forma de peticiones: Fetch API (mezcla ajax y promesas)
 //Tipo get sin cabecera
 function pedirCategorias(){
-	let url = 'api/categorias';
+	let url = '../api/categorias';
 
 	//El objeto respuesta es objeto response
 	fetch(url).then(function(respuesta){
@@ -76,7 +76,7 @@ function pedirCategorias(){
 
 
 function hacerLogin(formu){
-	let url = 'api/usuarios/login',
+	let url = '../api/usuarios/login',
 		fd 	= new FormData(formu),
 		init= {method:'post',body:fd};
 
@@ -104,7 +104,7 @@ function hacerLogin(formu){
 function pedirInfoArticuloFetch(){
 	// Ejemplo con cabecera accediendo desde el sessionStorage
 
-	let url = 'api/articulos/2',
+	let url = '../api/articulos/2',
 		usu = JSON.parse(sessionStorage['usuario']),
 		cabecera;
 

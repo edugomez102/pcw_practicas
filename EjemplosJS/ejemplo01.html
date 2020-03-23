@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="codigo01.js"></script>
+</head>
+<body>
+	<h1>Ejemplo de servidor RESTful</h1>
+	<section>
+		<h2>Lista de categorias</h2>
+		<ul id="categorias"></ul>
+		<footer>
+			<button onclick="pedirCateogorias();">Pedir categorias</button>
+		</footer>
+	</section>
+	<section>
+		<h2>Login:</h2>
+		<form onsubmit=" return hacerLogin(this);">
+			<div>
+				<label>Login</label>
+				<input type="text" name="login">
+			</div>
+			<div>
+				<label>Pwd:</label>
+				<input type="password" name="pwd">
+			</div>
+			<div>
+				<input type="submit">
+				<input type="reset">
+			</div>
+		</form>
+	</section>
+</body>
+</html>
