@@ -7,8 +7,9 @@
 		<link rel="stylesheet" href="css/fontello-embedded.css">
 		<link rel="stylesheet" href="css/registro.css">
 		<title>Registro</title>
+		<script src="JavaScript/registro.js"></script>
 	</head>
-	<body>
+	<body onload="comprobarLogin();">
 		<header>
 			<div>
 				<div>
@@ -25,8 +26,8 @@
 			<div> </div>
 			<div> </div>
 			<div> </div>
-			<ul>
-				<li>
+			<ul id="barraNav">
+				<!-- <li>
 					<a href="index.html">
 						<span class="icon-home"></span>
 						<span>Inicio</span>
@@ -61,13 +62,13 @@
 						<span class="icon-user-plus"></span>
 						<span>Registro</span>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 		<main>
 			<div class="contenedorRegister">
 				<img src="img/logoSecondHand.png" alt="logoPagina">
-				<form>
+				<form onsubmit="return hacerRegistro(this);">
 					<h1>Registro!</h1>
 					<!-- Login(usuario) -->
 					<label>User</label>

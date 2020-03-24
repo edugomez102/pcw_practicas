@@ -9,7 +9,7 @@
 		<title>Login</title>
 		<script src="JavaScript/login.js"></script>
 	</head>
-	<body>
+	<body onload="comprobarLogin();">
 		<header>
 			<div>
 				<div>
@@ -26,8 +26,8 @@
 			<div> </div>
 			<div> </div>
 			<div> </div>
-			<ul>
-				<li>
+			<ul id="barraNav">
+			<!-- 	<li>
 					<a href="index.html">
 						<span class="icon-home"></span>
 						<span>Inicio</span>
@@ -62,7 +62,7 @@
 						<span class="icon-user-plus"></span>
 						<span>Registro</span>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 		<main>
@@ -72,7 +72,7 @@
 				<form onsubmit="return hacerLogin(this);">
 					<div>
 					<label>Username</label>
-					<input type="text" placeholder="Enter Username" autofocus="autofocus" required="required" name="login">
+					<input type="text" placeholder="Enter Username" autofocus="autofocus" required="required" name="login" id="loginUser">
 					
 					<label>Password</label>
 					<input type="password" placeholder="Enter Password" required="required" name="pwd">
