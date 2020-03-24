@@ -106,7 +106,83 @@ main{
 	border: 5px solid white;  
 }
 
+#errorLogin{
+	color: red;
+	display: none;
+	font-size: 0.8em;
+}
 
+#errorPwd{
+	color: red;
+	display: none;
+	font-size: 0.8em;
+}
+
+.modal{
+		display: none;
+		position: fixed;
+		z-index: 1;
+		overflow: auto;
+		left:0%;
+		top:0%;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0,0.596);
+		
+	}
+
+	@keyframes modal{
+		from{top: -330px; opacity: 0;}
+		to{top:0px;opacity: 1;}
+	}
+
+	.contenido-modal{
+		position: relative;
+		background-color: white;
+		margin: auto;
+		width: 40%;
+		margin-top: 10em;
+		animation-name: modal;
+		animation-duration: 1s;
+		border: 2px solid black;
+	}
+
+	.contenido-modal>div:first-child{
+		background-color: indigo;
+		padding: 0.5px;
+	}
+
+	.contenido-modal>div:first-child>p{
+		color: white;
+		text-align: center;
+		font-weight: bold;
+		font-size: 1.5em;
+		padding: 8px;
+	}
+
+	.contenido-modal>div:last-child{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.contenido-modal>div:last-child>p{
+		color:black;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.contenido-modal>div:last-child>button{
+		border: none;
+		outline: none;
+		background: indigo;
+		color:white;
+		padding: 5px 15px;
+		font-size: 0.8em;
+		border-radius: 20px;
+		margin-bottom: 0.5em;
+	}
 
 
 @media screen and (min-width: 481px) and (max-width: 640px){

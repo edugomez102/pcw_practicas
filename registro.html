@@ -68,38 +68,50 @@
 		<main>
 			<div class="contenedorRegister">
 				<img src="img/logoSecondHand.png" alt="logoPagina">
-				<form onsubmit="return hacerRegistro(this);">
+				<form onsubmit="return hacerRegistro(this);" id="formRegistro">
 					<h1>Registro!</h1>
 					<!-- Login(usuario) -->
 					<label>User</label>
-					<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+">
+					<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+" onblur="comprobarFoco();" name="login" id="logUser">
+					<label id="errorLogin">* Login no disponible</label>
 
 					<!-- Contraseña -->
 					<label>Password</label>
-					<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20">
+					<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20" onfocus="comprobarFoco();" name="pwd" id="pwdUser">
 					
 					<!-- Confirmar contraseña -->
 					<label>Repeat Password</label>
-					<input type="password" placeholder="Confirm password">
+					<input type="password" placeholder="Confirm password" id="repeatpwd" onfocus="comprobarFoco();" name="pwd2">
+					<label id="errorPwd">* Las contraseñas no coinciden</label>
 
 					<!-- Nombre completo -->
 					<label>Your name</label>
-					<input type="text" placeholder="Full name" required="required">
+					<input type="text" placeholder="Full name" required="required" onfocus="comprobarFoco();" name="nombre" id="nombreUser">
 
 					<!-- Email usuario -->
 					<label>Email</label>
-					<input type="email" placeholder="email" required="required">
+					<input type="email" placeholder="email" required="required" name="email">
 
 					<!-- Foto del usuario -->
 					<div>
 						<label id="imgsearch" for="foto">Buscar foto</label>
-						<!-- <input value="ufa" type="button" for="foto"> -->
-						<input type="file" name="foto" id="foto" accept="image/*">
-						<label for ="foto"><img src="img/account.svg" alt="userFoto" id="fotouser"></label>
+						<input type="file" onchange="insertarFoto(this);" name="foto" id="foto" accept="image/*" >
+						<label for ="foto" id="fotoCambiar"><img src="img/account.svg" alt="userFoto" id="fotouser"></label>
 						<input type="submit" value="Register" >
 						<input type="reset" value="Reset">
 					</div>
 				</form>
+			</div>
+			<div class="modal">
+				<div class="contenido-modal">
+					<div>
+						<p>Register usuario</p>
+					</div>
+					<div>
+						<p id="mensajeLogin">Usuario y contraseña correctos</p>
+						<button id="AceptarLogin">Aceptar</button>
+					</div>
+				</div>
 			</div>	
 		</main>
 		<footer>

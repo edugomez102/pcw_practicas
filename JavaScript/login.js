@@ -40,7 +40,6 @@ function hacerLogin(formu){
 	xhr.onload = function(){
 		let objJava = JSON.parse(xhr.responseText);
 		let mensajeModal = "";
-		console.log(objJava);
 		if (objJava.RESULTADO == "OK") {
 			mensajeModal = `<p>Usuario ${objJava.login} identificado correctamente</p>`;
 			sessionStorage['usuario'] = JSON.stringify(objJava);
