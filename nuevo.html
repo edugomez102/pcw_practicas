@@ -9,7 +9,7 @@
 		<title>Index</title>
 		<script src="JavaScript/nuevo.js"></script>
 	</head>
-	<body onload="comprobarLogin();">
+	<body onload="comprobarLogin();cargarCategorias();">
 		<header>
 			<div>
 				<div>
@@ -88,10 +88,10 @@
 					<input type="reset" value="Reset">
 
 					<datalist id="lista-categorias">
-						<option>Electrodomesticos</option>
+						<!-- <option>Electrodomesticos</option>
 						<option>Ropa</option>
 						<option>Juguetes</option>
-						<option>Consolas y videojuegos</option>
+						<option>Consolas y videojuegos</option> -->
 					</datalist>	
 				</form>
 				<div>
@@ -99,7 +99,7 @@
 						<h3>Fotos del artículo</h3>
 						<label for ="foto"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto"></label>
 						<label for="foto">Añadir foto</label>
-						<input type="file" name="foto" accept="image/*" id="foto">
+						<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto">
 						<label>Eliminar foto</label>
 					</div>
 					<div>
@@ -107,7 +107,17 @@
 					</div>
 				</div>
 			</div>
-			
+			<div class="modal">
+				<div class="contenido-modal">
+					<div>
+						<p>Fichero no soportado</p>
+					</div>
+					<div>
+						<p id="mensajeLogin">El peso del archivo es mayor que 300KB</p>
+						<button id="AceptarLogin">Aceptar</button>
+					</div>
+				</div>
+			</div>	
 		</main>
 		<footer>
 			<div>

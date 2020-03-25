@@ -31,3 +31,46 @@ function logout(){
 	sessionStorage.clear();
 	window.location = "/pcw_practicas/index.html";
 }
+
+function cargarCategorias(){
+	let xhr = new XMLHttpRequest(),
+		url = 'api/categorias';
+
+	xhr.open('GET',url,true);
+
+	xhr.onerror = function(){
+		console.log('Error cargando categorias');
+	}
+
+	xhr.onload = function(){
+		let r = JSON.parse(xhr.responseText);
+		r.FILAS.forEach( function(e) {
+			let option = document.createElement('option');
+			option.innerHTML = `${e.nombre}`;
+			document.querySelector('#lista-categorias').appendChild(option);
+		});
+	};
+
+	xhr.send();
+}
+
+function insertarFoto(fotito){
+	let fr = new FileReader();
+	let wModal = document.querySelector(".modal");
+	let buttonAceptar = document.getElementById('AceptarLogin');
+
+	fr.onload = function(){
+		document.querySelector('#fotoobjeto').src = fr.result;
+	}
+
+	if(fotito.files[0]!=null){
+		if(fotito.files[0].size/1024 > 300){
+			wModal.style.display = 'block';
+			buttonAceptar.addEventListener('click',function(){
+				wModal.style.display = 'none';
+			});
+		}else{
+			fr.readAsDataURL(fotito.files[0]);
+		}
+	}
+}
