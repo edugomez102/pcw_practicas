@@ -204,4 +204,8 @@ main{
 	width: 60%;
 	margin-bottom: 0.3em;
 	}
+
+	.contenido-modal{
+		width: 20%;
+	}
 }
