@@ -74,3 +74,29 @@ function insertarFoto(fotito){
 		}
 	}
 }
+
+function hacerNuevo(formu){
+	let usu = JSON.parse(sessionStorage['usuario']);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos',
+		fd  = new FormData(formu);
+	let auth = usu.login+':'+usu.token;
+
+	console.log(auth);
+	xhr.open('POST',url,true);
+
+	xhr.onerror = function(){
+		console.log('Error subiendo archivo');
+	}
+
+	xhr.onload = function (){
+		console.log(JSON.parse(xhr.responseText));
+	}
+
+
+	//enviamos la  cabezera necesario para saber que usuario ha subido el articulo
+	xhr.setRequestHeader('Authorization', auth);
+	xhr.send(fd);
+
+	return false;
+}

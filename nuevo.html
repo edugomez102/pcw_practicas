@@ -67,25 +67,22 @@
 		</nav>
 		<main>
 			<div>
-				<form>
+				<form onsubmit="return hacerNuevo(this);">
 					<h3>Nuevo Articulo</h3>
 					<label>Articulo</label>
-					<input type="text" placeholder="Nombre articulo" maxlength="100" required="required">
+					<input type="text" placeholder="Nombre articulo" maxlength="100" required="required" name="nombre">
 
 
 					<label>Descripcion</label>
-					<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2"></textarea>
+					<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2" name="descripcion"></textarea>
 
 
 					<label>Precio</label>
-					<input type="number" placeholder="Precio" required="required" step="0.01" min="0">
+					<input type="number" placeholder="Precio" required="required" step="0.01" min="0" name="precio">
 
 
 					<label>Categoria</label>
-					<input type="text" placeholder="Categoria" maxlength="100" required="required" name="cateogoria_articulo" list="lista-categorias">
-
-					<input type="submit" value="Nuevo Articulo" >
-					<input type="reset" value="Reset">
+					<input type="text" placeholder="Categoria" maxlength="100" required="required" name="categoria" list="lista-categorias">
 
 					<datalist id="lista-categorias">
 						<!-- <option>Electrodomesticos</option>
@@ -93,6 +90,9 @@
 						<option>Juguetes</option>
 						<option>Consolas y videojuegos</option> -->
 					</datalist>	
+
+					<input type="submit" value="Nuevo Articulo" >
+					<input type="reset" value="Reset">
 				</form>
 				<div>
 					<div>
