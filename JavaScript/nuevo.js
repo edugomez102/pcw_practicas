@@ -90,7 +90,25 @@ function hacerNuevo(formu){
 	}
 
 	xhr.onload = function (){
-		console.log(JSON.parse(xhr.responseText));
+		let respuesta = JSON.parse(xhr.responseText);
+		let idArticulo = respuesta.ID;
+		if(respuesta.RESULTADO == "OK"){
+			let xhrFotos = new XMLHttpRequest(),
+				urlFotos = 'api/articulos/'+idArticulo+'/foto'
+
+			xhrFotos.open('POST',urlFotos,true);
+
+			xhrFotos.onerror = function(){
+				console.log('Error subiendo fotos');
+			}
+
+			xhr.onload = function(){
+				console.log(JSON.parse(xhrFotos.responseText));
+			}
+
+		}else{
+
+		}
 	}
 
 

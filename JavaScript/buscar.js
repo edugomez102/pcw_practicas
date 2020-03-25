@@ -48,3 +48,10 @@ function logout(){
 	sessionStorage.clear();
 	window.location = "/pcw_practicas/index.html";
 }
+
+
+function cogerUrl(){
+	let url = window.location.search;
+	
+	console.log(url[url.length-1]);
+}
