@@ -41,6 +41,7 @@ function hacerRegistro(formu){
 
 	if(registro_Valido_login && registro_Valido_pwd){
 		xhr.onload = function(){
+			let objJava = JSON.parse(xhr.responseText);
 			wModal.style.display = 'block';
 			document.querySelector('#mensajeLogin').innerHTML = `<p>Nuevo usuario <span style="color:indigo;">${objJava.LOGIN}</span> registrado correctamente</p>`;
 			buttonAceptar.addEventListener('click',function(){
