@@ -85,28 +85,19 @@
 					<input type="text" placeholder="Categoria" maxlength="100" required="required" name="categoria" list="lista-categorias">
 
 					<datalist id="lista-categorias">
-						<!-- <option>Electrodomesticos</option>
-						<option>Ropa</option>
-						<option>Juguetes</option>
-						<option>Consolas y videojuegos</option> -->
-					</datalist>	
-
+					</datalist>
 					<input type="submit" value="Nuevo Articulo" >
 					<input type="reset" value="Reset">
 				</form>
 				<div>
-					<div>
-						<h3>Fotos del artículo</h3>
-						<label for ="foto"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto"></label>
-						<label for="foto">Añadir foto</label>
-						<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto">
-						<label>Eliminar foto</label>
-					</div>
-					<div>
-						<img src="img/logoSecondHand.png" alt="logo">
-					</div>
-				</div>
+					<h3>Fotos del artículo</h3>
+					<label for ="foto"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto"></label>
+					<label for="foto">Añadir foto</label>
+					<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto">
+					<label>Eliminar foto</label>
 			</div>
+
+<!-- contenido JavaScript -->
 			<div class="modal">
 				<div class="contenido-modal">
 					<div>
@@ -119,6 +110,7 @@
 				</div>
 			</div>	
 		</main>
+
 		<footer>
 			<div>
 				<a href="#">Volver arriba</a>
