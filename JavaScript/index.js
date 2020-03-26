@@ -76,7 +76,48 @@ function mostrarArticulos(){
 			console.log('articulos cargados con exito');
 			// console.log(articulos);
 			articulos.FILAS.forEach(function(item){
-				console.log(item);
+			console.log(item);
+				// let xhrFoto = new XMLHttpRequest(),
+				// 	url = 'api/articulos/' + item.id + '/fotos';
+				// xhrFoto.open('GET', url, true);
+				// xhrFoto.onerror = function(){
+				// 	console.log("Erro al abrir las fotos");
+				// };
+				// xhrFoto.onload = function(){
+				// 	let fotos = JSON.parse(xhrFoto.responseText);
+				// 	console.log(fotos);
+				// };
+				// xhrFoto.send();
+					
+				
+				let articulo = document.createElement('article');
+				let foto = item.imagen;
+				let tost = document.querySelector('#tostadora');
+				// tost= foto;
+				console.log(foto);
+				articulo.innerHTML = `
+					<h4>${item.nombre}</h4>
+						<ul>
+							<li>
+								<span class="icon-picture"></span>
+								<span>${item.nfotos}</span>
+							</li>
+							<li>
+								<span>${item.veces_visto}</span>
+								<span class="icon-eye"></span>
+							</li>
+							<li>
+								<span>${item.nsiguiendo}</span>
+								<span class="icon-bookmark"></span>
+							</li>
+						</ul>
+						<a href="articulo.html"  >
+							<img src="${foto}" alt="foto_articulo">
+							</a>
+								<h5>${item.precio}€</h5>
+								<p>${item.descripcion}</p>
+				`;
+				document.querySelector('main>section').appendChild(articulo);
 			});
 		}
 		else{
