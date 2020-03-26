@@ -49,3 +49,13 @@ function logout(){
 	sessionStorage.clear();
 	window.location = "/pcw_practicas/index.html";
 }
+
+function buscaRapida(){
+	let r = document.getElementById('textoBuscar').value;
+	if(r){
+		window.location = "/pcw_practicas/buscar.html?="+r;
+	}else{
+		window.location = "/pcw_practicas/buscar.html";
+	}
+	return false;
+}

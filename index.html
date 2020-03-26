@@ -66,10 +66,10 @@
 			</ul>
 		</nav>
 		<main>
-			<form>
+			<form onsubmit="return buscaRapida();">
 				<div>
-					<input type="text" placeholder="Búsqueda rápida">
-					<input type="button" value="Buscar" onclick="window.location.href='buscar.html'">
+					<input type="text" placeholder="Búsqueda rápida" id="textoBuscar">
+					<input type="submit" value="Buscar">
 				</div>
 			</form>
 			<section>
