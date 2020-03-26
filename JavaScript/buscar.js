@@ -57,7 +57,7 @@ function cargarCategorias(){
 
 	xhr.onerror = function(){
 		console.log('Error cargando categorias');
-	}
+	};
 
 	xhr.onload = function(){
 		let r = JSON.parse(xhr.responseText);

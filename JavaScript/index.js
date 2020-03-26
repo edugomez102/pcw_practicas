@@ -1,8 +1,8 @@
 function comprobarLogin(){
 	
 	let = document.querySelector('#barraNav');
-	if(sessionStorage['usuario']!=null){
-		let usuario = JSON.parse(sessionStorage['usuario']).login;
+	if(sessionStorage.usuario!=null){
+		let usuario = JSON.parse(sessionStorage.usuario).login;
 		barraNav.innerHTML = `
 				<li>
 					<a href="buscar.html">
@@ -51,11 +51,38 @@ function logout(){
 }
 
 function buscaRapida(){
-	let r = document.getElementById('textoBuscar').value;
+let r = document.getElementById('textoBuscar').value;
 	if(r){
 		window.location = "/pcw_practicas/buscar.html?="+r;
 	}else{
 		window.location = "/pcw_practicas/buscar.html";
 	}
 	return false;
+}
+
+function mostrarArticulos(){
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos';
+
+	xhr.open('GET', url, true);
+
+	xhr.onerror = function(){
+		console.log('Error al consultar los articulos');
+	};
+
+	xhr.onload = function(){
+		let articulos = JSON.parse(xhr.responseText);
+		if(articulos.RESULTADO == 'OK'){
+			console.log('articulos cargados con exito');
+			// console.log(articulos);
+			articulos.FILAS.forEach(function(item){
+				console.log(item);
+			});
+		}
+		else{
+			reject(articulos);
+		}
+	};
+
+	xhr.send();
 }
