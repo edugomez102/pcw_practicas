@@ -136,7 +136,7 @@ main>form>h3{
 	/* grid-column-start: 1; */
 	/* grid-column-end: span 2; */
 	/* lo mismo que lo de arriba */
-	grid-column: 1 / span 2;
+	grid-column: 1  /span 2;
 	margin-bottom: 5px;
 	text-align: center;
 	text-decoration: underline;
@@ -155,19 +155,42 @@ main>div:nth-child(2){
 	grid-template-columns: auto auto auto;
 	justify-content: center;
 }
-main>div>label:nth-child(2){
-	background-color: red;
-	/* margin: 30px; */
+main>div:nth-child(2)>h3{
 	grid-column: 1 / span 3;
+}
+main>div>div:nth-child(2){
+	/* background-color: red; */
+	/* border: blue solid 10px; */
+	grid-column: 1 / span 3;
+	display: inline-block;
+}
+main>div>div>label>img{
+	background-color: white;
+	float: left;
+	padding: 0 22px;
+	max-width: 460px;
+	max-height: 460px;
 }
 main>div>label:nth-child(3),
 main>div>label:nth-child(5){
-	/* background-color: lime; */
-	/* grid-column-start: 2; */
+	background-color: indigo;
+	border-radius: 5px;
+	color: white;
+	transition-duration: .2s;
+	padding: 3px;
+}
+main>div>label:nth-child(3):hover,
+main>div>label:nth-child(5):hover{
+	background-color: purple;
+}
+main>div>label:nth-child(3){
+	grid-column: 1;
+}
+main>div>label:nth-child(5){
+	grid-column: 3;
 }
 main>div>input{
-	/* grid-column: 1; */
-	/* background-color: blue; */
+	grid-column: 2;
 }
 
 .modal{
@@ -237,14 +260,19 @@ main>div>input{
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
-	main>div>div>div:last-child>img{
-		max-width: 30%;
-	}
 }
 
 
 /*Menu completo: 641px a infinito*/
 @media screen and (min-width: 641px){
+	main>div>label:nth-child(2)>img{
+		border-color: green;
+	}
+
+	main>form{
+		justify-content: center;
+		grid-template-columns: 20% 20%;
+	}
 	/* main>div{ */
 	/* 	width: 40%; */
 	/* } */
@@ -252,10 +280,6 @@ main>div>input{
 	/* main>div>div>div:last-child>img{ */
 	/* 	max-width: 25%; */
 	/* } */
-
-	#fotoobjeto{
-		width: 40%;
-	}
 
 	.contenido-modal{
 		width: 20%;
