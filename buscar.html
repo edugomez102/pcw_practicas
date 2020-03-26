@@ -10,7 +10,7 @@
 		<title>Buscar</title>
 		<script src="JavaScript/buscar.js"></script>
 	</head>
-	<body onload="comprobarLogin();cogerUrl();">
+	<body onload="comprobarLogin();establecerBusqueda();cargarCategorias();">
 		<header>
 			<div>
 				<div>
@@ -69,17 +69,18 @@
 		<main>
 			<section>
 				<h3>Búsqueda de artículo</h3>
-				<form>
+				<form onsubmit="hacerBusqueda();">
 					<label>Texto</label>
-					<input type="text" placeholder="Texto del artículo..." name="buscar">
+					<input type="text" placeholder="Texto del artículo..." name="nombre" id="textArticulo">
 					<label>Vendedor</label>
-					<input type="text" placeholder="Nombre del vendedor..." name="buscar">
+					<input type="text" placeholder="Nombre del vendedor..." name="buscar" id="nameVendedor">
 					<label>Categoría</label>
-					<select>
+					<select id="lista-categorias">
+						<option value="-">-</option>
+					<!-- 	<option value="manzana">manzana</option>
 						<option value="manzana">manzana</option>
 						<option value="manzana">manzana</option>
-						<option value="manzana">manzana</option>
-						<option value="manzana">manzana</option>
+						<option value="manzana">manzana</option> -->
 					</select>
 					<label>Precio</label>
 					<input type="number" placeholder="min" >

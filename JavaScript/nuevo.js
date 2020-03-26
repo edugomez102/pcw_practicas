@@ -61,7 +61,7 @@ function insertarFoto(fotito){
 
 	fr.onload = function(){
 		document.querySelector('#fotoobjeto').src = fr.result;
-	}
+	};
 
 	if(fotito.files[0]!=null){
 		if(fotito.files[0].size/1024 > 300){
@@ -109,7 +109,7 @@ function hacerNuevo(formu){
 		}else{
 
 		}
-	}
+	};
 
 
 	//enviamos la  cabezera necesario para saber que usuario ha subido el articulo

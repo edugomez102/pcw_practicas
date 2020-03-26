@@ -1,0 +1,24 @@
+div{
+	background-color: blue;
+	padding: 10px;
+	border: 5px solid black;
+}
+
+main{
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: 100px 100px;
+}
+
+main>div:nth-child(1),
+main>div:nth-child(3),
+main>div:nth-child(5){
+	
+}
+
+
+
+button{
+	grid-column: 1/span 2;
+}
+

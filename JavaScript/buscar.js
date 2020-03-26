@@ -49,9 +49,84 @@ function logout(){
 	window.location = "/pcw_practicas/index.html";
 }
 
+function cargarCategorias(){
+	let xhr = new XMLHttpRequest(),
+		url = 'api/categorias';
 
-function cogerUrl(){
-	let url = window.location.search;
-	
-	console.log(url[url.length-1]);
+	xhr.open('GET',url,true);
+
+	xhr.onerror = function(){
+		console.log('Error cargando categorias');
+	}
+
+	xhr.onload = function(){
+		let r = JSON.parse(xhr.responseText);
+		r.FILAS.forEach( function(e) {
+			let option = document.createElement('option');
+			option.innerHTML = `${e.nombre}`;
+			document.querySelector('#lista-categorias').appendChild(option);
+		});
+	};
+
+	xhr.send();
+}
+
+
+function establecerBusqueda(){
+	let urlCoger = window.location.search;
+
+	if(urlCoger==null || urlCoger == ""){
+		console.log('No realizar busqueda');
+	}else{
+		console.log(urlCoger);
+		urlArray = urlCoger.split('=');
+		busqueda = urlArray[1];
+		console.log(busqueda);
+
+		let xhr = new XMLHttpRequest(),
+			url = 'api/usuarios/'+busqueda;
+
+		xhr.open('GET',url,true);
+
+		xhr.onerror = function(){
+			console.log('Error en consultar los usuarios');
+		};
+
+		xhr.onload = function(){
+			let objJava = JSON.parse(xhr.responseText);
+			console.log(JSON.parse(xhr.responseText));
+			if(objJava.DISPONIBLE){
+				console.log('Me meto en disponible');
+				document.querySelector('#textArticulo').value = busqueda;
+			}else {
+				nVendedor = busqueda;
+				nVendedor= document.querySelector('#nameVendedor').value = busqueda;
+			}
+		};
+
+		xhr.send();
+		hacerBusqueda();
+	}
+}
+
+
+function hacerBusqueda(){
+	// let usu = JSON.parse(sessionStorage['usuario']);
+	// let xhrArticulos = new XMLHttpRequest();
+	// let	urlArticulos = 'api/articulos';
+
+
+
+	// xhrArticulos.open('GET',urlArticulos,true);
+
+	// xhrArticulos.onerror = function(){
+	// 	console.log('Error buscando los productos')
+	// };
+
+	// xhrArticulos.onload = function(){
+		
+	// };
+
+	// xhrArticulos.send()
+
 }
