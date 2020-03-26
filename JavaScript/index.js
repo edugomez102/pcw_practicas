@@ -92,7 +92,7 @@ function mostrarArticulos(){
 				
 				let articulo = document.createElement('article');
 				let foto = item.imagen;
-				let tost = document.querySelector('#tostadora');
+				// let tost = document.querySelector('#tostadora');
 				// tost= foto;
 				console.log(foto);
 				articulo.innerHTML = `
@@ -112,7 +112,7 @@ function mostrarArticulos(){
 							</li>
 						</ul>
 						<a href="articulo.html"  >
-							<img src="${foto}" alt="foto_articulo">
+							<img src="fotos/articulos/${item.imagen}" alt="foto_articulo">
 							</a>
 								<h5>${item.precio}€</h5>
 								<p>${item.descripcion}</p>
