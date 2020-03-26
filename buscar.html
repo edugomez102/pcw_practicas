@@ -69,7 +69,7 @@
 		<main>
 			<section>
 				<h3>Búsqueda de artículo</h3>
-				<form onsubmit="hacerBusqueda();">
+				<form onsubmit="return hacerBusqueda();">
 					<label>Texto</label>
 					<input type="text" placeholder="Texto del artículo..." name="nombre" id="textArticulo">
 					<label>Vendedor</label>
@@ -83,12 +83,12 @@
 						<option value="manzana">manzana</option> -->
 					</select>
 					<label>Precio</label>
-					<input type="number" placeholder="min" >
-					<input type="number" placeholder="max" >
-					<label>Artículos seguidos</label>
-					<input type="checkbox" value="seguidos" name="buscar">
-					<label>Artículos a la venta</label>
-					<input type="checkbox" value="venta" name="buscar">
+					<input type="number" placeholder="min" id="pDesde">
+					<input type="number" placeholder="max" id="pHasta">
+					<label id="labelSeguidos">Artículos seguidos</label>
+					<input type="checkbox" value="seguidos" name="buscar" id="botonSeguidos">
+					<label id="labelVenta">Artículos a la venta</label>
+					<input type="checkbox" value="venta" name="buscar" id="botonVenta">
 					<input type="submit" value="Buscar">
 					<input type="reset"  value="Reset">
 				</form>
