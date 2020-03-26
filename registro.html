@@ -72,21 +72,21 @@
 					<h1>Registro!</h1>
 					<!-- Login(usuario) -->
 					<label>User</label>
-					<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+" onblur="comprobarFoco();" name="login" id="logUser">
+					<input type="text" placeholder="Enter login" autofocus="autofocus" minlength="4" maxlength="20" required pattern="[A-Za-z][A-Za-z0-9]+" onblur="comprobarFocoLogin();" name="login" id="logUser">
 					<label id="errorLogin">* Login no disponible</label>
 
 					<!-- Contraseña -->
 					<label>Password</label>
-					<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20" onfocus="comprobarFoco();" name="pwd" id="pwdUser">
+					<input type="password" placeholder="Enter password" required  pattern="[A-Za-z][A-Za-z0-9\-_]+" minlength="6" maxlength="20"  name="pwd" id="pwdUser" onblur="comprobarPWD();">
 					
 					<!-- Confirmar contraseña -->
 					<label>Repeat Password</label>
-					<input type="password" placeholder="Confirm password" id="repeatpwd" onfocus="comprobarFoco();" name="pwd2">
+					<input type="password" placeholder="Confirm password" id="repeatpwd"  name="pwd2" onblur="comprobarPWD();">
 					<label id="errorPwd">* Las contraseñas no coinciden</label>
 
 					<!-- Nombre completo -->
 					<label>Your name</label>
-					<input type="text" placeholder="Full name" required="required" onfocus="comprobarFoco();" name="nombre" id="nombreUser">
+					<input type="text" placeholder="Full name" required="required"  name="nombre" id="nombreUser">
 
 					<!-- Email usuario -->
 					<label>Email</label>

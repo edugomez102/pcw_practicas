@@ -59,63 +59,50 @@ function hacerRegistro(formu){
 }
 
 
-function comprobarFoco(){
+function comprobarFocoLogin(){
 	let usulogin = document.getElementById('logUser').value;
 		pwdUser	 = document.getElementById('pwdUser').value;
 		r_pwd = document.getElementById('repeatpwd').value;
 
 	let msgErrorLogin = document.getElementById('errorLogin'),
-		msgErrorPwd	  = document.getElementById('errorPwd'),
-		msgName		  = document.getElementById('nombreUser');
+		msgErrorPwd	  = document.getElementById('errorPwd');
 
-	let xhr = new XMLHttpRequest(),
-		url = 'api/usuarios/'+usulogin;
+	if(usulogin!=null && usulogin!=""){
+		let xhr = new XMLHttpRequest(),
+			url = 'api/usuarios/'+usulogin;
 
-	xhr.open('GET',url,true);
+		xhr.open('GET',url,true);
 
 
-	xhr.onload = function(){
-		let loginValido = JSON.parse(xhr.responseText).DISPONIBLE;
-		if(loginValido){
-			msgErrorLogin.style.display = 'none';
-			registro_Valido_login = true;
-		}else{
-			msgErrorLogin.style.display = 'block';
-			registro_Valido_login = false;
-		}			
-	}
-
-	if(document.activeElement.name == "pwd"){
-		if(pwdUser != r_pwd){
-			msgErrorPwd.style.display = 'block';
-			registro_Valido_pwd = false;
-		}else{
-			msgErrorPwd.style.display = 'none';
-			registro_Valido_pwd = true;
+		xhr.onload = function(){
+			let loginValido = JSON.parse(xhr.responseText).DISPONIBLE;
+			if(loginValido){
+				msgErrorLogin.style.display = 'none';
+				registro_Valido_login = true;
+			}else{
+				msgErrorLogin.style.display = 'block';
+				registro_Valido_login = false;
+			}			
 		}
+		xhr.send();
+	}else{
+		msgErrorLogin.style.display = 'block';
+		registro_Valido_login = false;
 	}
+}
 
-	if(document.activeElement.name == "pwd2"){
-		if(pwdUser != r_pwd){
-			msgErrorPwd.style.display = 'block';
-			registro_Valido_pwd = false;
-		}else{
-			msgErrorPwd.style.display = 'none';
-			registro_Valido_pwd = true;
-		}
+function comprobarPWD(){
+	let	pwdUser	 = document.getElementById('pwdUser').value;
+		r_pwd = document.getElementById('repeatpwd').value;
+	let msgErrorPwd	  = document.getElementById('errorPwd');
+
+	if(pwdUser!=r_pwd){
+		msgErrorPwd.style.display = 'block';
+		registro_Valido_pwd = false;
+	}else{
+		msgErrorPwd.style.display = 'none';
+		registro_Valido_pwd = true;
 	}
-
-	if(document.activeElement.name == "nombre"){
-		if(pwdUser == r_pwd){
-			msgErrorPwd.style.display = 'none';
-			registro_Valido_pwd = true;
-		}else{
-			msgErrorPwd.style.display = 'block';
-			registro_Valido_pwd = false;
-		}
-	}
-
-	xhr.send();
 }
 
 
