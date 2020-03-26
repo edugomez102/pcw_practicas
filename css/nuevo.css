@@ -122,6 +122,53 @@
 /* #foto{ */
 /* 	display: none; */
 /* } */
+main>form{
+	font-size: 1.1em;
+	justify-content: center;
+	display: grid;
+	grid-gap: 7px;
+	grid-template-columns: auto 250px;
+	align-items: center;
+	text-align: left;
+}
+main>div:nth-child(2)>h3,
+main>form>h3{
+	/* grid-column-start: 1; */
+	/* grid-column-end: span 2; */
+	/* lo mismo que lo de arriba */
+	grid-column: 1 / span 2;
+	margin-bottom: 5px;
+	text-align: center;
+	text-decoration: underline;
+}
+main>form>label{
+	grid-column: 1;
+}
+main>form>input{
+	/* grid-column: 2; */
+}
+
+main>div:nth-child(2){
+	display: grid;
+	grid-gap: 7px;
+	align-items: center;
+	grid-template-columns: auto auto auto;
+	justify-content: center;
+}
+main>div>label:nth-child(2){
+	background-color: red;
+	/* margin: 30px; */
+	grid-column: 1 / span 3;
+}
+main>div>label:nth-child(3),
+main>div>label:nth-child(5){
+	/* background-color: lime; */
+	/* grid-column-start: 2; */
+}
+main>div>input{
+	/* grid-column: 1; */
+	/* background-color: blue; */
+}
 
 .modal{
 	display: none;

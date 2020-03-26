@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/fontello-embedded.css">
 		<link rel="stylesheet" href="css/nuevo.css">
-		<title>Index</title>
+		<title>Nuevo</title>
 		<script src="JavaScript/nuevo.js"></script>
 	</head>
 	<body onload="comprobarLogin();cargarCategorias();">
@@ -65,37 +65,36 @@
 				</li> -->
 			</ul>
 		</nav>
+
 		<main>
-			<div>
-				<form onsubmit="return hacerNuevo(this);">
-					<h3>Nuevo Articulo</h3>
-					<label>Articulo</label>
-					<input type="text" placeholder="Nombre articulo" maxlength="100" required="required" name="nombre">
+			<form onsubmit="return hacerNuevo(this);">
+				<h3>Nuevo Articulo</h3>
+				<label>Articulo</label>
+				<input type="text" placeholder="Nombre articulo" maxlength="100" required="required" name="nombre">
+
+				<label>Descripción</label>
+				<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2" name="descripcion"></textarea>
 
 
-					<label>Descripcion</label>
-					<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2" name="descripcion"></textarea>
+				<label>Precio</label>
+				<input type="number" placeholder="Precio" required="required" step="0.01" min="0" name="precio">
 
 
-					<label>Precio</label>
-					<input type="number" placeholder="Precio" required="required" step="0.01" min="0" name="precio">
+				<label>Categoria</label>
+				<input type="text" placeholder="Categoria" maxlength="100" required="required" name="categoria" list="lista-categorias">
 
-
-					<label>Categoria</label>
-					<input type="text" placeholder="Categoria" maxlength="100" required="required" name="categoria" list="lista-categorias">
-
-					<datalist id="lista-categorias">
-					</datalist>
-					<input type="submit" value="Nuevo Articulo" >
-					<input type="reset" value="Reset">
-				</form>
+				<datalist id="lista-categorias">
+				</datalist>
+				<input type="reset" value="Reset">
+				<input type="submit" value="Nuevo Articulo" >
+			</form>
 				<div>
 					<h3>Fotos del artículo</h3>
 					<label for ="foto"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto"></label>
 					<label for="foto">Añadir foto</label>
 					<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto">
 					<label>Eliminar foto</label>
-			</div>
+				</div>
 
 <!-- contenido JavaScript -->
 			<div class="modal">
