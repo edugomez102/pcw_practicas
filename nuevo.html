@@ -90,31 +90,29 @@
 			</form>
 				<div>
 					<h3>Fotos del artículo</h3>
-					<div>
+					<div id="contenedorFotos">
 						<div>
-							<label for ="foto"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto"></label>
-							<label for="foto"><img src="img/folder.png"></label>
-							<label>Eliminar foto</label>
+							<label for ="foto0"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto0"></label>
+							<label for="foto0" class="icon-picture"></label>
+							<label onclick="eliminarFoto(this);">Eliminar foto</label>
+							<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto0">	
 						</div>
 					</div>
-					<label onclick="anadirFoto();">Añadir foto</label>
-					<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto">				
+					<label onclick="anadirFoto();">Añadir foto</label>			
 				</div>
-
-<!-- contenido JavaScript -->
-			<div class="modal">
-				<div class="contenido-modal">
-					<div>
-						<p>Fichero no soportado</p>
-					</div>
-					<div>
-						<p id="mensajeLogin">El peso del archivo es mayor que 300KB</p>
-						<button id="AceptarLogin">Aceptar</button>
-					</div>
-				</div>
-			</div>	
 		</main>
-
+<!-- contenido JavaScript -->
+		<div class="modal">
+			<div class="contenido-modal">
+				<div>
+					<p>Fichero no soportado</p>
+				</div>
+				<div>
+					<p id="mensajeLogin">El peso del archivo es mayor que 300KB</p>
+					<button id="AceptarLogin">Aceptar</button>
+				</div>
+			</div>
+		</div>	
 		<footer>
 			<div>
 				<a href="#">Volver arriba</a>

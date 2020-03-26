@@ -1,3 +1,5 @@
+var contadorFotos = 0;
+
 function comprobarLogin(){
 	
 	let = document.querySelector('#barraNav');
@@ -40,11 +42,11 @@ function cargarCategorias(){
 
 	xhr.onerror = function(){
 		console.log('Error cargando categorias');
-	}
+	};
 
 	xhr.onload = function(){
 		let r = JSON.parse(xhr.responseText);
-		r.FILAS.forEach( function(e) {
+		r.FILAS.forEach(function(e) {
 			let option = document.createElement('option');
 			option.innerHTML = `${e.nombre}`;
 			document.querySelector('#lista-categorias').appendChild(option);
@@ -58,9 +60,10 @@ function insertarFoto(fotito){
 	let fr = new FileReader();
 	let wModal = document.querySelector(".modal");
 	let buttonAceptar = document.getElementById('AceptarLogin');
+	// let idFotohtml = '#fotoobjeto'+contadorFotos; 
 
 	fr.onload = function(){
-		document.querySelector('#fotoobjeto').src = fr.result;
+		fotito.parentNode.querySelector('img').src = fr.result;
 	};
 
 	if(fotito.files[0]!=null){
@@ -74,6 +77,28 @@ function insertarFoto(fotito){
 		}
 	}
 }
+
+
+function anadirFoto(){
+	let contFotos = document.querySelector('#contenedorFotos');
+	let div = document.createElement('div');
+	contadorFotos++;
+	div.innerHTML = `<label for ="foto${contadorFotos}"><img src="img/No-Image-Found-400x264.png" alt="fotoOBjecto" id="fotoobjeto${contadorFotos}"></label>
+							<label for="foto${contadorFotos}" class="icon-picture"></label>
+							<label onclick="eliminarFoto(this);">Eliminar foto</label>
+							<input onchange="insertarFoto(this);" type="file" name="foto" accept="image/*" id="foto${contadorFotos}">`
+	contFotos.appendChild(div);
+	let input  = "foto"+contadorFotos;
+	document.getElementById(input).click();
+}
+
+
+function eliminarFoto(lab){
+	let contFotos = document.querySelector('#contenedorFotos');
+	let borrar = lab.parentNode;
+	contFotos.removeChild(borrar);
+}
+
 
 function hacerNuevo(formu){
 	let usu = JSON.parse(sessionStorage['usuario']);
