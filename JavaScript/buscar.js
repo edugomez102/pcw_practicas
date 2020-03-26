@@ -112,7 +112,7 @@ function establecerBusqueda(){
 					nVendedor= document.querySelector('#nameVendedor').value = busqueda;
 				}
 			};
-			hacerBusqueda();
+			hacerBusqueda("?t="+busqueda);
 			xhr.send();
 		}else{
 
@@ -121,7 +121,7 @@ function establecerBusqueda(){
 }
 
 
-function hacerBusqueda(){
+function hacerBusqueda(peti){
 	let texto = document.getElementById('textArticulo').value,
 		vended= document.getElementById('nameVendedor').value,
 		bs    = document.getElementById('botonSeguidos').checked,
@@ -130,7 +130,7 @@ function hacerBusqueda(){
 		desde = document.getElementById('pDesde').value,
 		hasta = document.getElementById('pHasta').value;
 
-	let peticion = ""
+	let peticion = peti;
 
 	// console.log(texto);
 	// console.log(vended);
@@ -172,5 +172,5 @@ function hacerBusqueda(){
 
 	xhr.send();
 
-	return true;
+	return false;
 }
