@@ -53,7 +53,8 @@ function logout(){
 function buscaRapida(){
 let r = document.getElementById('textoBuscar').value;
 	if(r){
-		window.location = "/pcw_practicas/buscar.html?="+r;
+		console.log('joder');
+		window.location = "/pcw_practicas/buscar.html?t="+r;
 	}else{
 		window.location = "/pcw_practicas/buscar.html";
 	}

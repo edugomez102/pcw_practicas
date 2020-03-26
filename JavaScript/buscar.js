@@ -1,6 +1,10 @@
 function comprobarLogin(){
 	
-	let = document.querySelector('#barraNav');
+	let barraNav = document.querySelector('#barraNav');
+	let ls = document.querySelector('#labelSeguidos');
+	let bs = document.querySelector('#botonSeguidos');
+	let lv = document.querySelector('#labelVenta');
+	let bv = document.querySelector('#botonVenta');
 	if(sessionStorage['usuario']!=null){
 		let usuario = JSON.parse(sessionStorage['usuario']).login;
 		barraNav.innerHTML = `<li>
@@ -41,6 +45,10 @@ function comprobarLogin(){
 						<span>Registro</span>
 					</a>
 				</li>`;
+		ls.style.display = 'none';
+		bs.style.display = 'none';
+		lv.style.display = 'none';
+		bv.style.display = 'none';
 	}
 }
 
@@ -80,53 +88,89 @@ function establecerBusqueda(){
 	}else{
 		console.log(urlCoger);
 		urlArray = urlCoger.split('=');
-		busqueda = urlArray[1];
-		console.log(busqueda);
+		if (urlArray[0]=="?t") {
+			busqueda = urlArray[1];
+			console.log(busqueda);
 
-		let xhr = new XMLHttpRequest(),
-			url = 'api/usuarios/'+busqueda;
+			let xhr = new XMLHttpRequest(),
+				url = 'api/usuarios/'+busqueda;
 
-		xhr.open('GET',url,true);
+			xhr.open('GET',url,true);
 
-		xhr.onerror = function(){
-			console.log('Error en consultar los usuarios');
-		};
+			xhr.onerror = function(){
+				console.log('Error en consultar los usuarios');
+			};
 
-		xhr.onload = function(){
-			let objJava = JSON.parse(xhr.responseText);
-			console.log(JSON.parse(xhr.responseText));
-			if(objJava.DISPONIBLE){
-				console.log('Me meto en disponible');
-				document.querySelector('#textArticulo').value = busqueda;
-			}else {
-				nVendedor = busqueda;
-				nVendedor= document.querySelector('#nameVendedor').value = busqueda;
-			}
-		};
+			xhr.onload = function(){
+				let objJava = JSON.parse(xhr.responseText);
+				console.log(JSON.parse(xhr.responseText));
+				if(objJava.DISPONIBLE){
+					console.log('Me meto en disponible');
+					document.querySelector('#textArticulo').value = busqueda;
+				}else {
+					nVendedor = busqueda;
+					nVendedor= document.querySelector('#nameVendedor').value = busqueda;
+				}
+			};
+			hacerBusqueda("?t="+busqueda);
+			xhr.send();
+		}else{
 
-		xhr.send();
-		hacerBusqueda();
+		}
 	}
 }
 
 
-function hacerBusqueda(){
-	// let usu = JSON.parse(sessionStorage['usuario']);
-	// let xhrArticulos = new XMLHttpRequest();
-	// let	urlArticulos = 'api/articulos';
+function hacerBusqueda(peti){
+	let texto = document.getElementById('textArticulo').value,
+		vended= document.getElementById('nameVendedor').value,
+		bs    = document.getElementById('botonSeguidos').checked,
+		bv    = document.getElementById('botonVenta').checked,
+		cat   = document.getElementById('lista-categorias').value,
+		desde = document.getElementById('pDesde').value,
+		hasta = document.getElementById('pHasta').value;
 
+	let peticion = peti;
 
+	// console.log(texto);
+	// console.log(vended);
+	// console.log(cat);
+	// console.log(desde);
+	// console.log(hasta);
+	// console.log(bs);
+	// console.log(bv);
 
-	// xhrArticulos.open('GET',urlArticulos,true);
+	if(texto){
+		peticion += "?t="+texto;
+	}
+	if(vended){
+		peticion += "&v="+vended;
+	}
+	if(cat!="-"){
+		peticion += "&c="+cat;
+	}
+	if(bs){
+		peticion += "&mios";
+	}
+	if(bv){
+		peticion += "&siguiendo";
+	}
 
-	// xhrArticulos.onerror = function(){
-	// 	console.log('Error buscando los productos')
-	// };
+	console.log("Peticion: "+peticion);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos'+peticion;
 
-	// xhrArticulos.onload = function(){
-		
-	// };
+	xhr.open('GET',url,true);
 
-	// xhrArticulos.send()
+	xhr.onerror = function(){
+		console.log('Error buscar articulos');
+	}
 
+	xhr.onload = function(){
+		console.log(JSON.parse(xhr.responseText));
+	}
+
+	xhr.send();
+
+	return false;
 }

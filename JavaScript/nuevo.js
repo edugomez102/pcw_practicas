@@ -105,32 +105,22 @@ function hacerNuevo(formu){
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos',
 		fd  = new FormData(formu);
-	let auth = usu.login+':'+usu.token;
 
-	console.log(auth);
+	let auth = usu.login+':'+usu.token;
+		
 	xhr.open('POST',url,true);
 
 	xhr.onerror = function(){
 		console.log('Error subiendo archivo');
-	}
+	};
 
 	xhr.onload = function (){
 		let respuesta = JSON.parse(xhr.responseText);
+		console.log(respuesta);
 		let idArticulo = respuesta.ID;
 		if(respuesta.RESULTADO == "OK"){
-			let xhrFotos = new XMLHttpRequest(),
-				urlFotos = 'api/articulos/'+idArticulo+'/foto'
-
-			xhrFotos.open('POST',urlFotos,true);
-
-			xhrFotos.onerror = function(){
-				console.log('Error subiendo fotos');
-			}
-
-			xhr.onload = function(){
-				console.log(JSON.parse(xhrFotos.responseText));
-			}
-
+			console.log(document.querySelector('#contenedorFotos').childNodes[1].childNodes[7].files[0]);
+			subirFotos(idArticulo);
 		}else{
 
 		}
@@ -138,8 +128,51 @@ function hacerNuevo(formu){
 
 
 	//enviamos la  cabezera necesario para saber que usuario ha subido el articulo
-	xhr.setRequestHeader('Authorization', auth);
+	xhr.setRequestHeader('Authorization',auth);
 	xhr.send(fd);
 
 	return false;
+}
+
+
+function subirFotos(idArticulo){
+	let usu = JSON.parse(sessionStorage['usuario']);
+	// let xhr = new XMLHttpRequest(),
+	let	url = 'api/articulos/'+idArticulo+'/foto';
+	let auth = usu.login+':'+usu.token
+
+	let contenedorF = document.querySelector('#contenedorFotos');
+	let contador = 1;
+	
+	// while(contenedorF.childNodes[contador]) {
+		let fd 	=  new FormData();
+		fd.append('fichero',contenedorF.childNodes[1].childNodes[7].files[0]);
+		fetch(url,{method:'POST',
+					body:fd,
+					headers:{'Authorization':auth}}).then(function(respuesta){
+						if(respuesta.ok){
+							respuesta.json().then(function(datos){
+								console.log(datos);
+							});
+						}else{
+
+						}
+					});
+		// contador++;
+		// statement
+	// }
+	// fd.append('fichero',document.querySelector('#foto0').files[0]);
+
+	// xhr.open('POST',url,true);
+
+	// xhr.onerror = function(){
+	// 	console.log('Error subiendo fotos');
+	// };
+
+	// xhr.onload = function(){
+	// 	console.log(JSON.parse(xhr.responseText));
+	// };
+
+	// xhr.setRequestHeader('Authorization',auth);
+	// xhr.send(fd);
 }
