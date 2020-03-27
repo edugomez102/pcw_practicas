@@ -114,14 +114,10 @@ function establecerBusqueda(){
 	let urlCoger = window.location.search;
 
 	if(urlCoger==null || urlCoger == ""){
-		
 	}else{
-		
 		urlArray = urlCoger.split('=');
 		if (urlArray[0]=="?t") {
 			busqueda = urlArray[1];
-			
-
 			let xhr = new XMLHttpRequest(),
 				url = 'api/usuarios/'+busqueda;
 
@@ -133,9 +129,7 @@ function establecerBusqueda(){
 
 			xhr.onload = function(){
 				let objJava = JSON.parse(xhr.responseText);
-				
 				if(objJava.DISPONIBLE){
-					
 					document.querySelector('#textArticulo').value = busqueda;
 				}else {
 					nVendedor = busqueda;
@@ -161,7 +155,6 @@ function hacerBusqueda(peti,idCat){
 		hasta = document.getElementById('pHasta').value;
 
 	let peticion = peti;
-
 
 	if(texto){
 		peticion += "?t="+texto;
@@ -200,4 +193,10 @@ function hacerBusqueda(peti,idCat){
 	}
 
 	xhr.send();
+<<<<<<< HEAD
+
+	return false;
 }
+=======
+}
+>>>>>>> David

@@ -99,8 +99,7 @@ main>div>div>div>input{
 }
 
 
-.modal{
-	/*all:unset;*/
+.modal,.modal2{
 	display: none;
 	position: fixed;
 	z-index: 1;
@@ -118,7 +117,7 @@ main>div>div>div>input{
 	to{top:0px;opacity: 1;}
 }
 
-.contenido-modal{
+.contenido-modal,.contenido-modal2{
 	position: relative;
 	background-color: white;
 	margin: auto;
@@ -129,12 +128,14 @@ main>div>div>div>input{
 	border: 2px solid black;
 }
 
-.contenido-modal>div:first-child{
+.contenido-modal>div:first-child,
+.contenido-modal2>div:first-child{
 	background-color: indigo;
 	padding: 0.5px;
 }
 
-.contenido-modal>div:first-child>p{
+.contenido-modal>div:first-child>p,
+.contenido-modal2>div:first-child>p{
 	color: white;
 	text-align: center;
 	font-weight: bold;
@@ -142,20 +143,23 @@ main>div>div>div>input{
 	padding: 8px;
 }
 
-.contenido-modal>div:last-child{
+.contenido-modal>div:last-child,
+.contenido-modal2>div:last-child{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-.contenido-modal>div:last-child>p{
-	color:black;
+.contenido-modal>div:last-child>p,
+.contenido-modal2>div:last-child>p{
+	color: black;
 	font-weight: bold;
 	text-align: center;
 }
 
-.contenido-modal>div:last-child>button{
+.contenido-modal>div:last-child>button,
+.contenido-modal2>div:last-child>button{
 	border: none;
 	outline: none;
 	background: indigo;
@@ -165,7 +169,6 @@ main>div>div>div>input{
 	border-radius: 20px;
 	margin-bottom: 0.5em;
 }
-
 
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
@@ -181,7 +184,8 @@ main>div>div>div>input{
 		justify-content: center;
 		grid-template-columns: auto 30%;
 	}
-	.contenido-modal{
+	.contenido-modal,
+	.contenido-modal2{
 		width: 20%;
 	}
 }

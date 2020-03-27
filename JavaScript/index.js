@@ -1,3 +1,5 @@
+var contadorPaginas = 1;
+
 function comprobarLogin(){
 	//probelma etiqueta a que no tiene ni ancho ni alto
 	//ponerle un inline block o block a la etiqueta a para arregralo
@@ -88,48 +90,58 @@ function mostrarArticulos(npag, tampag){
 	};
 
 	xhr.onload = function(){
+		document.querySelector('main>section').innerHTML = '';
 		let articulos = JSON.parse(xhr.responseText);
 		let numArt = articulos.TOTAL_COINCIDENCIAS;
-		let totalPags = numArt / tampag;
-		// console.log('ARITUCLOS:', articulos);
-		if(articulos.RESULTADO == 'OK'){
-			// console.log('articulos cargados con exito');
-			console.log(numArt);
-			// console.log(articulos);
-			articulos.FILAS.forEach(function(item){
+		console.log('Npag: ' +npag);
+		console.log('Tampag: '+tampag);
+		let totalPags = Math.round(numArt / tampag);
+		console.log(totalPags);
+		if(npag<totalPags){
+			console.log('me meto aqui');
+			document.getElementById('totalPag').innerHTML = `${tampag}`;
+			document.getElementById('nPag').innerHTML = `${npag+1}`;
+			// x = 7 / 2 = 4;
+			// 
+			// console.log('ARITUCLOS:', articulos);
+			if(articulos.RESULTADO == 'OK'){
+				// console.log('articulos cargados con exito');
+				// console.log(numArt);
+				// console.log(articulos);
+				articulos.FILAS.forEach(function(item){
 
 
-				// console.log(item);
-				let articulo = document.createElement('article');
-				let foto = item.imagen;
-				articulo.innerHTML = `
-					<h4>${item.nombre}</h4>
-						<ul>
-							<li>
-								<span class="icon-picture"></span>
-								<span>${item.nfotos}</span>
-							</li>
-							<li>
-								<span>${item.veces_visto}</span>
-								<span class="icon-eye"></span>
-							</li>
-							<li>
-								<span>${item.nsiguiendo}</span>
-								<span class="icon-bookmark"></span>
-							</li>
-						</ul>
-						<a href="articulo.html"  >
-							<img src="fotos/articulos/${item.imagen}" alt="foto_articulo">
-							</a>
-								<h5>${item.precio}€</h5>
-								<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
-				`;
-				document.querySelector('main>section').appendChild(articulo);
-			});
-
-		}
-		else{
-			// reject(articulos);
+					// console.log(item);
+					let articulo = document.createElement('article');
+					let foto = item.imagen;
+					articulo.innerHTML = `
+						<h4>${item.nombre}</h4>
+							<ul>
+								<li>
+									<span class="icon-picture"></span>
+									<span>${item.nfotos}</span>
+								</li>
+								<li>
+									<span>${item.veces_visto}</span>
+									<span class="icon-eye"></span>
+								</li>
+								<li>
+									<span>${item.nsiguiendo}</span>
+									<span class="icon-bookmark"></span>
+								</li>
+							</ul>
+							<a href="articulo.html"  >
+								<img src="fotos/articulos/${item.imagen}" alt="foto_articulo">
+								</a>
+									<h5>${item.precio}€</h5>
+									<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
+					`;
+					document.querySelector('main>section').appendChild(articulo);
+				});
+			}
+			else{
+				// reject(articulos);
+			}
 		}
 	};
 
@@ -137,5 +149,14 @@ function mostrarArticulos(npag, tampag){
 }
 
 
+function siguientePag (tamanoPagina){
+	mostrarArticulos(contadorPaginas,tamanoPagina);
+	contadorPaginas++;
+}
 
+
+function anteriorPag (tamanoPagina){
+	mostrarArticulos(contadorPaginas,tamanoPagina);
+	contadorPaginas--;
+}
 
