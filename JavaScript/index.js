@@ -58,7 +58,6 @@ function logout(){
 function buscaRapida(){
 let r = document.getElementById('textoBuscar').value;
 	if(r){
-		console.log('joder');
 		window.location = "/pcw_practicas/buscar.html?t="+r;
 	}else{
 		window.location = "/pcw_practicas/buscar.html";
@@ -69,13 +68,9 @@ let r = document.getElementById('textoBuscar').value;
 
 
 function mostrarArticulos(npag, tampag){
-	// let npag;
-	// let tampag;
 	let xhr = new XMLHttpRequest(),
 		// url = 'api/articulos';
 		url = 'api/articulos?pag='+npag+'&lpag='+tampag;
-		console.log('Npag: ' +npag);
-		console.log('Tampag: '+tampag);
 
 	xhr.open('GET', url, true);
 
@@ -88,29 +83,20 @@ function mostrarArticulos(npag, tampag){
 		let articulos = JSON.parse(xhr.responseText);
 		let numArt = articulos.TOTAL_COINCIDENCIAS;
 		totalPags = Math.round(numArt / tampag);
-		console.log(totalPags);
 		if(npag<totalPags){
-			console.log('me meto aqui');
 			document.getElementById('totalPag').innerHTML = `${totalPags}`;
 			document.getElementById('nPag').innerHTML = `${npag+1}`;
-			// x = 7 / 2 = 4;
-			// 
-			// console.log('ARITUCLOS:', articulos);
+
 			if(articulos.RESULTADO == 'OK'){
-				// console.log('articulos cargados con exito');
-				// console.log(numArt);
-				// console.log(articulos);
 				articulos.FILAS.forEach(function(item){
 
-					console.log(item);
 					let articulo = document.createElement('article');
 					let foto = item.imagen;
 
-					// console.log(foto);
 					if(foto==null){
-						// console.log('me meto en null');
+
 						foto = "img/No-Image-Found-400x264.png";
-						// console.log(foto);
+
 						articulo.innerHTML = `
 							<h4>${item.nombre}</h4>
 								<ul>
@@ -172,7 +158,7 @@ function mostrarArticulos(npag, tampag){
 				});
 			}
 			else{
-				// reject(articulos);
+
 			}
 		}
 	};
@@ -186,19 +172,17 @@ function siguientePag (tamanoPagina){
 	contadorPaginas++;
 	mostrarArticulos(contadorPaginas,tamanoPagina);
 	}
-	// console.log('en siguiente contador es: '+contadorPaginas);
+
 }
 
 
 function anteriorPag (tamanoPagina){
-	// console.log('en anterior contador es: '+contadorPaginas);
+
 	if(contadorPaginas>0){
-		// if(contadorPaginas != 0){
 		contadorPaginas--;
-		// }
 		mostrarArticulos(contadorPaginas,tamanoPagina);
 	}
-	// console.log('en anterior+ contador es: '+contadorPaginas);
+
 }
 
 
