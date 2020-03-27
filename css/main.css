@@ -369,7 +369,8 @@ form input[type=number]:focus{
 
 form input[type="reset"],
 form input[type="button"],
-form input[type="submit"]{
+form input[type="submit"],
+button{
 	border: none;
 	outline: none;
 	background: indigo;
