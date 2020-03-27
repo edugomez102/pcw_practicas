@@ -130,3 +130,6 @@ function mostrarArticulos(npag, tampag){
 	xhr.send();
 }
 
+
+
+
