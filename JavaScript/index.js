@@ -1,4 +1,5 @@
-var contadorPaginas = 1;
+var contadorPaginas = 0;
+var totalPags = 0;
 
 function comprobarLogin(){
 	//probelma etiqueta a que no tiene ni ancho ni alto
@@ -57,7 +58,6 @@ function logout(){
 function buscaRapida(){
 let r = document.getElementById('textoBuscar').value;
 	if(r){
-		console.log('joder');
 		window.location = "/pcw_practicas/buscar.html?t="+r;
 	}else{
 		window.location = "/pcw_practicas/buscar.html";
@@ -66,19 +66,8 @@ let r = document.getElementById('textoBuscar').value;
 }
 
 
-// total = 8   / tamPag = 2 = 4;
-// npag 0 npag 1  npag 2 npag3
-// if(npag<totalPag){
-// 
-// }else{
-// 		//dejar de hacer
-// }
-
-
 
 function mostrarArticulos(npag, tampag){
-	// let npag;
-	// let tampag;
 	let xhr = new XMLHttpRequest(),
 		// url = 'api/articulos';
 		url = 'api/articulos?pag='+npag+'&lpag='+tampag;
@@ -93,56 +82,83 @@ function mostrarArticulos(npag, tampag){
 		document.querySelector('main>section').innerHTML = '';
 		let articulos = JSON.parse(xhr.responseText);
 		let numArt = articulos.TOTAL_COINCIDENCIAS;
-		console.log('Npag: ' +npag);
-		console.log('Tampag: '+tampag);
-		let totalPags = Math.round(numArt / tampag);
-		console.log(totalPags);
+		totalPags = Math.round(numArt / tampag);
 		if(npag<totalPags){
-			console.log('me meto aqui');
-			document.getElementById('totalPag').innerHTML = `${tampag}`;
+			document.getElementById('totalPag').innerHTML = `${totalPags}`;
 			document.getElementById('nPag').innerHTML = `${npag+1}`;
-			// x = 7 / 2 = 4;
-			// 
-			// console.log('ARITUCLOS:', articulos);
+
 			if(articulos.RESULTADO == 'OK'){
-				// console.log('articulos cargados con exito');
-				// console.log(numArt);
-				// console.log(articulos);
 				articulos.FILAS.forEach(function(item){
 
-					console.log(item);
 					let articulo = document.createElement('article');
 					let foto = item.imagen;
-					articulo.innerHTML = `
-						<h4>${item.nombre}</h4>
-							<ul>
-								<li>
-									<span class="icon-picture"></span>
-									<span>${item.nfotos}</span>
-								</li>
-								<li>
-									<span>${item.veces_visto}</span>
-									<span class="icon-eye"></span>
-								</li>
-								<li>
-									<span>${item.nsiguiendo}</span>
-									<span class="icon-bookmark"></span>
-								</li>
-							</ul>
-							<a href="articulo.html"  >
-								<img src="fotos/articulos/${item.imagen}" alt="foto_articulo">
-								</a>
-									<h5>${item.precio}€</h5>
-									<time datetime="2020-02-27 00:42">
-										${item.fecha}
-									</time>
-									<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
-					`;
-					document.querySelector('main>section').appendChild(articulo);
+
+					if(foto==null){
+
+						foto = "img/No-Image-Found-400x264.png";
+
+						articulo.innerHTML = `
+							<h4>${item.nombre}</h4>
+								<ul>
+									<li>
+										<span class="icon-picture"></span>
+										<span>${item.nfotos}</span>
+									</li>
+									<li>
+										<span>${item.veces_visto}</span>
+										<span class="icon-eye"></span>
+									</li>
+									<li>
+										<span>${item.nsiguiendo}</span>
+										<span class="icon-bookmark"></span>
+									</li>
+								</ul>
+								<a href="articulo.html"  >
+									<img src="${foto}" alt="foto_articulo">
+									</a>
+										<h5>${item.precio}€</h5>
+										<time datetime="2020-02-27 00:42">
+											${item.fecha}
+										</time>
+										<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
+						`;
+						document.querySelector('main>section').appendChild(articulo);
+
+
+
+
+					}else{
+						articulo.innerHTML = `
+							<h4>${item.nombre}</h4>
+								<ul>
+									<li>
+										<span class="icon-picture"></span>
+										<span>${item.nfotos}</span>
+									</li>
+									<li>
+										<span>${item.veces_visto}</span>
+										<span class="icon-eye"></span>
+									</li>
+									<li>
+										<span>${item.nsiguiendo}</span>
+										<span class="icon-bookmark"></span>
+									</li>
+								</ul>
+								<a href="articulo.html"  >
+									<img src="fotos/articulos/${foto}" alt="foto_articulo">
+									</a>
+										<h5>${item.precio}€</h5>
+										<time datetime="2020-02-27 00:42">
+											${item.fecha}
+										</time>
+										<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
+						`;
+						document.querySelector('main>section').appendChild(articulo);
+					}
 				});
 			}
 			else{
-				// reject(articulos);
+
 			}
 		}
 	};
@@ -152,13 +168,34 @@ function mostrarArticulos(npag, tampag){
 
 
 function siguientePag (tamanoPagina){
-	mostrarArticulos(contadorPaginas,tamanoPagina);
+	if(contadorPaginas<totalPags-1){
 	contadorPaginas++;
+	mostrarArticulos(contadorPaginas,tamanoPagina);
+	}
+
 }
 
 
 function anteriorPag (tamanoPagina){
-	mostrarArticulos(contadorPaginas,tamanoPagina);
-	contadorPaginas--;
+
+	if(contadorPaginas>0){
+		contadorPaginas--;
+		mostrarArticulos(contadorPaginas,tamanoPagina);
+	}
+
 }
+
+
+function primeraPag(ta){
+	contadorPaginas = 0;
+	mostrarArticulos(0,ta);
+}
+
+
+function ultimaPag(ta){
+	contadorPaginas = totalPags-1;
+	mostrarArticulos (totalPags-1,ta);
+}
+
+
 
