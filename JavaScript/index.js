@@ -61,9 +61,12 @@ let r = document.getElementById('textoBuscar').value;
 	return false;
 }
 
-function mostrarArticulos(){
+function mostrarArticulos(npag, tampag){
+	// let npag;
+	// let tampag;
 	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos';
+		// url = 'api/articulos';
+		url = 'api/articulos?pag={npag}&lpag={tampag}';
 
 	xhr.open('GET', url, true);
 
@@ -77,7 +80,7 @@ function mostrarArticulos(){
 			console.log('articulos cargados con exito');
 			// console.log(articulos);
 			articulos.FILAS.forEach(function(item){
-			console.log(item);
+				console.log(item);
 				// let xhrFoto = new XMLHttpRequest(),
 				// 	url = 'api/articulos/' + item.id + '/fotos';
 				// xhrFoto.open('GET', url, true);
@@ -90,12 +93,8 @@ function mostrarArticulos(){
 				// };
 				// xhrFoto.send();
 					
-				
 				let articulo = document.createElement('article');
 				let foto = item.imagen;
-				// let tost = document.querySelector('#tostadora');
-				// tost= foto;
-				console.log(foto);
 				articulo.innerHTML = `
 					<h4>${item.nombre}</h4>
 						<ul>
@@ -116,7 +115,7 @@ function mostrarArticulos(){
 							<img src="fotos/articulos/${item.imagen}" alt="foto_articulo">
 							</a>
 								<h5>${item.precio}€</h5>
-								<p>${item.descripcion}</p>
+								<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
 				`;
 				document.querySelector('main>section').appendChild(articulo);
 			});
@@ -128,3 +127,4 @@ function mostrarArticulos(){
 
 	xhr.send();
 }
+
