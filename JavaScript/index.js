@@ -67,15 +67,6 @@ let r = document.getElementById('textoBuscar').value;
 }
 
 
-// total = 8   / tamPag = 2 = 4;
-// npag 0 npag 1  npag 2 npag3
-// if(npag<totalPag){
-// 
-// }else{
-// 		//dejar de hacer
-// }
-
-
 
 function mostrarArticulos(npag, tampag){
 	// let npag;
@@ -111,10 +102,10 @@ function mostrarArticulos(npag, tampag){
 				// console.log(articulos);
 				articulos.FILAS.forEach(function(item){
 
-
-					// console.log(item);
+					console.log(item);
 					let articulo = document.createElement('article');
 					let foto = item.imagen;
+
 					// console.log(foto);
 					if(foto==null){
 						// console.log('me meto en null');
@@ -140,6 +131,9 @@ function mostrarArticulos(npag, tampag){
 									<img src="${foto}" alt="foto_articulo">
 									</a>
 										<h5>${item.precio}€</h5>
+										<time datetime="2020-02-27 00:42">
+											${item.fecha}
+										</time>
 										<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
 						`;
 						document.querySelector('main>section').appendChild(articulo);
@@ -168,11 +162,13 @@ function mostrarArticulos(npag, tampag){
 									<img src="fotos/articulos/${foto}" alt="foto_articulo">
 									</a>
 										<h5>${item.precio}€</h5>
+										<time datetime="2020-02-27 00:42">
+											${item.fecha}
+										</time>
 										<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
 						`;
 						document.querySelector('main>section').appendChild(articulo);
 					}
-
 				});
 			}
 			else{

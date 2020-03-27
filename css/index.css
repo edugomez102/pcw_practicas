@@ -40,8 +40,9 @@ article{
 	min-width: 0;
 	/* flex-basis: 100%; */
 	display: grid;
-	grid-template-rows: 45px 55px auto 45px 30px;
+	grid-template-rows: 45px 55px auto 45px 30px 30px;
 	align-items: center;
+	text-align: center;
 }
 article>h4{
 	text-align: center;
@@ -62,7 +63,7 @@ article>a>img:hover{
 article>ul{
 	/* list-style-type: none; */
 	/* background-color: cyan; */
-	text-align: center;
+	/* text-align: center; */
 	padding: 0;
 }
 article>ul>li{
@@ -82,9 +83,12 @@ article>ul>li:nth-child(3){
 	width: 12%;
 }
 article>h5{
-	text-align: center;
+	/* text-align: center; */
 	font-size: 20pt;
 	margin: 15px 0 0 0;
+}
+article>time{
+	font-size: 0.8em;
 }
 article>p{
 	text-overflow: ellipsis;
