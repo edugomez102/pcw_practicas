@@ -119,8 +119,8 @@ function hacerNuevo(formu){
 		console.log(respuesta);
 		let idArticulo = respuesta.ID;
 		if(respuesta.RESULTADO == "OK"){
-			console.log(document.querySelector('#contenedorFotos').childNodes[1].childNodes[7].files[0]);
-			subirFotos(idArticulo);
+			// console.log(document.querySelector('#contenedorFotos').childNodes[1].childNodes[7].files[0]);
+			subirFotos(idArticulo,0);
 		}else{
 
 		}
@@ -135,44 +135,41 @@ function hacerNuevo(formu){
 }
 
 
-function subirFotos(idArticulo){
+function subirFotos(idArticulo,nFoto){
 	let usu = JSON.parse(sessionStorage['usuario']);
 	// let xhr = new XMLHttpRequest(),
 	let	url = 'api/articulos/'+idArticulo+'/foto';
 	let auth = usu.login+':'+usu.token
 
 	let contenedorF = document.querySelector('#contenedorFotos');
-	let contador = 1;
+	//numero de divs del contenedor
+	//5
+	//
+	let todosDivs = document.querySelectorAll('#contenedorFotos>div');
 	
-	// while(contenedorF.childNodes[contador]) {
+	if(nFoto<todosDivs.length){
+		console.log('entro en fotos');
+		//comprobar que no sea vacia la ficha
+		let contador = 1;
 		let fd 	=  new FormData();
-		fd.append('fichero',contenedorF.childNodes[1].childNodes[7].files[0]);
+		fd.append('fichero',todosDivs[nFoto].querySelector('input').files[0]);
 		fetch(url,{method:'POST',
 					body:fd,
 					headers:{'Authorization':auth}}).then(function(respuesta){
 						if(respuesta.ok){
 							respuesta.json().then(function(datos){
 								console.log(datos);
+								if(datos.RESULTADO == "OK"){
+									subirFotos(idArticulo,nFoto+1);
+								}else{
+
+								}
 							});
 						}else{
 
 						}
 					});
-		// contador++;
-		// statement
-	// }
-	// fd.append('fichero',document.querySelector('#foto0').files[0]);
-
-	// xhr.open('POST',url,true);
-
-	// xhr.onerror = function(){
-	// 	console.log('Error subiendo fotos');
-	// };
-
-	// xhr.onload = function(){
-	// 	console.log(JSON.parse(xhr.responseText));
-	// };
-
-	// xhr.setRequestHeader('Authorization',auth);
-	// xhr.send(fd);
+	}else {
+		//sacar mensaje modal
+	}
 }

@@ -147,6 +147,7 @@ function hacerBusqueda(peti){
 		peticion += "&v="+vended;
 	}
 	if(cat!="-"){
+		//id categoria
 		peticion += "&c="+cat;
 	}
 	if(bs){

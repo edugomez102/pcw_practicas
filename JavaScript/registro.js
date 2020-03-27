@@ -54,7 +54,6 @@ function hacerRegistro(formu){
 	}else{
 		console.log('Error registro');
 	}
-
 	return false;
 }
 
