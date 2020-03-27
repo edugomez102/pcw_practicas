@@ -110,8 +110,7 @@ function mostrarArticulos(npag, tampag){
 				// console.log(articulos);
 				articulos.FILAS.forEach(function(item){
 
-
-					// console.log(item);
+					console.log(item);
 					let articulo = document.createElement('article');
 					let foto = item.imagen;
 					articulo.innerHTML = `
@@ -134,6 +133,9 @@ function mostrarArticulos(npag, tampag){
 								<img src="fotos/articulos/${item.imagen}" alt="foto_articulo">
 								</a>
 									<h5>${item.precio}€</h5>
+									<time datetime="2020-02-27 00:42">
+										${item.fecha}
+									</time>
 									<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
 					`;
 					document.querySelector('main>section').appendChild(articulo);
