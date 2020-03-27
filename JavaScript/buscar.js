@@ -114,12 +114,6 @@ function nombreCatId(npag,tampag){
 
 
 
-
-
-
-
-
-
 function establecerBusqueda(npag,tampag){
 	let urlCoger = window.location.search;
 	if(urlCoger==null || urlCoger == ""){
@@ -190,11 +184,9 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 		peticion += "&ph="+hasta;
 	}
 
-	console.log('Peticion es :'+peticion);
 
 		let xhr = new XMLHttpRequest(),
 			url = 'api/articulos'+peticion+'&pag='+npag+'&lpag='+tampag;
-			console.log('url es: '+url);
 
 		xhr.open('GET', url, true);
 
@@ -205,20 +197,13 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 		xhr.onload = function(){
 			document.querySelector('#sectionArticulos').innerHTML = '';
 			let articulos = JSON.parse(xhr.responseText);
-			console.log(articulos);
 			let numArt = articulos.TOTAL_COINCIDENCIAS;
-			console.log('num articulos: '+numArt);
 			let totalPagsR = Math.floor((numArt / tampag)*10) /10;
-			console.log('totalPagsR es: '+totalPagsR);
 			totalPags = Math.round(totalPagsR);
-			console.log(totalPags);
 			if(totalPags < totalPagsR){
 				totalPags++;
 			}
-			console.log(totalPags);
-
 			if(npag<totalPags){
-				console.log('Soy menor entro');
 				document.getElementById('totalPagi').innerHTML = `${totalPags}`;
 				document.getElementById('nPagi').innerHTML = `${npag+1}`;
 
@@ -299,125 +284,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 		};
 
 		xhr.send();
-
-
-
-
-
 }
-
-
-
-// function mostrarArticulos(npag, tampag,peticion){
-
-
-
-
-
-
-
-
-
-
-// 	let xhr = new XMLHttpRequest(),
-// 		// url = 'api/articulos';
-// 		url = 'api/articulos?pag='+npag+'&lpag='+tampag;
-
-// 	xhr.open('GET', url, true);
-
-// 	xhr.onerror = function(){
-// 		console.log('Error al consultar los articulos');
-// 	};
-
-// 	xhr.onload = function(){
-// 		document.querySelector('main>section').innerHTML = '';
-// 		let articulos = JSON.parse(xhr.responseText);
-// 		let numArt = articulos.TOTAL_COINCIDENCIAS;
-// 		totalPags = Math.round(numArt / tampag);
-// 		if(npag<totalPags){
-// 			document.getElementById('totalPag').innerHTML = `${totalPags}`;
-// 			document.getElementById('nPag').innerHTML = `${npag+1}`;
-
-// 			if(articulos.RESULTADO == 'OK'){
-// 				articulos.FILAS.forEach(function(item){
-
-// 					let articulo = document.createElement('article');
-// 					let foto = item.imagen;
-
-// 					if(foto==null){
-
-// 						foto = "img/No-Image-Found-400x264.png";
-
-// 						articulo.innerHTML = `
-// 							<h4>${item.nombre}</h4>
-// 								<ul>
-// 									<li>
-// 										<span class="icon-picture"></span>
-// 										<span>${item.nfotos}</span>
-// 									</li>
-// 									<li>
-// 										<span>${item.veces_visto}</span>
-// 										<span class="icon-eye"></span>
-// 									</li>
-// 									<li>
-// 										<span>${item.nsiguiendo}</span>
-// 										<span class="icon-bookmark"></span>
-// 									</li>
-// 								</ul>
-// 								<a href="articulo.html"  >
-// 									<img src="${foto}" alt="foto_articulo">
-// 									</a>
-// 										<h5>${item.precio}€</h5>
-// 										<time datetime="2020-02-27 00:42">
-// 											${item.fecha}
-// 										</time>
-// 										<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
-// 						`;
-// 						document.querySelector('main>section').appendChild(articulo);
-
-
-
-
-// 					}else{
-// 						articulo.innerHTML = `
-// 							<h4>${item.nombre}</h4>
-// 								<ul>
-// 									<li>
-// 										<span class="icon-picture"></span>
-// 										<span>${item.nfotos}</span>
-// 									</li>
-// 									<li>
-// 										<span>${item.veces_visto}</span>
-// 										<span class="icon-eye"></span>
-// 									</li>
-// 									<li>
-// 										<span>${item.nsiguiendo}</span>
-// 										<span class="icon-bookmark"></span>
-// 									</li>
-// 								</ul>
-// 								<a href="articulo.html"  >
-// 									<img src="fotos/articulos/${foto}" alt="foto_articulo">
-// 									</a>
-// 										<h5>${item.precio}€</h5>
-// 										<time datetime="2020-02-27 00:42">
-// 											${item.fecha}
-// 										</time>
-// 										<p>${item.descripcion.replace(new RegExp(/<br>/g), "")}</p>
-// 						`;
-// 						document.querySelector('main>section').appendChild(articulo);
-// 					}
-// 				});
-// 			}
-// 			else{
-
-// 			}
-// 		}
-// 	};
-
-// 	xhr.send();
-// }
-
-
 
 function siguientePag (tamanoPagina){
 	if(contadorPaginas<totalPags-1){
