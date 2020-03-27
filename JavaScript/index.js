@@ -63,6 +63,17 @@ let r = document.getElementById('textoBuscar').value;
 	return false;
 }
 
+
+// total = 8   / tamPag = 2 = 4;
+// npag 0 npag 1  npag 2 npag3
+// if(npag<totalPag){
+// 
+// }else{
+// 		//dejar de hacer
+// }
+
+
+
 function mostrarArticulos(npag, tampag){
 	// let npag;
 	// let tampag;
@@ -78,23 +89,17 @@ function mostrarArticulos(npag, tampag){
 
 	xhr.onload = function(){
 		let articulos = JSON.parse(xhr.responseText);
+		let numArt = articulos.TOTAL_COINCIDENCIAS;
+		let totalPags = numArt / tampag;
+		// console.log('ARITUCLOS:', articulos);
 		if(articulos.RESULTADO == 'OK'){
-			console.log('articulos cargados con exito');
+			// console.log('articulos cargados con exito');
+			console.log(numArt);
 			// console.log(articulos);
 			articulos.FILAS.forEach(function(item){
-				console.log(item);
-				// let xhrFoto = new XMLHttpRequest(),
-				// 	url = 'api/articulos/' + item.id + '/fotos';
-				// xhrFoto.open('GET', url, true);
-				// xhrFoto.onerror = function(){
-				// 	console.log("Erro al abrir las fotos");
-				// };
-				// xhrFoto.onload = function(){
-				// 	let fotos = JSON.parse(xhrFoto.responseText);
-				// 	console.log(fotos);
-				// };
-				// xhrFoto.send();
-					
+
+
+				// console.log(item);
 				let articulo = document.createElement('article');
 				let foto = item.imagen;
 				articulo.innerHTML = `
@@ -121,9 +126,10 @@ function mostrarArticulos(npag, tampag){
 				`;
 				document.querySelector('main>section').appendChild(articulo);
 			});
+
 		}
 		else{
-			reject(articulos);
+			// reject(articulos);
 		}
 	};
 
