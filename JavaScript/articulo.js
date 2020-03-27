@@ -60,3 +60,22 @@ function logout(){
 	sessionStorage.clear();
 	window.location = "/pcw_practicas/index.html";
 }
+
+function paginaArticulo(){
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos';
+
+	xhr.open('GET', url, true);
+
+	xhr.onerror = function(){
+		console.log('Error al consultar los articulos');
+	};
+
+	xhr.onload = function(){
+		document.querySelector('main>section:nth-child(1)').innerHTML = '';
+		let articulo 
+	};
+
+	xhr.send();
+	
+}
