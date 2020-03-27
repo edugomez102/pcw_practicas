@@ -1,5 +1,7 @@
 function comprobarLogin(){
-	
+	//probelma etiqueta a que no tiene ni ancho ni alto
+	//ponerle un inline block o block a la etiqueta a para arregralo
+
 	let = document.querySelector('#barraNav');
 	if(sessionStorage.usuario!=null){
 		let usuario = JSON.parse(sessionStorage.usuario).login;
@@ -66,7 +68,7 @@ function mostrarArticulos(npag, tampag){
 	// let tampag;
 	let xhr = new XMLHttpRequest(),
 		// url = 'api/articulos';
-		url = 'api/articulos?pag={npag}&lpag={tampag}';
+		url = 'api/articulos?pag='+npag+'&lpag='+tampag;
 
 	xhr.open('GET', url, true);
 
