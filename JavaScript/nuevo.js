@@ -137,39 +137,40 @@ function hacerNuevo(formu){
 
 function subirFotos(idArticulo,nFoto){
 	let usu = JSON.parse(sessionStorage['usuario']);
-	// let xhr = new XMLHttpRequest(),
 	let	url = 'api/articulos/'+idArticulo+'/foto';
 	let auth = usu.login+':'+usu.token
 
 	let contenedorF = document.querySelector('#contenedorFotos');
 	//numero de divs del contenedor
-	//5
-	//
 	let todosDivs = document.querySelectorAll('#contenedorFotos>div');
 	
 	if(nFoto<todosDivs.length){
-		console.log('entro en fotos');
-		//comprobar que no sea vacia la ficha
-		let contador = 1;
-		let fd 	=  new FormData();
-		fd.append('fichero',todosDivs[nFoto].querySelector('input').files[0]);
-		fetch(url,{method:'POST',
-					body:fd,
-					headers:{'Authorization':auth}}).then(function(respuesta){
-						if(respuesta.ok){
-							respuesta.json().then(function(datos){
-								console.log(datos);
-								if(datos.RESULTADO == "OK"){
-									subirFotos(idArticulo,nFoto+1);
-								}else{
+		if(todosDivs[nFoto].querySelector('input').files[0]!=null){
+			let fd 	=  new FormData();
+			fd.append('fichero',todosDivs[nFoto].querySelector('input').files[0]);
+			fetch(url,{method:'POST',
+						body:fd,
+						headers:{'Authorization':auth}}).then(function(respuesta){
+							if(respuesta.ok){
+								respuesta.json().then(function(datos){
+									console.log(datos);
+									if(datos.RESULTADO == "OK"){
+										subirFotos(idArticulo,nFoto+1);
+									}else{
 
-								}
-							});
-						}else{
+									}
+								});
+							}else{
 
-						}
-					});
+							}
+						});
+		}
 	}else {
-		//sacar mensaje modal
+		let wModal = document.querySelector(".modal2");
+		let buttonAceptar = document.getElementById('AceptarLogin2');
+		wModal.style.display = 'block';
+		buttonAceptar.addEventListener('click',function(){
+			window.location = "/pcw_practicas/index.html";
+		});
 	}
 }

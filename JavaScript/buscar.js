@@ -80,18 +80,44 @@ function cargarCategorias(){
 }
 
 
+
+function nombreCatId(){
+	let cat  = document.getElementById('lista-categorias').value;
+	let hacerelse = true;
+	let xhr = new XMLHttpRequest(),
+		url = 'api/categorias';
+
+	xhr.open('GET',url,true);
+
+	xhr.onerror = function(){
+		console.log('Error sabiendo categorias');
+	}
+
+	xhr.onload = function(){
+		let r = JSON.parse(xhr.responseText);
+		r.FILAS.forEach( function(e) {
+			if(e.nombre == cat){
+				hacerBusqueda('',e.id);
+				hacerelse = false;
+			}
+		});
+		if(hacerelse){
+			hacerBusqueda('','-');
+		}
+	};
+	xhr.send();
+	return false;
+}
+
+
 function establecerBusqueda(){
 	let urlCoger = window.location.search;
 
 	if(urlCoger==null || urlCoger == ""){
-		console.log('No realizar busqueda');
 	}else{
-		console.log(urlCoger);
 		urlArray = urlCoger.split('=');
 		if (urlArray[0]=="?t") {
 			busqueda = urlArray[1];
-			console.log(busqueda);
-
 			let xhr = new XMLHttpRequest(),
 				url = 'api/usuarios/'+busqueda;
 
@@ -103,16 +129,14 @@ function establecerBusqueda(){
 
 			xhr.onload = function(){
 				let objJava = JSON.parse(xhr.responseText);
-				console.log(JSON.parse(xhr.responseText));
 				if(objJava.DISPONIBLE){
-					console.log('Me meto en disponible');
 					document.querySelector('#textArticulo').value = busqueda;
 				}else {
 					nVendedor = busqueda;
 					nVendedor= document.querySelector('#nameVendedor').value = busqueda;
 				}
 			};
-			hacerBusqueda("?t="+busqueda);
+			hacerBusqueda("?t="+busqueda,'-');
 			xhr.send();
 		}else{
 
@@ -121,7 +145,7 @@ function establecerBusqueda(){
 }
 
 
-function hacerBusqueda(peti){
+function hacerBusqueda(peti,idCat){
 	let texto = document.getElementById('textArticulo').value,
 		vended= document.getElementById('nameVendedor').value,
 		bs    = document.getElementById('botonSeguidos').checked,
@@ -132,14 +156,6 @@ function hacerBusqueda(peti){
 
 	let peticion = peti;
 
-	// console.log(texto);
-	// console.log(vended);
-	// console.log(cat);
-	// console.log(desde);
-	// console.log(hasta);
-	// console.log(bs);
-	// console.log(bv);
-
 	if(texto){
 		peticion += "?t="+texto;
 	}
@@ -147,14 +163,19 @@ function hacerBusqueda(peti){
 		peticion += "&v="+vended;
 	}
 	if(cat!="-"){
-		//id categoria
-		peticion += "&c="+cat;
+		peticion += "&c="+idCat;
 	}
 	if(bs){
 		peticion += "&mios";
 	}
 	if(bv){
 		peticion += "&siguiendo";
+	}
+	if(desde){
+		peticion += "&pd="+desde;
+	}
+	if(hasta){
+		peticion += "&ph="+hasta;
 	}
 
 	console.log("Peticion: "+peticion);
@@ -172,6 +193,4 @@ function hacerBusqueda(peti){
 	}
 
 	xhr.send();
-
-	return false;
 }
