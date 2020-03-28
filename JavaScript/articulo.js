@@ -61,22 +61,9 @@ function logout(){
 	window.location = "/pcw_practicas/index.html";
 }
 
-function enviarAuth(){
-	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos/';
-	let user = JSON.parse(sessionStorage.usuario);
-	console.log(user);
-
-	xhr.open('POST',url,true);
-	let auth = user.login+':'+user.token;
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.setRequestHeader('Authorization',auth);
-	xhr.send();
-	console.log(xhr.getAllResponseHeaders());
-}
 function paginaArticulo(){
-	enviarAuth();
 	let id = location.search.substring(4, location.search.length);
+	// enviarAuth(id);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id;
 
@@ -85,6 +72,9 @@ function paginaArticulo(){
 	xhr.onerror = function(){
 		console.log('Error al consultar los articulos');
 	};
+
+	let user = JSON.parse(sessionStorage.usuario);
+	let auth = user.login+':'+user.token;
 
 	xhr.onload = function(){
 		let articulo = JSON.parse(xhr.responseText);
@@ -141,5 +131,6 @@ function paginaArticulo(){
 		}
 	};
 
+	xhr.setRequestHeader('Authorization',auth);
 	xhr.send();
 }
