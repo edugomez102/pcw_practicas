@@ -114,7 +114,10 @@ function paginaArticulo(){
 			</ul>
 			<img src="fotos/articulos/${art.imagen}" alt="imgTostadora">
 			<div>
-				<button onclick="siguienteFoto();" >Anterior</button>
+				<button onclick="anteriorFoto();" >Anterior</button>
+				<label>Foto</label>
+				<label>1</label>
+				<label>de</label>
 				<label>${art.nfotos}</label>
 				<button onclick="siguienteFoto();" >Siguiente</button>
 			</div>
@@ -142,7 +145,7 @@ function paginaArticulo(){
 	xhr.send();
 }
 
-function siguienteFoto(){
+function mostrarFoto(indice){
 	let id = location.search.substring(4, location.search.length);
 	// enviarAuth(id);
 	let xhr = new XMLHttpRequest(),
@@ -159,11 +162,27 @@ function siguienteFoto(){
 		if(fotos.RESULTADO == 'OK'){
 			console.log(fotos.FILAS);
 			let etfoto = document.querySelector('main>section>img:nth-of-type(1)');
-			console.log(etfoto.attributes.src);
-			let indice = 1;
-			etfoto.attributes.src.value = 'fotos/articulos/' + fotos.FILAS[indice++].fichero;
+			// console.log(etfoto.attributes.src);
+			console.log("total" + fotos.FILAS.length + "indice:" + indice);
+			if(indice >= 0 && indice < fotos.FILAS.length){
+				etfoto.attributes.src.value = 'fotos/articulos/' + fotos.FILAS[indice].fichero;
+				document.querySelector('main>section>div>label:nth-of-type(2)').innerHTML = '';
+				document.querySelector('main>section>div>label:nth-of-type(2)').append(indice + 1);
+			}
+			else{
+				console.log("rop");
+				indice = fotos.FILAS.length - 1;
+			}
 		}
 	};
-
 	xhr.send();
+	console.log(indice);
+}
+
+var indice = 1;
+function siguienteFoto(){
+	mostrarFoto(indice++);
+}
+function anteriorFoto(){
+	mostrarFoto(indice--);
 }
