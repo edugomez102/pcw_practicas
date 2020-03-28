@@ -97,7 +97,6 @@ function paginaArticulo(){
 			if(auth){
 				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
 				boton = ` <button >${seSigue}</button> `;
-				console.log(boton);
 			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
@@ -173,8 +172,7 @@ function mostrarFoto(indice){
 				document.querySelector('main>section>div>label:nth-of-type(2)').append(indice + 1);
 			}
 			else{
-				console.log("rop");
-				indice = fotos.FILAS.length - 1;
+				// indice = fotos.FILAS.length - 1;
 			}
 		}
 	};
@@ -205,8 +203,51 @@ function mostrarPreguntas(){
 	};
 
 	xhr.onload = function(){
-		let preguntas = JSON.parse(xhr.responseText);
+		let preguntas = JSON.parse(xhr.responseText).FILAS;
+		document.querySelector('main>section:nth-of-type(2)>article').innerHTML = '';
+		let cajaPreg = document.querySelector('main>section:nth-of-type(2)>article'); 
 		console.log(preguntas);
+		preguntas.forEach( function(item){
+			console.log(item);
+			cajaPreg.innerHTML = `
+				<h5>Pregunta</h5>
+				<div>
+					<p>${item.pregunta}</p>
+					<ul>
+						<li>${item.login}</li>
+						<li><img src="fotos/usuarios/${item.foto_usuario}" alt=""></li>
+						<li>
+							<time datetime="2020-02-27 00:42">
+								${item.fecha_hora}
+							</time>
+						</li>
+					</ul>
+				</div>
+				<form >
+					<input type="submit" value="Seguir">
+					<input type="submit" value="Responder">
+				</form>
+			`;
+			if(item.respuesta){
+				console.log('existe respuesta');
+				cajaPreg.innerHTML += `
+					<article>
+						<h5>Respuestas</h5>
+						<div>
+							<p>${item.respuesta}</p>
+							<ul>
+								<li>usuario que responde</li>
+								<li>
+									<time datetime="2020-02-27 00:42">
+										27-febrero-2020, a las 00:42h
+									</time>
+								</li>
+							</ul>
+						</div>
+					</article>
+				`;
+			}
+		});
 	};
 
 	xhr.send();
