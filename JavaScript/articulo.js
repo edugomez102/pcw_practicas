@@ -61,9 +61,24 @@ function logout(){
 	window.location = "/pcw_practicas/index.html";
 }
 
-function paginaArticulo(){
+function enviarAuth(){
 	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos';
+		url = 'api/articulos/';
+	let user = JSON.parse(sessionStorage.usuario);
+	console.log(user);
+
+	xhr.open('POST',url,true);
+	let auth = user.login+':'+user.token;
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader('Authorization',auth);
+	xhr.send();
+	console.log(xhr.getAllResponseHeaders());
+}
+function paginaArticulo(){
+	enviarAuth();
+	let id = location.search.substring(4, location.search.length);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos/' + id;
 
 	xhr.open('GET', url, true);
 
@@ -72,10 +87,59 @@ function paginaArticulo(){
 	};
 
 	xhr.onload = function(){
+		let articulo = JSON.parse(xhr.responseText);
+		if(articulo.FILAS.length == 0){
+			// Pregunta hace falta un else
+			window.location = "index.html";
+		}
+		// limpiar el section
 		document.querySelector('main>section:nth-child(1)').innerHTML = '';
-		let articulo 
+		let contenido = document.querySelector('main>section:nth-child(1)');
+		// console.log(id);
+		if(articulo.RESULTADO == 'OK'){
+			let art = articulo.FILAS[0];
+			console.log(articulo);
+
+			contenido.innerHTML = `
+			<h3>${art.nombre}</h3>
+			<ul>
+				<li>
+					<span>${art.nsiguiendo}</span>
+					<span class="icon-user"></span>
+				</li>
+				<li>
+					<span>${art.veces_visto}</span>
+					<span class="icon-eye"></span>
+				</li>
+				<li>
+					<span>${art.npreguntas}</span>
+					<span class="icon-mail-alt"></span>
+				</li>
+			</ul>
+			<img src="fotos/articulos/${art.imagen}" alt="imgTostadora">
+			<div>
+				<input type="button" name="prev" value="Prev">
+				<label>${art.nfotos}</label>
+				<input type="button" name="next" value="Next">
+			</div>
+			<h4>Precio: </h4>
+			<h5>${art.precio}€</h5>
+			<label>Vendedor:</label>
+			<a href="buscar.html">${art.vendedor}</a>
+			<h4>Subido el</h4>
+			<h4>Descripcion:</h4>
+			<p>${art.descripcion}</p>
+			<input type="checkbox" id="seguir-no">
+			<label for="seguir-no" class="follow1"> Seguir Articulo</label>
+			<label for="seguir-no" class="follow2"> Dejar de seguir</label>
+			<a href="#preguntas">Preguntas</a>
+		`;
+			// document.querySelector('main>section:nth-child(1)').appendChild(contenido);
+		}
+		else{
+			console.log('Resultado no es OK');
+		}
 	};
 
 	xhr.send();
-	
 }
