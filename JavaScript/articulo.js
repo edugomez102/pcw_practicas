@@ -93,8 +93,11 @@ function paginaArticulo(){
 			let art = articulo.FILAS[0];
 			console.log(articulo);
 			let seSigue;
+			let boton = '';
 			if(auth){
 				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
+				boton = ` <button >${seSigue}</button> `;
+				console.log(boton);
 			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
@@ -132,7 +135,7 @@ function paginaArticulo(){
 			</time>
 			<h4>Descripcion:</h4>
 			<p>${art.descripcion}</p>
-			<button for="seguir-no" class="follow">${seSigue}</button>
+			${boton}
 			<a href="#preguntas">Preguntas</a>
 		`;
 			// document.querySelector('main>section:nth-child(1)').appendChild(contenido);
@@ -144,7 +147,7 @@ function paginaArticulo(){
 
 	xhr.send();
 }
-
+// TODO 28/03/2020 terminar
 function mostrarFoto(indice){
 	let id = location.search.substring(4, location.search.length);
 	// enviarAuth(id);
@@ -186,3 +189,27 @@ function siguienteFoto(){
 function anteriorFoto(){
 	mostrarFoto(indice--);
 }
+
+function mostrarPreguntas(){
+	if(sessionStorage.usuario){
+		let user = JSON.parse(sessionStorage.usuario);
+	}
+	let id = location.search.substring(4, location.search.length);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos/' + id + '/preguntas';
+
+	xhr.open('GET', url, true);
+
+	xhr.onerror = function(){
+		console.log('Error al consultar las preguntas');
+	};
+
+	xhr.onload = function(){
+		let preguntas = JSON.parse(xhr.responseText);
+		console.log(preguntas);
+	};
+
+	xhr.send();
+}
+
+
