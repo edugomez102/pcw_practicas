@@ -114,9 +114,9 @@ function paginaArticulo(){
 			</ul>
 			<img src="fotos/articulos/${art.imagen}" alt="imgTostadora">
 			<div>
-				<input type="button" onclick="siguienteFoto();" name="prev" value="Prev">
+				<button onclick="siguienteFoto();" >Anterior</button>
 				<label>${art.nfotos}</label>
-				<input type="button" name="next" value="Next">
+				<button onclick="siguienteFoto();" >Siguiente</button>
 			</div>
 			<h4>Precio: </h4>
 			<h5>${art.precio}€</h5>
@@ -158,10 +158,10 @@ function siguienteFoto(){
 		let fotos = JSON.parse(xhr.responseText);
 		if(fotos.RESULTADO == 'OK'){
 			console.log(fotos.FILAS);
-			// Pregunta si siempre se ignora la primera 
-			for(let i = 1; i < fotos.FILAS.length; i++) {
-				console.log(i);
-			}
+			let etfoto = document.querySelector('main>section>img:nth-of-type(1)');
+			console.log(etfoto.attributes.src);
+			let indice = 1;
+			etfoto.attributes.src.value = 'fotos/articulos/' + fotos.FILAS[indice++].fichero;
 		}
 	};
 
