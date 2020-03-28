@@ -2,8 +2,6 @@ var contadorPaginas = 0;
 var totalPags = 0;
 
 function comprobarLogin(){
-	//probelma etiqueta a que no tiene ni ancho ni alto
-	//ponerle un inline block o block a la etiqueta a para arregralo
 
 	let = document.querySelector('#barraNav');
 	if(sessionStorage.usuario!=null){
@@ -69,7 +67,6 @@ let r = document.getElementById('textoBuscar').value;
 
 function mostrarArticulos(npag, tampag){
 	let xhr = new XMLHttpRequest(),
-		// url = 'api/articulos';
 		url = 'api/articulos?pag='+npag+'&lpag='+tampag;
 
 	xhr.open('GET', url, true);
@@ -82,7 +79,11 @@ function mostrarArticulos(npag, tampag){
 		document.querySelector('main>section').innerHTML = '';
 		let articulos = JSON.parse(xhr.responseText);
 		let numArt = articulos.TOTAL_COINCIDENCIAS;
-		totalPags = Math.round(numArt / tampag);
+		let totalPagsR = Math.floor((numArt / tampag)*10) /10;
+		totalPags = Math.round(totalPagsR);
+		if(totalPags < totalPagsR){
+			totalPags++;
+		}
 		if(npag<totalPags){
 			document.getElementById('totalPag').innerHTML = `${totalPags}`;
 			document.getElementById('nPag').innerHTML = `${npag+1}`;

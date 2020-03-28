@@ -10,7 +10,7 @@
 		<title>Buscar</title>
 		<script src="JavaScript/buscar.js"></script>
 	</head>
-	<body onload="comprobarLogin();establecerBusqueda();cargarCategorias();">
+	<body onload="comprobarLogin();establecerBusqueda(0,6);cargarCategorias();">
 		<header>
 			<div>
 				<div>
@@ -69,7 +69,7 @@
 		<main>
 			<section>
 				<h3>Búsqueda de artículo</h3>
-				<form onsubmit="return nombreCatId();">
+				<form onsubmit="return nombreCatId(0,6);">
 					<label>Texto</label>
 					<input type="text" placeholder="Texto del artículo..." name="nombre" id="textArticulo">
 					<label>Vendedor</label>
@@ -93,278 +93,18 @@
 					<input type="reset"  value="Reset">
 				</form>
 			</section>
-			<section>
+			<section id="sectionArticulos">
 				<h3>Resultado de la búsqueda</h3>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
-				<article>
-					<h4>Nombre articulo</h4>
-					<ul>
-						<li>
-							<span class="icon-picture"></span>
-							<span>1</span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-eye"></span>
-						</li>
-						<li>
-							<span>0</span>
-							<span class="icon-bookmark"></span>
-						</li>
-					</ul>
-					<a href="articulo.html"  >
-						<img src="img/tostadora.jpg" alt="foto_articulo">
-					</a>
-					<h5>10€</h5>
-					<p>Sit numquam exercitationem porro consequuntur alias Inventore tempore libero ratione assumenda placeat Enim iusto et iste qui praesentium facere Natus accusantium provident rem expedita commodi Architecto itaque delectus atque cum</p>
-				</article>
+			</section>
+			<section>
 				<ul>
-					<li><a>Primera página</a></li>
-					<li>&lt;</li>
-					<li>1</li>
-					<li>&gt;</li>
-					<li><a>Última página</a></li>
+					<button onclick="primeraPag(6);"><a>Primera página</a></button>
+					<button onclick="anteriorPag(6);">&lArr;</button>
+					<li id="nPagi">1</li>
+					<li>de</li>
+					<li id="totalPagi">N</li>
+					<button onclick="siguientePag(6);">&rArr;</button>
+					<button onclick="ultimaPag(6);"><a>Última página</a></button>
 				</ul>
 			</section>
 		</main>

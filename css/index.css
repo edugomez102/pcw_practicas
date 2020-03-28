@@ -108,12 +108,12 @@ article>p{
 		left: 5%;
 	}
 	article{
-		flex-basis: 45%;
+		flex-basis: 40%;
 	}
 }
 @media screen and (min-width: 641px){
 	article{
-		flex-basis: 20%;
+		flex-basis: 25%;
 	}
 	main>form>div{
 		display: inline-block;
