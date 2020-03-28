@@ -63,7 +63,6 @@ function logout(){
 
 function paginaArticulo(){
 	let id = location.search.substring(4, location.search.length);
-	// enviarAuth(id);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id;
 
@@ -73,8 +72,12 @@ function paginaArticulo(){
 		console.log('Error al consultar los articulos');
 	};
 
-	let user = JSON.parse(sessionStorage.usuario);
-	let auth = user.login+':'+user.token;
+	let auth;
+	if(sessionStorage.usuario){
+		let user = JSON.parse(sessionStorage.usuario);
+		auth = user.login+':'+user.token;
+		xhr.setRequestHeader('Authorization',auth);
+	}
 
 	xhr.onload = function(){
 		let articulo = JSON.parse(xhr.responseText);
@@ -89,7 +92,10 @@ function paginaArticulo(){
 		if(articulo.RESULTADO == 'OK'){
 			let art = articulo.FILAS[0];
 			console.log(articulo);
-
+			let seSigue;
+			if(auth){
+				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
+			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
 			<ul>
@@ -108,20 +114,22 @@ function paginaArticulo(){
 			</ul>
 			<img src="fotos/articulos/${art.imagen}" alt="imgTostadora">
 			<div>
-				<input type="button" name="prev" value="Prev">
+				<input type="button" onclick="siguienteFoto();" name="prev" value="Prev">
 				<label>${art.nfotos}</label>
 				<input type="button" name="next" value="Next">
 			</div>
 			<h4>Precio: </h4>
 			<h5>${art.precio}€</h5>
 			<label>Vendedor:</label>
-			<a href="buscar.html">${art.vendedor}</a>
+			<a href="buscar.html?t=${art.vendedor}">${art.vendedor}</a>
+			<img src="fotos/usuarios/${art.foto_vendedor}" alt="">
 			<h4>Subido el</h4>
+			<time datetime="2020-02-27 00:42">
+				${art.fecha}
+			</time>
 			<h4>Descripcion:</h4>
 			<p>${art.descripcion}</p>
-			<input type="checkbox" id="seguir-no">
-			<label for="seguir-no" class="follow1"> Seguir Articulo</label>
-			<label for="seguir-no" class="follow2"> Dejar de seguir</label>
+			<button for="seguir-no" class="follow">${seSigue}</button>
 			<a href="#preguntas">Preguntas</a>
 		`;
 			// document.querySelector('main>section:nth-child(1)').appendChild(contenido);
@@ -131,6 +139,31 @@ function paginaArticulo(){
 		}
 	};
 
-	xhr.setRequestHeader('Authorization',auth);
+	xhr.send();
+}
+
+function siguienteFoto(){
+	let id = location.search.substring(4, location.search.length);
+	// enviarAuth(id);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos/' + id + '/fotos';
+
+	xhr.open('GET', url, true);
+
+	xhr.onerror = function(){
+		console.log('Error al consultar los articulos');
+	};
+
+	xhr.onload = function(){
+		let fotos = JSON.parse(xhr.responseText);
+		if(fotos.RESULTADO == 'OK'){
+			console.log(fotos.FILAS);
+			// Pregunta si siempre se ignora la primera 
+			for(let i = 1; i < fotos.FILAS.length; i++) {
+				console.log(i);
+			}
+		}
+	};
+
 	xhr.send();
 }

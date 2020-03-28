@@ -88,6 +88,10 @@ main>section>a{
 	text-decoration: none;
 }
 
+main>section>img:nth-of-type(2){
+	width: 45px;
+}
+
 main>section>p{
 	color: white;
 }
@@ -110,32 +114,6 @@ main>section>input[type="button"]:active{
 	margin-bottom: 1em;
 }
 
-#seguir-no{
-	display: none;
-}
-
-.follow1{
-	color: white;
-	border: 2px solid indigo;
-	background: indigo;
-	margin-bottom: 1em;
-}
-
-.follow2{
-	color: white;
-	border: 2px solid indigo;
-	background: indigo;
-	margin-bottom: 1em;
-	visibility: collapse;
-}
-
-#seguir-no:checked ~ .follow2{
-	visibility: visible;
-}
-
-#seguir-no:checked ~ .follow1{
-	visibility: collapse;
-}
 
 main>section:nth-child(2){
 	background-color: slateblue;
