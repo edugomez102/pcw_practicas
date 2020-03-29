@@ -59,6 +59,13 @@ function comprobarLogin(){
 	}
 }
 
+function autentificar(xhr){
+	if(sessionStorage.usuario){
+		let user = JSON.parse(sessionStorage.usuario);
+		let auth = user.login+':'+user.token;
+		xhr.setRequestHeader('Authorization',auth);
+	}
+}
 function logout(){
 	sessionStorage.clear();
 	window.location = "/pcw_practicas/index.html";
@@ -74,13 +81,8 @@ function paginaArticulo(){
 	xhr.onerror = function(){
 		console.log('Error al consultar los articulos');
 	};
-
-	let auth;
-	if(sessionStorage.usuario){
-		let user = JSON.parse(sessionStorage.usuario);
-		auth = user.login+':'+user.token;
-		xhr.setRequestHeader('Authorization',auth);
-	}
+	
+	autentificar(xhr);
 
 	xhr.onload = function(){
 		let articulo = JSON.parse(xhr.responseText);
@@ -95,12 +97,12 @@ function paginaArticulo(){
 		// console.log(id);
 		if(articulo.RESULTADO == 'OK'){
 			let art = articulo.FILAS[0];
-			// console.log(articulo);
+			console.log(articulo);
 			let seSigue;
 			let boton = '';
 			if(auth){
 				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
-				boton = ` <button >${seSigue}</button> `;
+				boton = ` <button onclick="seguirBool(${art.id});">${seSigue}</button> `;
 			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
@@ -298,3 +300,21 @@ function enviarResp(id){
 	xhr.send('texto=' + respuestaPregunta);
 }
 
+function seguirBool(id){
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos/' + id + '/seguir/true';
+	console.log(id);
+
+	xhr.open('POST', url, true);
+	autentificar(xhr);
+
+	xhr.onerror = function(){
+		console.log("Error");
+	};
+
+	xhr.onload = function(){
+		console.log(JSON.parse(xhr.responseText));
+	};
+
+	xhr.send();
+}
