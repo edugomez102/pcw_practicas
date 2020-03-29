@@ -260,7 +260,7 @@ function respPregunta(id){
 	let boton = document.querySelector('main>section:nth-of-type(2)>article button');
 	let div = document.createElement('div');
 	div.innerHTML = `
-		<textarea id="respondido"></textarea>
+		<textarea name="texto" id="respondido"></textarea>
 		<button onclick="enviarResp(${id});">Enviar respuesta</button>
 	`;
 	// document.querySelector('main>section:nth-of-type(2)>article button') = null;
@@ -275,6 +275,9 @@ function enviarResp(id){
 	xhr.open('POST', url, true);
 
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	// xhr.setRequestHeader("Content-type", "multipart/form-data");
+	// xhr.setRequestHeader("Content-type", "text/html");
+	// xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
 
 	let user = JSON.parse(sessionStorage.usuario);
 	let auth = user.login+':'+user.token;
@@ -285,19 +288,13 @@ function enviarResp(id){
 	};
 	
 	xhr.onload = function(){
-		// let response = JSON.parse(xhr.responseText);
-		// console.log(response);
-		console.log(xhr.responseText);
-		// if(response.RESULTADO == 'OK'){
-		// 	mostrarPreguntas();
-		// }
+		let response = JSON.parse(xhr.responseText);
+		if(response.RESULTADO == 'OK'){
+			paginaArticulo();
+		}
 	};
-	let resp = document.getElementById('respondido').value;
-	console.log(resp);
+	let respuestaPregunta = document.getElementById('respondido').value;
 
-	xhr.send(resp);
-
-	return false;
-
+	xhr.send('texto=' + respuestaPregunta);
 }
 
