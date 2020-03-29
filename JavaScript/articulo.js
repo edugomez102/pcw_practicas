@@ -235,8 +235,9 @@ function mostrarPreguntas(art){
 					</ul>
 				</div>
 			`;
-			if(item.respuesta == null && sessionStorage.usuario && user.login == art.vendedor){
-				cajaPreg.innerHTML += '<button onclick="respPregunta();">Responder</button>';
+			// if(item.respuesta == null && sessionStorage.usuario && user.login == art.vendedor){
+			if(sessionStorage.usuario && user.login == art.vendedor){
+				cajaPreg.innerHTML += `<button onclick="respPregunta(${item.id});">Responder</button>`;
 			}
 			if(item.respuesta){
 				console.log('existe respuesta');
@@ -255,10 +256,48 @@ function mostrarPreguntas(art){
 	xhr.send();
 }
 
-function respPregunta(){
+function respPregunta(id){
 	let boton = document.querySelector('main>section:nth-of-type(2)>article button');
-	let text = document.createElement('textarea');
+	let div = document.createElement('div');
+	div.innerHTML = `
+		<textarea id="respondido"></textarea>
+		<button onclick="enviarResp(${id});">Enviar respuesta</button>
+	`;
 	// document.querySelector('main>section:nth-of-type(2)>article button') = null;
-	boton.parentNode.replaceChild(text, boton);
+	boton.parentNode.replaceChild(div, boton);
+}
+
+function enviarResp(id){
+	console.log(id);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/preguntas/' + id + '/respuesta';
+
+	xhr.open('POST', url, true);
+
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	let user = JSON.parse(sessionStorage.usuario);
+	let auth = user.login+':'+user.token;
+	xhr.setRequestHeader('Authorization',auth);
+
+	xhr.onerror = function(){
+		console.log('Error');
+	};
+	
+	xhr.onload = function(){
+		// let response = JSON.parse(xhr.responseText);
+		// console.log(response);
+		console.log(xhr.responseText);
+		// if(response.RESULTADO == 'OK'){
+		// 	mostrarPreguntas();
+		// }
+	};
+	let resp = document.getElementById('respondido').value;
+	console.log(resp);
+
+	xhr.send(resp);
+
+	return false;
+
 }
 
