@@ -81,7 +81,8 @@ function paginaArticulo(){
 
 	xhr.onload = function(){
 		let articulo = JSON.parse(xhr.responseText);
-		if(articulo.FILAS.length == 0){
+		console.log(articulo.FILAS.length);
+		if(articulo.FILAS.length == 0 || articulo.FILAS.length > 1){
 			// Pregunta hace falta un else
 			window.location = "index.html";
 		}
@@ -91,7 +92,7 @@ function paginaArticulo(){
 		// console.log(id);
 		if(articulo.RESULTADO == 'OK'){
 			let art = articulo.FILAS[0];
-			console.log(articulo);
+			// console.log(articulo);
 			let seSigue;
 			let boton = '';
 			if(auth){
@@ -137,7 +138,7 @@ function paginaArticulo(){
 			${boton}
 			<a href="#preguntas">Preguntas</a>
 		`;
-			// document.querySelector('main>section:nth-child(1)').appendChild(contenido);
+			mostrarPreguntas(art);
 		}
 		else{
 			console.log('Resultado no es OK');
@@ -162,7 +163,7 @@ function mostrarFoto(indice){
 	xhr.onload = function(){
 		let fotos = JSON.parse(xhr.responseText);
 		if(fotos.RESULTADO == 'OK'){
-			console.log(fotos.FILAS);
+			// console.log(fotos.FILAS);
 			let etfoto = document.querySelector('main>section>img:nth-of-type(1)');
 			// console.log(etfoto.attributes.src);
 			console.log("total" + fotos.FILAS.length + "indice:" + indice);
@@ -188,9 +189,10 @@ function anteriorFoto(){
 	mostrarFoto(indice--);
 }
 
-function mostrarPreguntas(){
+function mostrarPreguntas(art){
+	let user = null;
 	if(sessionStorage.usuario){
-		let user = JSON.parse(sessionStorage.usuario);
+		user = JSON.parse(sessionStorage.usuario);
 	}
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -205,7 +207,7 @@ function mostrarPreguntas(){
 	xhr.onload = function(){
 		let preguntas = JSON.parse(xhr.responseText).FILAS;
 		document.querySelector('main>section:nth-of-type(2)>article').innerHTML = '';
-		let cajaPreg = document.querySelector('main>section:nth-of-type(2)>article'); 
+		let cajaPreg = document.querySelector('main>section:nth-of-type(2)>article');
 		console.log(preguntas);
 		preguntas.forEach( function(item){
 			console.log(item);
@@ -223,26 +225,17 @@ function mostrarPreguntas(){
 						</li>
 					</ul>
 				</div>
-				<form >
-					<input type="submit" value="Seguir">
-					<input type="submit" value="Responder">
-				</form>
 			`;
+			if(item.respuesta == null && sessionStorage.usuario && user.login == art.vendedor){
+				cajaPreg.innerHTML += '<button onclick="respPregunta();">Responder</button>';
+			}
 			if(item.respuesta){
 				console.log('existe respuesta');
 				cajaPreg.innerHTML += `
 					<article>
-						<h5>Respuestas</h5>
+						<h5>Respuesta</h5>
 						<div>
 							<p>${item.respuesta}</p>
-							<ul>
-								<li>usuario que responde</li>
-								<li>
-									<time datetime="2020-02-27 00:42">
-										27-febrero-2020, a las 00:42h
-									</time>
-								</li>
-							</ul>
 						</div>
 					</article>
 				`;
@@ -253,4 +246,10 @@ function mostrarPreguntas(){
 	xhr.send();
 }
 
+function respPregunta(){
+	let boton = document.querySelector('main>section:nth-of-type(2)>article button');
+	let text = document.createElement('textarea');
+	// document.querySelector('main>section:nth-of-type(2)>article button') = null;
+	boton.parentNode.replaceChild(text, boton);
+}
 
