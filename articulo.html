@@ -137,10 +137,10 @@
 				</article>
 				<article>
 					<h5>Dejar una pregunta para el vendedor</h5>
-					<form >
-						<textarea name="Name" rows="8" cols="40"></textarea>
-						<input type="submit" value="Enviar pregunta">
-					</form>
+					<!-- <form onsubmit="guardarPregunta();"> -->
+						<textarea id="nuevaPregunta" name="Name" rows="8" cols="40"></textarea>
+						<button onclick="guardarPregunta();">Enviar Pregunta</button>
+					<!-- </form> -->
 				</article>
 			</section>
 		</main>

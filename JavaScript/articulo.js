@@ -60,11 +60,13 @@ function comprobarLogin(){
 }
 
 function autentificar(xhr){
+	let auth;
 	if(sessionStorage.usuario){
 		let user = JSON.parse(sessionStorage.usuario);
-		let auth = user.login+':'+user.token;
+		auth = user.login+':'+user.token;
 		xhr.setRequestHeader('Authorization',auth);
 	}
+	return auth;
 }
 function logout(){
 	sessionStorage.clear();
@@ -82,7 +84,7 @@ function paginaArticulo(){
 		console.log('Error al consultar los articulos');
 	};
 	
-	autentificar(xhr);
+	let auth = autentificar(xhr);
 
 	xhr.onload = function(){
 		let articulo = JSON.parse(xhr.responseText);
@@ -102,7 +104,7 @@ function paginaArticulo(){
 			let boton = '';
 			if(auth){
 				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
-				boton = ` <button onclick="seguirBool(${art.id});">${seSigue}</button> `;
+				boton = ` <button onclick="seguirBool(${art.id},${art.estoy_siguiendo});">${seSigue}</button> `;
 			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
@@ -180,7 +182,6 @@ function mostrarFoto(indice){
 		}
 	};
 	xhr.send();
-	console.log(indice);
 }
 
 
@@ -219,11 +220,11 @@ function mostrarPreguntas(art){
 		let preguntas = JSON.parse(xhr.responseText).FILAS;
 		document.querySelector('main>section:nth-of-type(2)>article').innerHTML = '';
 		let cajaPreg = document.querySelector('main>section:nth-of-type(2)>article');
-		console.log(preguntas);
+		// console.log(preguntas);
+		cajaPreg.innerHTML += ` <h5>Pregunta</h5>`;
 		preguntas.forEach( function(item){
 			console.log(item);
-			cajaPreg.innerHTML = `
-				<h5>Pregunta</h5>
+			cajaPreg.innerHTML += `
 				<div>
 					<p>${item.pregunta}</p>
 					<ul>
@@ -299,11 +300,12 @@ function enviarResp(id){
 
 	xhr.send('texto=' + respuestaPregunta);
 }
-
-function seguirBool(id){
+// TOOD 29/03/2020: ver que pasa con la fecha de los articulos
+function seguirBool(id, siguiendo){
+	let bool = ( siguiendo == 0 ) ? true : false;
+	console.log(bool);
 	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos/' + id + '/seguir/true';
-	console.log(id);
+		url = 'api/articulos/' + id + '/seguir/' + bool;
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
@@ -311,10 +313,47 @@ function seguirBool(id){
 	xhr.onerror = function(){
 		console.log("Error");
 	};
+	console.log(xhr);
 
 	xhr.onload = function(){
 		console.log(JSON.parse(xhr.responseText));
 	};
-
 	xhr.send();
+	paginaArticulo();
+}
+
+function modificarEliminar(){
+	let xhr = new XMLHttpRequest(),
+		url = '';
+}
+
+function guardarPregunta(){
+	let id = location.search.substring(4, location.search.length);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos/' + id + '/pregunta';
+
+	xhr.open('POST', url, true);
+	autentificar(xhr);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	xhr.onerror = function(){
+		console.log("Error");
+	};
+	let gpreg = document.querySelector('#nuevaPregunta').value;
+	xhr.onload = function(){
+		response = JSON.parse(xhr.responseText);
+		console.log(response);
+		if(response.RESULTADO == 'OK'){
+			console.log('ewsooo');
+			document.querySelector('#nuevaPregunta').value = '';
+		}
+		else{
+			let ee = document.querySelector('#nuevaPregunta');
+			console.log(ee);
+		}
+	};
+	console.log(gpreg);
+
+	xhr.send('texto=' + gpreg);
+	
 }
