@@ -119,10 +119,11 @@ function hacerNuevo(formu){
 		console.log(respuesta);
 		let idArticulo = respuesta.ID;
 		if(respuesta.RESULTADO == "OK"){
+			console.log('Voy a subir fotos');
 			// console.log(document.querySelector('#contenedorFotos').childNodes[1].childNodes[7].files[0]);
 			subirFotos(idArticulo,0);
 		}else{
-
+			// console.log('Que pasa');
 		}
 	};
 
@@ -136,6 +137,7 @@ function hacerNuevo(formu){
 
 
 function subirFotos(idArticulo,nFoto){
+	console.log('Entro aqui');
 	let usu = JSON.parse(sessionStorage['usuario']);
 	let	url = 'api/articulos/'+idArticulo+'/foto';
 	let auth = usu.login+':'+usu.token
@@ -153,7 +155,6 @@ function subirFotos(idArticulo,nFoto){
 						headers:{'Authorization':auth}}).then(function(respuesta){
 							if(respuesta.ok){
 								respuesta.json().then(function(datos){
-									console.log(datos);
 									if(datos.RESULTADO == "OK"){
 										subirFotos(idArticulo,nFoto+1);
 									}else{
@@ -164,6 +165,15 @@ function subirFotos(idArticulo,nFoto){
 
 							}
 						});
+		}else{
+			if(todosDivs.length == 1){
+				let wModal = document.querySelector(".modal2");
+				let buttonAceptar = document.getElementById('AceptarLogin2');
+				wModal.style.display = 'block';
+				buttonAceptar.addEventListener('click',function(){
+					window.location = "/pcw_practicas/index.html";
+				});
+			}
 		}
 	}else {
 		let wModal = document.querySelector(".modal2");

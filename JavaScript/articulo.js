@@ -1,3 +1,6 @@
+var totalFotosArt = 0;
+var indice = 0;
+
 function comprobarLogin(){
 	
 	let = document.querySelector('#barraNav');
@@ -147,10 +150,10 @@ function paginaArticulo(){
 
 	xhr.send();
 }
-// TODO 28/03/2020 terminar
+
 function mostrarFoto(indice){
 	let id = location.search.substring(4, location.search.length);
-	// enviarAuth(id);
+
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/fotos';
 
@@ -163,17 +166,14 @@ function mostrarFoto(indice){
 	xhr.onload = function(){
 		let fotos = JSON.parse(xhr.responseText);
 		if(fotos.RESULTADO == 'OK'){
-			// console.log(fotos.FILAS);
 			let etfoto = document.querySelector('main>section>img:nth-of-type(1)');
-			// console.log(etfoto.attributes.src);
-			console.log("total" + fotos.FILAS.length + "indice:" + indice);
+			totalFotosArt = fotos.FILAS.length;
 			if(indice >= 0 && indice < fotos.FILAS.length){
 				etfoto.attributes.src.value = 'fotos/articulos/' + fotos.FILAS[indice].fichero;
 				document.querySelector('main>section>div>label:nth-of-type(2)').innerHTML = '';
 				document.querySelector('main>section>div>label:nth-of-type(2)').append(indice + 1);
 			}
 			else{
-				// indice = fotos.FILAS.length - 1;
 			}
 		}
 	};
@@ -181,12 +181,21 @@ function mostrarFoto(indice){
 	console.log(indice);
 }
 
-var indice = 1;
+
 function siguienteFoto(){
-	mostrarFoto(indice++);
+	if(indice<totalFotosArt-1 && indice!=0){
+		indice++;
+		mostrarFoto(indice);
+	}else if(indice==0){
+		indice++;
+		mostrarFoto(indice);
+	}
 }
 function anteriorFoto(){
-	mostrarFoto(indice--);
+	if(indice!=0){
+		indice--;
+		mostrarFoto(indice);
+	}
 }
 
 function mostrarPreguntas(art){
