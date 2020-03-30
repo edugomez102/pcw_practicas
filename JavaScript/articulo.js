@@ -353,7 +353,7 @@ function modificarEliminar(art){
 			// console.log(desc);
 			div.innerHTML = `
 				<button onclick="botonModificar(${art.precio},'${desc}');" id="botonModificar"style="background-color:chocolate;">modificar</button>
-				<button onclick="botonBorrar(${art.precio});"style="background-color:red;">eliminar</button>
+				<button onclick="botonEliminar();"style="background-color:red;">eliminar</button>
 			`;
 			// let boton = document.createElement('button');
 			// boton.addEventListener('click', function(){
@@ -398,7 +398,7 @@ function botonModificar(precio, descripcion){
 	let botonCancelar = document.getElementById('botonCancelar');
 	botonCancelar.addEventListener('click', function(){
 		wModal.style.display = 'none';
-		console.log('Aceptar');
+		console.log('Cancelar');
 	});
 	botonAceptar.addEventListener('click', function(){
 		console.log('Aceptar');
@@ -433,21 +433,56 @@ function aceptarModificar(precio, descripcion){
 	paginaArticulo();
 }
 
-function botonBorrar(){
+function botonEliminar(){
+	let wModal = document.querySelector(".modal");
+	wModal.style.display = 'block';
+	wModal.innerHTML = `
+			<div class="contenido-modal modw">
+				<div>
+					<p>Confirmar eliminar Articulo</p>
+				</div>
+				<div>
+					<form action="javascript:void(0);">
+						<button id="botonCancelar">Cancelar</button>
+						<button id="botonAceptar">Aceptar</button>
+					</form>
+				</div>
+			</div>
+		`;
+	let botonAceptar = document.getElementById('botonAceptar');
+	let botonCancelar = document.getElementById('botonCancelar');
+	botonCancelar.addEventListener('click', function(){
+		wModal.style.display = 'none';
+		console.log('Cancelar');
+	});
+	botonAceptar.addEventListener('click', function(){
+		console.log('Aceptar');
+		aceptarEliminar();
+		wModal.style.display = 'none';
+	});
+
+}
+function aceptarEliminar(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos' + id;
+		url = 'api/articulos/' + id;
 
 	xhr.open('DELETE', url, true);
+	autentificar(xhr);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 	xhr.onerror = function(){
 		console.log("Error");
 	};
-
+	// TODO 30/03/2020: fuera todo bien?
 	xhr.onload = function(){
-
+		console.log('mmmm');
+		let response = JSON.parse(xhr.responseText);
+		console.log(response);
 	};
-
+	// if(response.RESULTADO == 'OK'){
+	// }
+	window.location = 'index.html';
 	xhr.send();
 }
 
