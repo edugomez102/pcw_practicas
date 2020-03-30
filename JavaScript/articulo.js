@@ -146,7 +146,7 @@ function paginaArticulo(){
 			<a href="#preguntas">Preguntas</a>
 		`;
 			mostrarPreguntas(art);
-			modificarEliminar(art.vendedor);
+			modificarEliminar(art);
 		}
 		else{
 			console.log('Resultado no es OK');
@@ -329,7 +329,7 @@ function insertAfter(newNode, referenceNode) {
 	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function modificarEliminar(vendedor){
+function modificarEliminar(art){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos' + id;
@@ -345,20 +345,110 @@ function modificarEliminar(vendedor){
 	xhr.onload = function(){
 		// let response = JSON.parse(xhr.responseText);
 		// console.log(response.FILAS);
-		if(vendedor == user.login){
-			console.log('qdaadasd');
+		if(art.vendedor == user.login){
 			let div = document.createElement('div');
+			let desc  = art.descripcion;
+			// desc = desc.replace(RegExp(/"/g), '&quot;');
+			desc = desc.replace(/(?:\r\n|\r|\n)/g, ''); 
+			// console.log(desc);
 			div.innerHTML = `
-				<button id="botonModificar"style="background-color:chocolate;">modificar</button>
-				<button style="background-color:red;">eliminar</button>
+				<button onclick="botonModificar(${art.precio},'${desc}');" id="botonModificar"style="background-color:chocolate;">modificar</button>
+				<button onclick="botonBorrar(${art.precio});"style="background-color:red;">eliminar</button>
 			`;
+			// let boton = document.createElement('button');
+			// boton.addEventListener('click', function(){
+			// 	botonModificar(art.precio);
+			// });
+			// boton.style.background-color = 'chocolate';
 			insertAfter(div, document.querySelector('main>section h3'));
 
 		}
 	};
 
 	xhr.send();
+}
 
+function ventanaModal(titulo, precio, descripcion){
+	let wModal = document.querySelector(".modal");
+	wModal.innerHTML = `
+			<div class="contenido-modal modw">
+				<div>
+					<p>${titulo}</p>
+				</div>
+				<div>
+					<form action="javascript:void(0);">
+						<label >Precio</label>
+						<input type="number" value="${precio}">
+						<label >Descripción</label>
+						<textarea name="Name" rows="8" cols="40">${descripcion}</textarea>
+						<button id="botonCancelar">Cancelar</button>
+						<button id="botonAceptar">Aceptar</button>
+					</form>
+				</div>
+			</div>
+		`;
+	return wModal;
+}
+
+function botonModificar(precio, descripcion){
+
+	let wModal = ventanaModal("Modificar articulo", precio, descripcion);
+	wModal.style.display = 'block';
+	let botonAceptar = document.getElementById('botonAceptar');
+	let botonCancelar = document.getElementById('botonCancelar');
+	botonCancelar.addEventListener('click', function(){
+		wModal.style.display = 'none';
+		console.log('Aceptar');
+	});
+	botonAceptar.addEventListener('click', function(){
+		console.log('Aceptar');
+		aceptarModificar(precio, descripcion);
+		wModal.style.display = 'none';
+	});
+}
+
+function aceptarModificar(precio, descripcion){
+	let id = location.search.substring(4, location.search.length);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos/' + id;
+
+	xhr.open('POST', url, true);
+	autentificar(xhr);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	xhr.onerror = function(){
+		console.log("Error");
+	};
+	// TODO 30/03/2020: fuera todo bien?
+	xhr.onload = function(){
+		console.log('mmmm');
+		let response = JSON.parse(xhr.responseText);
+		console.log(response);
+	};
+	// if(response.RESULTADO == 'OK'){
+		precio = document.querySelector('.contenido-modal div form>input').value;
+		descripcion = document.querySelector('.contenido-modal div form>textarea').value;
+	// }
+	xhr.send('precio=' + precio + '&descripcion=' + descripcion);
+	paginaArticulo();
+}
+
+function botonBorrar(){
+	let id = location.search.substring(4, location.search.length);
+	let xhr = new XMLHttpRequest(),
+		url = 'api/articulos' + id;
+
+	xhr.open('DELETE', url, true);
+
+	xhr.onerror = function(){
+		console.log("Error");
+	};
+
+	xhr.onload = function(){
+
+	};
+
+	xhr.send();
 }
 
 function guardarPregunta(){
@@ -366,7 +456,6 @@ function guardarPregunta(){
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/pregunta';
 	let wModal = document.querySelector(".modal");
-	let botonAceptar = document.getElementById('botonAceptar');
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
@@ -379,9 +468,19 @@ function guardarPregunta(){
 	xhr.onload = function(){
 		response = JSON.parse(xhr.responseText);
 		// console.log(response);
-		mensajeModal = `<p> ${response.DESCRIPCION} </p>`;
+		wModal.innerHTML = `
+			<div class="contenido-modal">
+				<div>
+					<p>Enviar Pregunta</p>
+				</div>
+				<div>
+					<p> ${response.DESCRIPCION} </p>
+					<button id="botonAceptar">Aceptar</button>
+				</div>
+			</div>
+		`;
 		wModal.style.display = 'block';
-		document.querySelector('#mensajePregunta').innerHTML = mensajeModal;
+		let botonAceptar = document.getElementById('botonAceptar');
 		botonAceptar.addEventListener('click', function(){
 			wModal.style.display = 'none';
 		});

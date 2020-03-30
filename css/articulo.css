@@ -235,6 +235,20 @@ main>section:nth-of-type(2)>article>div>ul>li>img{
 	border-radius: 20px;
 	margin-bottom: 0.5em;
 }
+.modw{
+	/* height: 100%; */
+	width: 60%;
+}
+.modw>div:nth-of-type(2)>form{
+	padding: 10px;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 5px;
+}
+.modw>div:nth-of-type(2)>form>label{
+	grid-column: 0;
+}
+
 /*Menu iconos: 321px a 640px*/
 @media screen and (min-width: 481px) and (max-width: 640px){
 
