@@ -88,7 +88,7 @@ function paginaArticulo(){
 
 	xhr.onload = function(){
 		let articulo = JSON.parse(xhr.responseText);
-		console.log(articulo.FILAS.length);
+		// console.log(articulo.FILAS.length);
 		if(articulo.FILAS.length == 0 || articulo.FILAS.length > 1){
 			// Pregunta hace falta un else
 			window.location = "index.html";
@@ -146,12 +146,12 @@ function paginaArticulo(){
 			<a href="#preguntas">Preguntas</a>
 		`;
 			mostrarPreguntas(art);
+			modificarEliminar(art.vendedor);
 		}
 		else{
 			console.log('Resultado no es OK');
 		}
 	};
-
 	xhr.send();
 }
 
@@ -200,12 +200,16 @@ function anteriorFoto(){
 		mostrarFoto(indice);
 	}
 }
-
-function mostrarPreguntas(art){
+function getUser(){
 	let user = null;
 	if(sessionStorage.usuario){
 		user = JSON.parse(sessionStorage.usuario);
 	}
+	return user;
+}
+
+function mostrarPreguntas(art){
+	let user = getUser();
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/preguntas';
@@ -223,7 +227,7 @@ function mostrarPreguntas(art){
 		// console.log(preguntas);
 		cajaPreg.innerHTML += ` <h5>Pregunta</h5>`;
 		preguntas.forEach( function(item){
-			console.log(item);
+			// console.log(item);
 			cajaPreg.innerHTML += `
 				<div>
 					<p>${item.pregunta}</p>
@@ -321,10 +325,40 @@ function seguirBool(id, siguiendo){
 	xhr.send();
 	paginaArticulo();
 }
+function insertAfter(newNode, referenceNode) {
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
-function modificarEliminar(){
+function modificarEliminar(vendedor){
+	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
-		url = '';
+		url = 'api/articulos' + id;
+	let user = getUser();
+
+	xhr.open('POST', url, true);
+	autentificar(xhr);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	xhr.onerror = function(){
+		console.log("Error");
+	};
+	xhr.onload = function(){
+		// let response = JSON.parse(xhr.responseText);
+		// console.log(response.FILAS);
+		if(vendedor == user.login){
+			console.log('qdaadasd');
+			let div = document.createElement('div');
+			div.innerHTML = `
+				<button id="botonModificar"style="background-color:chocolate;">modificar</button>
+				<button style="background-color:red;">eliminar</button>
+			`;
+			insertAfter(div, document.querySelector('main>section h3'));
+
+		}
+	};
+
+	xhr.send();
+
 }
 
 function guardarPregunta(){
@@ -344,7 +378,7 @@ function guardarPregunta(){
 	let gpreg = document.querySelector('#nuevaPregunta').value;
 	xhr.onload = function(){
 		response = JSON.parse(xhr.responseText);
-		console.log(response);
+		// console.log(response);
 		mensajeModal = `<p> ${response.DESCRIPCION} </p>`;
 		wModal.style.display = 'block';
 		document.querySelector('#mensajePregunta').innerHTML = mensajeModal;
@@ -364,7 +398,6 @@ function guardarPregunta(){
 			console.log(ee);
 		}
 	};
-	console.log(gpreg);
 
 	xhr.send('texto=' + gpreg);
 	
