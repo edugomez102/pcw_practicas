@@ -331,6 +331,8 @@ function guardarPregunta(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/pregunta';
+	let wModal = document.querySelector(".modal");
+	let botonAceptar = document.getElementById('botonAceptar');
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
@@ -343,12 +345,22 @@ function guardarPregunta(){
 	xhr.onload = function(){
 		response = JSON.parse(xhr.responseText);
 		console.log(response);
+		mensajeModal = `<p> ${response.DESCRIPCION} </p>`;
+		wModal.style.display = 'block';
+		document.querySelector('#mensajePregunta').innerHTML = mensajeModal;
+		botonAceptar.addEventListener('click', function(){
+			wModal.style.display = 'none';
+		});
 		if(response.RESULTADO == 'OK'){
-			console.log('ewsooo');
 			document.querySelector('#nuevaPregunta').value = '';
 		}
+		// TODO 30/03/2020: el autofocus no tira
 		else{
 			let ee = document.querySelector('#nuevaPregunta');
+			console.log(ee);
+			// document.querySelector('#nuevaPregunta').setAttribute('autofocus', 'true');
+			document.querySelector('#nuevaPregunta').autofocus = true;
+			ee = document.querySelector('#nuevaPregunta');
 			console.log(ee);
 		}
 	};
