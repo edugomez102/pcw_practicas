@@ -270,7 +270,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 											<span class="icon-bookmark"></span>
 										</li>
 									</ul>
-									<a href="articulo.html"  >
+									<a href="articulo.html?id=${item.id}">
 										<img src="${foto}" alt="foto_articulo">
 										</a>
 											<h5>${item.precio}€</h5>
@@ -301,7 +301,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 											<span class="icon-bookmark"></span>
 										</li>
 									</ul>
-									<a href="articulo.html"  >
+									<a href="articulo.html?id=${item.id}">
 										<img src="fotos/articulos/${foto}" alt="foto_articulo">
 										</a>
 											<h5>${item.precio}€</h5>
