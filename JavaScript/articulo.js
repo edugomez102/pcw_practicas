@@ -132,7 +132,7 @@ function paginaArticulo(){
 				<button onclick="siguienteFoto();" >Siguiente</button>
 			</div>
 			<h4>Precio: </h4>
-			<h5>${art.precio}€</h5>
+			<h5 id="precioArticulo">${art.precio}€</h5>
 			<label>Vendedor:</label>
 			<a href="buscar.html?t=${art.vendedor}">${art.vendedor}</a>
 			<img src="fotos/usuarios/${art.foto_vendedor}" alt="">
@@ -140,12 +140,13 @@ function paginaArticulo(){
 			<time datetime="2020-02-27 00:42">
 				${art.fecha}
 			</time>
-			<h4>Descripcion:</h4>
+			<h4 id="descripcionArticulo">Descripcion:</h4>
 			<p>${art.descripcion}</p>
 			${boton}
 			<a href="#preguntas">Preguntas</a>
 		`;
 			mostrarPreguntas(art);
+			mostrarCajaPregunta();
 			modificarEliminar(art);
 		}
 		else{
@@ -225,9 +226,9 @@ function mostrarPreguntas(art){
 		document.querySelector('main>section:nth-of-type(2)>article').innerHTML = '';
 		let cajaPreg = document.querySelector('main>section:nth-of-type(2)>article');
 		// console.log(preguntas);
-		cajaPreg.innerHTML += ` <h5>Pregunta</h5>`;
 		preguntas.forEach( function(item){
 			// console.log(item);
+			cajaPreg.innerHTML += ` <h5>Pregunta</h5>`;
 			cajaPreg.innerHTML += `
 				<div>
 					<p>${item.pregunta}</p>
@@ -345,7 +346,7 @@ function modificarEliminar(art){
 	xhr.onload = function(){
 		// let response = JSON.parse(xhr.responseText);
 		// console.log(response.FILAS);
-		if(art.vendedor == user.login){
+		if(user && art.vendedor == user.login){
 			let div = document.createElement('div');
 			let desc  = art.descripcion;
 			// desc = desc.replace(RegExp(/"/g), '&quot;');
@@ -436,6 +437,7 @@ function aceptarModificar(precio, descripcion){
 function botonEliminar(){
 	let wModal = document.querySelector(".modal");
 	wModal.style.display = 'block';
+	// TODO 31/03/2020: Preguntar si se puede hacer lo de void(0)
 	wModal.innerHTML = `
 			<div class="contenido-modal modw">
 				<div>
@@ -486,6 +488,23 @@ function aceptarEliminar(){
 	xhr.send();
 }
 
+function mostrarCajaPregunta(){
+	if(getUser()){
+		let cajaPreg = document.querySelector('#dejarPregunta');
+		console.log(cajaPreg);
+		let fichero = new XMLHttpRequest(),
+			url     = 'dejarPregunta.html';
+
+		fichero.open('GET', url, true);
+		fichero.onload = function(){
+			console.log(fichero);
+			cajaPreg.innerHTML = fichero.response;
+		};
+
+		fichero.send();
+	}
+}
+
 function guardarPregunta(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -534,5 +553,6 @@ function guardarPregunta(){
 	};
 
 	xhr.send('texto=' + gpreg);
+	paginaArticulo();
 	
 }
