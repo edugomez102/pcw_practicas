@@ -166,27 +166,31 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 		peticion += "?t="+texto;
 	}
 	if(vended){
-		peticion += "&v="+vended;
+		peticion += "?v="+vended;
 	}
 	if(cat!="-"){
-		peticion += "&c="+idCat;
-	}
-	if(bs){
-		peticion += "&mios";
+		peticion += "?c="+idCat;
 	}
 	if(bv){
-		peticion += "&siguiendo";
+		peticion += "?mios";
+	}
+	if(bs){
+		peticion += "?siguiendo";
 	}
 	if(desde){
-		peticion += "&pd="+desde;
+		peticion += "?pd="+desde;
 	}
 	if(hasta){
-		peticion += "&ph="+hasta;
+		peticion += "?ph="+hasta;
 	}
 
 
 		let xhr = new XMLHttpRequest(),
 			url = 'api/articulos'+peticion+'&pag='+npag+'&lpag='+tampag;
+		let usu = JSON.parse(sessionStorage['usuario']);
+		let auth = usu.login+':'+usu.token;
+
+		console.log('Url es:'+url);
 
 		xhr.open('GET', url, true);
 
@@ -283,6 +287,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 			}
 		};
 
+		xhr.setRequestHeader('Authorization',auth);
 		xhr.send();
 }
 
