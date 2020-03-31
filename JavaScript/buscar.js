@@ -165,24 +165,57 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 	if(texto){
 		peticion += "?t="+texto;
 	}
+
 	if(vended){
-		peticion += "?v="+vended;
+		if(peticion == ""){
+			peticion += "?v="+vended;
+		}else{
+			peticion += "&v="+vended;
+		}
 	}
+
 	if(cat!="-"){
-		peticion += "?c="+idCat;
+		if(peticion == ""){
+			peticion += "?c="+idCat;
+		}else{
+			peticion += "&c="+idCat;
+		}
 	}
+
 	if(bv){
-		peticion += "?mios";
+		if(peticion == ""){
+			peticion += "?mios";
+		}else{
+			peticion += "&mios";
+		}
 	}
+
 	if(bs){
-		peticion += "?siguiendo";
+		if(peticion == ""){
+			peticion += "?siguiendo";
+		}else{
+			peticion += "&siguiendo";
+		}
 	}
+
 	if(desde){
-		peticion += "?pd="+desde;
+		if(peticion == ""){
+			peticion += "?pd="+desde;
+		}else{
+			peticion += "&pd="+desde;	
+		}
 	}
+
 	if(hasta){
-		peticion += "?ph="+hasta;
+		if(peticion == ""){
+			peticion += "?ph="+hasta;
+		}else{
+			peticion += "&ph="+hasta;	
+		}
 	}
+
+
+
 
 
 		let xhr = new XMLHttpRequest(),
