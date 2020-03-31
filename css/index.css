@@ -48,7 +48,6 @@ article>h4{
 	text-align: center;
 }
 article>a>img{
-	/* TODO Edu(13/02/2020): que sea siempre cuadrado? */
 	max-width: 85%;
 	/*max-height: 85%;*/
 	display: flex;
@@ -57,7 +56,6 @@ article>a>img{
 }
 article>a>img:hover{
 	transform: scale(1.08);
-	/* TODO Edu(16/02/2020): que te pasa firefox tio */
 	border-radius: 10px;
 }
 article>ul{

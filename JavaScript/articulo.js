@@ -73,6 +73,8 @@ function logout(){
 	window.location = "/pcw_practicas/index.html";
 }
 
+// TODO 31/03/2020: mirar para actualizar por elementos en vez de todo
+// TODO 31/03/2020: Pregunta si contador de visitas cuenta carga asincrona
 function paginaArticulo(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -208,7 +210,7 @@ function getUser(){
 	}
 	return user;
 }
-
+// TODO 31/03/2020: el enlace para hacer scroll a las preguntas no tira
 function mostrarPreguntas(art){
 	let user = getUser();
 	let id = location.search.substring(4, location.search.length);
@@ -349,7 +351,8 @@ function modificarEliminar(art){
 		if(user && art.vendedor == user.login){
 			let div = document.createElement('div');
 			let desc  = art.descripcion;
-			// desc = desc.replace(RegExp(/"/g), '&quot;');
+			// TODO 31/03/2020: Pregunta si es valido usar estos replace
+			desc = desc.replace(RegExp(/"/g), '&quot;');
 			desc = desc.replace(/(?:\r\n|\r|\n)/g, ''); 
 			// console.log(desc);
 			div.innerHTML = `
@@ -505,6 +508,8 @@ function mostrarCajaPregunta(){
 	}
 }
 
+// TODO 31/03/2020: Pregunta si vendedor puede comentar
+// TODO 31/03/2020: Hay un bug cuando clickas en varios botones de responder a la vez
 function guardarPregunta(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
