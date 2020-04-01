@@ -165,28 +165,65 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 	if(texto){
 		peticion += "?t="+texto;
 	}
+
 	if(vended){
-		peticion += "&v="+vended;
+		if(peticion == ""){
+			peticion += "?v="+vended;
+		}else{
+			peticion += "&v="+vended;
+		}
 	}
+
 	if(cat!="-"){
-		peticion += "&c="+idCat;
+		if(peticion == ""){
+			peticion += "?c="+idCat;
+		}else{
+			peticion += "&c="+idCat;
+		}
 	}
-	if(bs){
-		peticion += "&mios";
-	}
+
 	if(bv){
-		peticion += "&siguiendo";
+		if(peticion == ""){
+			peticion += "?mios";
+		}else{
+			peticion += "&mios";
+		}
 	}
+
+	if(bs){
+		if(peticion == ""){
+			peticion += "?siguiendo";
+		}else{
+			peticion += "&siguiendo";
+		}
+	}
+
 	if(desde){
-		peticion += "&pd="+desde;
+		if(peticion == ""){
+			peticion += "?pd="+desde;
+		}else{
+			peticion += "&pd="+desde;	
+		}
 	}
+
 	if(hasta){
-		peticion += "&ph="+hasta;
+		if(peticion == ""){
+			peticion += "?ph="+hasta;
+		}else{
+			peticion += "&ph="+hasta;	
+		}
 	}
+
+
+
 
 
 		let xhr = new XMLHttpRequest(),
 			url = 'api/articulos'+peticion+'&pag='+npag+'&lpag='+tampag;
+		let usu = JSON.parse(sessionStorage['usuario']);
+		let auth = usu.login+':'+usu.token;
+
+		console.log('Url es:'+url);
 
 		xhr.open('GET', url, true);
 
@@ -233,7 +270,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 											<span class="icon-bookmark"></span>
 										</li>
 									</ul>
-									<a href="articulo.html"  >
+									<a href="articulo.html?id=${item.id}">
 										<img src="${foto}" alt="foto_articulo">
 										</a>
 											<h5>${item.precio}€</h5>
@@ -264,7 +301,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 											<span class="icon-bookmark"></span>
 										</li>
 									</ul>
-									<a href="articulo.html"  >
+									<a href="articulo.html?id=${item.id}">
 										<img src="fotos/articulos/${foto}" alt="foto_articulo">
 										</a>
 											<h5>${item.precio}€</h5>
@@ -283,6 +320,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 			}
 		};
 
+		xhr.setRequestHeader('Authorization',auth);
 		xhr.send();
 }
 
