@@ -153,7 +153,12 @@ function paginaArticulo(){
 			${boton}
 			<a href="#preguntas">Preguntas</a>
 		`;
-			mostrarPreguntas(art);
+			let user = getUser();
+			let esvend = false;
+			if(sessionStorage.usuario && user.login == art.vendedor){
+				esvend = true;
+			}
+			mostrarPreguntas(esvend);
 			mostrarCajaPregunta();
 			modificarEliminar(art);
 		}
@@ -217,7 +222,7 @@ function getUser(){
 	return user;
 }
 // TODO 31/03/2020: el enlace para hacer scroll a las preguntas no tira
-function mostrarPreguntas(art){
+function mostrarPreguntas(esvend){
 	let user = getUser();
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -253,12 +258,11 @@ function mostrarPreguntas(art){
 					</ul>
 				</div>
 			`;
-			// if(item.respuesta == null && sessionStorage.usuario && user.login == art.vendedor){
-			if(sessionStorage.usuario && user.login == art.vendedor){
-				cajaPreg.innerHTML += `<button id="botonPregunta${count}"onclick="respPregunta(${item.id}, ${count});">Responder</button>`;
+			if(esvend){
+				cajaPreg.innerHTML += `<button id="botonPregunta${count}"onclick="respPregunta(${item.id},${esvend}, ${count});">Responder</button>`;
 			}
 			if(item.respuesta){
-				console.log('existe respuesta');
+				// console.log('existe respuesta');
 				cajaPreg.innerHTML += `
 					<article>
 						<h5>Respuesta</h5>
@@ -274,15 +278,27 @@ function mostrarPreguntas(art){
 	xhr.send();
 }
 
-function respPregunta(id, npreg){
+var activo = false;
+function respPregunta(id, esvend, npreg){
+	if(!activo){
+		activo = true;
+		console.log("if " + activo);
+	}
+	else{
+		console.log("else " + activo);
+		mostrarPreguntas(esvend);
+		activo = false;
+	}
 	let boton = document.querySelector('#botonPregunta'+ npreg);
 	let div = document.createElement('div');
 	div.innerHTML = `
 		<textarea name="texto" id="respondido"></textarea>
 		<button onclick="enviarResp(${id});">Enviar respuesta</button>
-	`;
-	// document.querySelector('main>section:nth-of-type(2)>article button') = null;
+		`;
 	boton.parentNode.replaceChild(div, boton);
+	console.log('final');
+	console.log(boton);
+	// console.log(div);
 }
 
 function enviarResp(id){
@@ -307,6 +323,7 @@ function enviarResp(id){
 	
 	xhr.onload = function(){
 		let response = JSON.parse(xhr.responseText);
+		console.log(response);
 		if(response.RESULTADO == 'OK'){
 			paginaArticulo();
 		}
@@ -328,7 +345,6 @@ function seguirBool(id, siguiendo){
 	xhr.onerror = function(){
 		console.log("Error");
 	};
-	console.log(xhr);
 
 	xhr.onload = function(){
 		console.log(JSON.parse(xhr.responseText));
@@ -502,13 +518,13 @@ function aceptarEliminar(){
 function mostrarCajaPregunta(){
 	if(getUser()){
 		let cajaPreg = document.querySelector('#dejarPregunta');
-		console.log(cajaPreg);
+		// console.log(cajaPreg);
 		let fichero = new XMLHttpRequest(),
 			url     = 'dejarPregunta.html';
 
 		fichero.open('GET', url, true);
 		fichero.onload = function(){
-			console.log(fichero);
+			// console.log(fichero);
 			cajaPreg.innerHTML = fichero.response;
 		};
 
