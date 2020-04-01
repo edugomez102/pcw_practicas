@@ -1,3 +1,6 @@
+// TODO 02/04/2020: poner todo en una funcion general para imprimir 
+// TODO 02/04/2020: organizar preguntas para el profesor
+
 var totalFotosArt = 0;
 var indice = 0;
 
@@ -75,6 +78,9 @@ function logout(){
 
 // TODO 31/03/2020: mirar para actualizar por elementos en vez de todo
 // TODO 31/03/2020: Pregunta si contador de visitas cuenta carga asincrona
+function cargarPaginaArticulo(){
+	// TODO implementar
+}
 function paginaArticulo(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
