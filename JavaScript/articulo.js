@@ -123,8 +123,14 @@ function paginaArticulo(){
 					<span>${art.npreguntas}</span>
 					<span class="icon-mail-alt"></span>
 				</li>
-			</ul>
-			<img src="fotos/articulos/${art.imagen}" alt="imgTostadora">
+			</ul>`;
+			if(art.imagen){
+				contenido.innerHTML += ` <img src="fotos/articulos/${art.imagen}" alt="imgTostadora">`;
+			}
+			else{
+				contenido.innerHTML += ` <img src="img/No-Image-Found-400x264.png" alt="imgTostadora">`;
+			}
+			contenido.innerHTML +=`
 			<div>
 				<button onclick="anteriorFoto();" >Anterior</button>
 				<label>Foto</label>
