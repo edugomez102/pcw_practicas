@@ -228,7 +228,9 @@ function mostrarPreguntas(art){
 		document.querySelector('main>section:nth-of-type(2)>article').innerHTML = '';
 		let cajaPreg = document.querySelector('main>section:nth-of-type(2)>article');
 		// console.log(preguntas);
+		let count = 0;
 		preguntas.forEach( function(item){
+			count++;
 			// console.log(item);
 			cajaPreg.innerHTML += ` <h5>Pregunta</h5>`;
 			cajaPreg.innerHTML += `
@@ -247,7 +249,7 @@ function mostrarPreguntas(art){
 			`;
 			// if(item.respuesta == null && sessionStorage.usuario && user.login == art.vendedor){
 			if(sessionStorage.usuario && user.login == art.vendedor){
-				cajaPreg.innerHTML += `<button onclick="respPregunta(${item.id});">Responder</button>`;
+				cajaPreg.innerHTML += `<button id="botonPregunta${count}"onclick="respPregunta(${item.id}, ${count});">Responder</button>`;
 			}
 			if(item.respuesta){
 				console.log('existe respuesta');
@@ -266,8 +268,8 @@ function mostrarPreguntas(art){
 	xhr.send();
 }
 
-function respPregunta(id){
-	let boton = document.querySelector('main>section:nth-of-type(2)>article button');
+function respPregunta(id, npreg){
+	let boton = document.querySelector('#botonPregunta'+ npreg);
 	let div = document.createElement('div');
 	div.innerHTML = `
 		<textarea name="texto" id="respondido"></textarea>
@@ -340,7 +342,7 @@ function modificarEliminar(art){
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 	xhr.onerror = function(){
 		console.log("Error");

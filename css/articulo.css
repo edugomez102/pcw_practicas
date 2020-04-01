@@ -16,6 +16,7 @@ main>section:nth-child(1){
 	/* border: 2px solid indigo; */
 	display: -webkit-box;
 	display: flex;
+	flex-basis: 80%;
 	margin-top: 1em;
 	flex-direction: column;
 	justify-content: center;
