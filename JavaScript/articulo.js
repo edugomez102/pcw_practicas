@@ -1,5 +1,9 @@
 // TODO 02/04/2020: poner todo en una funcion general para imprimir 
 // TODO 02/04/2020: organizar preguntas para el profesor
+// TODO 02/04/2020: Pregunta createElement vs string
+// TODO 02/04/2020: Pregunta recargar desde base de datos
+// TODO 02/04/2020: Pregunta cabecera y los send
+// TODO 02/04/2020: Pregunta uso de onload dependiendo del open
 
 var totalFotosArt = 0;
 var indice = 0;
@@ -227,7 +231,7 @@ function getUser(){
 	}
 	return user;
 }
-// TODO 31/03/2020: el enlace para hacer scroll a las preguntas no tira
+// TODO 31/03/2020: el enlace para hacer scroll a las preguntas
 function mostrarPreguntas(esvend){
 	let user = getUser();
 	let id = location.search.substring(4, location.search.length);
@@ -455,7 +459,7 @@ function aceptarModificar(precio, descripcion){
 	};
 	// TODO 30/03/2020: fuera todo bien?
 	xhr.onload = function(){
-		console.log('mmmm');
+		console.log('entra en el onload');
 		let response = JSON.parse(xhr.responseText);
 		console.log(response);
 	};
@@ -539,7 +543,7 @@ function mostrarCajaPregunta(){
 }
 
 // TODO 31/03/2020: Pregunta si vendedor puede comentar
-// TODO 31/03/2020: Hay un bug cuando clickas en varios botones de responder a la vez
+// TODO 31/03/2020: Click en mas de un boton de responder a la vez
 function guardarPregunta(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -576,14 +580,14 @@ function guardarPregunta(){
 		if(response.RESULTADO == 'OK'){
 			document.querySelector('#nuevaPregunta').value = '';
 		}
-		// TODO 30/03/2020: el autofocus no tira
+		// TODO 30/03/2020: el autofocus no funciona
 		else{
-			let ee = document.querySelector('#nuevaPregunta');
-			console.log(ee);
+			let foc = document.querySelector('#nuevaPregunta');
+			console.log(foc);
 			// document.querySelector('#nuevaPregunta').setAttribute('autofocus', 'true');
 			document.querySelector('#nuevaPregunta').autofocus = true;
-			ee = document.querySelector('#nuevaPregunta');
-			console.log(ee);
+			foc = document.querySelector('#nuevaPregunta');
+			console.log(foc);
 		}
 	};
 
