@@ -1,5 +1,4 @@
 // TODO 02/04/2020: poner todo en una funcion general para imprimir 
-// TODO 02/04/2020: organizar preguntas para el profesor
 // TODO 02/04/2020: Pregunta createElement vs string
 // TODO 02/04/2020: Pregunta recargar desde base de datos
 // TODO 02/04/2020: Pregunta cabecera y los send
@@ -116,7 +115,7 @@ function paginaArticulo(){
 			let boton = '';
 			if(auth){
 				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
-				boton = ` <button onclick="seguirBool(${art.id},${art.estoy_siguiendo});">${seSigue}</button> `;
+				boton = ` <button id="botonSeguimiento" onclick="seguirBool(${art.id},${art.estoy_siguiendo});">${seSigue}</button> `;
 			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
@@ -361,6 +360,12 @@ function seguirBool(id, siguiendo){
 	};
 	xhr.send();
 	paginaArticulo();
+	// let boton = document.querySelector('#botonSeguimiento');
+	// if(boton.innerHTML == 'Seguir Articulo')
+	// 	boton.innerHTML = 'Dejar de seguir'
+	// else
+	// 	boton.innerHTML = 'Seguir Articulo'
+
 }
 function insertAfter(newNode, referenceNode) {
 	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
