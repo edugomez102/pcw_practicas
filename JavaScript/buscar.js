@@ -217,12 +217,13 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 
 
 
-
+		let usu;
+		let auth
 		let xhr = new XMLHttpRequest(),
 			url = 'api/articulos'+peticion+'&pag='+npag+'&lpag='+tampag;
 		if(sessionStorage['usuario']!=null){
-			let usu = JSON.parse(sessionStorage['usuario']);
-			let auth = usu.login+':'+usu.token;	
+			 usu = JSON.parse(sessionStorage['usuario']);
+			 auth = usu.login+':'+usu.token;	
 		}
 
 		console.log('Url es:'+url);

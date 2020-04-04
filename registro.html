@@ -27,45 +27,9 @@
 			<div> </div>
 			<div> </div>
 			<ul id="barraNav">
-				<!-- <li>
-					<a href="index.html">
-						<span class="icon-home"></span>
-						<span>Inicio</span>
-					</a>
-				</li>
-				<li>
-					<a href="buscar.html">
-						<span class="icon-search"></span>
-						<span>Buscar</span>
-					</a>
-				</li>
-				<li>
-					<a href="nuevo.html">
-						<span class="icon-doc-new"></span>
-						<span>Nuevo articulo</span>
-						</a>
-				</li>
-				<li>
-					<a href="index.html">
-						<span class="icon-user-times"></span>
-						<span>Logout</span>
-					</a>
-				</li>
-				<li>
-					<a href="login.html">
-						<span class="icon-login"></span>
-						<span>Login</span>
-					</a>
-				</li>
-				<li>
-					<a href="registro.html">
-						<span class="icon-user-plus"></span>
-						<span>Registro</span>
-					</a>
-				</li> -->
 			</ul>
 		</nav>
-		<main>
+		<main id="mainModal">
 			<div class="contenedorRegister">
 				<img src="img/logoSecondHand.png" alt="logoPagina">
 				<form onsubmit="return hacerRegistro(this);" id="formRegistro">
@@ -90,7 +54,7 @@
 
 					<!-- Email usuario -->
 					<label>Email</label>
-					<input type="email" placeholder="email" required="required" name="email">
+					<input type="email" placeholder="email" required="required" name="email" id="emailUser">
 
 					<!-- Foto del usuario -->
 					<div>
@@ -102,7 +66,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="modal">
+			<!-- <div class="modal">
 				<div class="contenido-modal">
 					<div>
 						<p>Register usuario</p>
@@ -112,7 +76,7 @@
 						<button id="AceptarLogin">Aceptar</button>
 					</div>
 				</div>
-			</div>	
+			</div>	 -->
 		</main>
 		<footer>
 			<div>
