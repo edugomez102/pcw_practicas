@@ -1,8 +1,5 @@
-// TODO 02/04/2020: poner todo en una funcion general para imprimir 
-// TODO 02/04/2020: Pregunta createElement vs string
 // TODO 02/04/2020: Pregunta recargar desde base de datos
 // TODO 02/04/2020: Pregunta cabecera y los send
-// TODO 02/04/2020: Pregunta uso de onload dependiendo del open
 
 var totalFotosArt = 0;
 var indice = 0;
@@ -288,16 +285,17 @@ function mostrarPreguntas(esvend){
 }
 
 var activo = false;
+// querySelector all
 function respPregunta(id, esvend, npreg){
-	if(!activo){
-		activo = true;
-		console.log("if " + activo);
-	}
-	else{
-		console.log("else " + activo);
-		mostrarPreguntas(esvend);
-		activo = false;
-	}
+	// if(!activo){
+	// 	activo = true;
+	// 	console.log("if " + activo);
+	// }
+	// else{
+	// 	console.log("else " + activo);
+	// 	mostrarPreguntas(esvend);
+	// 	activo = false;
+	// }
 	let boton = document.querySelector('#botonPregunta'+ npreg);
 	let div = document.createElement('div');
 	div.innerHTML = `
@@ -311,6 +309,7 @@ function respPregunta(id, esvend, npreg){
 }
 
 function enviarResp(id){
+	// enviar thois para lo del dom
 	console.log(id);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/preguntas/' + id + '/respuesta';
@@ -337,6 +336,7 @@ function enviarResp(id){
 			paginaArticulo();
 		}
 	};
+	// todo este id sobra hacer con arbol del dom
 	let respuestaPregunta = document.getElementById('respondido').value;
 
 	xhr.send('texto=' + respuestaPregunta);
@@ -374,7 +374,7 @@ function insertAfter(newNode, referenceNode) {
 function modificarEliminar(art){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos' + id;
+		url = 'api/articulos/' + id;
 	let user = getUser();
 
 	xhr.open('POST', url, true);
@@ -394,6 +394,7 @@ function modificarEliminar(art){
 			desc = desc.replace(RegExp(/"/g), '&quot;');
 			desc = desc.replace(/(?:\r\n|\r|\n)/g, ''); 
 			// console.log(desc);
+			// TODO no pasar por parametro
 			div.innerHTML = `
 				<button onclick="botonModificar(${art.precio},'${desc}');" id="botonModificar"style="background-color:chocolate;">modificar</button>
 				<button onclick="botonEliminar();"style="background-color:red;">eliminar</button>
@@ -419,7 +420,7 @@ function ventanaModal(titulo, precio, descripcion){
 					<p>${titulo}</p>
 				</div>
 				<div>
-					<form action="javascript:void(0);">
+					<form onsubmit="return false;">
 						<label >Precio</label>
 						<input type="number" value="${precio}">
 						<label >Descripción</label>
@@ -466,14 +467,16 @@ function aceptarModificar(precio, descripcion){
 	xhr.onload = function(){
 		console.log('entra en el onload');
 		let response = JSON.parse(xhr.responseText);
-		console.log(response);
+		if(response.RESULTADO == "OK"){
+			console.log(response);
+			paginaArticulo();
+		}
 	};
 	// if(response.RESULTADO == 'OK'){
 		precio = document.querySelector('.contenido-modal div form>input').value;
 		descripcion = document.querySelector('.contenido-modal div form>textarea').value;
 	// }
 	xhr.send('precio=' + precio + '&descripcion=' + descripcion);
-	paginaArticulo();
 }
 
 function botonEliminar(){
@@ -486,10 +489,8 @@ function botonEliminar(){
 					<p>Confirmar eliminar Articulo</p>
 				</div>
 				<div>
-					<form action="javascript:void(0);">
 						<button id="botonCancelar">Cancelar</button>
 						<button id="botonAceptar">Aceptar</button>
-					</form>
 				</div>
 			</div>
 		`;
@@ -520,13 +521,13 @@ function aceptarEliminar(){
 	};
 	// TODO 30/03/2020: fuera todo bien?
 	xhr.onload = function(){
-		console.log('mmmm');
+		// console.log('mmmm');
 		let response = JSON.parse(xhr.responseText);
 		console.log(response);
+		if(response.RESULTADO == 'OK'){
+			window.location = 'index.html';
+		}
 	};
-	// if(response.RESULTADO == 'OK'){
-	// }
-	window.location = 'index.html';
 	xhr.send();
 }
 
@@ -580,23 +581,20 @@ function guardarPregunta(){
 		wModal.style.display = 'block';
 		let botonAceptar = document.getElementById('botonAceptar');
 		botonAceptar.addEventListener('click', function(){
-			wModal.style.display = 'none';
+			// borrar la ventan en vez de esconderla
+			wModal.remove();
+			if(response.RESULTADO != 'OK'){
+				document.querySelector('#nuevaPregunta').focus();
+			}
 		});
 		if(response.RESULTADO == 'OK'){
 			document.querySelector('#nuevaPregunta').value = '';
+			paginaArticulo();
 		}
-		// TODO 30/03/2020: el autofocus no funciona
-		else{
-			let foc = document.querySelector('#nuevaPregunta');
-			console.log(foc);
-			// document.querySelector('#nuevaPregunta').setAttribute('autofocus', 'true');
-			document.querySelector('#nuevaPregunta').autofocus = true;
-			foc = document.querySelector('#nuevaPregunta');
-			console.log(foc);
-		}
+		// TODO 30/03/2020: el autofocus no funciona primero 
+		// eliminiar ventana modal
 	};
 
 	xhr.send('texto=' + gpreg);
-	paginaArticulo();
 	
 }
