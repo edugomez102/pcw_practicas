@@ -1,5 +1,6 @@
 // TODO 02/04/2020: Pregunta recargar desde base de datos
 // TODO 02/04/2020: Pregunta cabecera y los send
+// TODO boton seguir recargar pagina
 
 var totalFotosArt = 0;
 var indice = 0;
@@ -28,6 +29,17 @@ function autentificar(xhr){
 		xhr.setRequestHeader('Authorization',auth);
 	}
 	return auth;
+}
+function insertarDespues(newNode, referenceNode) {
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+function crearModal(){
+	let divModal = document.createElement('div'),
+		main     = document.querySelector('main');
+	divModal.setAttribute("class", "modal");
+	insertarDespues(divModal, main);
+	console.log(divModal);
+	return divModal;
 }
 
 function comprobarLogin(){
@@ -93,7 +105,6 @@ function logout(){
 }
 
 // TODO 31/03/2020: mirar para actualizar por elementos en vez de todo
-// TODO 31/03/2020: Pregunta si contador de visitas cuenta carga asincrona
 function paginaArticulo(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -319,10 +330,7 @@ function enviarResp(id){
 	xhr.open('POST', url, true);
 
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	let user = JSON.parse(sessionStorage.usuario);
-	let auth = user.login+':'+user.token;
-	xhr.setRequestHeader('Authorization',auth);
+	autentificar(xhr);
 
 	xhr.onerror = function(){
 		console.log('Error');
@@ -368,9 +376,6 @@ function seguirBool(id, siguiendo){
 	// 	boton.innerHTML = 'Seguir Articulo'
 
 }
-function insertAfter(newNode, referenceNode) {
-	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
 
 function modificarEliminar(){
 	let id     = location.search.substring(4, location.search.length),
@@ -400,7 +405,7 @@ function modificarEliminar(){
 			// 	botonModificar(art.precio);
 			// });
 			// boton.style.background-color = 'chocolate';
-			insertAfter(div, document.querySelector('main>section h3'));
+			insertarDespues(div, document.querySelector('main>section h3'));
 		}
 	};
 
@@ -408,7 +413,7 @@ function modificarEliminar(){
 }
 
 function ventanaModal(titulo, precio, descripcion){
-	let wModal = document.querySelector(".modal");
+	let wModal = crearModal();
 	wModal.innerHTML = `
 			<div class="contenido-modal modw">
 				<div>
@@ -437,13 +442,15 @@ function botonModificar(){
 		botonCancelar = document.getElementById('botonCancelar');
 	wModal.style.display = 'block';
 	botonCancelar.addEventListener('click', function(){
-		wModal.style.display = 'none';
+		// wModal.style.display = 'none';
+		wModal.remove();
 		console.log('Cancelar');
 	});
 	botonAceptar.addEventListener('click', function(){
 		console.log('Aceptar');
 		aceptarModificar(precio, descripcion);
-		wModal.style.display = 'none';
+		// wModal.style.display = 'none';
+		wModal.remove();
 	});
 }
 
@@ -475,30 +482,31 @@ function aceptarModificar(precio, descripcion){
 }
 
 function botonEliminar(){
-	let wModal = document.querySelector(".modal");
+	let wModal = crearModal();
 	wModal.style.display = 'block';
-	// TODO 31/03/2020: Preguntar si se puede hacer lo de void(0)
 	wModal.innerHTML = `
 			<div class="contenido-modal modw">
 				<div>
 					<p>Confirmar eliminar Articulo</p>
 				</div>
 				<div>
-						<button id="botonCancelar">Cancelar</button>
-						<button id="botonAceptar">Aceptar</button>
+					<button id="botonCancelar">Cancelar</button>
+					<button id="botonAceptar">Aceptar</button>
 				</div>
 			</div>
 		`;
 	let botonAceptar = document.getElementById('botonAceptar');
 	let botonCancelar = document.getElementById('botonCancelar');
 	botonCancelar.addEventListener('click', function(){
-		wModal.style.display = 'none';
+		// wModal.style.display = 'none';
+		wModal.remove();
 		console.log('Cancelar');
 	});
 	botonAceptar.addEventListener('click', function(){
 		console.log('Aceptar');
 		aceptarEliminar();
-		wModal.style.display = 'none';
+		// wModal.style.display = 'none';
+		wModal.remove();
 	});
 
 }
@@ -513,7 +521,6 @@ function aceptarEliminar(){
 	xhr.onerror = function(){
 		console.log("Error");
 	};
-	// TODO 30/03/2020: fuera todo bien?
 	xhr.onload = function(){
 		// console.log('mmmm');
 		let response = JSON.parse(xhr.responseText);
@@ -542,13 +549,11 @@ function mostrarCajaPregunta(){
 	}
 }
 
-// TODO 31/03/2020: Pregunta si vendedor puede comentar
-// TODO 31/03/2020: Click en mas de un boton de responder a la vez
 function guardarPregunta(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/pregunta';
-	let wModal = document.querySelector(".modal");
+	let wModal = crearModal();
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
