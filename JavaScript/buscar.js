@@ -220,8 +220,10 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 
 		let xhr = new XMLHttpRequest(),
 			url = 'api/articulos'+peticion+'&pag='+npag+'&lpag='+tampag;
-		let usu = JSON.parse(sessionStorage['usuario']);
-		let auth = usu.login+':'+usu.token;
+		if(sessionStorage['usuario']!=null){
+			let usu = JSON.parse(sessionStorage['usuario']);
+			let auth = usu.login+':'+usu.token;	
+		}
 
 		console.log('Url es:'+url);
 
@@ -320,7 +322,9 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 			}
 		};
 
-		xhr.setRequestHeader('Authorization',auth);
+		if(sessionStorage['usuario']!=null){
+			xhr.setRequestHeader('Authorization',auth);
+		}
 		xhr.send();
 }
 
