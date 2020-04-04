@@ -30,32 +30,58 @@ function comprobarLogin(){
 }
 
 function hacerRegistro(formu){
-	let xhr = new XMLHttpRequest(),
-		url = 'api/usuarios/registro',
-		fd 	= new FormData(formu);
+	if(document.querySelector('.modal')==null){
+		let xhr = new XMLHttpRequest(),
+			url = 'api/usuarios/registro',
+			fd 	= new FormData(formu);
 
-	let wModal = document.querySelector(".modal");
-	let buttonAceptar = document.getElementById('AceptarLogin');
+		let mainModal = document.querySelector("#mainModal");
+		
+		let divModal = document.createElement('div');
+		divModal.setAttribute("class","modal");
 
-	xhr.open('POST',url,true);
 
-	if(registro_Valido_login && registro_Valido_pwd){
-		xhr.onload = function(){
-			let objJava = JSON.parse(xhr.responseText);
-			wModal.style.display = 'block';
-			document.querySelector('#mensajeLogin').innerHTML = `<p>Nuevo usuario <span style="color:indigo;">${objJava.LOGIN}</span> registrado correctamente</p>`;
-			buttonAceptar.addEventListener('click',function(){
-				window.location = "/pcw_practicas/login.html";
-			});
-		};
-		xhr.send(fd);
-		document.getElementById('formRegistro').reset();
+		let wModal = document.querySelector(".modal");
+		let buttonAceptar = document.getElementById('AceptarLogin');
 
-	}else{
-		console.log('Error registro');
+		xhr.open('POST',url,true);
+
+		if(registro_Valido_login && registro_Valido_pwd){
+			xhr.onload = function(){
+				console.log('Entro aqui');
+				let objJava = JSON.parse(xhr.responseText);
+				divModal.innerHTML = `<div class="contenido-modal">
+							<div>
+								<p>Login usuario</p>
+							</div>
+							<div>
+								<p>Nuevo usuario <span style="color:indigo;">${objJava.LOGIN}</span> registrado correctamente</p>
+								<button id="AceptarLogin" onclick="sacarModal();"">Aceptar</button>
+							</div>
+						</div>`;
+				document.getElementById('formRegistro').reset();
+				mainModal.appendChild(divModal);
+				document.getElementById("logUser").disabled = true;
+				document.getElementById("pwdUser").disabled = true;
+				document.getElementById("repeatpwd").disabled = true;
+				document.getElementById("nombreUser").disabled = true;
+				document.getElementById("emailUser").disabled = true;
+			};
+			xhr.send(fd);
+			return false;
+		}else{
+			console.log('Error registro');
+		}
 	}
 	return false;
 }
+
+
+function sacarModal(){
+	window.location = "/pcw_practicas/login.html";
+}
+
+
 
 
 function comprobarFocoLogin(){
