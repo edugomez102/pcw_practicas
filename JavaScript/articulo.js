@@ -133,16 +133,16 @@ function paginaArticulo(){
 			let art = articulo.FILAS[0];
 			console.log(articulo);
 			let seSigue;
-			let boton = '';
+			let boton;
 			if(auth){
 				seSigue = (art.estoy_siguiendo == 0) ? 'Seguir Articulo' : 'Dejar de seguir';
-				boton = ` <button id="botonSeguimiento" onclick="seguirBool(${art.id},${art.estoy_siguiendo});">${seSigue}</button> `;
+				boton = ` <button id="botonSeguimiento" onclick="seguirBool(${art.id});">${seSigue}</button> `;
 			}
 			contenido.innerHTML = `
 			<h3>${art.nombre}</h3>
 			<ul>
 				<li>
-					<span>${art.nsiguiendo}</span>
+					<span id="nsiguiendo">${art.nsiguiendo}</span>
 					<span class="icon-user"></span>
 				</li>
 				<li>
@@ -349,10 +349,13 @@ function enviarResp(id){
 
 	xhr.send('texto=' + respuestaPregunta);
 }
-// TODO poner sin recargar num y seguir
-function seguirBool(id, siguiendo){
-	let bool = ( siguiendo == 0 ) ? true : false;
-	console.log(bool);
+function seguirBool(id){
+	let boton     = document.querySelector('#botonSeguimiento'),
+		siguiendo = boton.innerHTML,
+		nseg      = parseInt( document.querySelector('#nsiguiendo').innerHTML, ),
+		bool      = ( siguiendo == 'Seguir Articulo' ) ? true : false;
+	// console.log(bool);
+	// console.log(nseg);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/seguir/' + bool;
 
@@ -365,15 +368,17 @@ function seguirBool(id, siguiendo){
 
 	xhr.onload = function(){
 		console.log(JSON.parse(xhr.responseText));
+		if(boton.innerHTML == 'Seguir Articulo'){
+			boton.innerHTML = 'Dejar de seguir'
+			nseg++;
+		}
+		else{
+			boton.innerHTML = 'Seguir Articulo'
+			nseg--;
+		}
+		document.querySelector('#nsiguiendo').innerHTML = nseg;
 	};
 	xhr.send();
-	// paginaArticulo();
-	mostrarPreguntas();
-	// let boton = document.querySelector('#botonSeguimiento');
-	// if(boton.innerHTML == 'Seguir Articulo')
-	// 	boton.innerHTML = 'Dejar de seguir'
-	// else
-	// 	boton.innerHTML = 'Seguir Articulo'
 
 }
 
