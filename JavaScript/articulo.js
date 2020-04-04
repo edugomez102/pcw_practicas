@@ -4,8 +4,33 @@
 var totalFotosArt = 0;
 var indice = 0;
 
+function esVendedor(){
+	let user = getUser();
+	let esvend = false;
+	let nombreVendedor = document.querySelector("#perfilVendedor").innerHTML;
+	if(sessionStorage.usuario && user.login == nombreVendedor){
+		esvend = true;
+	}
+	return esvend;
+}
+function getUser(){
+	let user = null;
+	if(sessionStorage.usuario){
+		user = JSON.parse(sessionStorage.usuario);
+	}
+	return user;
+}
+function autentificar(xhr){
+	let auth;
+	if(sessionStorage.usuario){
+		let user = JSON.parse(sessionStorage.usuario);
+		auth = user.login+':'+user.token;
+		xhr.setRequestHeader('Authorization',auth);
+	}
+	return auth;
+}
+
 function comprobarLogin(){
-	
 	let = document.querySelector('#barraNav');
 	if(sessionStorage['usuario']!=null){
 		let usuario = JSON.parse(sessionStorage['usuario']).login;
@@ -62,15 +87,6 @@ function comprobarLogin(){
 	}
 }
 
-function autentificar(xhr){
-	let auth;
-	if(sessionStorage.usuario){
-		let user = JSON.parse(sessionStorage.usuario);
-		auth = user.login+':'+user.token;
-		xhr.setRequestHeader('Authorization',auth);
-	}
-	return auth;
-}
 function logout(){
 	sessionStorage.clear();
 	window.location = "/pcw_practicas/index.html";
@@ -78,9 +94,6 @@ function logout(){
 
 // TODO 31/03/2020: mirar para actualizar por elementos en vez de todo
 // TODO 31/03/2020: Pregunta si contador de visitas cuenta carga asincrona
-function cargarPaginaArticulo(){
-	// TODO implementar
-}
 function paginaArticulo(){
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
@@ -148,25 +161,20 @@ function paginaArticulo(){
 			<h4>Precio: </h4>
 			<h5 id="precioArticulo">${art.precio}€</h5>
 			<label>Vendedor:</label>
-			<a href="buscar.html?t=${art.vendedor}">${art.vendedor}</a>
+			<a id="perfilVendedor" href="buscar.html?t=${art.vendedor}">${art.vendedor}</a>
 			<img src="fotos/usuarios/${art.foto_vendedor}" alt="">
 			<h4>Subido el</h4>
 			<time datetime="2020-02-27 00:42">
 				${art.fecha}
 			</time>
-			<h4 id="descripcionArticulo">Descripcion:</h4>
-			<p>${art.descripcion}</p>
+			<h4 >Descripcion:</h4>
+			<p id="descripcionArticulo">${art.descripcion}</p>
 			${boton}
 			<a href="#preguntas">Preguntas</a>
 		`;
-			let user = getUser();
-			let esvend = false;
-			if(sessionStorage.usuario && user.login == art.vendedor){
-				esvend = true;
-			}
-			mostrarPreguntas(esvend);
+			mostrarPreguntas();
 			mostrarCajaPregunta();
-			modificarEliminar(art);
+			modificarEliminar();
 		}
 		else{
 			console.log('Resultado no es OK');
@@ -220,16 +228,10 @@ function anteriorFoto(){
 		mostrarFoto(indice);
 	}
 }
-function getUser(){
-	let user = null;
-	if(sessionStorage.usuario){
-		user = JSON.parse(sessionStorage.usuario);
-	}
-	return user;
-}
 // TODO 31/03/2020: el enlace para hacer scroll a las preguntas
-function mostrarPreguntas(esvend){
+function mostrarPreguntas(){
 	let user = getUser();
+	let esvend = esVendedor();
 	let id = location.search.substring(4, location.search.length);
 	let xhr = new XMLHttpRequest(),
 		url = 'api/articulos/' + id + '/preguntas';
@@ -317,9 +319,6 @@ function enviarResp(id){
 	xhr.open('POST', url, true);
 
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	// xhr.setRequestHeader("Content-type", "multipart/form-data");
-	// xhr.setRequestHeader("Content-type", "text/html");
-	// xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
 
 	let user = JSON.parse(sessionStorage.usuario);
 	let auth = user.login+':'+user.token;
@@ -333,7 +332,8 @@ function enviarResp(id){
 		let response = JSON.parse(xhr.responseText);
 		console.log(response);
 		if(response.RESULTADO == 'OK'){
-			paginaArticulo();
+			// paginaArticulo();
+			mostrarPreguntas();
 		}
 	};
 	// todo este id sobra hacer con arbol del dom
@@ -341,7 +341,7 @@ function enviarResp(id){
 
 	xhr.send('texto=' + respuestaPregunta);
 }
-// TOOD 29/03/2020: ver que pasa con la fecha de los articulos
+// TODO poner sin recargar num y seguir
 function seguirBool(id, siguiendo){
 	let bool = ( siguiendo == 0 ) ? true : false;
 	console.log(bool);
@@ -359,7 +359,8 @@ function seguirBool(id, siguiendo){
 		console.log(JSON.parse(xhr.responseText));
 	};
 	xhr.send();
-	paginaArticulo();
+	// paginaArticulo();
+	mostrarPreguntas();
 	// let boton = document.querySelector('#botonSeguimiento');
 	// if(boton.innerHTML == 'Seguir Articulo')
 	// 	boton.innerHTML = 'Dejar de seguir'
@@ -371,11 +372,11 @@ function insertAfter(newNode, referenceNode) {
 	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function modificarEliminar(art){
-	let id = location.search.substring(4, location.search.length);
-	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos/' + id;
-	let user = getUser();
+function modificarEliminar(){
+	let id     = location.search.substring(4, location.search.length),
+		esvend = esVendedor(),
+		xhr    = new XMLHttpRequest(),
+		url    = 'api/articulos/' + id;
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
@@ -386,17 +387,12 @@ function modificarEliminar(art){
 	};
 	xhr.onload = function(){
 		// let response = JSON.parse(xhr.responseText);
-		// console.log(response.FILAS);
-		if(user && art.vendedor == user.login){
-			let div = document.createElement('div');
-			let desc  = art.descripcion;
-			// TODO 31/03/2020: Pregunta si es valido usar estos replace
-			desc = desc.replace(RegExp(/"/g), '&quot;');
-			desc = desc.replace(/(?:\r\n|\r|\n)/g, ''); 
-			// console.log(desc);
-			// TODO no pasar por parametro
+		// console.log(response);
+		// TODO revisar el response
+		if(esvend){
+			let div  = document.createElement('div');
 			div.innerHTML = `
-				<button onclick="botonModificar(${art.precio},'${desc}');" id="botonModificar"style="background-color:chocolate;">modificar</button>
+				<button onclick="botonModificar();" id="botonModificar"style="background-color:chocolate;">modificar</button>
 				<button onclick="botonEliminar();"style="background-color:red;">eliminar</button>
 			`;
 			// let boton = document.createElement('button');
@@ -405,7 +401,6 @@ function modificarEliminar(art){
 			// });
 			// boton.style.background-color = 'chocolate';
 			insertAfter(div, document.querySelector('main>section h3'));
-
 		}
 	};
 
@@ -434,12 +429,13 @@ function ventanaModal(titulo, precio, descripcion){
 	return wModal;
 }
 
-function botonModificar(precio, descripcion){
-
-	let wModal = ventanaModal("Modificar articulo", precio, descripcion);
+function botonModificar(){
+	let descripcion   = document.querySelector('#descripcionArticulo').innerText,
+		precio        = document.querySelector('#precioArticulo').innerHTML.slice(0, -1),
+		wModal        = ventanaModal("Modificar articulo", precio, descripcion),
+		botonAceptar  = document.getElementById('botonAceptar'),
+		botonCancelar = document.getElementById('botonCancelar');
 	wModal.style.display = 'block';
-	let botonAceptar = document.getElementById('botonAceptar');
-	let botonCancelar = document.getElementById('botonCancelar');
 	botonCancelar.addEventListener('click', function(){
 		wModal.style.display = 'none';
 		console.log('Cancelar');
@@ -458,24 +454,23 @@ function aceptarModificar(precio, descripcion){
 
 	xhr.open('POST', url, true);
 	autentificar(xhr);
+	// TODO probar con formdata
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 	xhr.onerror = function(){
 		console.log("Error");
 	};
-	// TODO 30/03/2020: fuera todo bien?
 	xhr.onload = function(){
-		console.log('entra en el onload');
 		let response = JSON.parse(xhr.responseText);
 		if(response.RESULTADO == "OK"){
 			console.log(response);
-			paginaArticulo();
+			document.querySelector('#precioArticulo').innerHTML = precio;
+			document.querySelector('#descripcionArticulo').innerHTML = descripcion;
 		}
 	};
-	// if(response.RESULTADO == 'OK'){
-		precio = document.querySelector('.contenido-modal div form>input').value;
-		descripcion = document.querySelector('.contenido-modal div form>textarea').value;
-	// }
+	precio = document.querySelector('.contenido-modal div form>input').value;
+	descripcion = document.querySelector('.contenido-modal div form>textarea').value;
+
 	xhr.send('precio=' + precio + '&descripcion=' + descripcion);
 }
 
@@ -514,7 +509,6 @@ function aceptarEliminar(){
 
 	xhr.open('DELETE', url, true);
 	autentificar(xhr);
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 	xhr.onerror = function(){
 		console.log("Error");
@@ -589,7 +583,7 @@ function guardarPregunta(){
 		});
 		if(response.RESULTADO == 'OK'){
 			document.querySelector('#nuevaPregunta').value = '';
-			paginaArticulo();
+			mostrarPreguntas();
 		}
 		// TODO 30/03/2020: el autofocus no funciona primero 
 		// eliminiar ventana modal
