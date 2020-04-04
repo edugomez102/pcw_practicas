@@ -58,6 +58,13 @@ function cargarCategorias(){
 
 function insertarFoto(fotito){
 	let fr = new FileReader();
+
+	let mainModal = document.querySelector("body");
+	let divModal = document.createElement('div');
+	divModal.setAttribute("class","modal");
+
+
+
 	let wModal = document.querySelector(".modal");
 	let buttonAceptar = document.getElementById('AceptarLogin');
 	// let idFotohtml = '#fotoobjeto'+contadorFotos; 
@@ -68,14 +75,35 @@ function insertarFoto(fotito){
 
 	if(fotito.files[0]!=null){
 		if(fotito.files[0].size/1024 > 300){
-			wModal.style.display = 'block';
-			buttonAceptar.addEventListener('click',function(){
-				wModal.style.display = 'none';
-			});
+			divModal.innerHTML = `<div class="contenido-modal">
+			<div>
+				<p>Fichero no soportado</p>
+			</div>
+			<div>
+				<p id="mensajeLogin">El peso del archivo es mayor que 300KB</p>
+				<button onclick="borrarModal();"id="AceptarLogin">Aceptar</button>
+			</div>
+			</div>`;
+			mainModal.appendChild(divModal);
+			document.getElementById('A').disabled = true;
+			document.getElementById('B').disabled = true;
+			document.getElementById('C').disabled = true;
+			document.getElementById('D').disabled = true;
+			document.getElementById('lista-categorias').disabled = true;
 		}else{
 			fr.readAsDataURL(fotito.files[0]);
 		}
 	}
+}
+
+function borrarModal(){
+	let divModal = document.querySelector(".modal");
+	divModal.remove();
+	document.getElementById('A').disabled = false;
+	document.getElementById('B').disabled = false;
+	document.getElementById('C').disabled = false;
+	document.getElementById('D').disabled = false;
+	document.getElementById('lista-categorias').disabled = false;
 }
 
 
@@ -101,46 +129,44 @@ function eliminarFoto(lab){
 
 
 function hacerNuevo(formu){
-	let usu = JSON.parse(sessionStorage['usuario']);
-	let xhr = new XMLHttpRequest(),
-		url = 'api/articulos',
-		fd  = new FormData(formu);
+	if(document.querySelector('.modal2')==null){
+		let usu = JSON.parse(sessionStorage['usuario']);
+		let xhr = new XMLHttpRequest(),
+			url = 'api/articulos',
+			fd  = new FormData(formu);
 
-	let auth = usu.login+':'+usu.token;
-		
-	xhr.open('POST',url,true);
+		let auth = usu.login+':'+usu.token;
+			
+		xhr.open('POST',url,true);
 
-	xhr.onerror = function(){
-		console.log('Error subiendo archivo');
-	};
+		xhr.onerror = function(){
+			console.log('Error subiendo archivo');
+		};
 
-	xhr.onload = function (){
-		let respuesta = JSON.parse(xhr.responseText);
-		console.log(respuesta);
-		let idArticulo = respuesta.ID;
-		if(respuesta.RESULTADO == "OK"){
-			console.log('Voy a subir fotos');
-			// console.log(document.querySelector('#contenedorFotos').childNodes[1].childNodes[7].files[0]);
-			subirFotos(idArticulo,0);
-		}else{
-			// console.log('Que pasa');
-		}
-	};
+		xhr.onload = function (){
+			let respuesta = JSON.parse(xhr.responseText);
+			let idArticulo = respuesta.ID;
+			if(respuesta.RESULTADO == "OK"){
+				subirFotos(idArticulo,0);
+			}else{
+
+			}
+		};
 
 
-	//enviamos la  cabezera necesario para saber que usuario ha subido el articulo
-	xhr.setRequestHeader('Authorization',auth);
-	xhr.send(fd);
-
+		//enviamos la  cabezera necesario para saber que usuario ha subido el articulo
+		xhr.setRequestHeader('Authorization',auth);
+		xhr.send(fd);
+	}
 	return false;
 }
 
 
 function subirFotos(idArticulo,nFoto){
-	console.log('Entro aqui');
 	let usu = JSON.parse(sessionStorage['usuario']);
 	let	url = 'api/articulos/'+idArticulo+'/foto';
 	let auth = usu.login+':'+usu.token
+
 
 	let contenedorF = document.querySelector('#contenedorFotos');
 	//numero de divs del contenedor
@@ -167,20 +193,37 @@ function subirFotos(idArticulo,nFoto){
 						});
 		}else{
 			if(todosDivs.length == 1){
-				let wModal = document.querySelector(".modal2");
-				let buttonAceptar = document.getElementById('AceptarLogin2');
-				wModal.style.display = 'block';
-				buttonAceptar.addEventListener('click',function(){
-					window.location = "/pcw_practicas/index.html";
-				});
+				hacerModal();
 			}
 		}
-	}else {
-		let wModal = document.querySelector(".modal2");
-		let buttonAceptar = document.getElementById('AceptarLogin2');
-		wModal.style.display = 'block';
-		buttonAceptar.addEventListener('click',function(){
-			window.location = "/pcw_practicas/index.html";
-		});
+	}else{
+		hacerModal();
 	}
+}
+
+
+function hacerModal(){
+	let mainModal = document.querySelector("body");
+	let divModal = document.createElement('div');
+	divModal.setAttribute("class","modal2");
+
+	divModal.innerHTML = `<div class="contenido-modal2">
+					<div>
+						<p>Nuevo articulo</p>
+					</div>
+					<div>
+						<p id="mensajeLogin2">Se ha guardado correctamente el articulo</p>
+						<button onclick="sacarModal();"id="AceptarLogin2">Aceptar</button>
+					</div>
+				</div>`;
+	mainModal.appendChild(divModal);
+	document.getElementById('A').disabled = true;
+	document.getElementById('B').disabled = true;
+	document.getElementById('C').disabled = true;
+	document.getElementById('D').disabled = true;
+	document.getElementById('lista-categorias').disabled = true;
+}
+
+function sacarModal(){
+	window.location = "/pcw_practicas/index.html";
 }

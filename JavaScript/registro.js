@@ -39,7 +39,6 @@ function hacerRegistro(formu){
 		
 		let divModal = document.createElement('div');
 		divModal.setAttribute("class","modal");
-		let todosDivModal = document.querySelectorAll('#mainModal>div');
 
 
 		let wModal = document.querySelector(".modal");

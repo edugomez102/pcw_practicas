@@ -74,7 +74,6 @@ function hacerLogin(formu){
 		let mainModal = document.querySelector("#mainModal");
 		let divModal = document.createElement('div');
 		divModal.setAttribute("class","modal");
-		let todosDivModal = document.querySelectorAll('#mainModal>div');
 
 
 		xhr.open('POST',url,true);

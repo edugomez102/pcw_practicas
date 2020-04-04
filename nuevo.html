@@ -27,61 +27,25 @@
 			<div> </div>
 			<div> </div>
 			<ul id="barraNav">
-				<!-- <li>
-					<a href="index.html">
-						<span class="icon-home"></span>
-						<span>Inicio</span>
-					</a>
-				</li>
-				<li>
-					<a href="buscar.html">
-						<span class="icon-search"></span>
-						<span>Buscar</span>
-					</a>
-				</li>
-				<li>
-					<a href="nuevo.html">
-						<span class="icon-doc-new"></span>
-						<span>Nuevo articulo</span>
-						</a>
-				</li>
-				<li>
-					<a href="index.html">
-						<span class="icon-user-times"></span>
-						<span>Logout</span>
-					</a>
-				</li>
-				<li>
-					<a href="login.html">
-						<span class="icon-login"></span>
-						<span>Login</span>
-					</a>
-				</li>
-				<li>
-					<a href="registro.html">
-						<span class="icon-user-plus"></span>
-						<span>Registro</span>
-					</a>
-				</li> -->
 			</ul>
 		</nav>
 
-		<main>
+		<main id="mainModal">
 			<form onsubmit="return hacerNuevo(this);">
 				<h3>Nuevo Articulo</h3>
 				<label>Articulo</label>
-				<input type="text" placeholder="Nombre articulo" maxlength="100" required="required" name="nombre">
+				<input type="text" placeholder="Nombre articulo" maxlength="100" required="required" name="nombre" id="A">
 
 				<label>Descripción</label>
-				<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2" name="descripcion"></textarea>
+				<textarea maxlength="300" placeholder="Descripcion" required="required" cols="13"  rows="2" name="descripcion" id="B"></textarea>
 
 
 				<label>Precio</label>
-				<input type="number" placeholder="Precio" required="required" step="0.01" min="0" name="precio">
+				<input type="number" placeholder="Precio" required="required" step="0.01" min="0" name="precio" id="C">
 
 
 				<label>Categoria</label>
-				<input type="text" placeholder="Categoria" maxlength="100" required="required" name="categoria" list="lista-categorias">
+				<input type="text" placeholder="Categoria" maxlength="100" required="required" name="categoria" list="lista-categorias" id="D">
 
 				<datalist id="lista-categorias">
 				</datalist>
@@ -100,31 +64,36 @@
 					</div>
 					<label onclick="anadirFoto();">Añadir foto</label>			
 				</div>
-
 		</main>
-<!-- contenido JavaScript -->
-		<div class="modal">
-			<div class="contenido-modal">
-				<div>
-					<p>Fichero no soportado</p>
-				</div>
-				<div>
-					<p id="mensajeLogin">El peso del archivo es mayor que 300KB</p>
-					<button id="AceptarLogin">Aceptar</button>
-				</div>
+
+		<!-- <div class="modal">
+		<div class="contenido-modal">
+			<div>
+				<p>Fichero no soportado</p>
+			</div>
+			<div>
+				<p id="mensajeLogin">El peso del archivo es mayor que 300KB</p>
+				<button id="AceptarLogin">Aceptar</button>
 			</div>
 		</div>
-		<div class="modal2">
-				<div class="contenido-modal2">
-					<div>
-						<p>Nuevo articulo</p>
-					</div>
-					<div>
-						<p id="mensajeLogin2">Se ha guardado correctamente el articulo</p>
-						<button id="AceptarLogin2">Aceptar</button>
-					</div>
+	</div> -->
+
+	<!-- <div class="modal2">
+			<div class="contenido-modal2">
+				<div>
+					<p>Nuevo articulo</p>
 				</div>
-			</div>		
+				<div>
+					<p id="mensajeLogin2">Se ha guardado correctamente el articulo</p>
+					<button id="AceptarLogin2">Aceptar</button>
+				</div>
+			</div>
+		</div>	 -->
+
+
+
+
+
 		<footer>
 			<div>
 				<a href="#">Volver arriba</a>

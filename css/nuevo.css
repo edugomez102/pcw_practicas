@@ -28,9 +28,13 @@ main>div:nth-child(2){
 	grid-template-columns: auto auto auto;
 	justify-content: center;
 }
+
 main>div:nth-child(2)>h3{
 	grid-column: 1 / span 3;
 }
+
+
+
 main>div>div{
 
 	grid-column: 1 / span 3;
@@ -100,7 +104,7 @@ main>div>div>div>input{
 
 
 .modal,.modal2{
-	display: none;
+	display: block;
 	position: fixed;
 	z-index: 1;
 	overflow: auto;
