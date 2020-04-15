@@ -235,7 +235,7 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 		};
 
 		xhr.onload = function(){
-			document.querySelector('#sectionArticulos').innerHTML = '';
+			/*document.querySelector('#sectionArticulos').innerHTML = '';*/
 			let articulos = JSON.parse(xhr.responseText);
 			let numArt = articulos.TOTAL_COINCIDENCIAS;
 			let totalPagsR = Math.floor((numArt / tampag)*10) /10;
