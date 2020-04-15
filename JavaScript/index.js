@@ -76,7 +76,7 @@ function mostrarArticulos(npag, tampag){
 	};
 
 	xhr.onload = function(){
-		document.querySelector('main>section').innerHTML = '';
+		/*document.querySelector('main>section').innerHTML = '<h3>Últimos artículos<h3>';*/
 		let articulos = JSON.parse(xhr.responseText);
 		let numArt = articulos.TOTAL_COINCIDENCIAS;
 		let totalPagsR = Math.floor((numArt / tampag)*10) /10;
