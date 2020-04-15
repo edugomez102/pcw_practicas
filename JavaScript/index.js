@@ -76,7 +76,10 @@ function mostrarArticulos(npag, tampag){
 	};
 
 	xhr.onload = function(){
-		/*document.querySelector('main>section').innerHTML = '<h3>Últimos artículos<h3>';*/
+		document.querySelector('main>section').innerHTML = '';
+		let ache = document.createElement('h3');
+		ache.innerHTML = 'Últimos artículos'
+		document.querySelector('main>section').appendChild(ache);
 		let articulos = JSON.parse(xhr.responseText);
 		let numArt = articulos.TOTAL_COINCIDENCIAS;
 		let totalPagsR = Math.floor((numArt / tampag)*10) /10;
@@ -178,7 +181,6 @@ function siguientePag (tamanoPagina){
 
 
 function anteriorPag (tamanoPagina){
-
 	if(contadorPaginas>0){
 		contadorPaginas--;
 		mostrarArticulos(contadorPaginas,tamanoPagina);
@@ -188,14 +190,18 @@ function anteriorPag (tamanoPagina){
 
 
 function primeraPag(ta){
-	contadorPaginas = 0;
-	mostrarArticulos(0,ta);
+	if(contadorPaginas>0){
+		contadorPaginas = 0;
+		mostrarArticulos(0,ta);
+	}
 }
 
 
 function ultimaPag(ta){
-	contadorPaginas = totalPags-1;
-	mostrarArticulos (totalPags-1,ta);
+	if(contadorPaginas < totalPags -1 ){
+		contadorPaginas = totalPags-1;
+		mostrarArticulos (totalPags-1,ta);
+	}
 }
 
 

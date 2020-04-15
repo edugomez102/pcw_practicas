@@ -226,8 +226,6 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 			 auth = usu.login+':'+usu.token;	
 		}
 
-		console.log('Url es:'+url);
-
 		xhr.open('GET', url, true);
 
 		xhr.onerror = function(){
@@ -235,7 +233,10 @@ function hacerBusqueda(peti,idCat,npag,tampag){
 		};
 
 		xhr.onload = function(){
-			/*document.querySelector('#sectionArticulos').innerHTML = '';*/
+			document.querySelector('#sectionArticulos').innerHTML = '';
+			let ache = document.createElement('h3');
+			ache.innerHTML = 'Resultado de la búsqueda'
+			document.querySelector('#sectionArticulos').appendChild(ache);
 			let articulos = JSON.parse(xhr.responseText);
 			let numArt = articulos.TOTAL_COINCIDENCIAS;
 			let totalPagsR = Math.floor((numArt / tampag)*10) /10;
@@ -349,14 +350,18 @@ function anteriorPag (tamanoPagina){
 
 
 function primeraPag(ta){
-	contadorPaginas = 0;
-	nombreCatId(0,ta);
+	if(contadorPaginas >0){
+		contadorPaginas = 0;
+		nombreCatId(0,ta);
+	}
 }
 
 
 function ultimaPag(ta){
-	contadorPaginas = totalPags-1;
-	nombreCatId(totalPags-1,ta);
+	if(contadorPaginas < totalPags -1 ){
+		contadorPaginas = totalPags-1;
+		nombreCatId(totalPags-1,ta);
+	}
 }
 
 
