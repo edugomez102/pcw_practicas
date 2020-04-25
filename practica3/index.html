@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/fontello-embedded.css">
+		<script src="javascript/main.js"></script>
+		<title>Index</title>
+	</head>
+	<body onload="crearTablero('4');">
+		<header>
+			<div>
+				<div>
+					<img src="img/sudoku.png" alt="logo">
+					<hgroup>
+						<h1>Sudokito wapito</h1>
+						<h2>Revienta al sudoku</h2>
+					</hgroup>
+				</div>
+			</div>
+		</header>
+		<nav>
+			<div></div>
+		</nav>
+		<main>
+			<h3>¡Juega ya!</h3>
+			<section>
+				<div id="labelsDiv">
+					<label>Tamaño:  </label>
+					<select id="tablero">
+						<option>4</option>
+						<option>9</option>
+					</select>
+				</div>
+				<div id="tiempoDiv">
+					<label>Tiempo: 00:00:00</label>
+				</div>
+				<canvas></canvas>
+				<div id="botonesDiv">
+					<button id="empezar">Empezar</button>
+					<button id="finalizar">Finalizar</button>
+				</div>
+
+				<label id="labelNumeros">Numeros disponibles</label>
+
+				<div id="divNumeros">
+					<span class="numeros">1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>4</span>
+					<span>4</span>
+					<span>4</span>
+					<span>4</span>
+					<span>4</span>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<div>
+				<a href="#">Volver arriba</a>
+			</div>
+			<ul>
+				<li>PCW</li>
+				<li><a href="acerca.html"  >Contacto</a></li>
+				<li>Copyright &copy; 2020  </li>
+			</ul>
+			<address>
+				Creado por David & Eduardo <br>
+				Universidad de Alicante, San Vicente del Raspeig
+			</address>
+		</footer>
+		<script>
+			prepararCanvas();
+		</script>
+	</body>
+</html>
