@@ -9,7 +9,7 @@
 		<script src="javascript/main.js"></script>
 		<title>Index</title>
 	</head>
-	<body onload="crearTablero('9');">
+	<body onload="rejillaSudoku('4',1);">
 		<header>
 			<div>
 				<div>
@@ -29,20 +29,19 @@
 			<section>
 				<div id="labelsDiv">
 					<label>Tamaño:  </label>
-					<select id="tablero">
+					<select id="tablero" onchange="cambiaTablero();">
 						<option>4</option>
 						<option>9</option>
 					</select>
 				</div>
 				<div id="tiempoDiv">
-					<label id="labelTiempito">Tiempo: 00:00:00</label>
 				</div>
 				<canvas></canvas>
 				<div id="botonesDiv">
-					<button id="empezar">Empezar</button>
-					<button id="finalizar">Finalizar</button>
+					<button id="empezar" onclick="empezarPartida();">Empezar</button>
+					<!-- <button id="finalizar" onclick="borrarPartida();">Finalizar</button> -->
 				</div>
-
+<!-- 
 				<label id="labelNumeros">Numeros disponibles</label>
 
 				<div id="divNumeros">
@@ -55,7 +54,7 @@
 					<span>4</span>
 					<span>4</span>
 					<span>4</span>
-				</div>
+				</div> -->
 			</section>
 		</main>
 		<footer>
