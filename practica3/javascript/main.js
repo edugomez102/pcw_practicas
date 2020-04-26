@@ -1,3 +1,14 @@
+/*Dudas Javier
+Petición del delete para finalizar 405 interal server error
+Como quita el clickeado del canvas cuando selecciono un numero que no lo consigo
+Lo de una variable para el tablero del jugador y otra para el tablero inicial no se pq se guardan a la vez.
+*/
+
+
+
+
+
+
 var isMarch = false; 
 var acumularTime = 0;
 var tamTablero =0;
@@ -6,6 +17,12 @@ var estaMarcado = false;
 var filaCliked = -1;
 var columnaClicked = -1;
 var poniendoNumero = false;
+var tableroJugador;
+
+
+
+var ids =0;
+var idPrueba = 0;
 
 /*Funcion que cuando se marca una celda las pinta azules*/
 function celdaSeleccionada(f,c){
@@ -94,8 +111,8 @@ function cambiarNumero(num){
 		ctx = cv.getContext('2d');
 	let tamCuadrado = cv.width / tamTablero;
 
-	console.log('filaEs: '+filaCliked);
-	console.log('columnaEs: '+columnaClicked);
+	//console.log('filaEs: '+filaCliked);
+	//console.log('columnaEs: '+columnaClicked);
 	let posX = tamCuadrado*filaCliked,
 		posY = tamCuadrado * columnaClicked;
 
@@ -109,7 +126,16 @@ function cambiarNumero(num){
 		ctx.fillText(num,posY+15,posX+20);
 	}
 	poniendoNumero = false;
-	tableroJuego[filaCliked][columnaClicked] = num;
+
+	tableroJugador[filaCliked][columnaClicked] = num;
+		console.log('TableroJugador: '+tableroJugador);
+		console.log('TableroJuego: '+tableroJuego);
+
+	idPrueba = 5123;
+		console.log('idPrueba: '+idPrueba);
+		console.log('id: '+ids);
+
+
 	celdasGrises(0);
 	rejillaSudoku(tamTablero,0);
 	estaMarcado = false;
@@ -123,26 +149,26 @@ function cambiarNumero(num){
 var filaActual = -1;
 var columnaActual = -1;
 /*Funcion que prepara el estilo principal del canvas*/
-function prepararCanvas(){
-	 
-celdasGrises(1); 
+function prepararCanvas(){ 
+	celdasGrises(1); 
 	rejillaSudoku(tamTablero,0);
 	let cv = document.querySelector('canvas'),
 		ctx = cv.getContext('2d');
+
 	//podemos controlar por donde nos movemos en el canvas
 	cv.onmousemove = function(evt){
-		if(sessionStorage['sudoku']!=null && !estaMarcado){
+		if(tableroJuego!=null && !estaMarcado){
 			let regiones = tamTablero,
 				ancho = cv.width / regiones, //ancho de cada celda
 				alto = cv.height /regiones; //alto de cada celda
 
-			console.log("width: "+cv.width);
+			//console.log("width: "+cv.width);
 			let fila,columna;
 
 			columna = Math.floor(evt.offsetX/ancho);
 			fila = Math.floor(evt.offsetY /alto);
 
-			console.log(fila + '-' + columna);
+			//console.log(fila + '-' + columna);
 
 			let tamCuadrado = cv.width / regiones;
 			let posX,posY = 0;
@@ -188,11 +214,11 @@ celdasGrises(1);
 			columna = Math.floor(evt.offsetX/ancho);
 			fila = Math.floor(evt.offsetY /alto);
 
-			if(tableroJuego[fila][columna] == 0){
+			if(tableroJuego!=null && tableroJuego[fila][columna] == 0){
 				celdaSeleccionada(fila,columna);
 			}
 
-			console.log(fila + '-' + columna);
+			//console.log(fila + '-' + columna);
 
 
 
@@ -344,13 +370,16 @@ function celdasGrises(id){
 		}
 	}
 
+/*	console.log('TableroJugador: '+tableroJugador);
+	console.log('TableroJuego: '+tableroJuego);*/
+	//Dibujamos casillas grises
 	for(let i=0;i<tamTablero;i++){
 		for(let j=0;j<tamTablero;j++){
 			if(tableroJuego[i][j]!=0){
 				ctx.beginPath();
 				ctx.fillStyle = '#DFDFDF';
 				ctx.fillRect(posX,posY,tamCuadrado,tamCuadrado);
-				ctx.beginPath();
+/*				ctx.beginPath();
 				ctx.fillStyle = 'black';
 				ctx.font = 'bold 18px sans-serif';
 				ctx.textAlign = 'center';
@@ -358,6 +387,29 @@ function celdasGrises(id){
 					ctx.fillText(tableroJuego[i][j],posX+25,posY+30);
 				}else{
 					ctx.fillText(tableroJuego[i][j],posX+15,posY+20);
+				}*/				
+			}
+			posX = posX + tamCuadrado;
+		}
+		posX = 0;
+		posY = posY + tamCuadrado;
+	}
+
+
+	posX = 0;
+	posY = 0;
+	//Dibujamos los numeros tanto de las casillas grises como de las otras
+	for(let i=0;i<tamTablero;i++){
+		for(let j=0;j<tamTablero;j++){
+			if(tableroJugador[i][j]!=0){
+				ctx.beginPath();
+				ctx.fillStyle = 'black';
+				ctx.font = 'bold 18px sans-serif';
+				ctx.textAlign = 'center';
+				if(tamTablero == '4'){
+					ctx.fillText(tableroJugador[i][j],posX+25,posY+30);
+				}else{
+					ctx.fillText(tableroJugador[i][j],posX+15,posY+20);
 				}
 				
 			}
@@ -366,6 +418,7 @@ function celdasGrises(id){
 		posX = 0;
 		posY = posY + tamCuadrado;
 	}
+
 	ctx.stroke();
 
 	/*cv.onclick = function(evt){
@@ -392,7 +445,7 @@ function empezarPartida(){
 /*Función que crea el tablero en funcion de el parametro que le meta el usuario*/
 function crearPartida(tam){
 	tamTablero = tam;
-	console.log('Llamo con: '+tam);
+	//console.log('Llamo con: '+tam);
 
 	let mySelect = document.querySelector('#tablero').value,
 		xhr 	 = new XMLHttpRequest();
@@ -409,16 +462,23 @@ function crearPartida(tam){
 		document.querySelector('#tablero').disabled = true;
 		//Vamos a rellenar y a pintar las casillas grises además de sacar los demas elementos
 		let respuesta = JSON.parse(xhr.responseText);
-		console.log(respuesta);
+		//console.log(respuesta);
 		//Guardamos el tablero de nuestra partida
+
 		tableroJuego = respuesta.SUDOKU;
+
+		tableroJugador = respuesta.SUDOKU;
+
+		ids = respuesta.ID;
+		idPrueba = respuesta.ID;
+
 		sessionStorage['sudoku'] = JSON.stringify(respuesta);
 		//Rellenamos con numeros y grises
 		
 		prepararCanvas();
 
 		
-		celdasGrises(tam,respuesta);
+		celdasGrises(1);
 
 		rejillaSudoku(tam,0);
 
@@ -427,10 +487,9 @@ function crearPartida(tam){
 		
 
 
-	};
+		};
 
 	xhr.send();
-
 }
 
 
@@ -486,7 +545,7 @@ function borrarPartida(){
 		sudo = JSON.parse(sessionStorage['sudoku']);
 		url = '/api/sudoku/'+sudo.ID;
 
-	console.log('url es: '+url);
+	//console.log('url es: '+url);
 	xhr.open('DELETE',url,true);
 
 	xhr.onerror = function(){
@@ -494,10 +553,12 @@ function borrarPartida(){
 	}
 
 	xhr.onload = function(){
-		console.log(xhr.responseText);
+		//console.log(xhr.responseText);
+		sessionStorage.clear();
+		//Y volveriamos a la pantalla de inicio
 	}
 
-	console.log('sudo token: '+sudo.TOKEN);
+	//console.log('sudo token: '+sudo.TOKEN);
 	xhr.setRequestHeader('Authorization',sudo.TOKEN);
 	xhr.send();
 }
