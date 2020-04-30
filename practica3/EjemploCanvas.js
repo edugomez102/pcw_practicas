@@ -1,4 +1,4 @@
-function prepararCanvas(){
+function comportamientoCanvas(){
 	let cvs = document.querySelectorAll('canvas');
 	cvs.forEach(function(e){
 		e.width = 480;
