@@ -194,7 +194,7 @@ function comportamientoCanvas(){
 
 	//podemos controlar por donde nos movemos en el canvas
 	cv.onmousemove = function(evt){
-		if(tableroJuego!=null){
+		if(tableroJuego!=null && document.querySelector("#labelNumeros")==null){
 			let regiones = tamTablero,
 				ancho = cv.width / regiones, //ancho de cada celda
 				alto = cv.height /regiones; //alto de cada celda
