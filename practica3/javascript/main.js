@@ -478,7 +478,7 @@ function cambiaTablero(){
 
 /*Funcion que  al hacer click en el logo en acerca lleva a index*/
 function logoAcerca(){
-	window.location = "/pcw_practicas/practica3/index.html";
+	window.location = "index.html";
 }
 
 
