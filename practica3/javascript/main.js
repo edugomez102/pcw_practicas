@@ -220,6 +220,7 @@ function comportamientoCanvas(){
 					ctx.beginPath();
 					ctx.fillStyle = '#6BFA73';
 					ctx.fillRect(posX,posY,tamCuadrado,tamCuadrado);
+					cv.style.cursor = "pointer";
 					//0 0
 					filaActual = fila;
 					columnaActual = columna;
@@ -229,15 +230,17 @@ function comportamientoCanvas(){
 				rejillaSudoku(tamTablero,0);
 				filaActual = fila;
 				columnaActual = columna;
+				cv.style.cursor = "default";
 			}else{		 
 				celdasGrises(1,0); 
 				rejillaSudoku(tamTablero,0);
 				filaActual = fila;
 				columnaActual = columna;
+				cv.style.cursor = "default";
 			}
 		}
 		ctx.stroke();
-	}
+	};
 
 	//funcion on click para saber donde clickamos
 	cv.onclick = function(evt){
@@ -253,7 +256,7 @@ function comportamientoCanvas(){
 			if(tableroJuego!=null && tableroJuego[fila][columna] == 0){
 				celdaSeleccionada(fila,columna);
 			}
-	}
+	};
 }
 
 
@@ -420,11 +423,12 @@ function crearPartida(tam){
 
 	xhr.onerror = function(){
 		console.log('Creación de tablero fallida');
-	}
+	};
 
 	xhr.onload  = function(){
 		//Desactivamos la opcion de cambiar de canvas
 		document.querySelector('#tablero').disabled = true;
+		console.log(xhr.responseText);
 		let respuesta = JSON.parse(xhr.responseText);
 		
 		//Guardamos el tablero de nuestra partida
@@ -463,7 +467,7 @@ function crearElementos(){
 	acumularTime = 0; 
 	//Creamos el label donde va a ir el cronometro
     let r = document.createElement('label');
- 	r.id = "labelTiempito"
+ 	r.id = "labelTiempito";
 	document.querySelector('#tiempoDiv').appendChild(r); 
 	//Llamamos a la función que inicia el cronometro
 	start(r);
@@ -519,7 +523,7 @@ function borrarPartida(){
 
 	xhr.onerror = function(){
 		console.log('Se ha producido un error borrando la partida');
-	}
+	};
 
 	xhr.onload = function(){
 		//Reiniciamos contador
@@ -540,8 +544,59 @@ function borrarPartida(){
 		tableroJugador = null;
 		document.querySelector('#tablero').disabled = false;
 		rejillaSudoku(tamTablero,1);
-	}
+	};
 
 	xhr.setRequestHeader('Authorization',sudo.TOKEN);
 	xhr.send();
+}
+
+function comprobarPartida(){
+	console.log('entro comprobar');
+
+	let xhr  = new XMLHttpRequest(),
+		sudo = JSON.parse(sessionStorage.sudoku),
+		url  = 'api/sudoku/' + sudo.ID + '/comprobar',
+		fd   = new FormData();
+
+
+	xhr.open('POST', url, true);
+	fd.append("juego", tableroJugador);
+	console.log(tableroJugador);
+	// console.log(JSON.parse(sessionStorage.sudoku).SUDOKU);
+
+	xhr.onload = function(){
+		console.log(xhr.responseText);
+		// let resp = JSON.parse(xhr.responseText),
+		// 	fallos = resp.FALLOS;
+
+		let fallos = [
+			{"fila": 0, "columna": 0},
+			{"fila": 0, "columna": 1}
+		];
+		// TODO mostrar errores en rojo
+		let cv = document.querySelector('canvas'),
+			ctx = cv.getContext('2d');
+		ctx.fillStyle = 'orange';
+		console.log(ctx);
+		for(let i = 0; i < tamTablero; i++ ) {
+			for(let j = 0; j < tamTablero; j++) {
+				if(fallos.fila == i && fallos.columna == j){
+				}
+			}
+		}
+		cv.onmousemove = function(evt){
+			// console.log("test");
+			// celdasGrises(0, 1);
+		};
+		// TODO al volver al canvas borrarlos
+
+
+		
+	};
+	xhr.onerror = function(){
+		console.log('Error al comprobar');
+	};
+
+	xhr.setRequestHeader('Authorization',sudo.TOKEN);
+	xhr.send(fd);
 }
