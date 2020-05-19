@@ -217,7 +217,7 @@ function comprobarAuto(){
 		let resp = JSON.parse(xhr.responseText),
 			fallos = resp.FALLOS;
 
-		let modal;
+		console.log(aux);
 		if(fallos.length == 0){
 			
 		}
@@ -233,6 +233,43 @@ function comprobarAuto(){
 	xhr.setRequestHeader('Authorization',sudo.TOKEN);
 	xhr.send(fd);
 
+}
+
+function ventanaModal(numError){
+	let modal = 
+		`<div class="modal">
+				<div class="modal-content">`;
+	if(numError.length == 0){
+		console.log(tiempoTranscurrido);
+		modal += `<h2>¡ENHORABUNA!</h2> 
+			<p>has completado el sudoku en ${tiempoTranscurrido.hh}:${tiempoTranscurrido.mm}:${tiempoTranscurrido.ss}</p>
+			<button onclick="borrarPartida();borrarModal();">Volver</button>
+		`;
+	}
+	else{
+		modal += `
+			<h2>Hay ${numError.length} errores</h2>
+			<p>¿Quieres intentar corregirlos?</p>
+			<button onclick="borrarModal();">Sí</button>
+			<button onclick="">No</button>
+		`;
+	}
+	modal += `
+				</div>
+			</div>
+			`;
+	// let test = '<h1> jodewr </h1>';
+	document.querySelector('main').innerHTML += modal;
+	comportamientoCanvas();
+	celdasGrises(1,0);
+	rejillaSudoku(tamTablero,0);
+}
+
+function borrarModal(){
+	let aux = document.querySelector('.modal');
+	aux.parentNode.removeChild(aux);
+	celdasGrises(0,0);
+	// aux = '';
 }
 
 
@@ -503,7 +540,7 @@ function crearPartida(tam){
 		//Funciones onclick y onmove y la creación del canvas de la partida
 		comportamientoCanvas();
 		celdasGrises(1,0);
-		rejillaSudoku(tam,0);
+		rejillaSudoku(tamTablero,0);
 		//Creamos los elementos necesarios para cuando empieze la partida como cronometro y  botones
 		crearElementos();
 		};
@@ -515,7 +552,9 @@ function crearPartida(tam){
 function crearElementos(){
 	/*Creación de los botones comprobar y finalizar cuando estamos en juego*/
 	document.querySelector('#botonesDiv').innerHTML = `<button id="comprobar" onclick="comprobarPartida();">Comprobar</button>
-		<button id="finalizar" onclick="borrarPartida();">Finalizar</button>`;
+		<button id="finalizar" onclick="borrarPartida();">Finalizar</button>
+		<button onclick="ventanaModal([1]);"> modal</button>
+		`;
 	//Cada vez que se crean los elementos empieza una nueva partida por lo tanto el cronometro a 0
 	isMarch = false; 
 	acumularTime = 0; 
@@ -543,27 +582,31 @@ function logoAcerca(){
 /*Implementación cronometro que se inicia cuando empieza la partida y se reseta cuando se finaliza una nueva
 mientras el juego no se acabe sigue contando*/
 function start (r) {
-         if (isMarch == false) { 
-            timeInicial = new Date();
-            control = setInterval(cronometro,10,r);
-            isMarch = true;
-            }
-         }
+	if (isMarch == false) { 
+		timeInicial = new Date();
+		control = setInterval(cronometro,10,r);
+		isMarch = true;
+	}
+}
+var tiempoTranscurrido = {};
 function cronometro (r) { 
-         timeActual = new Date();
-         acumularTime = timeActual - timeInicial;
-         acumularTime2 = new Date();
-         acumularTime2.setTime(acumularTime); 
-         cc = Math.round(acumularTime2.getMilliseconds()/10);
-         ss = acumularTime2.getSeconds();
-         mm = acumularTime2.getMinutes();
-         hh = acumularTime2.getHours()-1;
-         if (cc < 10) {cc = "0"+cc;}
-         if (ss < 10) {ss = "0"+ss;} 
-         if (mm < 10) {mm = "0"+mm;}
-         if (hh < 10) {hh = "0"+hh;}
-    	 r.innerHTML = `Tiempo: ${hh}:${mm}:${ss}`;
-         }
+	timeActual = new Date();
+	acumularTime = timeActual - timeInicial;
+	acumularTime2 = new Date();
+	acumularTime2.setTime(acumularTime); 
+	cc = Math.round(acumularTime2.getMilliseconds()/10);
+	ss = acumularTime2.getSeconds();
+	mm = acumularTime2.getMinutes();
+	hh = acumularTime2.getHours()-1;
+	if (cc < 10) {cc = "0"+cc;}
+	if (ss < 10) {ss = "0"+ss;} 
+	if (mm < 10) {mm = "0"+mm;}
+	if (hh < 10) {hh = "0"+hh;}
+	r.innerHTML = `Tiempo: ${hh}:${mm}:${ss}`;
+	tiempoTranscurrido.hh = hh;
+	tiempoTranscurrido.mm = mm;
+	tiempoTranscurrido.ss = ss;
+}
 
 
 
@@ -571,7 +614,7 @@ function cronometro (r) {
 function borrarPartida(){
 	let xhr = new XMLHttpRequest(),
 		sudo = JSON.parse(sessionStorage['sudoku']);
-		url = 'api/sudoku/'+sudo.ID;
+	url = 'api/sudoku/'+sudo.ID;
 
 	xhr.open('DELETE',url,true);
 
