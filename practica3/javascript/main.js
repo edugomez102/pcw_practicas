@@ -217,13 +217,7 @@ function comprobarAuto(){
 		let resp = JSON.parse(xhr.responseText),
 			fallos = resp.FALLOS;
 
-		console.log(aux);
-		if(fallos.length == 0){
-			
-		}
-		else{
-
-		}
+		ventanaModal(fallos);
 
 	};
 	xhr.onerror = function(){
@@ -251,14 +245,13 @@ function ventanaModal(numError){
 			<h2>Hay ${numError.length} errores</h2>
 			<p>¿Quieres intentar corregirlos?</p>
 			<button onclick="borrarModal();">Sí</button>
-			<button onclick="">No</button>
+			<button onclick="borrarPartida();borrarModal();">No</button>
 		`;
 	}
 	modal += `
 				</div>
 			</div>
 			`;
-	// let test = '<h1> jodewr </h1>';
 	document.querySelector('main').innerHTML += modal;
 	comportamientoCanvas();
 	celdasGrises(1,0);
@@ -268,10 +261,8 @@ function ventanaModal(numError){
 function borrarModal(){
 	let aux = document.querySelector('.modal');
 	aux.parentNode.removeChild(aux);
-	celdasGrises(0,0);
-	// aux = '';
-}
 
+}
 
 
 //Resetemaos valores
@@ -553,8 +544,9 @@ function crearElementos(){
 	/*Creación de los botones comprobar y finalizar cuando estamos en juego*/
 	document.querySelector('#botonesDiv').innerHTML = `<button id="comprobar" onclick="comprobarPartida();">Comprobar</button>
 		<button id="finalizar" onclick="borrarPartida();">Finalizar</button>
-		<button onclick="ventanaModal([1]);"> modal</button>
 		`;
+	// <button onclick="ventanaModal([1]);"> modal</button>
+
 	//Cada vez que se crean los elementos empieza una nueva partida por lo tanto el cronometro a 0
 	isMarch = false; 
 	acumularTime = 0; 
