@@ -54,6 +54,17 @@ var tableroJugador;
 	posteriormente en la peticion de comprobar*
 */
 
+function celroja(f,c){
+	let cv          = document.querySelector('canvas'),
+		ctx         = cv.getContext('2d'),
+		tamCuadrado = cv.width / tamTablero;
+
+	ctx.beginPath();
+	ctx.fillStyle = 'pink';
+	ctx.fillRect(c * tamCuadrado , f * tamCuadrado, tamCuadrado, tamCuadrado);
+
+	// console.log(ctx);
+}
 
 function celdaSeleccionada(f,c){
 	filaCliked = f;
@@ -558,39 +569,27 @@ function comprobarPartida(){
 		url  = 'api/sudoku/' + sudo.ID + '/comprobar',
 		fd   = new FormData();
 
-
 	xhr.open('POST', url, true);
-	fd.append("juego", tableroJugador);
+	fd.append("juego", JSON.stringify(tableroJugador));
 	console.log(tableroJugador);
-	// console.log(JSON.parse(sessionStorage.sudoku).SUDOKU);
 
 	xhr.onload = function(){
 		console.log(xhr.responseText);
-		// let resp = JSON.parse(xhr.responseText),
-		// 	fallos = resp.FALLOS;
+		let resp = JSON.parse(xhr.responseText),
+			fallos = resp.FALLOS;
 
-		let fallos = [
-			{"fila": 0, "columna": 0},
-			{"fila": 0, "columna": 1}
-		];
-		// TODO mostrar errores en rojo
-		let cv = document.querySelector('canvas'),
-			ctx = cv.getContext('2d');
-		ctx.fillStyle = 'orange';
-		console.log(ctx);
-		for(let i = 0; i < tamTablero; i++ ) {
-			for(let j = 0; j < tamTablero; j++) {
-				if(fallos.fila == i && fallos.columna == j){
-				}
-			}
+		console.log(fallos);
+		for(let i = 0; i < fallos.length; i++) {
+			// console.log(fallos[i].fila + " " + fallos[i].columna);
+			celroja(fallos[i].fila, fallos[i].columna);
 		}
-		cv.onmousemove = function(evt){
+		celdasGrises(0,0);
+		rejillaSudoku(tamTablero,0);
+		// cv.onmousemove = function(evt){
 			// console.log("test");
 			// celdasGrises(0, 1);
-		};
+		// };
 		// TODO al volver al canvas borrarlos
-
-
 		
 	};
 	xhr.onerror = function(){
