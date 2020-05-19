@@ -189,8 +189,23 @@ function cambiarNumero(num){
 	
 	document.querySelector('section').removeChild(document.querySelector('#labelNumeros'));
 	document.querySelector('section').removeChild(document.querySelector('#divNumeros'));
+
+	let lleno = 0;
+	for(let i = 0; i < tamTablero; i++) {
+		for(let j = 0; j < tamTablero; j++) {
+			// console.log(tableroJugador[i][j]);
+			if(tableroJugador[i][j] != 0 ){ lleno++; }
+		}
+	}
+	if(lleno == tamTablero * tamTablero){
+		console.log('tablero Lleno');
+		comprobarAuto();
+	}
 }
 
+function comprobarAuto(){
+
+}
 
 
 
