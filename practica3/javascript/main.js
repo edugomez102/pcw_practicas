@@ -204,6 +204,34 @@ function cambiarNumero(num){
 }
 
 function comprobarAuto(){
+	let xhr  = new XMLHttpRequest(),
+		sudo = JSON.parse(sessionStorage.sudoku),
+		url  = 'api/sudoku/' + sudo.ID + '/comprobar',
+		fd   = new FormData();
+
+	xhr.open('POST', url, true);
+	fd.append("juego", JSON.stringify(tableroJugador));
+
+	xhr.onload = function(){
+		console.log(xhr.responseText);
+		let resp = JSON.parse(xhr.responseText),
+			fallos = resp.FALLOS;
+
+		let modal;
+		if(fallos.length == 0){
+			
+		}
+		else{
+
+		}
+
+	};
+	xhr.onerror = function(){
+		console.log('Error al comprobar');
+	};
+
+	xhr.setRequestHeader('Authorization',sudo.TOKEN);
+	xhr.send(fd);
 
 }
 
@@ -577,8 +605,6 @@ function borrarPartida(){
 }
 
 function comprobarPartida(){
-	console.log('entro comprobar');
-
 	let xhr  = new XMLHttpRequest(),
 		sudo = JSON.parse(sessionStorage.sudoku),
 		url  = 'api/sudoku/' + sudo.ID + '/comprobar',
@@ -595,7 +621,6 @@ function comprobarPartida(){
 
 		console.log(fallos);
 		for(let i = 0; i < fallos.length; i++) {
-			// console.log(fallos[i].fila + " " + fallos[i].columna);
 			celroja(fallos[i].fila, fallos[i].columna);
 		}
 		celdasGrises(0,0);
