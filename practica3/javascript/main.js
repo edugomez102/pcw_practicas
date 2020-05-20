@@ -228,6 +228,12 @@ function comprobarAuto(){
 	xhr.send(fd);
 
 }
+function htmlToElements(html) {
+    var template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content.childNodes;
+}
+
 
 function ventanaModal(numError){
 	let modal = 
@@ -237,7 +243,7 @@ function ventanaModal(numError){
 		console.log(tiempoTranscurrido);
 		modal += `<h2>¡ENHORABUNA!</h2> 
 			<p>has completado el sudoku en ${tiempoTranscurrido.hh}:${tiempoTranscurrido.mm}:${tiempoTranscurrido.ss}</p>
-			<button onclick="borrarPartida();borrarModal();">Volver</button>
+			<button onclick="borrarPartida();borrarModal();">Aceptar</button>
 		`;
 	}
 	else{
@@ -252,18 +258,19 @@ function ventanaModal(numError){
 				</div>
 			</div>
 			`;
-	document.querySelector('main').innerHTML += modal;
-	comportamientoCanvas();
-	celdasGrises(1,0);
-	rejillaSudoku(tamTablero,0);
+
+	let convertido = htmlToElements(modal);
+	console.log(convertido);
+	document.querySelector('main').appendChild(convertido[0]);
+	// comportamientoCanvas();
+	// celdasGrises(1,0);
+	// rejillaSudoku(tamTablero,0);
 }
 
 function borrarModal(){
 	let aux = document.querySelector('.modal');
 	aux.parentNode.removeChild(aux);
-
 }
-
 
 //Resetemaos valores
 var filaActual = -1;
@@ -673,4 +680,14 @@ function comprobarPartida(){
 
 	xhr.setRequestHeader('Authorization',sudo.TOKEN);
 	xhr.send(fd);
+}
+
+function testNode(){
+	let test = document.createElement('h2');
+	test.innerHTML = "quepasa";
+	test.className = "testeando";
+	console.log(test);
+
+	let main = document.querySelector('main');
+	main.appendChild(test);
 }

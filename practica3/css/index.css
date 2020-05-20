@@ -239,7 +239,14 @@ canvas{
 		margin: auto;
 		padding: 20px;
 		border: 1px solid #888;
-		width: 80%;
+		width: 70%;
+		text-align: center;
+	}
+
+	.modal-content button{
+		font-size: 1em;
+		padding: 12px;
+		width: 78px;
 	}
 
 }
