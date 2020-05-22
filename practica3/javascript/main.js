@@ -62,8 +62,6 @@ function celroja(f,c){
 	ctx.beginPath();
 	ctx.fillStyle = 'pink';
 	ctx.fillRect(c * tamCuadrado , f * tamCuadrado, tamCuadrado, tamCuadrado);
-
-	// console.log(ctx);
 }
 
 function celdaSeleccionada(f,c){
@@ -148,7 +146,7 @@ function celdaSeleccionada(f,c){
 		let lb = document.createElement('label');
 		lb.id = "labelNumeros";
 		lb.innerHTML = 'Números disponibles';
-		document.querySelector('section').appendChild(lb);
+		document.querySelector('#general').appendChild(lb);
 
 
 		let divNum = document.createElement('div');
@@ -156,7 +154,7 @@ function celdaSeleccionada(f,c){
 		for(let h = 1;h<=tamTablero;h++){
 			divNum.innerHTML += `<span class="numeros" onclick="cambiarNumero(${h});">${h}</span>`;
 		}
-		document.querySelector('section').appendChild(divNum);
+		document.querySelector('#general').appendChild(divNum);
 	}
 }
 
@@ -187,18 +185,16 @@ function cambiarNumero(num){
 	rejillaSudoku(tamTablero,0);
 	ctx.stroke();
 	
-	document.querySelector('section').removeChild(document.querySelector('#labelNumeros'));
-	document.querySelector('section').removeChild(document.querySelector('#divNumeros'));
+	document.querySelector('#general').removeChild(document.querySelector('#labelNumeros'));
+	document.querySelector('#general').removeChild(document.querySelector('#divNumeros'));
 
 	let lleno = 0;
 	for(let i = 0; i < tamTablero; i++) {
 		for(let j = 0; j < tamTablero; j++) {
-			// console.log(tableroJugador[i][j]);
 			if(tableroJugador[i][j] != 0 ){ lleno++; }
 		}
 	}
 	if(lleno == tamTablero * tamTablero){
-		console.log('tablero Lleno');
 		comprobarAuto();
 	}
 }
@@ -213,7 +209,7 @@ function comprobarAuto(){
 	fd.append("juego", JSON.stringify(tableroJugador));
 
 	xhr.onload = function(){
-		console.log(xhr.responseText);
+		// console.log(xhr.responseText);
 		let resp = JSON.parse(xhr.responseText),
 			fallos = resp.FALLOS;
 
@@ -240,7 +236,7 @@ function ventanaModal(numError){
 		`<div class="modal">
 				<div class="modal-content">`;
 	if(numError.length == 0){
-		console.log(tiempoTranscurrido);
+		// console.log(tiempoTranscurrido);
 		modal += `<h2>¡ENHORABUNA!</h2> 
 			<p>has completado el sudoku en ${tiempoTranscurrido.hh}:${tiempoTranscurrido.mm}:${tiempoTranscurrido.ss}</p>
 			<button onclick="borrarPartida();borrarModal();">Aceptar</button>
@@ -260,8 +256,8 @@ function ventanaModal(numError){
 			`;
 
 	let convertido = htmlToElements(modal);
-	console.log(convertido);
-	document.querySelector('main').appendChild(convertido[0]);
+	document.querySelector('body').appendChild(convertido[0]);
+
 	// comportamientoCanvas();
 	// celdasGrises(1,0);
 	// rejillaSudoku(tamTablero,0);
@@ -300,7 +296,7 @@ function comportamientoCanvas(){
 			let posX,posY = 0;
 
 
-			if(tableroJuego[fila][columna] == 0){
+			if(tableroJuego[fila] != undefined && tableroJuego[fila][columna] == 0){
 				if(fila!=filaActual || columna!=columnaActual){
 					celdasGrises(1,0); 
 					rejillaSudoku(tamTablero,0);
@@ -517,7 +513,7 @@ function crearPartida(tam){
 	xhr.onload  = function(){
 		//Desactivamos la opcion de cambiar de canvas
 		document.querySelector('#tablero').disabled = true;
-		console.log(xhr.responseText);
+		// console.log(xhr.responseText);
 		let respuesta = JSON.parse(xhr.responseText);
 		
 		//Guardamos el tablero de nuestra partida
@@ -633,8 +629,8 @@ function borrarPartida(){
 		let labelcito = document.querySelector('#labelNumeros');
 		let divNumeritos = document.querySelector('#divNumeros');
 		if(labelcito != null && divNumeritos !=null){
-			document.querySelector('section').removeChild(labelcito);
-			document.querySelector('section').removeChild(divNumeritos);
+			document.querySelector('#general').removeChild(labelcito);
+			document.querySelector('#general').removeChild(divNumeritos);
 		}
 		tableroJuego = null;
 		tableroJugador = null;
@@ -654,24 +650,18 @@ function comprobarPartida(){
 
 	xhr.open('POST', url, true);
 	fd.append("juego", JSON.stringify(tableroJugador));
-	console.log(tableroJugador);
+	// console.log(tableroJugador);
 
 	xhr.onload = function(){
-		console.log(xhr.responseText);
+		// console.log(xhr.responseText);
 		let resp = JSON.parse(xhr.responseText),
 			fallos = resp.FALLOS;
 
-		console.log(fallos);
 		for(let i = 0; i < fallos.length; i++) {
 			celroja(fallos[i].fila, fallos[i].columna);
 		}
 		celdasGrises(0,0);
 		rejillaSudoku(tamTablero,0);
-		// cv.onmousemove = function(evt){
-			// console.log("test");
-			// celdasGrises(0, 1);
-		// };
-		// TODO al volver al canvas borrarlos
 		
 	};
 	xhr.onerror = function(){
@@ -682,12 +672,3 @@ function comprobarPartida(){
 	xhr.send(fd);
 }
 
-function testNode(){
-	let test = document.createElement('h2');
-	test.innerHTML = "quepasa";
-	test.className = "testeando";
-	console.log(test);
-
-	let main = document.querySelector('main');
-	main.appendChild(test);
-}
